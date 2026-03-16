@@ -208,7 +208,7 @@ const FreelancerDashboard = () => {
                 title: job.title,
                 category: job.required_skills?.[0] || 'Geral',
                 budget: job.budget,
-                shift_date: job.data_do_turno || job.created_at,
+                shift_date: (job as any).data_do_turno || job.created_at,
                 company_name: job.employer?.name || 'Empresa',
                 city: job.cidade || '',
                 description: job.description || '',
