@@ -3,18 +3,21 @@ import { supabase } from '@/lib/supabase';
 import { Job, Application, Profile } from '@/lib/types';
 
 // ─── JOBS ────────────────────────────────────────────────
-export const useJobs = (filters?: { cidade?: string; status?: string }) => {
+export const useJobs = (filters?: { cidade?: string; status?: string; bairro?: string; skill?: string; search?: string }) => {
   return useQuery({
     queryKey: ['jobs', filters],
     queryFn: async () => {
       let query = supabase
         .from('jobs')
-        .select('*, employer:profiles!employer_id(id, name, cidade, imgUrl, telefone)')
+        .select('*, employer:profiles!company_id(id, name, cidade, avatar_url, telefone)')
         .order('created_at', { ascending: false });
 
       if (filters?.cidade) query = query.eq('cidade', filters.cidade);
+      if (filters?.bairro) query = query.eq('bairro', filters.bairro);
       if (filters?.status) query = query.eq('status', filters.status);
       else query = query.eq('status', 'open');
+      if (filters?.skill) query = query.contains('required_skills', [filters.skill]);
+      if (filters?.search) query = query.ilike('title', `%${filters.search}%`);
 
       const { data, error } = await query;
       if (error) throw error;
