@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, X } from 'lucide-react';
+import { ArrowLeft, X, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/authContext';
 import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
-const skillOptions = ['Garçom', 'Barman', 'Cozinheiro', 'Chapa', 'Vendedor', 'Faxineiro', 'Promotor', 'Hostess', 'Segurança', 'Motoboy'];
+const defaultSkillOptions = [
+  'Garçom', 'Barman', 'Cozinheiro', 'Auxiliar de Cozinha', 'Chapa',
+  'Vendedor', 'Operador de Caixa', 'Atendente', 'Faxineiro', 'Copeira',
+  'Promotor', 'Hostess', 'Recepcionista', 'Segurança', 'Motoboy',
+  'Entregador', 'DJ', 'Fotógrafo', 'Montador', 'Carregador',
+];
 
 const Onboarding = () => {
   const navigate = useNavigate();
