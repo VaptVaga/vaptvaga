@@ -1,0 +1,160 @@
+import { useState } from 'react';
+import { Plus, Eye, Lock, MessageCircle, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
+import { BottomNav } from '@/components/vaptvaga/BottomNav';
+import { useAuth } from '@/lib/authContext';
+import { mockJobs, mockApplications } from '@/lib/mockData';
+import { toast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+
+const CompanyDashboard = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [showPaywall, setShowPaywall] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
+  const isFree = user?.subscription_tier === 'free';
+
+  const companyJobs = mockJobs.slice(0, 2); // mock: this company has 2 jobs
+  const applications = mockApplications;
+
+  const handleWhatsApp = (phone: string, index: number) => {
+    if (isFree && index > 0) {
+      setShowPaywall(true);
+      return;
+    }
+    toast({ title: 'Abrindo WhatsApp...', description: `Contato: ${phone}` });
+  };
+
+  return (
+    <div className="min-h-screen bg-background pb-24">
+      {/* Header */}
+      <div className="px-5 pb-2 pt-5">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-muted-foreground">Olá 👋</p>
+            <h1 className="text-xl font-black text-foreground">{user?.company_name || 'Minha Empresa'}</h1>
+          </div>
+          {isFree && (
+            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
+              Plano Free
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* My Jobs */}
+      <div className="mt-4 px-5">
+        <h2 className="mb-3 text-lg font-bold text-foreground">Minhas Vagas</h2>
+        <div className="space-y-3">
+          {companyJobs.map((job) => (
+            <motion.button
+              key={job.id}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setSelectedJobId(selectedJobId === job.id ? null : job.id)}
+              className="w-full rounded-2xl border border-border bg-card p-4 text-left shadow-sm"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-bold text-foreground">{job.title}</h3>
+                  <p className="mt-0.5 text-sm text-muted-foreground">
+                    R${job.wage_value} • {job.city}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="flex items-center gap-1 rounded-full bg-success/10 px-2.5 py-1 text-xs font-bold text-success">
+                    <Eye size={13} /> {applications.length}
+                  </span>
+                  <ChevronRight size={18} className={`text-muted-foreground transition-transform ${selectedJobId === job.id ? 'rotate-90' : ''}`} />
+                </div>
+              </div>
+
+              {/* Applicants */}
+              <AnimatePresence>
+                {selectedJobId === job.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="mt-4 space-y-2.5 border-t border-border pt-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        Pessoas prontas para trabalhar
+                      </p>
+                      {applications.map((app, index) => (
+                        <div
+                          key={app.id}
+                          className={`flex items-center justify-between rounded-xl p-3 ${
+                            isFree && index > 0 ? 'bg-secondary/50' : 'bg-secondary'
+                          }`}
+                        >
+                          <div className={isFree && index > 0 ? 'blur-sm select-none' : ''}>
+                            <p className="font-bold text-foreground">{app.freelancer_name}</p>
+                            <div className="mt-0.5 flex gap-1">
+                              {app.freelancer_skills.map((s) => (
+                                <span key={s} className="text-[11px] text-muted-foreground">
+                                  {s}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          <motion.div whileTap={{ scale: 0.9 }}>
+                            <Button
+                              size="sm"
+                              onClick={() => handleWhatsApp(app.freelancer_whatsapp, index)}
+                              className={`h-9 rounded-lg text-xs font-bold ${
+                                isFree && index > 0
+                                  ? 'bg-muted text-muted-foreground'
+                                  : 'bg-success text-success-foreground hover:bg-success/90'
+                              }`}
+                            >
+                              {isFree && index > 0 ? (
+                                <>
+                                  <Lock size={13} /> Bloqueado
+                                </>
+                              ) : (
+                                <>
+                                  <MessageCircle size={13} /> WhatsApp
+                                </>
+                              )}
+                            </Button>
+                          </motion.div>
+                        </div>
+                      ))}
+                      {isFree && (
+                        <button
+                          onClick={() => setShowPaywall(true)}
+                          className="w-full rounded-xl bg-primary/5 p-3 text-center text-sm font-bold text-primary"
+                        >
+                          🔓 Assine Premium para ver todos os candidatos
+                        </button>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          ))}
+        </div>
+      </div>
+
+      {/* FAB */}
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        onClick={() => navigate('/post-job')}
+        className="fixed bottom-24 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30"
+      >
+        <Plus size={28} strokeWidth={2.5} />
+      </motion.button>
+
+      <PaywallModal open={showPaywall} onClose={() => setShowPaywall(false)} type="company" />
+      <BottomNav />
+    </div>
+  );
+};
+
+export default CompanyDashboard;
