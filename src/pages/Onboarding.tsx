@@ -170,7 +170,7 @@ const Onboarding = () => {
                 <div>
                   <label className="mb-1.5 block text-sm font-bold text-foreground">Habilidades</label>
                   <div className="flex flex-wrap gap-2">
-                    {skillOptions.map((skill) => (
+                    {rankedSkillOptions.map((skill) => (
                       <motion.button
                         key={skill}
                         whileTap={{ scale: 0.93 }}
@@ -185,6 +185,40 @@ const Onboarding = () => {
                         {selectedSkills.includes(skill) && <X size={14} />}
                       </motion.button>
                     ))}
+                    {/* Custom skills not in default list */}
+                    {selectedSkills
+                      .filter((s) => !defaultSkillOptions.includes(s))
+                      .map((skill) => (
+                        <motion.button
+                          key={skill}
+                          whileTap={{ scale: 0.93 }}
+                          onClick={() => toggleSkill(skill)}
+                          className="flex items-center gap-1.5 rounded-full border border-primary bg-primary/10 px-3.5 py-2 text-sm font-medium text-primary transition-colors"
+                        >
+                          {skill}
+                          <X size={14} />
+                        </motion.button>
+                      ))}
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    <input
+                      value={customSkill}
+                      onChange={(e) => setCustomSkill(e.target.value)}
+                      onKeyDown={handleCustomSkillKeyDown}
+                      placeholder="Adicionar outra habilidade..."
+                      maxLength={30}
+                      className="h-10 flex-1 rounded-xl border border-border bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    />
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="outline"
+                      onClick={addCustomSkill}
+                      disabled={!customSkill.trim()}
+                      className="h-10 w-10 shrink-0 rounded-xl"
+                    >
+                      <Plus size={18} />
+                    </Button>
                   </div>
                 </div>
               )}
