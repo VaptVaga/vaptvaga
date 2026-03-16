@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, X } from 'lucide-react';
+import { ArrowLeft, X, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/authContext';
 import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 
-const skillOptions = ['Garçom', 'Barman', 'Cozinheiro', 'Chapa', 'Vendedor', 'Faxineiro', 'Promotor', 'Hostess', 'Segurança', 'Motoboy'];
+const defaultSkillOptions = [
+  'Garçom', 'Barman', 'Cozinheiro', 'Auxiliar de Cozinha', 'Chapa',
+  'Vendedor', 'Operador de Caixa', 'Atendente', 'Faxineiro', 'Copeira',
+  'Promotor', 'Hostess', 'Recepcionista', 'Segurança', 'Motoboy',
+  'Entregador', 'DJ', 'Fotógrafo', 'Montador', 'Carregador',
+];
 
 const Onboarding = () => {
   const navigate = useNavigate();
@@ -20,11 +27,49 @@ const Onboarding = () => {
   const [telefone, setTelefone] = useState(user?.telefone || '');
   const [selectedSkills, setSelectedSkills] = useState<string[]>(user?.skills || []);
   const [role, setRole] = useState<'company' | 'freelancer' | null>(user?.role || null);
+  const [customSkill, setCustomSkill] = useState('');
+
+  const { data: skillRankings } = useQuery({
+    queryKey: ['skill-rankings'],
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc('get_skill_rankings');
+      if (error) return [];
+      return data as { skill: string; cnt: number }[];
+    },
+  });
+
+  const rankedSkillOptions = useMemo(() => {
+    if (!skillRankings?.length) return defaultSkillOptions;
+    const rankMap = new Map(skillRankings.map((r) => [r.skill.toLowerCase(), r.cnt]));
+    return [...defaultSkillOptions].sort((a, b) => {
+      const ra = rankMap.get(a.toLowerCase()) ?? 0;
+      const rb = rankMap.get(b.toLowerCase()) ?? 0;
+      return rb - ra;
+    });
+  }, [skillRankings]);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) =>
       prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill]
     );
+  };
+
+  const addCustomSkill = () => {
+    const trimmed = customSkill.trim();
+    if (!trimmed || trimmed.length > 30) return;
+    if (selectedSkills.includes(trimmed)) {
+      setCustomSkill('');
+      return;
+    }
+    setSelectedSkills((prev) => [...prev, trimmed]);
+    setCustomSkill('');
+  };
+
+  const handleCustomSkillKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addCustomSkill();
+    }
   };
 
   const handleSave = async () => {
@@ -125,7 +170,7 @@ const Onboarding = () => {
                 <div>
                   <label className="mb-1.5 block text-sm font-bold text-foreground">Habilidades</label>
                   <div className="flex flex-wrap gap-2">
-                    {skillOptions.map((skill) => (
+                    {rankedSkillOptions.map((skill) => (
                       <motion.button
                         key={skill}
                         whileTap={{ scale: 0.93 }}
@@ -140,6 +185,40 @@ const Onboarding = () => {
                         {selectedSkills.includes(skill) && <X size={14} />}
                       </motion.button>
                     ))}
+                    {/* Custom skills not in default list */}
+                    {selectedSkills
+                      .filter((s) => !defaultSkillOptions.includes(s))
+                      .map((skill) => (
+                        <motion.button
+                          key={skill}
+                          whileTap={{ scale: 0.93 }}
+                          onClick={() => toggleSkill(skill)}
+                          className="flex items-center gap-1.5 rounded-full border border-primary bg-primary/10 px-3.5 py-2 text-sm font-medium text-primary transition-colors"
+                        >
+                          {skill}
+                          <X size={14} />
+                        </motion.button>
+                      ))}
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    <input
+                      value={customSkill}
+                      onChange={(e) => setCustomSkill(e.target.value)}
+                      onKeyDown={handleCustomSkillKeyDown}
+                      placeholder="Adicionar outra habilidade..."
+                      maxLength={30}
+                      className="h-10 flex-1 rounded-xl border border-border bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    />
+                    <Button
+                      type="button"
+                      size="icon"
+                      variant="outline"
+                      onClick={addCustomSkill}
+                      disabled={!customSkill.trim()}
+                      className="h-10 w-10 shrink-0 rounded-xl"
+                    >
+                      <Plus size={18} />
+                    </Button>
                   </div>
                 </div>
               )}

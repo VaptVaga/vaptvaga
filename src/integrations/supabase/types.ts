@@ -285,6 +285,13 @@ export type Database = {
       }
     }
     Functions: {
+      get_skill_rankings: {
+        Args: never
+        Returns: {
+          cnt: number
+          skill: string
+        }[]
+      }
       get_user_role: { Args: { _user_id: string }; Returns: string }
     }
     Enums: {
