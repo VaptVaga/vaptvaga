@@ -27,11 +27,49 @@ const Onboarding = () => {
   const [telefone, setTelefone] = useState(user?.telefone || '');
   const [selectedSkills, setSelectedSkills] = useState<string[]>(user?.skills || []);
   const [role, setRole] = useState<'company' | 'freelancer' | null>(user?.role || null);
+  const [customSkill, setCustomSkill] = useState('');
+
+  const { data: skillRankings } = useQuery({
+    queryKey: ['skill-rankings'],
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc('get_skill_rankings');
+      if (error) return [];
+      return data as { skill: string; cnt: number }[];
+    },
+  });
+
+  const rankedSkillOptions = useMemo(() => {
+    if (!skillRankings?.length) return defaultSkillOptions;
+    const rankMap = new Map(skillRankings.map((r) => [r.skill.toLowerCase(), r.cnt]));
+    return [...defaultSkillOptions].sort((a, b) => {
+      const ra = rankMap.get(a.toLowerCase()) ?? 0;
+      const rb = rankMap.get(b.toLowerCase()) ?? 0;
+      return rb - ra;
+    });
+  }, [skillRankings]);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) =>
       prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill]
     );
+  };
+
+  const addCustomSkill = () => {
+    const trimmed = customSkill.trim();
+    if (!trimmed || trimmed.length > 30) return;
+    if (selectedSkills.includes(trimmed)) {
+      setCustomSkill('');
+      return;
+    }
+    setSelectedSkills((prev) => [...prev, trimmed]);
+    setCustomSkill('');
+  };
+
+  const handleCustomSkillKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addCustomSkill();
+    }
   };
 
   const handleSave = async () => {
