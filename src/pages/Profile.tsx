@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, LogOut, Crown, ChevronRight } from 'lucide-react';
+import { LogOut, Crown, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { BottomNav } from '@/components/vaptvaga/BottomNav';
@@ -7,10 +7,10 @@ import { useAuth } from '@/lib/authContext';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await signOut();
     navigate('/');
   };
 
@@ -27,27 +27,25 @@ const Profile = () => {
       </div>
 
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-5">
-        {/* Profile Card */}
         <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-xl font-black text-primary">
-            {user?.full_name?.charAt(0) || 'U'}
+            {user?.name?.charAt(0) || 'U'}
           </div>
           <div className="flex-1">
-            <h2 className="font-bold text-foreground">{user?.full_name || 'Usuário'}</h2>
-            <p className="text-sm text-muted-foreground">{user?.city}</p>
+            <h2 className="font-bold text-foreground">{user?.name || 'Usuário'}</h2>
+            <p className="text-sm text-muted-foreground">{user?.cidade}</p>
           </div>
           <span className={`rounded-full px-3 py-1 text-xs font-bold ${
-            user?.subscription_tier === 'premium'
+            user?.subscriber === 'premium'
               ? 'bg-success/10 text-success'
               : 'bg-secondary text-muted-foreground'
           }`}>
-            {user?.subscription_tier === 'premium' ? (
+            {user?.subscriber === 'premium' ? (
               <span className="flex items-center gap-1"><Crown size={12} /> Premium</span>
             ) : 'Free'}
           </span>
         </div>
 
-        {/* Skills (Freelancer) */}
         {user?.role === 'freelancer' && user.skills && (
           <div className="mt-4 flex flex-wrap gap-2">
             {user.skills.map((s) => (
@@ -58,7 +56,6 @@ const Profile = () => {
           </div>
         )}
 
-        {/* Menu */}
         <div className="mt-6 space-y-1">
           {menuItems.map((item) => (
             <motion.button

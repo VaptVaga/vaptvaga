@@ -5,30 +5,50 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
 import { useAuth } from '@/lib/authContext';
+import { useCreateJob, useMonthlyJobCount } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 
 const PostJob = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const isFree = user?.subscription_tier === 'free';
+  const isFree = user?.subscriber !== 'premium';
   const [showPaywall, setShowPaywall] = useState(false);
+  const { data: monthlyJobCount = 0 } = useMonthlyJobCount(user?.id);
+  const createJob = useCreateJob();
 
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const [wage, setWage] = useState('');
-  const [date, setDate] = useState('');
+  const [classificacao, setClassificacao] = useState('');
+  const [budget, setBudget] = useState('');
   const [description, setDescription] = useState('');
 
   const categoryOptions = ['Bares/Restaurantes', 'Vendas/Lojas', 'Limpeza', 'Eventos'];
 
-  const handleSubmit = () => {
-    // Mock: free plan allows only 1 job
-    if (isFree) {
+  const handleSubmit = async () => {
+    if (!user) return;
+    if (isFree && monthlyJobCount >= 1) {
       setShowPaywall(true);
       return;
     }
-    toast({ title: '🎉 Vaga publicada!', description: 'Freelancers já podem se candidatar.' });
-    navigate('/dashboard');
+    if (!title) {
+      toast({ title: 'Preencha o título', variant: 'destructive' });
+      return;
+    }
+    try {
+      await createJob.mutateAsync({
+        employer_id: user.id,
+        title,
+        classificacao,
+        budget: budget ? `R$ ${budget}` : null,
+        description,
+        status: 'open',
+        cidade: user.cidade,
+        bairro: user.bairro,
+      });
+      toast({ title: '🎉 Vaga publicada!', description: 'Freelancers já podem se candidatar.' });
+      navigate('/dashboard');
+    } catch (err: any) {
+      toast({ title: 'Erro', description: err.message, variant: 'destructive' });
+    }
   };
 
   return (
@@ -58,9 +78,9 @@ const PostJob = () => {
               <motion.button
                 key={cat}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setCategory(cat)}
+                onClick={() => setClassificacao(cat)}
                 className={`rounded-xl border p-3 text-sm font-medium transition-colors ${
-                  category === cat
+                  classificacao === cat
                     ? 'border-primary bg-primary/10 text-primary'
                     : 'border-border bg-card text-muted-foreground'
                 }`}
@@ -77,22 +97,12 @@ const PostJob = () => {
             <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-muted-foreground">R$</span>
             <input
               type="number"
-              value={wage}
-              onChange={(e) => setWage(e.target.value)}
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}
               placeholder="150"
               className="tabular-nums h-12 w-full rounded-xl border border-border bg-card pl-12 pr-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
           </div>
-        </div>
-
-        <div>
-          <label className="mb-1.5 block text-sm font-bold text-foreground">Data do turno</label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="h-12 w-full rounded-xl border border-border bg-card px-4 text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-          />
         </div>
 
         <div>
@@ -107,8 +117,12 @@ const PostJob = () => {
         </div>
 
         <motion.div whileTap={{ scale: 0.96 }}>
-          <Button onClick={handleSubmit} className="h-13 w-full rounded-xl text-base font-bold">
-            Publicar Vaga Agora
+          <Button
+            onClick={handleSubmit}
+            disabled={createJob.isPending}
+            className="h-13 w-full rounded-xl text-base font-bold"
+          >
+            {createJob.isPending ? 'Publicando...' : 'Publicar Vaga Agora'}
           </Button>
         </motion.div>
       </motion.div>
