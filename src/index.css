@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,38 +6,60 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 84% 4.9%;
+    --background: 233 100% 98%;
+    --foreground: 216 47% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card-foreground: 216 47% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover-foreground: 216 47% 12%;
 
-    --primary: 216 100% 50%;
+    --primary: 216 100% 39%;
     --primary-foreground: 0 0% 100%;
+    --primary-container: 225 85% 53%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47.4% 11.2%;
+    --secondary: 157 100% 21%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-container: 156 90% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16.3% 46.9%;
+    --tertiary: 20 100% 29%;
+    --tertiary-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47.4% 11.2%;
+    --muted: 228 100% 94%;
+    --muted-foreground: 233 12% 36%;
 
-    --destructive: 0 84.2% 60.2%;
+    --accent: 228 100% 94%;
+    --accent-foreground: 216 47% 12%;
+
+    --destructive: 0 73% 41%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 160 84% 39%;
+    --success: 157 100% 21%;
     --success-foreground: 0 0% 100%;
 
-    --border: 214 32% 91.4%;
-    --input: 214 32% 91.4%;
-    --ring: 216 100% 50%;
+    --border: 230 24% 83%;
+    --input: 230 24% 83%;
+    --ring: 216 100% 39%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
+
+    /* Surface system */
+    --surface: 233 100% 98%;
+    --surface-container-lowest: 0 0% 100%;
+    --surface-container-low: 228 100% 97%;
+    --surface-container: 224 100% 93%;
+    --surface-container-high: 222 100% 89%;
+    --surface-container-highest: 221 83% 91%;
+    --surface-variant: 221 83% 91%;
+
+    /* On-surface */
+    --on-surface: 216 47% 12%;
+    --on-surface-variant: 233 12% 30%;
+
+    /* Outline */
+    --outline: 233 7% 49%;
+    --outline-variant: 230 24% 81%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,7 +85,8 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.04em;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
     font-weight: 700;
   }
 }
@@ -71,5 +94,8 @@
 @layer utilities {
   .tabular-nums {
     font-variant-numeric: tabular-nums;
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-container)) 100%);
   }
 }
