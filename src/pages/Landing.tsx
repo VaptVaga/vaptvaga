@@ -35,10 +35,10 @@ const categoryItems = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  visible: (i: number = 0) => ({
+  visible: {
     opacity: 1, y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: [0.2, 0, 0, 1] },
-  }),
+    transition: { duration: 0.5, ease: [0.2, 0, 0, 1] as [number, number, number, number] },
+  },
 };
 
 const Landing = () => {
