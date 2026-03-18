@@ -48,7 +48,7 @@ const Onboarding = () => {
   const [cnpj, setCnpj] = useState('');
   const [segmento, setSegmento] = useState('');
   const [cidade, setCidade] = useState(user?.cidade || '');
-  const [estado, setEstado] = useState(user?.estado || '');
+  const [estado, setEstado] = useState('');
   const [telefone, setTelefone] = useState(user?.telefone || '');
 
   // Step 2: Business Details
