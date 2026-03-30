@@ -6,21 +6,19 @@ export const Footer: React.FC = () => {
   const location = useLocation();
   const isCompanyPage = location.pathname === '/empresas';
 
-  const handleNavClick = (e: React.MouseEvent, path: string, isAnchor?: boolean) => {
-    if (isAnchor) {
-      e.preventDefault();
-      // Find all elements with the ID 'planos' (since we have desktop/mobile versions)
-      const elements = document.querySelectorAll('#planos');
-      const visibleElement = Array.from(elements).find(el => (el as HTMLElement).offsetParent !== null) as HTMLElement | undefined;
+  const handleAnchorClick = (e: React.MouseEvent, anchorId: string) => {
+    e.preventDefault();
+    const elements = document.querySelectorAll(`#${anchorId}`);
+    const visibleElement = Array.from(elements).find(
+      el => (el as HTMLElement).offsetParent !== null
+    ) as HTMLElement | undefined;
 
-      if (visibleElement) {
-        visibleElement.scrollIntoView({ behavior: 'smooth' });
-        // Update URL hash without reload
-        window.history.pushState(null, '', path);
-      } else {
-        // If element not found (e.g., on another page), navigate to home with hash
-        window.location.href = '/' + path;
-      }
+    if (visibleElement) {
+      visibleElement.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `/#${anchorId}`);
+    } else {
+      // Navigate to home with the hash if section isn't on the current page
+      window.location.href = `/#${anchorId}`;
     }
   };
 
@@ -36,24 +34,40 @@ export const Footer: React.FC = () => {
         <div>
           <h5 className="font-bold text-on-surface mb-6">Plataforma</h5>
           <ul className="space-y-4 text-sm">
-            <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Como Funciona</Link></li>
-            <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Vagas Disponíveis</Link></li>
             <li>
-              <Link 
-                to={isCompanyPage ? "/" : "/empresas"} 
+              <a
+                href="/#como-funciona"
+                onClick={(e) => handleAnchorClick(e, 'como-funciona')}
+                className="text-on-surface-variant hover:text-primary transition-colors"
+              >
+                Como Funciona
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#vagas"
+                onClick={(e) => handleAnchorClick(e, 'vagas')}
+                className="text-on-surface-variant hover:text-primary transition-colors"
+              >
+                Vagas Disponíveis
+              </a>
+            </li>
+            <li>
+              <Link
+                to={isCompanyPage ? "/" : "/empresas"}
                 className="text-on-surface-variant hover:text-primary transition-colors"
               >
                 {isCompanyPage ? "Para Freelancers" : "Para Empresas"}
               </Link>
             </li>
             <li>
-              <Link 
-                to="/#planos" 
-                onClick={(e) => handleNavClick(e, '#planos', true)}
+              <a
+                href="/#planos"
+                onClick={(e) => handleAnchorClick(e, 'planos')}
                 className="text-on-surface-variant hover:text-primary transition-colors"
               >
                 Planos
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -61,7 +75,6 @@ export const Footer: React.FC = () => {
           <h5 className="font-bold text-on-surface mb-6">Suporte</h5>
           <ul className="space-y-4 text-sm">
             <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Suporte</Link></li>
-            <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Blog</Link></li>
             <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">FAQ</Link></li>
             <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Contato</Link></li>
           </ul>

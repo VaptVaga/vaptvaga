@@ -147,7 +147,7 @@ export const FreelancerLanding: React.FC = () => {
       </section>
 
       {/* Categories & Live Feed Section */}
-      <section className="py-24 bg-surface">
+      <section className="py-24 bg-surface" id="vagas">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
             <div>
