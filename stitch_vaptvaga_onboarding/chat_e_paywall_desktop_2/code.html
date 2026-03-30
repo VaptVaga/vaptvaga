@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect Pro | VaptVaga Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#943700",
+              "surface-container-highest": "#d8e3fb",
+              "on-primary": "#ffffff",
+              "on-surface": "#111c2d",
+              "inverse-on-surface": "#ecf1ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "error": "#ba1a1a",
+              "surface-container": "#e7eeff",
+              "on-secondary-fixed": "#002113",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-container-lowest": "#ffffff",
+              "inverse-primary": "#b4c5ff",
+              "on-surface-variant": "#434655",
+              "on-secondary-fixed-variant": "#005236",
+              "surface-container-high": "#dee8ff",
+              "on-tertiary-fixed": "#360f00",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-primary-container": "#eeefff",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-low": "#f0f3ff",
+              "secondary": "#006c49",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f9f9ff",
+              "on-tertiary-container": "#ffede6",
+              "on-error-container": "#93000a",
+              "primary-container": "#2563eb",
+              "on-secondary-container": "#00714d",
+              "surface": "#f9f9ff",
+              "outline-variant": "#c3c6d7",
+              "surface-tint": "#0053db",
+              "primary": "#004ac6",
+              "secondary-container": "#6cf8bb",
+              "inverse-surface": "#263143",
+              "secondary-fixed-dim": "#4edea3",
+              "outline": "#737686",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "primary-fixed": "#dbe1ff",
+              "on-background": "#111c2d",
+              "secondary-fixed": "#6ffbbe",
+              "on-primary-fixed": "#00174b",
+              "surface-variant": "#d8e3fb",
+              "background": "#f9f9ff",
+              "tertiary-container": "#bc4800",
+              "surface-dim": "#cfdaf2",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full sticky top-0 h-screen w-64 border-r border-slate-200/50 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-950 font-plus-jakarta text-sm font-semibold tracking-tight z-30">
+<div class="p-8">
+<div class="text-2xl font-bold text-blue-600 dark:text-blue-400 tracking-tighter mb-1">Architect Pro</div>
+<div class="text-xs text-slate-500 font-medium">Premium Tier</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/30 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-blue-700 dark:text-blue-300 font-bold border-r-4 border-blue-600 dark:border-blue-400 bg-blue-50/50 dark:bg-blue-900/20 transition-all duration-200 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span>Conversations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/30 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/30 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/30 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Help</span>
+</a>
+</nav>
+<div class="p-6">
+<div class="bg-blue-600 rounded-2xl p-4 text-white">
+<p class="text-xs opacity-80 mb-2">Architect Pro</p>
+<p class="font-bold mb-4">Upgrade Now</p>
+<div class="flex items-center gap-3">
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4iyeMI-XuZgZ25aTzORlczKHXEgVe1DA93Ip6p-MRSz_44rOpUjT80skNorwBAYCEsCNu61TdCNAYSizrzGS6FRYGkXlOjDgi17Re5dcivZphBiDFqYz01O9TumtpnsOykFQ3B2WM2PrAxsQOCigICoLQZ7Ph5-jYoyj4VDEFZEnioMj4z4PMSGG37XWxJ6264afoZJFQC-ufFYkA4O756o-9nC5Zzw8UDez7AYuiGIhKc1Iym-e1uJrPGl7WH2zw7UZkFerMs_s"/>
+<span class="text-xs">Premium Tier</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 flex flex-col relative overflow-hidden bg-surface">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center px-8 w-full border-b border-slate-100 dark:border-slate-800 h-16 w-full sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl font-plus-jakarta text-sm tracking-tight shadow-sm dark:shadow-none">
+<div class="flex items-center gap-8">
+<span class="text-lg font-extrabold text-on-surface tracking-tight">Architect Chat</span>
+<nav class="hidden lg:flex gap-6">
+<a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-1" href="#">Direct Messages</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Group Sync</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Archive</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden xl:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search conversations..." type="text"/>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:opacity-80 active:scale-98 transition-all">
+                        New Chat
+                    </button>
+<div class="flex items-center gap-4 text-slate-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-blue-500 transition-colors" data-icon="notifications">notifications</span>
+<img alt="Active user avatar" class="w-8 h-8 rounded-full object-cover border-2 border-primary/20" data-alt="Active user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV2fK1obbPgu3tEhWATv2ryusK0iPt7lYsLPtqveRfsyrsUKiGgIvndrfC4hFyZF-ZEI0df-cJZ9Q-flhJ2Ud_pGL_e7v2ov_ZV6A41esiWwKm_sllyPGYGF3mOo_nVVpMxDPsVPFu7ABoy8iDLBLg4N26iZ-GBZXf6n-RrQd88s0KY9zolBXB7gGCsxi8Pb27TYGKwuYFdZCcfxHSBAQh_p5iXHpBZkdNb8UvcBAIkGAMkQfYQBNTDneliAZvQLE4Ni5EhtyaiDo"/>
+</div>
+</div>
+</header>
+<!-- Chat Content (Blurred Content) -->
+<div class="flex flex-1 overflow-hidden filter blur-sm grayscale-[0.2]">
+<!-- Chat List Sub-pane -->
+<div class="w-80 border-r border-slate-100 flex flex-col bg-surface-container-low/30">
+<div class="p-6">
+<h2 class="font-headline text-xl font-bold mb-4">Messages</h2>
+<div class="space-y-4">
+<!-- Chat Item -->
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-lowest shadow-sm border border-slate-100/50">
+<div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold">G9</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="font-bold text-sm truncate">Garage 99 Burger</h3>
+<p class="text-xs text-slate-500 truncate">Sua entrega está a caminho...</p>
+</div>
+<div class="text-[10px] text-slate-400">12:45</div>
+</div>
+<!-- Chat Item Active -->
+<div class="flex items-center gap-4 p-4 rounded-xl bg-primary text-white shadow-lg">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">CN</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="font-bold text-sm truncate">Cantina Nonna Bella</h3>
+<p class="text-xs text-white/80 truncate">Mesa reservada com sucesso!</p>
+</div>
+<div class="text-[10px] text-white/60">Ontem</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Window Sub-pane -->
+<div class="flex-1 flex flex-col bg-white">
+<div class="p-6 border-b border-slate-50 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold">CN</div>
+<div>
+<h3 class="font-bold font-headline">Cantina Nonna Bella</h3>
+<span class="text-xs text-secondary flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> Online</span>
+</div>
+</div>
+<div class="flex gap-4 text-slate-400">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+</div>
+<div class="flex-1 p-8 space-y-6 overflow-y-auto">
+<div class="flex justify-end">
+<div class="bg-primary text-white p-4 rounded-2xl rounded-tr-none max-w-md shadow-md">
+<p class="text-sm">Olá! Gostaria de confirmar minha reserva para hoje às 20h.</p>
+</div>
+</div>
+<div class="flex justify-start">
+<div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none max-w-md">
+<p class="text-sm">Com certeza! Mesa para 4 pessoas confirmada no nome de Paulo.</p>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-slate-50">
+<div class="flex gap-4 items-center bg-slate-50 rounded-full px-6 py-3">
+<span class="material-symbols-outlined text-slate-400" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+<input class="bg-transparent border-none flex-1 focus:ring-0 text-sm" disabled="" placeholder="Escreva sua mensagem..." type="text"/>
+<span class="material-symbols-outlined text-primary" data-icon="send">send</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Paywall Modal Overlay -->
+<div class="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-md px-6">
+<div class="bg-white w-full max-w-lg rounded-xl overflow-hidden shadow-[0px_24px_48px_rgba(17,28,45,0.15)] flex flex-col animate-in fade-in zoom-in duration-300">
+<!-- Top Visual Gradient -->
+<div class="h-32 bg-gradient-to-br from-primary to-primary-container flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+<span class="material-symbols-outlined text-white text-6xl opacity-90" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="p-10 text-center">
+<h2 class="text-2xl font-black font-headline text-on-surface mb-4 tracking-tight">Limite Gratuito Atingido 🔒</h2>
+<p class="text-on-surface-variant mb-10 leading-relaxed text-balance">
+                            Você já usou todas as suas mensagens gratuitas hoje. Desbloqueie conversas ilimitadas e recursos exclusivos.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+<!-- Plan 1 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-transparent hover:border-primary/20 transition-all text-left group">
+<span class="text-[10px] font-black tracking-widest text-primary uppercase mb-2 block">Para Freelancers</span>
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-lg font-bold">R$ 9,90</span>
+<span class="text-xs text-slate-500">/mês</span>
+</div>
+<p class="text-xs text-slate-600 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Mensagens Ilimitadas
+                                </p>
+</div>
+<!-- Plan 2 -->
+<div class="p-6 rounded-lg bg-surface-container-low border border-transparent hover:border-primary/20 transition-all text-left">
+<span class="text-[10px] font-black tracking-widest text-primary uppercase mb-2 block">Para Empresas</span>
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-lg font-bold">R$ 39,90</span>
+<span class="text-xs text-slate-500">/mês</span>
+</div>
+<div class="space-y-1">
+<p class="text-xs text-slate-600 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                        Gestão de Equipe
+                                    </p>
+<p class="text-xs text-slate-600 font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                        API Acesso
+                                    </p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white h-16 rounded-full font-extrabold text-lg shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+                                Assinar Premium Agora
+                            </button>
+<button class="text-slate-400 hover:text-on-surface font-semibold text-sm transition-colors">
+                                Talvez mais tarde
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

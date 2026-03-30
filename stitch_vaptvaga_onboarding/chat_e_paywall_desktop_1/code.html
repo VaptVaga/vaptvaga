@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f9f9ff",
+              "secondary": "#006c49",
+              "inverse-surface": "#263143",
+              "surface-container": "#e7eeff",
+              "on-tertiary-fixed": "#360f00",
+              "surface-container-highest": "#d8e3fb",
+              "secondary-container": "#6cf8bb",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-secondary-container": "#00714d",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#434655",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#ffede6",
+              "surface-container-high": "#dee8ff",
+              "surface": "#f9f9ff",
+              "on-background": "#111c2d",
+              "inverse-primary": "#b4c5ff",
+              "on-secondary-fixed-variant": "#005236",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-variant": "#d8e3fb",
+              "on-primary-fixed": "#00174b",
+              "on-secondary-fixed": "#002113",
+              "tertiary": "#943700",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdbcd",
+              "on-surface": "#111c2d",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#bc4800",
+              "surface-tint": "#0053db",
+              "on-primary-container": "#eeefff",
+              "inverse-on-surface": "#ecf1ff",
+              "outline": "#737686",
+              "on-error": "#ffffff",
+              "surface-dim": "#cfdaf2",
+              "primary-fixed": "#dbe1ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "surface-container-low": "#f0f3ff",
+              "primary-container": "#2563eb",
+              "secondary-fixed": "#6ffbbe",
+              "primary": "#004ac6",
+              "on-tertiary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "background": "#f9f9ff",
+              "outline-variant": "#c3c6d7",
+              "on-primary-fixed-variant": "#003ea8",
+              "secondary-fixed-dim": "#4edea3"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-depth-shifts {
+            background: linear-gradient(180deg, #f9f9ff 0%, #f0f3ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden">
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col p-4 bg-slate-50 h-screen w-64 border-r border-slate-200/50 font-['Plus_Jakarta_Sans'] font-medium antialiased">
+<div class="mb-8 px-4">
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">FreelanceHub</h1>
+<p class="text-xs text-slate-500 mt-1">Enterprise Plan</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-xl transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span>Mensagens</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Freelancers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span>Projetos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Finanças</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Configurações</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<div class="p-4 bg-primary rounded-xl text-on-primary">
+<p class="text-xs font-bold uppercase tracking-wider mb-2 opacity-80">Pro Plan</p>
+<p class="text-sm font-semibold mb-3 leading-tight">Maximize seu potencial de contratação.</p>
+<button class="w-full py-2 bg-white text-primary text-xs font-bold rounded-full hover:bg-opacity-90 transition-opacity">Upgrade Now</button>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-red-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Sair</span>
+</a>
+</div>
+</aside>
+<header class="w-full h-16 sticky top-0 z-30 flex items-center justify-between px-8 ml-64 bg-white/80 backdrop-blur-xl shadow-sm font-['Plus_Jakarta_Sans'] font-semibold">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-blue-600">FreelanceHub</span>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-500 hover:text-slate-800 transition-all" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-800 transition-all" href="#">Marketplace</a>
+<a class="text-slate-500 hover:text-slate-800 transition-all" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-slate-100/50 rounded-full px-4 py-2">
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-on-surface" placeholder="Buscar mensagens..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">Post a Job</button>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border-2 border-primary-fixed">
+<img alt="Manager Portrait" class="w-full h-full object-cover" data-alt="Professional manager headshot portrait with blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB63X-jMkRRBGeVVNVsLn6Pl--FGcca4-h-YBM8u2USjiJsDC6DL9qAZSvk69IYeZh_m-_qI7gd79V2opjtqz7nNcCN02MpNfMUpxUaXLXbn8sdFN-dMs19MQ7X9YY41Rp5uflBrGYhS8PUUC8-a91N5ypdVwtWrHDHrdTyidPr-QagFZGe9oY7OFdme6iIxwm8_QZhW604OhnIaineJF9_9Sbl3p_1fMUyW_sx_Xi2aUf2E_0IbUCcuWmG7mK6bfsvq3x_VJwDrOs"/>
+</div>
+</div>
+</header>
+<main class="ml-64 h-[calc(100vh-64px)] flex bg-surface-container-low p-6 gap-6 relative">
+<section class="w-80 flex flex-col gap-4">
+<h2 class="font-headline text-xl font-bold px-2">Conversas</h2>
+<div class="flex-1 overflow-y-auto space-y-3">
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 border-2 border-primary shadow-sm cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0">
+<img alt="Burger Shop" class="w-full h-full object-cover" data-alt="Gourmet burger logo on a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRgT7dehiORY4E8NM8prF7hdWGZ9WXxKTil1Iq3hp1mbOuIjc_rZQLggJdoA6rEdPvvpqB7XECWpodT4lP3d1tZi7_OfErXjOonCe0jHYxFm0sb2UAqfu_DujKm1X0-FoTgmaKAWt0GRH1puUKE26yFDSFLWOeeqzw1ZQYqRVPw3BfrviGyuFEWVfFBaa4m6TVrkPBDFjLUAMIOLttSo80xaLyOEDmDi-sDlU20VbEoSMcmtg1ZGI2D2ikZUDH8SeQGXKQqypb2Ug"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-sm truncate">Garage 99 Burger</h3>
+<p class="text-xs text-slate-500 truncate">Ricardo Alvez • Ativo agora</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-lowest transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Professional candidate headshot in office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGpMRoNsIP25E7e7ksFxW_53WQyP06nVQwPaJ4keCnZrwKo2uS_XCKDFdwcGfyNxtt-AAxqNB9pP8BU_6h4Jnth9wxUuH_2Nlm3W4vTZWWqxNx2PIdDLUh-wHTX3I8TUilqSqD0uxKpW6CAgoOaAEz1lvXDdAEtgVcdzGkEt3N9y22zCr6nrjbpiv4ObXw-B6FDY4TNsw7-uwCzanLePJdiGvnZsE1Ov-vrfQUG-XBBzNNeBL6gmTUGBvP4bYS_H3wRBqFRHR0igs"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-sm truncate">Studio Pixel</h3>
+<p class="text-xs text-slate-500 truncate">Ana Clara • Há 2h</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 p-4 rounded-xl flex items-center gap-4 hover:bg-surface-container-lowest transition-colors cursor-pointer opacity-60">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0">
+<img alt="Candidate" class="w-full h-full object-cover" data-alt="Tech recruiter headshot with professional smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS4TaQyRRmbc7E-vXcyMxkrlcU2mt-SXkSnPM2yDxRdPgbfaUz9ppjIdwg0w5mwCp12d1cpxA3e0zWcjBIVWTK92SIaOUpOR60sUR6k_LZbDDPcOdPwjVOAF_VatP3DCf4FETl4wgwO7XHniKvX2Dc1wx2alS_1ezSmQh1vcG8j--HwGp9-l_pt13HBl6_2_A2mIsGPDIEzUl4VIM0TxAqw_ADFyzOCwKJN73lVuMUbhireKyEaqpz2z-NeCEtagGhZGzIm5ibyYQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-sm truncate">Tech Solutions</h3>
+<p class="text-xs text-slate-500 truncate">Marcos Senna • Bloqueado</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="lock">lock</span>
+</div>
+</div>
+</section>
+<section class="flex-1 flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden relative shadow-lg">
+<div class="p-6 border-b border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-xl overflow-hidden">
+<img alt="Garage 99 Burger" class="w-full h-full object-cover" data-alt="Close up of a premium burger brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0pdGxKUTrPfjr05seBlkqkjjTJBCbzdUO88kBJWJ0Bn-hMvgNXJ2DhvBXguAjqBq0vumJJmnEgdA68CFgIyZu7zIEQHmCfXEF9UB3vOyXTZTbq68qBX1Pyqz8oJXoZh7Xu9pR02C95MQcMlEwNDABU8egE9P5-7yARiCf9t48aT8YyC_Ww3qo92vDyOhhmpLw5tIc3S8cA7okDd_zWG2NW01HCuY5jxAAknH-jZERquKymJFcQqMVYpC_B2coqnI7kt4Vl2pGYMc"/>
+</div>
+<div>
+<h2 class="font-headline text-lg font-extrabold tracking-tight">Garage 99 Burger</h2>
+<p class="text-sm text-secondary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                            Ricardo Alvez está online
+                        </p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-3 text-slate-400 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</button>
+<button class="p-3 text-slate-400 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 flex flex-col gap-6 blur-[4px] pointer-events-none select-none">
+<div class="flex justify-start max-w-lg">
+<div class="bg-surface-container-low p-4 rounded-xl rounded-tl-none">
+<p class="text-sm text-on-surface">Olá! Vi seu anúncio para o projeto de identidade visual da Garage 99. Gostaria de saber mais sobre os prazos.</p>
+<span class="text-[10px] text-slate-400 mt-2 block">09:42 AM</span>
+</div>
+</div>
+<div class="flex justify-end">
+<div class="bg-primary p-4 rounded-xl rounded-tr-none max-w-lg shadow-md">
+<p class="text-sm text-on-primary">Bom dia, Ricardo! Os prazos variam de 2 a 3 semanas. Qual o tamanho do cardápio que precisamos desenvolver?</p>
+<span class="text-[10px] text-on-primary/70 mt-2 block text-right">09:45 AM</span>
+</div>
+</div>
+<div class="flex justify-start max-w-lg">
+<div class="bg-surface-container-low p-4 rounded-xl rounded-tl-none">
+<p class="text-sm text-on-surface">Serão 15 itens no total. Podemos agendar uma call para alinhar os detalhes?</p>
+<span class="text-[10px] text-slate-400 mt-2 block">09:48 AM</span>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low/30 blur-[2px] pointer-events-none">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-2 pl-4 rounded-full border border-outline-variant/20 shadow-sm">
+<span class="material-symbols-outlined text-slate-400" data-icon="attach_file">attach_file</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm" placeholder="Escreva sua mensagem..." type="text"/>
+<button class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center z-50 bg-on-background/10 backdrop-blur-sm">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.12)] p-10 text-center flex flex-col items-center gap-6 border border-white/40">
+<div class="w-20 h-20 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-4xl" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="space-y-3">
+<h3 class="font-headline text-2xl font-extrabold text-on-background">Limite Gratuito Atingido 🔒</h3>
+<p class="text-on-surface-variant leading-relaxed px-4 font-body">
+                            Você atingiu o limite de chats do seu plano. Assine o Premium por <span class="font-bold text-on-background">R$ 39,90/mês</span> para continuar negociando com todos os candidatos.
+                        </p>
+</div>
+<div class="w-full space-y-4 pt-2">
+<button class="w-full py-5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg shadow-lg hover:shadow-xl transition-all scale-100 hover:scale-[1.02] active:scale-95">
+                            Assinar Premium Agora
+                        </button>
+<button class="text-sm text-on-surface-variant font-medium hover:text-primary transition-colors py-2 px-6">
+                            Ver detalhes do plano
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-4 border-t border-outline-variant/20 w-full justify-center">
+<div class="flex items-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Seguro</span>
+</div>
+<div class="flex items-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Instantâneo</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

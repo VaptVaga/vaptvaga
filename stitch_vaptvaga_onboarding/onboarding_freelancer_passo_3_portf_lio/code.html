@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d8e3fb",
+              "tertiary": "#943700",
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-high": "#dee8ff",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface": "#f9f9ff",
+              "on-error": "#ffffff",
+              "on-background": "#111c2d",
+              "secondary-container": "#6cf8bb",
+              "inverse-on-surface": "#ecf1ff",
+              "on-primary": "#ffffff",
+              "primary-container": "#2563eb",
+              "on-surface-variant": "#434655",
+              "outline": "#737686",
+              "primary": "#004ac6",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "primary-fixed": "#dbe1ff",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#005236",
+              "secondary": "#006c49",
+              "on-tertiary-fixed": "#360f00",
+              "tertiary-container": "#bc4800",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#002113",
+              "on-error-container": "#93000a",
+              "outline-variant": "#c3c6d7",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-surface": "#263143",
+              "on-tertiary-container": "#ffede6",
+              "secondary-fixed": "#6ffbbe",
+              "surface-container-low": "#f0f3ff",
+              "surface-container": "#e7eeff",
+              "secondary-fixed-dim": "#4edea3",
+              "background": "#f9f9ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-surface": "#111c2d",
+              "surface-container-highest": "#d8e3fb",
+              "inverse-primary": "#b4c5ff",
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#00714d",
+              "on-primary-container": "#eeefff",
+              "surface-tint": "#0053db"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low rounded-r-xl p-6 flex flex-col justify-between hidden md:flex">
+<div class="space-y-12">
+<div class="px-6 py-2">
+<span class="text-lg font-bold text-on-surface">FreelancePro</span>
+<p class="text-xs text-on-surface opacity-60 mt-1 uppercase tracking-widest font-bold">Onboarding</p>
+</div>
+<nav class="space-y-2">
+<!-- Step 1 -->
+<div class="flex items-center gap-3 text-on-surface opacity-70 px-6 py-4 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium text-sm">Personal Info</span>
+</div>
+<!-- Step 2 -->
+<div class="flex items-center gap-3 text-on-surface opacity-70 px-6 py-4 transition-all">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-medium text-sm">Skills &amp; Rate</span>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex items-center gap-3 bg-surface-container-lowest text-primary rounded-full px-6 py-4 shadow-sm translate-x-1 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="folder_special" style="font-variation-settings: 'FILL' 1;">folder_special</span>
+<span class="font-bold text-sm">Portfolio</span>
+</div>
+<!-- Step 4 -->
+<div class="flex items-center gap-3 text-on-surface opacity-70 px-6 py-4 transition-all">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+<span class="font-medium text-sm">Social Accounts</span>
+</div>
+</nav>
+</div>
+<div class="space-y-4">
+<button class="w-full py-4 text-sm font-bold text-primary hover:opacity-80 transition-opacity">
+                Save Draft
+            </button>
+<div class="pt-6 space-y-2">
+<div class="flex items-center gap-3 text-on-surface opacity-70 px-6 py-3 text-sm">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface opacity-70 px-6 py-3 text-sm">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 min-h-screen p-4 md:p-12 lg:p-20">
+<div class="max-w-4xl mx-auto space-y-12">
+<!-- Header Section -->
+<header class="space-y-4">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    Etapa 3 de 4
+                </div>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface">Mostre seu talento em ação</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    Adicione fotos de eventos, pratos ou serviços que você já realizou. <span class="text-primary font-semibold">Perfis com fotos têm 5x mais chances de serem contratados.</span>
+</p>
+</header>
+<!-- Bento-Style Photo Upload Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Primary Action Card -->
+<div class="md:col-span-2 group relative h-80 rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center cursor-pointer overflow-hidden">
+<div class="text-center space-y-3">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Adicionar Foto Principal</p>
+<p class="text-sm text-on-surface-variant">Arraste e solte ou clique para navegar</p>
+</div>
+</div>
+</div>
+<!-- Secondary Uploads & Pro Tip -->
+<div class="space-y-6">
+<div class="h-[148px] rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant hover:border-primary transition-all flex flex-col items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant text-3xl" data-icon="add">add</span>
+</div>
+<!-- Pro Tip Card -->
+<div class="h-[148px] rounded-xl bg-secondary-container p-6 flex flex-col justify-between">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<p class="text-sm font-semibold text-on-secondary-container leading-snug">
+                            Dica: Use fotos bem iluminadas e de alta qualidade.
+                        </p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="h-48 rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant hover:border-primary transition-all flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant text-3xl" data-icon="add">add</span>
+</div>
+<div class="h-48 rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant hover:border-primary transition-all flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant text-3xl" data-icon="add">add</span>
+</div>
+<div class="h-48 rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant hover:border-primary transition-all flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant text-3xl" data-icon="add">add</span>
+</div>
+</section>
+<!-- Social Links Section -->
+<section class="space-y-6 pt-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="link">link</span>
+<h2 class="text-xl font-bold text-on-surface">Prova Social</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant ml-2">Instagram Handle</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-medium">@</span>
+<input class="w-full h-14 pl-10 pr-4 rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:opacity-40" placeholder="seu_perfil" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant ml-2">LinkedIn URL</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-xl" data-icon="work_history">work_history</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:opacity-40" placeholder="linkedin.com/in/usuario" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky/Fixed Footer Action Bar (Mobile Responsive Navigation) -->
+<footer class="pt-12 pb-24 md:pb-12 flex items-center justify-between gap-4">
+<button class="px-8 py-4 rounded-full text-on-surface font-bold hover:bg-surface-container-low transition-all flex items-center gap-2 group">
+<span class="material-symbols-outlined transition-transform group-hover:-translate-x-1" data-icon="arrow_back">arrow_back</span>
+                    Voltar
+                </button>
+<button class="px-10 py-4 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                    Próximo Passo
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+</div>
+</main>
+<!-- Mobile Quick-Action Navigation (VaptVaga) -->
+<div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass-nav rounded-full px-4 py-3 flex items-center justify-around shadow-2xl z-50">
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="folder_special" style="font-variation-settings: 'FILL' 1;">folder_special</span>
+</button>
+<button class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</body></html>

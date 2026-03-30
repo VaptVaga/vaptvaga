@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidatos - VaptVaga</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "inverse-primary": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "on-primary-fixed": "#00174b",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              "outline": "#737686",
+              "surface-container-high": "#dee8ff",
+              "error-container": "#ffdad6",
+              "tertiary": "#943700",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .premium-gradient {
+        background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation -->
+<header class="bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+<h1 class="font-headline text-headline-md font-bold tracking-tight text-2xl font-black text-primary italic">VaptVaga</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6">
+<!-- Editorial Header Section -->
+<section class="mb-10">
+<p class="text-label-md font-bold uppercase tracking-wider text-primary mb-2">Processo Seletivo</p>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface leading-tight">
+                Candidatos <br/> <span class="text-on-surface-variant/40">Interessados</span>
+</h2>
+</section>
+<!-- Bento Filters -->
+<div class="flex gap-3 overflow-x-auto pb-6 no-scrollbar -mx-6 px-6">
+<button class="bg-primary text-on-primary rounded-full px-6 py-3 whitespace-nowrap text-sm font-bold shadow-lg shadow-primary/20">
+                Todos (24)
+            </button>
+<button class="bg-surface-container-low text-on-surface-variant rounded-full px-6 py-3 whitespace-nowrap text-sm font-bold hover:bg-surface-container-high transition-colors">
+                Novos
+            </button>
+<button class="bg-surface-container-low text-on-surface-variant rounded-full px-6 py-3 whitespace-nowrap text-sm font-bold hover:bg-surface-container-high transition-colors">
+                Entrevistados
+            </button>
+<button class="bg-surface-container-low text-on-surface-variant rounded-full px-6 py-3 whitespace-nowrap text-sm font-bold hover:bg-surface-container-high transition-colors">
+                Finalistas
+            </button>
+</div>
+<!-- Candidates Grid/List -->
+<div class="space-y-6">
+<!-- Candidate Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48px_rgba(17,28,45,0.04)] relative overflow-hidden group">
+<div class="flex items-start justify-between mb-6">
+<div class="flex gap-4">
+<div class="relative">
+<img alt="Foto deperfil da candidata" class="w-16 h-16 rounded-lg object-cover" data-alt="Portrait of a professional smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfqaWawFf04njgjBFRSyImVZxK-2cslcB54W7a5rqH2EtYFT9fXJK9wo3f9Nv9OZ39hN9D7agl7E1M8uZqdYBeVBSBC15MvXzIskG1Qhc9lxbpnF0j6MxvaRNwk5PH7l0lvH1newS1Z3S60epB3snf_3bxrzmC8heG3wRie9cQTA1o4VLDHUqVCZa_pVv1aAq6Ig9Iv1GhaInqv0NqDLwG9Xr_Eph4uKzqOqcTFcRbs_8gMKfWhicmBSL8eZ1MW1qmWh5lTu16ez0"/>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white">
+                                98%
+                            </div>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Beatriz Silva</h3>
+<p class="text-on-surface-variant text-sm">Desenvolvedora Frontend Senior</p>
+<div class="flex items-center gap-1 mt-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9 (12 reviews)</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30">more_vert</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">React</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Tailwind</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Remote</span>
+</div>
+<button class="w-full premium-gradient text-on-primary h-14 rounded-full font-bold flex items-center justify-center gap-2 group-active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Ver WhatsApp
+                </button>
+</div>
+<!-- Candidate Card 2 (Locked State) -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48px_rgba(17,28,45,0.04)] relative overflow-hidden">
+<div class="flex items-start justify-between mb-6">
+<div class="flex gap-4">
+<div class="relative grayscale">
+<img alt="Foto de perfil do candidato" class="w-16 h-16 rounded-lg object-cover" data-alt="Man in professional attire grayscale portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA8dFx3wr0NsSzmHvLghA_1XKe5K72d4aIiLeV1ArOTZU8dXzbKyCr2iXzNMYWI6sdE_HuHrsVljlXDx-c9zxeJunj3_Pcj-rH56_tIay79i9aM5W-t-nyMdKpan27QbTZU_VwaQMdgzVO6M4DhcaEg7lUZ4QgXYW9j7I7e1eXzSaEhGU5iakqasc3i1vEz1yugSkIl_on5dRwbmsOyN3c9JtUQM-3QmFDsGNW4ayD9UbVV8wq95TjtbRJOSmqVYhhvvnSYK62YSo"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Ricardo Mendonça</h3>
+<p class="text-on-surface-variant text-sm">Product Designer UI/UX</p>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant/40">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="text-xs font-bold">4.7 (8 reviews)</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30">more_vert</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-6 opacity-40">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Figma</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Híbrido</span>
+</div>
+<!-- Premium Locked Button -->
+<button class="w-full bg-surface-container-highest text-on-surface-variant/60 h-14 rounded-full font-bold flex items-center justify-center gap-2 relative overflow-hidden">
+<span class="material-symbols-outlined">lock</span>
+                    Liberar Contato
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary/10 text-primary text-[10px] px-2 py-1 rounded-md">
+                        Premium
+                    </div>
+</button>
+</div>
+<!-- Candidate Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48px_rgba(17,28,45,0.04)] relative overflow-hidden group">
+<div class="flex items-start justify-between mb-6">
+<div class="flex gap-4">
+<div class="relative">
+<img alt="Foto de perfil de candidata" class="w-16 h-16 rounded-lg object-cover" data-alt="Close up of a creative professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-BmkkcjRloV_cHro_jxmTvq8QqlFUvzd6b3Vv-Xq4CZdr381CJrABiOJzXtg8C85CL11xEhXMMUjUwrSuO7FNLEOi0UpOqV5VlkFT9uitsE-ygyjsOiFVr4SOG2TfzGEr5GmsjIgs9UOtMjn3acmhBCSHuSPeg4_B47ttAIeuUdg2QmvMntm4lXzgvmBYc2uypEugtvZA8E7UH_DFDkMKRUKOG9A5b6blUEw-hA9vce95dgvkG9CXyEh_bgKU99JQtzmtgkzhDnI"/>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white">
+                                92%
+                            </div>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Luana Portes</h3>
+<p class="text-on-surface-variant text-sm">Copywriter &amp; Content Strategy</p>
+<div class="flex items-center gap-1 mt-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">5.0 (21 reviews)</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/30">more_vert</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">SEO</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Content</span>
+</div>
+<button class="w-full premium-gradient text-on-primary h-14 rounded-full font-bold flex items-center justify-center gap-2 group-active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Ver WhatsApp
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-[3rem] border-t border-outline-variant/10 bg-white/80 backdrop-blur-2xl shadow-[0px_-8px_24px_rgba(17,28,45,0.04)] flex justify-around items-center h-24 px-4 pb-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider mt-1">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-4 py-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider mt-1">Vagas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider mt-1">Mensagens</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider mt-1">Perfil</span>
+</a>
+</nav>
+<!-- Success Accent Indicator (Floating) -->
+<div class="fixed top-20 right-6 z-40 bg-secondary text-on-secondary px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-xs font-bold animate-pulse">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+        Novos candidatos hoje
+    </div>
+</body></html>

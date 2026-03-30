@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaptVaga - Earnings Central</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#00714d",
+              "surface-container-low": "#f0f3ff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#cfdaf2",
+              "tertiary-fixed": "#ffdbcd",
+              "on-background": "#111c2d",
+              "on-surface": "#111c2d",
+              "surface-bright": "#f9f9ff",
+              "surface-variant": "#d8e3fb",
+              "surface-container": "#e7eeff",
+              "tertiary": "#943700",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#dbe1ff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed": "#00174b",
+              "surface-container-high": "#dee8ff",
+              "outline": "#737686",
+              "on-secondary-fixed": "#002113",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "surface": "#f9f9ff",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "primary-container": "#2563eb",
+              "error": "#ba1a1a",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "secondary-fixed": "#6ffbbe",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "inverse-primary": "#b4c5ff",
+              "secondary": "#006c49",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 border-r border-opacity-10 border-outline-variant sticky left-0 top-0 bg-[#f9f9ff] flex flex-col py-8 px-6 font-['Plus_Jakarta_Sans'] antialiased tracking-tight">
+<div class="mb-10">
+<h1 class="text-2xl font-bold text-[#2563EB] tracking-tighter">Freelancer Pro</h1>
+<p class="text-xs opacity-60 uppercase tracking-widest mt-1">Premium Tier</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Nav Item: Dashboard -->
+<a class="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<!-- Nav Item: Buscar Vagas -->
+<a class="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-medium">Buscar Vagas</span>
+</a>
+<!-- Nav Item: Minhas Aplicações -->
+<a class="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-medium">Minhas Aplicações</span>
+</a>
+<!-- Nav Item: Ganhos (ACTIVE) -->
+<a class="flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ease-in-out text-[#2563EB] font-bold border-r-4 border-[#2563EB] bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-medium">Ganhos</span>
+</a>
+<!-- Nav Item: Meu Perfil -->
+<a class="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Meu Perfil</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-outline-variant/10 space-y-2">
+<button class="w-full bg-primary-container text-white py-4 rounded-xl font-bold mb-6 hover:scale-95 transition-transform duration-200">
+                Post a Service
+            </button>
+<a class="flex items-center gap-3 p-3 rounded-xl text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Configurações</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-xl text-[#111c2d] opacity-70 hover:opacity-100 hover:bg-[#f0f3ff]" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-medium">Sair</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- TopNavBar Component -->
+<header class="w-full h-20 sticky top-0 z-50 bg-[#f9f9ff]/80 backdrop-blur-xl flex justify-between items-center px-10 font-['Plus_Jakarta_Sans'] font-medium">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-[#111c2d]">Earnings Central</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="pl-12 pr-6 py-2 bg-surface-container-low border-none rounded-full w-80 focus:ring-2 focus:ring-[#2563EB]/20 transition-all outline-none text-sm" placeholder="Pesquisar transações..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-[#2563EB] transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-[#2563EB] transition-colors" data-icon="help">help</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-primary/10">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Portrait of a smiling young freelancer man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCACK9POEpQhlYaRUMOiqIK82GnUO3bdpNNbzEZF9iA8oeGmqJkNIWCYkYyRtq2I1CqHVhP17alQlyU4ywMKSOPrjApHl9f58Ph4RhBhisjU7FuH7rSxbd4jEF3S4KQZU80Wq1PofhtR_AQAc25jfyLqgrIgwBY_bDBqVzI3fOyh54G2OCM1S4QOJPge6qD0sEsDn_V5mWLk9iOoid8M5a28Kr_P06n6ZughiluzANEtvdMyV4tcsrbnhwO1wHuh14q1_7wA2cLYA"/>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Content -->
+<div class="p-10 space-y-10 overflow-y-auto">
+<!-- Bento Grid: Summary Cards & Payout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Saldo Disponível Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex flex-col justify-between group hover:-translate-y-1 transition-transform duration-300">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="p-3 bg-primary/10 rounded-full text-primary material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-xs font-bold text-secondary uppercase tracking-wider bg-secondary-container/20 px-3 py-1 rounded-full">Disponível</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Saldo Disponível</p>
+<h2 class="text-3xl font-headline font-extrabold mt-1">R$ 840,00</h2>
+</div>
+<div class="mt-8">
+<button class="w-full py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold text-sm tracking-wide shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                            Sacar agora via PIX
+                        </button>
+</div>
+</div>
+<!-- Próximo Pagamento Card -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant mb-2" data-icon="event_upcoming">event_upcoming</span>
+<p class="text-on-surface-variant text-sm font-medium">Próximo Pagamento</p>
+<h3 class="text-2xl font-headline font-bold">27 Out</h3>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span>R$ 150,00</span>
+<span class="text-[10px] px-2 py-0.5 bg-primary/10 rounded-full">Agendado</span>
+</div>
+</div>
+<!-- Total Ganho no Mês Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex flex-col justify-center gap-2 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16"></div>
+<p class="text-on-surface-variant text-sm font-medium">Total Ganho no Mês</p>
+<h3 class="text-3xl font-headline font-extrabold">R$ 2.450,00</h3>
+<div class="flex items-center gap-1 text-secondary font-bold text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span>+12% vs. set</span>
+</div>
+</div>
+</div>
+<!-- Chart & Payout Config Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Earnings Chart Area -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.06)]">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h3 class="text-xl font-headline font-bold">Evolução de Ganhos</h3>
+<p class="text-sm text-on-surface-variant">Últimos 30 dias de atividade</p>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-2 bg-surface-container-low rounded-full text-xs font-bold cursor-pointer hover:bg-surface-container">Diário</span>
+<span class="px-4 py-2 bg-primary text-white rounded-full text-xs font-bold cursor-pointer">Semanal</span>
+</div>
+</div>
+<!-- SVG Chart Simulation -->
+<div class="h-64 w-full relative">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2563EB" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#2563EB" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid lines -->
+<line opacity="0.2" stroke="#c3c6d7" stroke-dasharray="4" x1="0" x2="800" y1="0" y2="0"></line>
+<line opacity="0.2" stroke="#c3c6d7" stroke-dasharray="4" x1="0" x2="800" y1="50" y2="50"></line>
+<line opacity="0.2" stroke="#c3c6d7" stroke-dasharray="4" x1="0" x2="800" y1="100" y2="100"></line>
+<line opacity="0.2" stroke="#c3c6d7" stroke-dasharray="4" x1="0" x2="800" y1="150" y2="150"></line>
+<!-- Path -->
+<path d="M0,180 Q100,160 200,175 T400,120 T600,140 T800,40" fill="none" stroke="#2563EB" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,180 Q100,160 200,175 T400,120 T600,140 T800,40 V200 H0 Z" fill="url(#chartGradient)"></path>
+<!-- Tooltip dot -->
+<circle cx="800" cy="40" fill="#2563EB" r="6"></circle>
+<circle cx="800" cy="40" fill="#2563EB" opacity="0.2" r="10"></circle>
+</svg>
+<div class="absolute right-0 top-0 -mt-12 bg-on-surface text-white px-3 py-1 rounded-lg text-xs font-bold">
+                            Hoje: R$ 450,00
+                        </div>
+</div>
+</div>
+<!-- PIX Configuration Card -->
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-between border border-primary/5">
+<div>
+<h4 class="font-headline font-bold mb-2">Configurar PIX</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Mantenha sua chave atualizada para recebimentos instantâneos.</p>
+<div class="mt-8 space-y-4">
+<div class="p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant opacity-60">Chave Atual</p>
+<p class="font-bold text-primary truncate">lucas.silva@email.com</p>
+</div>
+</div>
+</div>
+<button class="mt-6 flex items-center justify-center gap-2 py-4 rounded-xl bg-surface-container-lowest text-on-surface font-bold text-sm hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+                        Alterar Chave
+                    </button>
+</div>
+</div>
+<!-- Transaction History Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.06)] overflow-hidden">
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="text-xl font-headline font-bold">Histórico de Transações</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Ver tudo
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant">Serviço / Estabelecimento</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant text-center">Data</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant text-center">Status</th>
+<th class="px-8 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant text-right">Valor</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Garçom</p>
+<p class="text-xs text-on-surface-variant">Garage 99 Burger</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-sm text-on-surface-variant">25 Out</td>
+<td class="px-8 py-6 text-center">
+<span class="px-4 py-1.5 bg-secondary-container/30 text-secondary text-xs font-bold rounded-full border border-secondary/20">Pago</span>
+</td>
+<td class="px-8 py-6 text-right font-headline font-bold text-on-surface">R$ 150,00</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="soup_kitchen">soup_kitchen</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Auxiliar de Cozinha</p>
+<p class="text-xs text-on-surface-variant">Buffet Celebrate</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-sm text-on-surface-variant">22 Out</td>
+<td class="px-8 py-6 text-center">
+<span class="px-4 py-1.5 bg-secondary-container/30 text-secondary text-xs font-bold rounded-full border border-secondary/20">Pago</span>
+</td>
+<td class="px-8 py-6 text-right font-headline font-bold text-on-surface">R$ 120,00</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="local_bar">local_bar</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Bartender</p>
+<p class="text-xs text-on-surface-variant">Bar do Mineiro</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-center text-sm text-on-surface-variant">15 Out</td>
+<td class="px-8 py-6 text-center">
+<span class="px-4 py-1.5 bg-secondary-container/30 text-secondary text-xs font-bold rounded-full border border-secondary/20">Pago</span>
+</td>
+<td class="px-8 py-6 text-right font-headline font-bold text-on-surface">R$ 180,00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="pt-8 pb-12 flex flex-col md:flex-row justify-between items-center text-xs text-on-surface-variant opacity-60">
+<p>© 2023 VaptVaga - Sistema de Pagamentos Freelancer Pro</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:underline" href="#">Políticas de Taxas</a>
+<a class="hover:underline" href="#">Ajuda e Suporte</a>
+<a class="hover:underline" href="#">Segurança</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed as per rules for Dashboard focused on specific journey, but if required it would be here) -->
+</body></html>

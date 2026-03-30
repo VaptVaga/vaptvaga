@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "inverse-primary": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "on-primary-fixed": "#00174b",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              "outline": "#737686",
+              "surface-container-high": "#dee8ff",
+              "error-container": "#ffdad6",
+              "tertiary": "#943700",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low transition-colors active:scale-95 duration-200 rounded-full p-2">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline text-headline-md font-bold tracking-tight text-on-surface leading-tight">VaptVaga</span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-widest">Empresa</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-surface-container-low transition-colors active:scale-95 duration-200 rounded-full p-2">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 pb-24 min-h-screen flex flex-col">
+<!-- Search & Filter Bar (Editorial Style) -->
+<section class="px-6 py-4">
+<div class="bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-lg w-full placeholder:text-outline/60" placeholder="Buscar mensagens..." type="text"/>
+<span class="material-symbols-outlined text-primary">tune</span>
+</div>
+</section>
+<!-- Chat List (Horizontal Suggestions for Recruiters) -->
+<section class="px-6 mb-6">
+<h3 class="font-headline text-label-md font-bold uppercase tracking-widest text-outline mb-4">Candidatos em destaque</h3>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full border-2 border-primary p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Portrait of a young male professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnmHEb4LaYh_IPeZPdz2NFa_dv0oL7_QRq5UoPWp3ik8dcM640vF5USoOtFrbkKO0JRrEiuowu_y7Yy9X70ISBZicEuswSw8q1NPenKH5swiZCiJh59CzG0D75P0qquQNmaIKiujROtKOJgCo49bd_4BZXOgvQDrnHOrNLyfzgxx-aGgqNp0b8SZjDO9PYj2H791AFvDjZyb1VfSZvZMZpmBcMK0HD75iZZqeCdcMAXgS4hfcDrUnmoIh6tYkkQ8-d8pwvN88D5_o"/>
+</div>
+<span class="text-[11px] font-bold text-on-surface">Ricardo</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full border-2 border-secondary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Professional woman smiling for profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATacaieavdLgH_2iKdBZj1sGO6hH0CSb5oW-tk60OnYygFFrRYUq6uNTvYyqvlfMSe-7D-qicvQxxHwk92b2B-6zzIFkocvxqZOI9G22e_IA5rMOjIqQCtpgxt8g1gjm9oAcTKM1enUg_4CEAz0cTCcTr0BRIeHcPiEVqpWHpKUH0HJXej4PXXYQr_YUEb8u-rziloY4raldL71zsaUrYizQ8Vhg0SEz7Qe6qYlibVHEeCBP-qKdALoUukEiFGofCoifEUCrMJpN4"/>
+</div>
+<span class="text-[11px] font-bold text-on-surface">Ana Paula</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center gap-2 opacity-60">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface">Ver todos</span>
+</div>
+</div>
+</section>
+<!-- Conversation View (Active State) -->
+<section class="flex-1 bg-surface-container-lowest rounded-t-[3rem] mt-4 p-6 shadow-[0px_-8px_24px_rgba(17,28,45,0.04)]">
+<!-- Conversation Header -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Profile photo of candidate Marcos Silva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ1XXhwkHVxJol9crpWY4j9uJxtMk7XeC8radIWRldfsYgv99WXBQzCJiJ_F22cCOxtZDCAliUBJZjuRi-OGaDOGtXtGwy3_Rt7AtFTaRt3aId51gaJcfdhj0MuXjlJS4tv6c12pH73G2ZI0xAB4aee5biU3YHTn1F3TJ05useHCdYST7z2Eedu3JzUfoFBxN2qU7J7qjrJ00Idp80FHDbN5GuL4KzOuFg2gLBIYJmfDEc1QmWnx-Xr4IaG5irLpIi3YsLy6KzjUg"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-secondary rounded-full border-2 border-white"></div>
+</div>
+<div>
+<h2 class="font-headline font-bold text-on-surface">Marcos Silva</h2>
+<p class="text-[12px] text-secondary font-medium italic">Candidato a Desenvolvedor Frontend</p>
+</div>
+</div>
+<button class="bg-surface-container-low p-2 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+<!-- Messages Stream -->
+<div class="space-y-6">
+<!-- Timestamp Separator -->
+<div class="flex justify-center">
+<span class="bg-surface-container-low px-4 py-1 rounded-full text-[10px] font-bold text-outline uppercase tracking-widest">Hoje</span>
+</div>
+<!-- Recipient Message -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container px-5 py-4 rounded-t-xl rounded-br-xl rounded-bl-none text-body-lg text-on-surface">
+                        Olá! Recebi o convite para a vaga de Frontend. Gostaria de saber mais sobre as tecnologias utilizadas no dia a dia.
+                    </div>
+<span class="mt-2 text-[10px] text-outline font-medium px-1">09:41 AM</span>
+</div>
+<!-- Sender Message -->
+<div class="flex flex-col items-end max-w-[85%] ml-auto">
+<div class="bg-primary px-5 py-4 rounded-t-xl rounded-bl-xl rounded-br-none text-body-lg text-on-primary">
+                        Oi Marcos! Que bom que se interessou. Usamos React com Tailwind e focamos muito em performance e acessibilidade.
+                    </div>
+<div class="mt-2 flex items-center gap-1 px-1">
+<span class="text-[10px] text-outline font-medium">09:45 AM</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Interview Proposal (Special Card UI) -->
+<div class="flex flex-col items-center w-full py-4">
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-6 w-full max-w-[90%] text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">event_available</span>
+<h4 class="font-headline font-bold text-on-surface mb-1">Agendar Entrevista</h4>
+<p class="text-on-surface-variant text-sm mb-4">Marcos está disponível para conversar amanhã à tarde.</p>
+<button class="w-full bg-white text-primary font-bold py-3 rounded-full text-sm shadow-sm active:scale-95 transition-transform">
+                            Ver Horários
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Quick Action Bar (Recruiter Tools) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] bg-surface-container-lowest/90 backdrop-blur-xl rounded-full p-2 shadow-2xl flex items-center gap-2 z-40">
+<button class="flex-1 bg-surface-container-highest text-on-surface-variant font-bold py-3 px-4 rounded-full text-sm flex items-center justify-center gap-2 hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+            Entrevista
+        </button>
+<button class="flex-2 bg-gradient-to-r from-primary to-primary-container text-white font-bold py-3 px-8 rounded-full text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+            Contratar
+        </button>
+</div>
+<!-- Message Input Bar (Native Mobile Style) -->
+<div class="fixed bottom-0 w-full bg-white/80 backdrop-blur-2xl px-6 pb-6 pt-2 z-50 flex items-center gap-3">
+<button class="bg-surface-container-low p-3 rounded-full text-primary">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="flex-1 bg-surface-container-low rounded-full px-5 py-3 flex items-center">
+<input class="bg-transparent border-none focus:ring-0 text-body-lg w-full" placeholder="Escreva uma mensagem..." type="text"/>
+<span class="material-symbols-outlined text-outline">sentiment_satisfied</span>
+</div>
+<button class="bg-primary text-white p-3 rounded-full active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar (Hidden in Active Chat to prioritize input) -->
+<!-- Managed by "Relevance Check" logic: In active chat view, prioritized focused journey -->
+<nav class="hidden md:flex fixed bottom-0 w-full z-50 rounded-t-[3rem] border-t border-outline-variant/10 flex justify-around items-center h-24 px-4 pb-4 w-full bg-white/80 backdrop-blur-2xl shadow-[0px_-8px_24px_rgba(17,28,45,0.04)]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity active:scale-90 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-label-md font-bold uppercase tracking-wider mt-1">Início</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity active:scale-90 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined">work</span>
+<span class="font-inter text-label-md font-bold uppercase tracking-wider mt-1">Vagas</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full px-6 py-2 active:scale-90 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-inter text-label-md font-bold uppercase tracking-wider mt-1">Mensagens</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:opacity-80 transition-opacity active:scale-90 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-label-md font-bold uppercase tracking-wider mt-1">Perfil</span>
+</div>
+</nav>
+</body></html>

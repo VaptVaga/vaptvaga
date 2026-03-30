@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaptVaga | O freela perfeito para o seu negócio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#004ac6",
+              "on-surface": "#111c2d",
+              "on-tertiary-container": "#ffede6",
+              "surface-tint": "#0053db",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#002113",
+              "error": "#ba1a1a",
+              "on-primary-container": "#eeefff",
+              "secondary-container": "#6cf8bb",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#737686",
+              "surface-variant": "#d8e3fb",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary-fixed-variant": "#005236",
+              "surface-container-highest": "#d8e3fb",
+              "on-error-container": "#93000a",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-background": "#111c2d",
+              "surface-container": "#e7eeff",
+              "surface": "#f9f9ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-primary": "#b4c5ff",
+              "secondary": "#006c49",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f9f9ff",
+              "secondary-fixed": "#6ffbbe",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-dim": "#cfdaf2",
+              "background": "#f9f9ff",
+              "tertiary": "#943700",
+              "surface-container-high": "#dee8ff",
+              "on-surface-variant": "#434655",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "tertiary-fixed-dim": "#ffb596",
+              "secondary-fixed-dim": "#4edea3",
+              "inverse-on-surface": "#ecf1ff",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#bc4800",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#263143"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-lg docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-6 h-16">
+<div class="text-2xl font-black text-primary tracking-tighter">VaptVaga</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant font-semibold px-4 py-2 hover:bg-primary/10 transition-colors rounded-full active:scale-95 duration-100">Entrar</button>
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="px-6 pt-8 pb-12 flex flex-col gap-8">
+<div class="flex flex-col gap-4">
+<h1 class="font-headline font-extrabold text-[2.5rem] leading-[1.1] tracking-tighter text-on-surface">
+                    O freela perfeito para o seu negócio local. <span class="text-primary italic">Pra ontem.</span>
+</h1>
+<p class="text-on-surface-variant body-lg leading-relaxed">
+                    Conectamos empresas a profissionais qualificados em minutos. Sem burocracia, apenas resultados.
+                </p>
+</div>
+<!-- Search Bar -->
+<div class="bg-surface-container-lowest p-2 rounded-full shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex items-center gap-2 border border-outline-variant/10">
+<div class="pl-4 text-outline flex items-center gap-2 flex-1">
+<span class="material-symbols-outlined">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0 placeholder:text-outline/60" placeholder="Ex: Cozinheiro, Limpeza..." type="text"/>
+</div>
+<button class="bg-primary text-white font-bold px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all">Buscar</button>
+</div>
+<!-- Horizontal Benefit Cards -->
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6 py-4">
+<div class="min-w-[280px] bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-4">
+<div class="h-40 w-full rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Chef preparation professional kitchen local restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7OvRHQckgqHbWYOwANCla8k_rj4ndksGx8h3c4aL29tUif05Ci3glhgwvtXc95yMjLXSeEYU2XNRTlqqaQDaE4p9YaG5bj6-4zR--84ylE42s1YeIiTdR9WQscxzq9XLrEg8bGV9fFzGTL4LkMAC63oO9Sw-kiJN1ehCafK6-fXb2rc98K7WZeippLmKSwZCq9OzBTCsoebtq2EoTP5GowSiNpajJoXbPFRl48-vld9Ur7YiPITXgb7mr6CBfRZ6SkIP3WUzaBnk"/>
+</div>
+<div class="flex items-center gap-2 text-secondary font-bold text-sm">
+<span class="material-symbols-outlined text-base">bolt</span>
+                        Contratação Instantânea
+                    </div>
+</div>
+<div class="min-w-[280px] bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-4">
+<div class="h-40 w-full rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Two professionals shaking hands in agreement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxQ4CEQhxdCq4W59Ab1DuXdlPM-veLWVfRwpC9z7Wp27vAr0RhE8QEqhp4LyE6EsTS_JQ6jr3mJd-q6xTQ8QtiF-9pK2LvCQLPbZrySj4IH5EtH7ddixR0aQeXlm0D1Vp0AUqU7AoDyyfvhYvR1I-oqeHwac1aVWCzSFXO_Bpz6-V5nAqx7cCR6qcZsoXn3j5VmOJWpjP37e04V_O8FSjUCED6sRkjnDZMwZrZzUQr3zKj2ql9fEOR7Tc_CbPmO3uwTYd7nH5Fg1g"/>
+</div>
+<div class="flex items-center gap-2 text-secondary font-bold text-sm">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Perfis verificados
+                    </div>
+</div>
+<div class="min-w-[280px] bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-4">
+<div class="h-40 w-full rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Mobile phone payment confirmation screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjWKnZml6xOMCG4CqMlFmMNN-mQMsYO5rH1d-U01HsJ3VNJbgERYEtyiYoHss7GHcAdxBQO1DhK9KC-mevrH_atL9AQ6iDldHZX21XYwJUN9kpP1ZyNP5MCLov_9zZoewoppjtozV91SmcZVZAk7Ja2mrOGJ5LgfL-MOSPtk_Cu0gBFyuAIoEJmA-Ar_9aeK7b-VB1y8PlzH7hAUmhbqWUcrkw-LxR_atR4O4K_Pvg8Jlegn2l7UQqS0fW6CE9xs4CYF8seeoBl4M"/>
+</div>
+<div class="flex items-center gap-2 text-secondary font-bold text-sm">
+<span class="material-symbols-outlined text-base">schedule</span>
+                        Combine em 15 min
+                    </div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="bg-surface-container-low py-8 overflow-hidden">
+<p class="text-center text-[0.65rem] font-bold uppercase tracking-[0.2em] text-outline mb-6">Empresas que confiam no VaptVaga</p>
+<div class="flex gap-12 items-center opacity-40 px-6 overflow-x-auto hide-scrollbar whitespace-nowrap">
+<span class="font-headline font-black text-xl italic">Garage 99 Burger</span>
+<span class="font-headline font-black text-xl italic">Cantina Nonna Bella</span>
+<span class="font-headline font-black text-xl italic">Espaço Clean</span>
+<span class="font-headline font-black text-xl italic">Varejo Express</span>
+</div>
+</section>
+<!-- Value Prop Cards -->
+<section class="px-6 py-16 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-4 border border-outline-variant/5">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<h3 class="font-headline font-bold text-xl">Velocidade Vapt</h3>
+<p class="text-on-surface-variant leading-relaxed">Publique sua vaga e receba propostas em menos de 5 minutos.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-4 border border-outline-variant/5">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<h3 class="font-headline font-bold text-xl">Filtro de Confiança</h3>
+<p class="text-on-surface-variant leading-relaxed">Apenas profissionais com histórico positivo e documentos validados.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-4 border border-outline-variant/5">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<h3 class="font-headline font-bold text-xl">Pagamento Direto</h3>
+<p class="text-on-surface-variant leading-relaxed">Combine e pague diretamente ao profissional, sem taxas escondidas.</p>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="px-6 py-12 bg-surface-container-low">
+<h2 class="font-headline font-extrabold text-2xl mb-8 tracking-tight">Categorias</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</div>
+<span class="font-bold text-sm">Restaurantes</span>
+</div>
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">shopping_bag</span>
+</div>
+<span class="font-bold text-sm">Varejo</span>
+</div>
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">cleaning_services</span>
+</div>
+<span class="font-bold text-sm">Limpeza</span>
+</div>
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">celebration</span>
+</div>
+<span class="font-bold text-sm">Eventos</span>
+</div>
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">delivery_dining</span>
+</div>
+<span class="font-bold text-sm">Entregas</span>
+</div>
+<div class="flex flex-col items-center gap-3 bg-surface-container-lowest p-6 rounded-xl text-center shadow-sm">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">more_horiz</span>
+</div>
+<span class="font-bold text-sm">Outros</span>
+</div>
+</div>
+</section>
+<!-- Live Feed Section -->
+<section class="px-6 py-16 flex flex-col gap-12">
+<div>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-extrabold text-2xl tracking-tight">Vagas Urgentes</h2>
+<span class="bg-error/10 text-error text-[0.65rem] font-black px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                        AO VIVO
+                    </span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Urgent Job Card -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface flex items-center justify-center text-primary font-bold">G99</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Chapeiro Noturno</h4>
+<p class="text-xs text-on-surface-variant">Garage 99 Burger • 1.2km</p>
+</div>
+<div class="text-right">
+<span class="block text-secondary font-black text-sm">R$ 120</span>
+<span class="text-[0.6rem] text-outline font-bold uppercase">Hoje</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface flex items-center justify-center text-primary font-bold">NB</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Garçom/Garçonete</h4>
+<p class="text-xs text-on-surface-variant">Nonna Bella • 0.8km</p>
+</div>
+<div class="text-right">
+<span class="block text-secondary font-black text-sm">R$ 95</span>
+<span class="text-[0.6rem] text-outline font-bold uppercase">Amanhã</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="font-headline font-extrabold text-2xl tracking-tight mb-6">Freelancers Disponíveis</h2>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional profile photo male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn0sXFmQ7vVifS6vklKnAScyuJeG9LDTXZ4eNR5VN2a8cM3Xi8u7wKlbZ4XjzlS3pWbnKxskhtHdPCB8SzOF-shNsPZ-m_6SN3P8hOQ7pnpL7kT9JIxzTeEE7AN8dUZeCJrZ-OQGIO4JY77HgdMSG1cxGlw98aOk_WEonK696Jl8gP4NlBP96k0XLRlR8skPGmfyEL_JCd8ofLqqW96haIkHvGs0XhFN0-pM6bh1TZJaPCO5Si4MO7aXRvJxzS-j3-ekeonVQ8xRk"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Ricardo S.</h4>
+<div class="flex items-center gap-1 text-xs text-secondary font-bold">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 • Cozinheiro
+                            </div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full text-[0.65rem] font-black uppercase">WhatsApp</button>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional profile photo female" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_M6UhG1tv1wo3Z_TpzFVzs1vHFRRDNsGYETD1XOLIMYrDW1wOVoqW2XnXzeOw-qShkZcIfm9242oRbNzNMl-OePGTVb8RwMrgwV-unPitdu9f083CHk26PtYS4vQg_k3x2bCL74UgrC0MqGHoojJ-6Prwn6wT6kQgRuzry30PlF3UlxWUoXHJkHEldsAmK83W0r_fOUYy9Gu8JvzeF58uJhrDuyimNDoxQtl1NuNIksLdDkn1kNo_kzxKbbFoE_Y5Xmze7SJ32hU"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Ana Clara T.</h4>
+<div class="flex items-center gap-1 text-xs text-secondary font-bold">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+                                5.0 • Atendimento
+                            </div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full text-[0.65rem] font-black uppercase">WhatsApp</button>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="px-6 py-16 bg-surface-container">
+<h2 class="font-headline font-extrabold text-3xl mb-12 text-center tracking-tight">Como funciona?</h2>
+<div class="flex flex-col gap-10">
+<div class="flex gap-6 items-start">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-lg">Publique sua vaga</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Diga o que você precisa, o horário e quanto pretende pagar.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-lg">Receba propostas</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Em minutos, profissionais qualificados entrarão em contato via chat.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-headline font-bold text-lg">Combine e feche</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Analise o perfil, combine os detalhes e resolva sua demanda.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="px-6 py-16 flex flex-col gap-8">
+<h2 class="font-headline font-extrabold text-3xl tracking-tight text-center">Para quem é?</h2>
+<div class="flex flex-col gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border-2 border-primary/5 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<span class="text-[0.65rem] font-black uppercase text-primary tracking-widest">Para Profissionais</span>
+<h3 class="font-headline font-bold text-2xl">Freelancer Free</h3>
+</div>
+<p class="text-on-surface-variant text-sm">Acesse centenas de vagas diariamente sem pagar comissão sobre seus ganhos.</p>
+<ul class="flex flex-col gap-3 text-sm font-medium">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg">check_circle</span> Perfil profissional gratuito</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg">check_circle</span> Notificações em tempo real</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-lg">check_circle</span> Receba 100% do valor</li>
+</ul>
+<button class="w-full bg-surface-container-highest text-on-surface font-bold py-4 rounded-full">Criar meu perfil</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-primary p-8 rounded-xl flex flex-col gap-6 text-white shadow-xl shadow-primary/20">
+<div class="flex flex-col gap-1">
+<span class="text-[0.65rem] font-black uppercase text-primary-fixed tracking-widest">Para Negócios</span>
+<h3 class="font-headline font-bold text-2xl">Empresa Beta</h3>
+</div>
+<p class="opacity-80 text-sm">Encontre reforço para seu time em tempo recorde e garanta que seu negócio nunca pare.</p>
+<ul class="flex flex-col gap-3 text-sm font-medium">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary-fixed text-lg">check_circle</span> Vagas ilimitadas</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary-fixed text-lg">check_circle</span> Filtros avançados</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary-fixed text-lg">check_circle</span> Suporte priorizado</li>
+</ul>
+<button class="w-full bg-white text-primary font-bold py-4 rounded-full">Cadastrar minha empresa</button>
+</div>
+</div>
+</section>
+<!-- Final CTA Banner -->
+<section class="px-6 py-12">
+<div class="bg-gradient-to-br from-primary to-primary-container p-10 rounded-xl text-center text-white flex flex-col gap-8">
+<h2 class="font-headline font-extrabold text-3xl leading-tight">Pronto para começar agora?</h2>
+<div class="flex flex-col gap-3">
+<button class="bg-white text-primary font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Contratar</button>
+<button class="bg-primary/20 backdrop-blur-sm border border-white/20 text-white font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Candidatar</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 px-6 mb-6">
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl floating pill rounded-full h-20 shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex justify-around items-center w-full px-4 border border-outline-variant/10">
+<!-- Active Navigation -->
+<div class="flex flex-col items-center justify-center bg-primary text-white rounded-full w-12 h-12 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<!-- Inactive Navigation -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80">
+<span class="material-symbols-outlined">search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</nav>
+</body></html>

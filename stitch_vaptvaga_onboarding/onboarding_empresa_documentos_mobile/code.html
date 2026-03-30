@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaptVaga - Onboarding Passo 4</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "inverse-primary": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "on-primary-fixed": "#00174b",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              "outline": "#737686",
+              "surface-container-high": "#dee8ff",
+              "error-container": "#ffdad6",
+              "tertiary": "#943700",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            color: #111c2d;
+        }
+        h1, h2, .brand-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- Top Navigation Header -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<button class="hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="text-2xl font-black text-primary italic">VaptVaga</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Etapa 04 de 04</span>
+<div class="flex gap-1 mt-1">
+<div class="h-1 w-4 bg-primary rounded-full"></div>
+<div class="h-1 w-4 bg-primary rounded-full"></div>
+<div class="h-1 w-4 bg-primary rounded-full"></div>
+<div class="h-1 w-8 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 px-6 max-w-md mx-auto">
+<!-- Intro Section -->
+<header class="mb-10">
+<h1 class="text-headline-md font-bold tracking-tight text-on-surface mb-2">Documentação</h1>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Para finalizar sua conta, precisamos validar a identidade jurídica da sua empresa.</p>
+</header>
+<!-- Upload Bento Grid -->
+<div class="grid gap-6 mb-10">
+<!-- Contrato Social Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48px_rgba(17,28,45,0.06)] group transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<span class="text-label-md font-bold uppercase tracking-wider text-primary">Obrigatório</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Contrato Social</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-snug">Última alteração consolidada em formato PDF.</p>
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer group-active:scale-[0.98]">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-outline mb-2">cloud_upload</span>
+<p class="text-xs font-semibold text-outline">Clique para upload</p>
+</div>
+<input class="hidden" type="file"/>
+</label>
+</div>
+<!-- Cartão CNPJ Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48_rgba(17,28,45,0.06)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<span class="text-label-md font-bold uppercase tracking-wider text-primary">Obrigatório</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Cartão CNPJ</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-snug">Emitido pela Receita Federal nos últimos 30 dias.</p>
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-outline-variant/30 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-outline mb-2">add_a_photo</span>
+<p class="text-xs font-semibold text-outline">Tirar foto ou upload</p>
+</div>
+<input class="hidden" type="file"/>
+</label>
+</div>
+</div>
+<!-- Checklist Requirements -->
+<section class="bg-surface-container-low rounded-xl p-6 mb-12">
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest text-on-surface-variant mb-4">Checklist de Qualidade</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-sm text-on-surface-variant">Documentos legíveis, sem cortes ou borrões.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-sm text-on-surface-variant">Arquivos nos formatos PDF, JPG ou PNG.</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-sm text-on-surface-variant">Tamanho máximo de 10MB por arquivo.</p>
+</li>
+</ul>
+</section>
+</main>
+<!-- Fixed Action Bottom Bar (Suppressing standard BottomNavBar for Transactional context) -->
+<footer class="fixed bottom-0 w-full bg-white/80 backdrop-blur-2xl rounded-t-[3rem] shadow-[0px_-8px_24px_rgba(17,28,45,0.04)] px-6 py-8 z-50">
+<div class="max-w-md mx-auto">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-white rounded-full font-headline font-bold text-lg flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150">
+                Concluir Onboarding
+                <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+<p class="text-center mt-4 text-xs text-outline font-medium">Ao clicar, você concorda com nossos Termos de Uso.</p>
+</div>
+</footer>
+<!-- Accessibility Anchor for Images (No Actual Images in this screen, but keeping placeholders for patterns) -->
+<div class="hidden">
+<img data-alt="Blue and mint green abstract gradient pattern for onboarding background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8MaAoTLBV-siDXU7KwxnODiquv2VbSpiyBy74iLsnBRzRhmk8dSffHUY47j4S1KgjydP-opKt3AlnrOndSlQmckuXFtLO2KmJzmu3aOFzM8myCtD_bX_1cGZWCIm_XeXVPKHecGk2ccB-FP2gDHHCh4O9VJn884YMUXBJ07IzifI-SW8EfHxrfH4fDzB7gOEbxOZAe9uLcJy3JTTZYeHejdLjgDKEZuLybnghemJKC_JeED0JohYyDlp0pyZYaydA4opyDjT_KGU"/>
+</div>
+</body></html>

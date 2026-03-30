@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#360f00",
+              "surface": "#f9f9ff",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-variant": "#d8e3fb",
+              "on-error-container": "#93000a",
+              "on-background": "#111c2d",
+              "primary-fixed": "#dbe1ff",
+              "outline-variant": "#c3c6d7",
+              "surface-container-highest": "#d8e3fb",
+              "outline": "#737686",
+              "on-surface": "#111c2d",
+              "on-primary-fixed-variant": "#003ea8",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#002113",
+              "error": "#ba1a1a",
+              "inverse-on-surface": "#ecf1ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-tertiary": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "tertiary-fixed": "#ffdbcd",
+              "tertiary-container": "#bc4800",
+              "secondary-container": "#6cf8bb",
+              "inverse-surface": "#263143",
+              "surface-tint": "#0053db",
+              "secondary-fixed": "#6ffbbe",
+              "on-primary": "#ffffff",
+              "primary": "#004ac6",
+              "primary-container": "#2563eb",
+              "background": "#f9f9ff",
+              "on-surface-variant": "#434655",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "surface-container": "#e7eeff",
+              "on-primary-fixed": "#00174b",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-error": "#ffffff",
+              "tertiary": "#943700",
+              "surface-dim": "#cfdaf2",
+              "surface-bright": "#f9f9ff",
+              "on-tertiary-container": "#ffede6",
+              "inverse-primary": "#b4c5ff",
+              "on-secondary-container": "#00714d",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f0f3ff",
+              "secondary-fixed-dim": "#4edea3",
+              "on-secondary-fixed-variant": "#005236",
+              "surface-container-high": "#dee8ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-600 dark:text-blue-400 font-['Plus_Jakarta_Sans']">
+                VaptVaga
+            </div>
+<nav class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+<a class="text-blue-600 dark:text-blue-400 font-bold hover:text-blue-500 transition-colors" href="#">Preços</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Chat</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Histórico</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-500 transition-colors" href="#">Configurações</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:text-blue-600 transition-colors active:scale-95 duration-200">account_circle</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full"></div>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="text-center mb-16">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-on-surface">
+                Escolha o plano ideal para <br/>
+<span class="text-primary">acelerar seus resultados.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                Seja você um profissional em busca de oportunidades ou uma empresa escalando talentos, temos a estrutura certa.
+            </p>
+<!-- Toggle Switch -->
+<div class="flex justify-center mb-16">
+<div class="bg-surface-container-low p-2 rounded-full flex items-center shadow-inner">
+<button class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 bg-primary text-white shadow-lg">
+                        Freelancers
+                    </button>
+<button class="px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 text-on-surface-variant hover:bg-surface-container-high">
+                        Empresas
+                    </button>
+</div>
+</div>
+</section>
+<!-- Pricing Grid: Freelancers -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="freelancer-grid">
+<!-- Card Grátis -->
+<div class="bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between border border-transparent hover:border-primary/10 transition-all duration-300 shadow-[0px_24px_48px_rgba(17,28,45,0.04)]">
+<div>
+<div class="mb-8">
+<span class="px-4 py-1.5 bg-surface-container-low text-on-surface-variant text-xs font-bold rounded-full uppercase tracking-widest">Base</span>
+<h3 class="text-3xl font-bold mt-4">Grátis</h3>
+<div class="mt-4 flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface tracking-tighter">R$ 0</span>
+<span class="text-on-surface-variant font-medium">/sempre</span>
+</div>
+</div>
+<ul class="space-y-6 mb-12">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary font-bold" style="font-variation-settings: 'FILL' 0;">check_circle</span>
+<span class="text-on-surface-variant">Acesso ao feed de vagas</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary font-bold">check_circle</span>
+<span class="text-on-surface-variant">2 candidaturas por mês</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary font-bold">check_circle</span>
+<span class="text-on-surface-variant">Chat com empresas</span>
+</li>
+</ul>
+</div>
+<button class="w-full h-16 rounded-full bg-surface-container-high text-on-surface font-bold hover:bg-surface-container-highest transition-colors active:scale-95">
+                    Começar agora
+                </button>
+</div>
+<!-- Card Vapt PRO -->
+<div class="relative bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between overflow-hidden shadow-[0px_24px_48px_rgba(17,28,45,0.06)] ring-2 ring-primary">
+<div class="absolute top-0 right-0">
+<div class="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rotate-45 translate-x-8 translate-y-4">Recomendado</div>
+</div>
+<div>
+<div class="mb-8">
+<span class="px-4 py-1.5 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest">Pro</span>
+<h3 class="text-3xl font-bold mt-4">Vapt PRO</h3>
+<div class="mt-4 flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface tracking-tighter">R$ 9,90</span>
+<span class="text-on-surface-variant font-medium">/mês</span>
+</div>
+</div>
+<ul class="space-y-6 mb-12">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary font-bold" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-semibold">Candidaturas ilimitadas</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary font-bold" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-semibold">Selo Freela PRO no perfil</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary font-bold" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-semibold">Destaque nas buscas</span>
+</li>
+</ul>
+</div>
+<button class="w-full h-16 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold shadow-lg shadow-primary/25 hover:opacity-90 transition-all active:scale-95">
+                    Assinar Vapt PRO
+                </button>
+</div>
+</div>
+<!-- Secondary CTA Section -->
+<section class="mt-32 bg-primary rounded-xl p-12 relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="text-white max-w-xl">
+<h2 class="text-3xl font-extrabold mb-4">Ainda tem dúvidas sobre o plano ideal?</h2>
+<p class="text-primary-fixed/80">Nossa equipe está pronta para ajudar você a encontrar o melhor caminho para sua carreira ou empresa.</p>
+</div>
+<button class="bg-white text-primary px-10 py-4 rounded-full font-bold shadow-xl hover:bg-primary-fixed transition-colors active:scale-95">
+                    Falar com Suporte
+                </button>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full"></div>
+<div class="absolute -top-12 -left-12 w-48 h-48 bg-primary-container/30 rounded-full"></div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl md:hidden shadow-[0_-8px_30px_rgb(0,0,0,0.04)] rounded-t-[3rem] border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-full p-3 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Preços</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Histórico</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Ajustes</span>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Placeholder for Layout Reference) -->
+<aside class="hidden md:flex h-screen w-64 flex-col fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 p-4 space-y-2 border-r border-slate-200/50 dark:border-slate-800/50 -z-10 opacity-0 pointer-events-none">
+<div class="mb-10 px-2">
+<h2 class="text-xl font-black text-blue-600 brand-font">VaptVaga</h2>
+<p class="text-xs text-slate-500 font-['Plus_Jakarta_Sans'] font-medium">Plano Premium</p>
+</div>
+<div class="text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 flex items-center gap-3">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium">Preços</span>
+</div>
+</aside>
+</body></html>

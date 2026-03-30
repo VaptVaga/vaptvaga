@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "outline": "#737686",
+              "on-secondary-fixed": "#002113",
+              "error-container": "#ffdad6",
+              "secondary-fixed": "#6ffbbe",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-high": "#dee8ff",
+              "outline-variant": "#c3c6d7",
+              "surface-bright": "#f9f9ff",
+              "primary": "#004ac6",
+              "on-tertiary-fixed": "#360f00",
+              "on-secondary-fixed-variant": "#005236",
+              "on-primary-fixed-variant": "#003ea8",
+              "secondary": "#006c49",
+              "error": "#ba1a1a",
+              "tertiary": "#943700",
+              "primary-container": "#2563eb",
+              "on-surface": "#111c2d",
+              "on-secondary-container": "#00714d",
+              "on-primary-container": "#eeefff",
+              "secondary-fixed-dim": "#4edea3",
+              "tertiary-fixed-dim": "#ffb596",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f9f9ff",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#263143",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-dim": "#cfdaf2",
+              "on-error": "#ffffff",
+              "inverse-primary": "#b4c5ff",
+              "surface-container-highest": "#d8e3fb",
+              "secondary-container": "#6cf8bb",
+              "on-surface-variant": "#434655",
+              "surface-variant": "#d8e3fb",
+              "primary-fixed": "#dbe1ff",
+              "surface-container-low": "#f0f3ff",
+              "inverse-on-surface": "#ecf1ff",
+              "background": "#f9f9ff",
+              "surface-tint": "#0053db",
+              "surface-container": "#e7eeff",
+              "tertiary-container": "#bc4800",
+              "on-background": "#111c2d"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-8 px-6 bg-surface-container-low w-72 border-none rounded-r-[3rem] z-50">
+<div class="mb-12">
+<h1 class="text-2xl font-black text-on-surface tracking-tighter">Onboarding</h1>
+<p class="text-on-surface-variant text-sm font-medium mt-1">Progress: 75%</p>
+</div>
+<nav class="flex flex-col gap-3 flex-grow">
+<!-- Identity Tab -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full px-6 py-4 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Identity</span>
+</a>
+<!-- Experience Tab -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full px-6 py-4 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-medium">Experience</span>
+</a>
+<!-- Portfolio Tab -->
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full px-6 py-4 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+<span class="font-medium">Portfolio</span>
+</a>
+<!-- Final Review Tab (Active State per logic) -->
+<a class="flex items-center gap-4 bg-primary text-on-primary rounded-full px-6 py-4 transition-all duration-300 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-medium">Final Review</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-4 bg-surface-container-highest text-on-surface font-bold rounded-full transition-transform duration-200 active:scale-95">
+                Save Draft
+            </button>
+</div>
+</aside>
+<!-- TopNavBar (Authority: JSON) -->
+<header class="flex justify-between items-center w-full px-12 py-6 sticky top-0 z-40 ml-72 max-w-[calc(100%-18rem)] bg-surface/80 backdrop-blur-xl">
+<div class="text-xl font-black text-primary tracking-tight">Freelancer Portal</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="help">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold text-sm transition-opacity hover:opacity-90">
+                Publish Profile
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 p-12 max-w-6xl">
+<!-- Page Header -->
+<div class="mb-10">
+<h2 class="text-4xl font-extrabold tracking-tighter text-on-surface mb-2">Final Review</h2>
+<p class="text-on-surface-variant text-lg">Confirme os detalhes do seu perfil antes de publicá-lo na plataforma.</p>
+</div>
+<!-- Bento Layout for Profile Review -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Identity & Bio -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-8">
+<!-- Profile Header Card -->
+<section class="bg-surface-container-lowest p-8 rounded-xl flex items-center gap-8 shadow-sm">
+<div class="relative">
+<img alt="Ricardo Alvez" class="w-32 h-32 rounded-full object-cover ring-4 ring-secondary-container" data-alt="Close up portrait of Ricardo Alvez professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnrjH49NKk16WQZuOPtCNVBFc7-SrZE54v7rRR87J3MpjaHzndNqHE7diEmtdg-685fP0XKjILTomfFkGfcdqOHcTQG43lloU_pWEdPnPxNTc9v59bei6Lk1R-aoMdj9NBExSqM9c6nHy4cte8NLwuqGrBLKwQFfzSjZpYcNQpplMCmmmYpWKw1A1-xVfIyEYmmICuMCPopZ6UfhiNVzi6Ng8XQSe-2xRYeOH4kCqS-FQmw3FMi259XUR-EF_ILbO6KIeR973nDIs"/>
+<div class="absolute bottom-1 right-1 bg-secondary-container p-1.5 rounded-full border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h3 class="text-3xl font-bold tracking-tight">Ricardo Alvez</h3>
+<p class="text-primary font-semibold text-lg">Barista/Garçom</p>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-base" data-icon="location_on">location_on</span>
+<span class="text-sm font-medium">São Paulo, SP</span>
+</div>
+</div>
+</section>
+<!-- Bio Section -->
+<section class="bg-surface-container-low p-8 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xl font-bold text-on-surface">Bio</h4>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary" data-icon="edit">edit</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                        Barista apaixonado com mais de 5 anos de experiência em cafeterias de especialidade. Especialista em latte art e atendimento consultivo ao cliente. Tenho experiência robusta como garçom em eventos de alto padrão, garantindo agilidade e uma experiência memorável para cada cliente.
+                    </p>
+</section>
+<!-- Portfolio Grid Section -->
+<section class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold text-on-surface">Portfolio</h4>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary" data-icon="edit">edit</span>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" data-alt="Close up of a latte art coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT5k8UBePgRI2Oo3H5l06YkVOJpjJBaseKb0vBzxXgKn0V6veRiI_uSUMqtdfYLP_UclLxkrbsnCPoG7JHPgbUax6O2ECBa8W3htsJky7t6jkf8sYUqoJ1VjyjnTZxTPosSqeu2u-TuoVvhnNPYnbaLybc64ps7SnkonhT6LXcidH8qCwa_CclIvVLP8_psyKPGRgA_FQkyhoiaR6zyqFK4xctIFemrL0Zkxu7oP592k7nDxEI1db_sDa9zBf5xdRYeooO75Zu7qI"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" data-alt="Barista working at a coffee station" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA07erFluRWluLJlrcnre1mzQVCDE3ug8Z5Jc4o23SmlMbF9Yte5BTm1ct1vraR3HowQ0cRIxeL9YF21g37-BHg4xiy98kgmLOHeECPsjAa5MYn636iShix6nAME0PrUcth1rEyvWUVVidhLSBlR-7eKrXxWrp7Lic4mgtWAZaitbOpwf1jzuxtheH-F_3Lb_hbrYh55NPO73PFH5S3WI6JzYB2Bd2p2YUi9QAhkdJKy-0bxTanuozPvRnJllgqKroZ7hpqP_ogIxQ"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" data-alt="Modern coffee shop interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKsTWLfzIkJe3J9PmYKA6dRX_egcEEYibSFOYu6IdUEg8LMNAemyc90P26QnOZx8mqoFUMMLkhVPFErpe17ujPLmmmwyO-8zXrgKJ3QEdR0vP275fQ8RI4dQDxrjyLz9Z_Tvztyyd4gosQ9atw4Eb6yJ0fw-oGyfadN5txtBsu2PyfHRKb36pnXzqwXRKP_bbIm0HYXQ8dcISO4f4xO62NvviHx43GgcUM6tqz9nRU47NNw-QwZgcL07Oqvbr_u4ieRaOM3MVwqTw"/>
+</div>
+<div class="aspect-square rounded-lg bg-surface-container-highest flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-outline text-3xl" data-icon="add">add</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Skills & Previous Jobs -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-8">
+<!-- Skills Card -->
+<section class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold text-on-surface">Experience &amp; Skills</h4>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary" data-icon="edit">edit</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-sm font-bold">Atendimento ao Cliente</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-sm font-bold">Barista</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-sm font-bold">Caixa</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-sm font-bold">Vinhos</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-1 bg-primary rounded-full"></div>
+<div>
+<h5 class="font-bold text-on-surface">Café do Ponto</h5>
+<p class="text-sm text-on-surface-variant font-medium">Head Barista • 2021 - Presente</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-1 bg-outline-variant rounded-full"></div>
+<div>
+<h5 class="font-bold text-on-surface">Hotel Fasano</h5>
+<p class="text-sm text-on-surface-variant font-medium">Garçom de Eventos • 2019 - 2021</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-1 bg-outline-variant rounded-full"></div>
+<div>
+<h5 class="font-bold text-on-surface">Starbucks Brasil</h5>
+<p class="text-sm text-on-surface-variant font-medium">Barista Senior • 2018 - 2019</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Summary -->
+<section class="bg-primary p-8 rounded-xl text-on-primary">
+<h4 class="text-lg font-bold mb-4">Resumo da Conta</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-white/10 pb-2">
+<span class="opacity-80 text-sm">Disponibilidade</span>
+<span class="font-bold">Imediata</span>
+</div>
+<div class="flex justify-between items-center border-b border-white/10 pb-2">
+<span class="opacity-80 text-sm">Taxa Horária</span>
+<span class="font-bold">R$ 45/h</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="opacity-80 text-sm">Idiomas</span>
+<span class="font-bold">Português, Inglês</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Action Section -->
+<div class="mt-12 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-8">
+<label class="flex items-center gap-4 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-6 w-6 rounded-md border-2 border-outline-variant bg-transparent text-primary focus:ring-primary checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+</div>
+<span class="text-on-surface font-medium select-none group-hover:text-primary transition-colors">Confirmo que todos os dados acima são verdadeiros</span>
+</label>
+<div class="flex gap-4 items-center">
+<button class="px-8 py-4 rounded-full font-bold text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                    Revisar Novamente
+                </button>
+<button class="px-10 py-4 bg-primary text-on-primary rounded-full font-extrabold text-lg shadow-lg shadow-primary/20 transition-transform active:scale-95 hover:bg-primary-container">
+                    Publicar Perfil Agora
+                </button>
+</div>
+</div>
+</main>
+<!-- Contextual Success Toast (Hidden by Default) -->
+<div class="hidden fixed bottom-8 right-8 bg-on-surface text-surface px-6 py-4 rounded-full flex items-center gap-4 shadow-2xl z-50">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">Perfil salvo como rascunho com sucesso!</span>
+</div>
+</body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#d8e3fb",
+              "primary": "#004ac6",
+              "secondary-container": "#6cf8bb",
+              "surface-container-low": "#f0f3ff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffede6",
+              "primary-fixed": "#dbe1ff",
+              "on-primary-container": "#eeefff",
+              "inverse-primary": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "surface-container-high": "#dee8ff",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "secondary-fixed-dim": "#4edea3",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#cfdaf2",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#006c49",
+              "on-tertiary-fixed": "#360f00",
+              "tertiary": "#943700",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "inverse-on-surface": "#ecf1ff",
+              "error-container": "#ffdad6",
+              "surface-tint": "#0053db",
+              "on-surface": "#111c2d",
+              "inverse-surface": "#263143",
+              "on-primary-fixed": "#00174b",
+              "on-background": "#111c2d",
+              "tertiary-fixed-dim": "#ffb596",
+              "background": "#f9f9ff",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#434655",
+              "on-secondary-fixed-variant": "#005236",
+              "tertiary-container": "#bc4800",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary-container": "#00714d",
+              "error": "#ba1a1a",
+              "surface-container": "#e7eeff",
+              "on-secondary-fixed": "#002113",
+              "secondary-fixed": "#6ffbbe",
+              "primary-container": "#2563eb",
+              "tertiary-fixed": "#ffdbcd",
+              "surface": "#f9f9ff",
+              "on-tertiary": "#ffffff",
+              "outline": "#737686"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1, h2, h3, .font-jakarta {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col gap-6 p-6 fixed left-0 top-0 h-full overflow-y-auto bg-surface-container-low w-72 rounded-r-3xl border-none z-40">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h2 class="text-xl font-extrabold text-primary tracking-tighter">VaptVaga</h2>
+<p class="text-[10px] font-jakarta text-label-md uppercase bold tracking-wider text-on-surface-variant">Onboarding</p>
+</div>
+</div>
+<div class="px-2 py-4 bg-surface-container-highest/30 rounded-2xl mb-4">
+<p class="text-xs font-semibold text-primary mb-1">Step 4 of 4</p>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-full transition-all group active:scale-95 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider">Identity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-full transition-all group active:scale-95 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider">Business Details</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-full transition-all group active:scale-95 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider">Payment</span>
+</a>
+<!-- Active Tab: Documents -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-full shadow-lg shadow-primary/20 transition-all active:scale-95 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider">Documents</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2 pt-6 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider text-xs">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-jakarta text-label-md uppercase bold tracking-wider text-xs">Settings</span>
+</a>
+<button class="mt-4 w-full bg-surface-container-highest text-on-surface font-bold py-3 rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+                Save Progress
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow md:ml-72 min-h-screen p-4 md:p-12 lg:p-20 bg-surface">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-center gap-2 text-primary font-bold mb-4">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="text-label-md uppercase tracking-widest">Segurança &amp; Verificação</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-black text-on-surface tracking-tighter mb-4 font-jakarta">Validar Documentação</h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">Envie os documentos abaixo para validar sua conta e começar a contratar.</p>
+</header>
+<!-- Grid Layout for Uploads and Requirements -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Upload Cards Column -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Required Document Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 transition-all hover:shadow-xl hover:shadow-primary/5 group border border-transparent hover:border-primary/10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-bold text-on-surface font-jakarta">Contrato Social ou CCMEI</h3>
+<p class="text-sm text-on-surface-variant mt-1">Obrigatório para validação jurídica</p>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Required</span>
+</div>
+<div class="relative group/upload cursor-pointer">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file"/>
+<div class="border-2 border-dashed border-outline-variant/30 rounded-lg p-12 flex flex-col items-center justify-center transition-all group-hover/upload:border-primary/40 group-hover/upload:bg-primary/5">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-4 transition-transform group-hover/upload:scale-110">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="text-on-surface font-semibold">Arraste e solte o arquivo aqui</p>
+<p class="text-on-surface-variant text-sm mt-1">Ou clique para navegar nos arquivos</p>
+</div>
+</div>
+</div>
+<!-- Optional Document Card -->
+<div class="bg-surface-container-low/50 rounded-xl p-8 transition-all hover:bg-surface-container-low group border border-transparent hover:border-outline-variant/20">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-bold text-on-surface font-jakarta">Cartão CNPJ</h3>
+<p class="text-sm text-on-surface-variant mt-1">Opcional para agilizar a aprovação</p>
+</div>
+<span class="bg-on-surface-variant/10 text-on-surface-variant text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Optional</span>
+</div>
+<div class="relative group/upload cursor-pointer">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file"/>
+<div class="border-2 border-dashed border-outline-variant/30 rounded-lg p-12 flex flex-col items-center justify-center transition-all group-hover/upload:border-outline/40">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl" data-icon="upload_file">upload_file</span>
+</div>
+<p class="text-on-surface-variant font-medium">Clique para enviar Cartão CNPJ</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Requirements Sidebar -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-high/40 rounded-xl p-8 sticky top-24">
+<h4 class="text-sm font-black uppercase tracking-widest text-on-surface-variant mb-6">Checklist de Requisitos</h4>
+<ul class="flex flex-col gap-5">
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-secondary-container text-xs" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-sm text-on-surface font-medium leading-tight">Arquivos em PDF, JPG ou PNG</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-secondary-container text-xs" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-sm text-on-surface font-medium leading-tight">Máximo de 10MB por arquivo</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-secondary-container text-xs" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-sm text-on-surface font-medium leading-tight">Documento legível</span>
+</li>
+</ul>
+<div class="mt-8 p-4 bg-surface-container-lowest rounded-lg border border-primary/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="text-xs font-bold text-primary">Dica Profissional</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                Documentos escaneados em alta resolução agilizam o processo de validação em até 48 horas.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons Footer -->
+<footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row items-center justify-between gap-4">
+<button class="order-2 md:order-1 flex items-center gap-2 px-8 py-4 text-on-surface-variant font-bold hover:text-on-surface transition-colors group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+                    Voltar para Pagamento
+                </button>
+<button class="order-1 md:order-2 w-full md:w-auto flex items-center justify-center gap-3 px-12 py-5 bg-gradient-to-br from-primary to-primary-container text-white rounded-full font-bold text-lg shadow-2xl shadow-primary/30 transition-all hover:scale-[1.02] active:scale-95">
+                    Concluir Onboarding
+                    <span class="material-symbols-outlined" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</button>
+</footer>
+<p class="text-center text-on-surface-variant/40 text-[10px] mt-12 uppercase tracking-[0.2em] font-medium">
+                VaptVaga • Sediada em Contagem, MG • Atuando em todo o Brasil
+            </p>
+</div>
+</main>
+<!-- Mobile Floating Action Bar (Contextual) -->
+<div class="md:hidden fixed bottom-6 left-6 right-6 z-50">
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl p-4 rounded-full shadow-2xl flex items-center justify-between border border-white/20">
+<button class="w-12 h-12 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-black uppercase text-primary">Onboarding</span>
+<span class="text-xs font-bold">Documentos</span>
+</div>
+<button class="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full">
+<span class="material-symbols-outlined" data-icon="done_all">done_all</span>
+</button>
+</div>
+</div>
+</body></html>

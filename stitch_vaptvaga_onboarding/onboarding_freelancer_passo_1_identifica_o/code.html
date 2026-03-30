@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#943700",
+              "error-container": "#ffdad6",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "primary-fixed-dim": "#b4c5ff",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#00714d",
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#b4c5ff",
+              "secondary": "#006c49",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "primary-container": "#2563eb",
+              "on-primary-fixed": "#00174b",
+              "on-primary-fixed-variant": "#003ea8",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "outline": "#737686",
+              "on-secondary-fixed": "#002113",
+              "surface-container-high": "#dee8ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 h-screen w-72 border-r border-outline-variant/10 bg-surface">
+<div class="mb-12">
+<span class="text-2xl font-bold text-primary tracking-tighter font-headline">ProFreelance</span>
+</div>
+<nav class="flex flex-col gap-4 flex-grow">
+<!-- Identity - ACTIVE STATE -->
+<a class="flex items-center gap-4 px-6 py-4 bg-primary text-on-primary rounded-full transition-all duration-300 scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-headline font-semibold">Identity</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all hover:text-primary active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="font-headline font-semibold">Experience</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all hover:text-primary active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="folder_shared">folder_shared</span>
+<span class="font-headline font-semibold">Portfolio</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all hover:text-primary active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-headline font-semibold">Documents</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Freelancer Profile Placeholder" class="w-full h-full object-cover" data-alt="Avatar of a male professional freelancer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxlTDxqSgCZlKGOYTq71i71qOVvzyi-d1LRuWr5vdFgJ6l2686s-gYRvsyzsmIbcG10I7pQ3cBVbMyE5RIBwosRC6rl4L_k1XzZXyr02tT0bvhzfJHeAn0WY6z9Fz8iJC_sQcCiJuYUMxrAZHHx7BeuYC65gyqJNjenHdXYyucHtux3nr4b9MmeENlAHpA3ewJHtyls-bXYrS6csQPlKL8GR8-_rjuubR7bW5r5MyAoIzmkdVVJcWGOZinN3ylGv80B0e5gN8lz-c"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold font-headline">Onboarding</span>
+<span class="text-xs text-on-surface-variant">Step 1 of 4</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest text-on-surface font-semibold rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+                Save Progress
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 flex-grow min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 bg-surface/80 backdrop-blur-xl z-10">
+<div>
+<h1 class="text-xl font-black text-on-surface font-headline tracking-tight">VaptVaga</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Small circular user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEaI3iCuahx4wk1K8qUU3MhmCZoh_amV3DuKb2CfCxsNeKZUcjO0ktp5KgdEsS-hJqTiZukiJJWobS6wtzWqC5C2v9cLL25sjYpsDRIS_fm3i6x8Tb9gO2YG6RpJG4NUThYnrJee_WNNa58L4DcX5w68mjYwgFRSLLGpSpD5ynEGDpfaid81s_tkC1zRMhrGx8tq4HimmuIfYYNLboa0MiOIEMmFom6pD7Dl22bu0Nps5YQQW3B3rFQ-PizrE6AiqjDbSO9jdQcOs"/>
+</div>
+</div>
+</header>
+<!-- Onboarding Canvas -->
+<div class="max-w-6xl mx-auto px-12 py-12">
+<header class="mb-12">
+<h2 class="text-5xl font-extrabold font-headline text-on-surface tracking-tighter mb-4">Bem-vindo ao VaptVaga para Freelancers!</h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Vamos começar criando seu perfil profissional. Essas informações ajudarão os contratantes a encontrar você para as melhores oportunidades.</p>
+</header>
+<div class="grid grid-cols-12 gap-10 items-start">
+<!-- Left Column: Form -->
+<div class="col-span-8 space-y-8">
+<div class="bg-surface-container-low p-10 rounded-xl space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold font-headline ml-1 text-on-surface-variant">Nome Completo</label>
+<input class="w-full px-6 py-4 bg-surface-container-lowest border-none rounded-full focus:ring-2 focus:ring-primary/20 text-on-surface placeholder-on-surface-variant/50 transition-all font-medium" type="text" value="Ricardo Alvez"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold font-headline ml-1 text-on-surface-variant">Título Profissional</label>
+<input class="w-full px-6 py-4 bg-surface-container-lowest border-none rounded-full focus:ring-2 focus:ring-primary/20 text-on-surface placeholder-on-surface-variant/50 transition-all font-medium" type="text" value="Barman/Garçom"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold font-headline ml-1 text-on-surface-variant">Bio / Sobre mim</label>
+<textarea class="w-full px-6 py-5 bg-surface-container-lowest border-none rounded-lg focus:ring-2 focus:ring-primary/20 text-on-surface placeholder-on-surface-variant/50 transition-all font-medium resize-none" placeholder="Conte um pouco sobre sua experiência..." rows="4">Profissional com mais de 5 anos de experiência no setor de hospitalidade, especializado em coquetelaria clássica e atendimento de alto padrão.</textarea>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold font-headline ml-1 text-on-surface-variant">Estado</label>
+<div class="relative">
+<select class="w-full appearance-none px-6 py-4 bg-surface-container-lowest border-none rounded-full focus:ring-2 focus:ring-primary/20 text-on-surface font-medium cursor-pointer">
+<option selected="">São Paulo</option>
+<option>Rio de Janeiro</option>
+<option>Minas Gerais</option>
+</select>
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold font-headline ml-1 text-on-surface-variant">Cidade</label>
+<input class="w-full px-6 py-4 bg-surface-container-lowest border-none rounded-full focus:ring-2 focus:ring-primary/20 text-on-surface placeholder-on-surface-variant/50 transition-all font-medium" type="text" value="São Paulo"/>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-4">
+<button class="flex items-center gap-2 text-on-surface-variant font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            Voltar
+                        </button>
+<button class="px-12 py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-extrabold text-lg rounded-full shadow-lg hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                            Próximo Passo
+                        </button>
+</div>
+</div>
+<!-- Right Column: Profile Photo -->
+<div class="col-span-4 sticky top-32">
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col items-center text-center">
+<h3 class="text-xl font-bold font-headline mb-6">Foto de Perfil</h3>
+<div class="relative group cursor-pointer mb-6">
+<div class="w-48 h-48 rounded-full bg-surface-container-highest border-4 border-surface-container-lowest overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-on-surface-variant/30 text-6xl" data-icon="add_a_photo">add_a_photo</span>
+<!-- Abstract pattern for the placeholder -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50"></div>
+</div>
+<button class="absolute bottom-2 right-2 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 px-4">
+                            Use uma foto frontal, nítida e com fundo neutro para transmitir profissionalismo.
+                        </p>
+<button class="w-full py-4 border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary/5 rounded-xl transition-all group">
+<span class="text-sm font-bold text-on-surface-variant group-hover:text-primary transition-colors">Alterar Foto</span>
+</button>
+</div>
+<!-- Helpful Tip Bento Card -->
+<div class="mt-6 bg-secondary-container/20 p-6 rounded-xl border border-secondary/10">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white" data-icon="lightbulb">lightbulb</span>
+</div>
+<div>
+<h4 class="font-bold text-on-secondary-fixed-variant mb-1">Dica Pro</h4>
+<p class="text-xs leading-relaxed text-on-secondary-fixed-variant/80">
+                                    Perfis com fotos profissionais e bios detalhadas têm 3x mais chances de serem selecionados para eventos premium.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

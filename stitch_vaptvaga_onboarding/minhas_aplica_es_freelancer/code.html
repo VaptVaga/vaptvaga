@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#004ac6",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-high": "#dee8ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-fixed": "#360f00",
+                        "tertiary": "#943700",
+                        "primary-container": "#2563eb",
+                        "on-surface": "#111c2d",
+                        "secondary": "#006c49",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "surface-container-low": "#f0f3ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-variant": "#d8e3fb",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-tint": "#0053db",
+                        "surface-container": "#e7eeff",
+                        "background": "#f9f9ff",
+                        "on-background": "#111c2d",
+                        "tertiary-container": "#bc4800",
+                        "on-secondary-container": "#00714d",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#263143",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#d8e3fb",
+                        "secondary-container": "#6cf8bb",
+                        "surface-dim": "#cfdaf2",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b4c5ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col p-6 w-72 bg-[#f0f3ff] z-50">
+<div class="mb-10 px-4">
+<span class="text-2xl font-black text-[#111c2d] tracking-tighter font-headline">FreelanceFlow</span>
+</div>
+<div class="flex items-center gap-4 px-4 mb-10">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Freelancer Profile Picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW6MlJBKQMONK5GkfTVt8Tb1FqYYkmGLWGUFcNjDIKhYGONqxPb3D-_ulFKmw8nUh7i0b7kkRNZJNzu791OKVchn4qZxjCf5cMuAdiFghnE4p27O0LqQlO-W9TrzL66uzfr6rfQKkxv8KKQeePomo8KdzyL7X8LPDqK0TFieRNMoS-YbYCJOaVCkD35UhRea30kp1vb9vEvbGVcVyXh2SKcUkFHmjpWYzRBW_qRAzJmqB_AEj6EnpknSBMhiymZjKlg6NcM5i3ru4"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-sm font-bold text-on-surface">Alex Rivera</span>
+<span class="text-xs text-on-surface/60">Verified Freelancer</span>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#111c2d]/60 hover:text-[#111c2d] hover:bg-[#ffffff]/50 transition-all duration-200 rounded-xl font-headline text-sm tracking-tight font-medium group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<!-- ACTIVE TAB: My Applications -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#2563EB] font-bold bg-[#ffffff] rounded-xl shadow-sm font-headline text-sm tracking-tight transition-all duration-200" href="#">
+<span class="material-symbols-outlined">work_history</span>
+                My Applications
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#111c2d]/60 hover:text-[#111c2d] hover:bg-[#ffffff]/50 transition-all duration-200 rounded-xl font-headline text-sm tracking-tight font-medium" href="#">
+<span class="material-symbols-outlined">search</span>
+                Available Jobs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#111c2d]/60 hover:text-[#111c2d] hover:bg-[#ffffff]/50 transition-all duration-200 rounded-xl font-headline text-sm tracking-tight font-medium" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+                Messages
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#111c2d]/60 hover:text-[#111c2d] hover:bg-[#ffffff]/50 transition-all duration-200 rounded-xl font-headline text-sm tracking-tight font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-2">
+<button class="w-full bg-primary-container text-white font-headline font-bold py-4 rounded-xl flex items-center justify-center gap-2 scale-95 active:scale-90 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                Post a Service
+            </button>
+<div class="pt-6 border-t border-outline-variant/10 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-[#111c2d]/60 hover:text-[#111c2d] font-headline text-sm" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#111c2d]/60 hover:text-[#111c2d] font-headline text-sm" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full pl-80 pr-8 z-40 sticky top-0 bg-[#f9f9ff]/80 backdrop-blur-xl h-20">
+<div class="flex-1 max-w-xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 font-body text-sm transition-all" placeholder="Pesquisar vagas, empresas..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-sm font-bold font-headline leading-tight">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant">Belo Horizonte, MG</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border-2 border-white shadow-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYqLpjcRGKRB4QZsxtXvzr91NXyUJVRv9Nj0DW8hWZ89aOKNzLigUz6ydfz97rm-CsVOuPtNaWiuI1JJIWjzAFi0ccRZHY5VsuXllsp37cZ_RdAicFAoCrqD1l5wQ0jmpDQLqA5SEzxqLmS1_lUrAm_H7gR-OIVooLIv0iAxo3Y3UUBodAea4vTst3mkjlauPk37lu2kNLgq9xyFu4EPH5JH8kpUkqhGFvOXR4HXrao-bdl8gIHT4KaG_jWXOmDX7VtUmcJiFitg8"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-80 pr-8 py-8 grid grid-cols-12 gap-8">
+<!-- Center Content: Application List -->
+<section class="col-span-8">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h1 class="text-4xl font-black font-headline tracking-tighter text-on-surface">Minhas Aplicações</h1>
+<p class="text-on-surface-variant mt-1 font-body">Você possui <span class="font-bold text-primary">12 candidaturas</span> ativas no momento.</p>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex gap-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-6 py-2.5 bg-on-surface text-white rounded-full font-headline text-sm font-bold shadow-md">Todas</button>
+<button class="px-6 py-2.5 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full font-headline text-sm font-semibold">Em Análise</button>
+<button class="px-6 py-2.5 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full font-headline text-sm font-semibold">Confirmadas</button>
+<button class="px-6 py-2.5 bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full font-headline text-sm font-semibold">Finalizadas</button>
+</div>
+<!-- Application Cards Stack -->
+<div class="space-y-6">
+<!-- Card 1: CONFIRMED -->
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group relative">
+<div class="w-20 h-20 rounded-xl bg-surface-container flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Garage 99 Burger Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrDzXh_sU3e3vRd2irtb1n_YucexuwdUaaYVjuLZ8uVaYtourhHf6NcAwoz957doEZwfWOS8N4ES2VqJb6KoZlaA0altf8Yuv6X4Da6XkwFhOzCdPJAYA68ID1lXNjq_7yYOshJMSW-ao587uASdErFB0FyZiGGSCWADdUefGxZWH_adYUYgV7v1-YB5qcktxnwF6GJrPcb-4rxAfxdlc8tabXtwvw5G1YDRr8oQ8P1k7yiEpvkxqAMPrP8Jir5a9Th65RK0114FQ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Garçom Freelancer</h3>
+<p class="text-on-surface-variant font-medium">Garage 99 Burger <span class="mx-2 text-outline-variant">•</span> Contagem, MG</p>
+</div>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-black tracking-widest uppercase">CONFIRMADO</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4 py-4 border-y border-outline-variant/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Pagamento Dia</p>
+<p class="font-bold text-on-surface">R$ 150,00</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">schedule</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Data e Horário</p>
+<p class="font-bold text-on-surface">25 Out, 18:00 - 23:30</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-6">
+<button class="flex-1 py-3 bg-surface-container-low text-on-surface font-headline font-bold rounded-xl hover:bg-surface-container-high transition-colors text-sm">Ver Detalhes da Vaga</button>
+<button class="flex-1 py-3 bg-primary text-white font-headline font-bold rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-lg">chat</span>
+                                Abrir Chat
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2: IN REVIEW -->
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col md:flex-row gap-6 transition-all duration-300 border border-transparent hover:border-primary/10">
+<div class="w-20 h-20 rounded-xl bg-surface-container flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Belo Horizonte Event Center Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dXSfe0aytZIXLxp2YgGGjEC1Sh9SuwRCTsWI-543HmYpHbs35ngh20jP9B3JYnPfWZjs65ExxZG4rLeChb8Cn5c9UYJBmrXBpQ3A4X2EhJ-CRTokU9wQPY7GI60OLOQqhBXpxQVSvd4UBfUx3ZkdmdflJvFiNVHvR4GmyJR1mF5tMPA94zuIUB7gCy0LmFIy1qNJXiHIwMHyvyvqA4HkYCOsyqhrIczgtBVnZW9t7JxNpibn-PKSeGAPepyC7gCC4vTxYEeQoUU"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Auxiliar de Cozinha</h3>
+<p class="text-on-surface-variant font-medium">Buffet Celebrate <span class="mx-2 text-outline-variant">•</span> Belo Horizonte, MG</p>
+</div>
+<span class="px-4 py-1.5 bg-surface-container-high text-primary rounded-full text-[10px] font-black tracking-widest uppercase">EM ANÁLISE</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4 py-4 border-y border-outline-variant/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Pagamento Dia</p>
+<p class="font-bold text-on-surface">R$ 120,00</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">schedule</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Data e Horário</p>
+<p class="font-bold text-on-surface">28 Out, 10:00 - 16:00</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-6">
+<button class="w-full py-3 bg-surface-container-low text-on-surface font-headline font-bold rounded-xl hover:bg-surface-container-high transition-colors text-sm">Ver Detalhes da Vaga</button>
+</div>
+</div>
+</div>
+<!-- Card 3: FINISHED -->
+<div class="bg-surface-container-lowest/60 p-6 rounded-xl flex flex-col md:flex-row gap-6 opacity-80 grayscale-[0.3]">
+<div class="w-20 h-20 rounded-xl bg-surface-container flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Bar do Mineiro Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcgcMqveFSkdvn1jThDBpW_A19o0_C398R174AJ27gNugsuZSLcPz22zaTzH7As9yiyG0iSfc1ZppxTTBWCi2sDwV7fzn7wd2F3IRuknZ1vfApsN5WgnLloEyK4MKNBUnpl4vaGNwzYIkYGV4p6ojmMHCAi8W0usLmUTwNTOgyK7Odd9PkmcycxbTxI0jTDfOs_GhgB96ETh7-TL45Wo8DQ9VKpL8Uwq4dmFOzjPlhq2GM89Q4KkPLKKZdp-YjIfHg2grRvaQYctM"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="text-xl font-bold font-headline text-on-surface">Bartender Extra</h3>
+<p class="text-on-surface-variant font-medium">Bar do Mineiro <span class="mx-2 text-outline-variant">•</span> Belo Horizonte, MG</p>
+</div>
+<span class="px-4 py-1.5 bg-outline-variant/20 text-on-surface-variant rounded-full text-[10px] font-black tracking-widest uppercase">FINALIZADO</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4 py-4 border-y border-outline-variant/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-xl">payments</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Pagamento Recebido</p>
+<p class="font-bold text-on-surface">R$ 180,00</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-xl">event_available</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tight">Realizado em</p>
+<p class="font-bold text-on-surface">15 Out, 20:00</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mt-6">
+<button class="w-full py-3 border border-outline-variant/30 text-on-surface font-headline font-bold rounded-xl hover:bg-surface-container-low transition-colors text-sm">Avaliar Empresa</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Upcoming Shifts -->
+<aside class="col-span-4 space-y-8">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold font-headline text-on-surface">Próximos Turnos</h2>
+<span class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+</span>
+</div>
+<div class="space-y-6">
+<!-- Shift 1 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold font-headline uppercase text-primary">Hoje</span>
+<span class="text-2xl font-black font-headline leading-none">25</span>
+</div>
+<div class="flex-1 pb-6 border-b border-outline-variant/20">
+<p class="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Garçom Freelancer</p>
+<p class="text-sm text-on-surface-variant mb-2">Garage 99 Burger</p>
+<div class="flex items-center gap-2 text-xs font-semibold text-primary bg-primary/5 w-fit px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-xs">access_time</span>
+                                18:00 - 23:30
+                            </div>
+</div>
+</div>
+<!-- Shift 2 -->
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold font-headline uppercase text-on-surface-variant">Sáb</span>
+<span class="text-2xl font-black font-headline leading-none text-on-surface-variant">26</span>
+</div>
+<div class="flex-1">
+<p class="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Segurança de Evento</p>
+<p class="text-sm text-on-surface-variant mb-2">Expominas BH</p>
+<div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant bg-surface-container-highest w-fit px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-xs">access_time</span>
+                                22:00 - 04:00
+                            </div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-4 border-2 border-primary/20 text-primary font-headline font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm">
+                    Ver Agenda Completa
+                </button>
+</div>
+<!-- Stats Card -->
+<div class="bg-primary p-8 rounded-xl relative overflow-hidden">
+<!-- Abstract Pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute -right-10 -top-10 w-40 h-40 border-[20px] border-white rounded-full"></div>
+<div class="absolute -left-10 -bottom-10 w-40 h-40 bg-white/40 rounded-full blur-3xl"></div>
+</div>
+<div class="relative z-10">
+<p class="text-primary-fixed font-headline font-bold uppercase tracking-widest text-xs mb-1">Ganhos Previstos</p>
+<p class="text-white text-4xl font-black font-headline mb-4">R$ 840,00</p>
+<div class="flex items-center gap-2 text-secondary-fixed text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +12% em relação a Outubro
+                    </div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Success Toast Notification (Optional Visual Element) -->
+<div class="fixed bottom-8 right-8 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 z-50">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold font-headline">Candidatura Enviada!</p>
+<p class="text-xs text-on-surface-variant/40">Sua aplicação para "Barista" está em análise.</p>
+</div>
+<button class="ml-4 text-outline hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</body></html>

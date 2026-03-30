@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#cfdaf2",
+              "inverse-primary": "#b4c5ff",
+              "on-surface-variant": "#434655",
+              "tertiary": "#943700",
+              "secondary-fixed-dim": "#4edea3",
+              "on-primary-fixed-variant": "#003ea8",
+              "surface-container-low": "#f0f3ff",
+              "error-container": "#ffdad6",
+              "secondary-fixed": "#6ffbbe",
+              "surface-variant": "#d8e3fb",
+              "surface": "#f9f9ff",
+              "secondary-container": "#6cf8bb",
+              "surface-container-high": "#dee8ff",
+              "on-surface": "#111c2d",
+              "on-secondary-fixed-variant": "#005236",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#00714d",
+              "inverse-surface": "#263143",
+              "surface-tint": "#0053db",
+              "inverse-on-surface": "#ecf1ff",
+              "tertiary-fixed": "#ffdbcd",
+              "tertiary-container": "#bc4800",
+              "on-error": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "outline": "#737686",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#ffede6",
+              "on-primary-fixed": "#00174b",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f9f9ff",
+              "background": "#f9f9ff",
+              "on-secondary-fixed": "#002113",
+              "secondary": "#006c49",
+              "on-error-container": "#93000a",
+              "surface-container": "#e7eeff",
+              "outline-variant": "#c3c6d7",
+              "surface-container-highest": "#d8e3fb",
+              "primary": "#004ac6",
+              "error": "#ba1a1a",
+              "primary-container": "#2563eb",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "on-background": "#111c2d",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9f9ff;
+        color: #111c2d;
+      }
+      h1, h2, h3, .font-headline {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low flex flex-col py-6 gap-4 border-r-0 z-40 hidden md:flex">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-extrabold text-on-surface tracking-tight">Garage 99 Burger</h1>
+<p class="text-xs text-on-surface-variant font-medium">Recruitment Portal</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="bg-primary text-white rounded-full mx-2 shadow-lg shadow-blue-500/20 flex items-center px-4 py-3 gap-3 transition-all ease-in-out duration-300 transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-3 gap-3 transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-medium text-sm">Vagas</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-3 gap-3 transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Candidatos</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-3 gap-3 transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-medium text-sm">Mensagens</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-3 gap-3 transition-all ease-in-out duration-300" href="#">
+<span class="material-symbols-outlined">card_membership</span>
+<span class="font-medium text-sm">Assinatura</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-bold text-sm shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                Post New Job
+            </button>
+<div class="mt-6 flex flex-col gap-1 border-t border-outline-variant/10 pt-4">
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-2 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span class="text-xs font-medium">Help Center</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-highest rounded-full flex items-center px-4 py-2 gap-3 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="text-xs font-medium">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen p-4 md:p-8 lg:p-12">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center mb-8 h-12">
+<div class="italic text-xl font-black text-primary">Garage 99 Burger</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</div>
+</header>
+<!-- Header Desk -->
+<header class="hidden md:flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface headline-md">Dashboard Principal</h2>
+<p class="text-on-surface-variant font-medium mt-1">Bem-vindo de volta, time Garage 99.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 bg-secondary-container px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="text-on-secondary-container font-bold text-xs">Plano Beta Gratuito</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-8 h-14 rounded-xl font-bold flex items-center gap-3 transition-all shadow-xl shadow-primary/20 scale-100 active:scale-95">
+<span class="material-symbols-outlined">bolt</span>
+                    + Publicar Urgência
+                </button>
+</div>
+</header>
+<!-- Banner Beta Mobile -->
+<div class="md:hidden bg-secondary-container p-4 rounded-xl mb-6 flex items-start gap-3">
+<span class="material-symbols-outlined text-on-secondary-container">info</span>
+<div>
+<p class="font-bold text-on-secondary-container text-sm leading-tight">Você está no Plano Beta Gratuito.</p>
+<p class="text-on-secondary-container/80 text-xs mt-1">Aproveite as condições especiais de lançamento.</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-2 group hover:bg-primary transition-all duration-300">
+<span class="text-on-surface-variant group-hover:text-primary-fixed text-sm font-bold tracking-widest uppercase">Vagas Ativas</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface group-hover:text-white">3</span>
+<span class="text-xs font-bold text-secondary group-hover:text-secondary-fixed">+1 essa semana</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-2 group hover:bg-primary transition-all duration-300">
+<span class="text-on-surface-variant group-hover:text-primary-fixed text-sm font-bold tracking-widest uppercase">Candidatos Novos</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface group-hover:text-white">12</span>
+<span class="text-xs font-bold text-secondary group-hover:text-secondary-fixed">8 pendentes</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-2 group hover:bg-primary transition-all duration-300">
+<span class="text-on-surface-variant group-hover:text-primary-fixed text-sm font-bold tracking-widest uppercase">Mensagens</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface group-hover:text-white">5</span>
+<span class="text-xs font-bold text-error group-hover:text-error-container">Não lidas</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col gap-2 group hover:bg-primary transition-all duration-300">
+<span class="text-on-surface-variant group-hover:text-primary-fixed text-sm font-bold tracking-widest uppercase">Perfil</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-on-surface group-hover:text-white">142</span>
+<span class="text-xs font-bold text-secondary group-hover:text-secondary-fixed">Visualizações</span>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Recents Vacancies Section -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="flex justify-between items-center px-2">
+<h3 class="text-xl font-bold tracking-tight">Minhas Vagas Recentes</h3>
+<a class="text-primary font-bold text-sm hover:underline" href="#">Ver todas</a>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden p-2">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-2">
+<thead>
+<tr class="text-on-surface-variant text-xs font-bold uppercase tracking-wider">
+<th class="px-6 py-4">Vaga</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Publicação</th>
+<th class="px-6 py-4">Candidatos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer group rounded-xl">
+<td class="px-6 py-5 rounded-l-xl">
+<div class="font-bold text-on-surface">Garçom para Sexta</div>
+<div class="text-xs text-on-surface-variant">Freelance • Noturno</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Ativa</span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">12 Out, 2023</td>
+<td class="px-6 py-5 rounded-r-xl">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="User profile picture male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEsFraoZgzbQABjP1IBVoaYQvRRzgYe0TCD1GO7Fcd4LlkQR8unje4AwmKNQSUsTyETDHm7ubCepfoxc0A7Z7mKgBDKrOJzWCTyVeIihwO3NS-dj8heY-yEetaAzXiID2CUfOmfkHfiUjZYsdhWUkKCNKkxM_UmlHTn-HtOM9PdcVDOARCSKZBmlNAoP94UU8ksqM-EJTh1nnK_XRMnkcykucWh9_sqnLLeWfstXF8Ah-VtRC1LFXQ4aXYUD2uldGg3VwyAMVGxOI"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="User profile picture male wearing glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1aO-4fPGeObAuy7MRVLd4Dr_06XjyuoOL6NMSJFtCR17mefI3kjFWbha0RxRSQ8zeUy2Rh-Yq46Aik4K8yb-w8RgIGKUjsrzh5lB2JiXnS3Y6Tl6gHBghZx0B7kAWvvMqAiAmBXMwV9IZ_lEvRte_ZpN-5WxgjygPHEui38OiuM1o7KNCeWRGouRtEv16HR8_yIznnAJJ2sYyuv8isVbfEm9W5Z9xAXgKwpMu2dO-e31ZHxGRAcVc6CEkAX5O81CgQMfVmPqnDo"/>
+<div class="w-8 h-8 rounded-full bg-surface-container text-[10px] font-bold flex items-center justify-center border-2 border-surface-container-lowest text-on-surface-variant">+6</div>
+</div>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer group rounded-xl">
+<td class="px-6 py-5 rounded-l-xl">
+<div class="font-bold text-on-surface">Chapeiro Master</div>
+<div class="text-xs text-on-surface-variant">CLT • Full-time</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Ativa</span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">10 Out, 2023</td>
+<td class="px-6 py-5 rounded-r-xl">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="User profile picture female" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-UI2B7mapYPStdEff0N90boyZWA1S2fNp3-AejeBNsHF4MYaWm2XV4OGix2FetEYevwMDw0xuYYzVL6ub5Fxbr8lfYjaybWNYEGb5xJV9imQtm66Sm-BaWW9DruCr68PJzcrt8FKBGiMGBfVCFegR7J6DzC6mP1uYBT6BjarotW37WywnUmCVcjjfl49915XHmERj4BosUfGfkKFFE7UiZR0VKkql9tkN-6hVi1nHEsgwNu3nX5bLEXRxWXwibmoxeGqfBUYTyM4"/>
+<div class="w-8 h-8 rounded-full bg-surface-container text-[10px] font-bold flex items-center justify-center border-2 border-surface-container-lowest text-on-surface-variant">+2</div>
+</div>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer group rounded-xl opacity-80">
+<td class="px-6 py-5 rounded-l-xl">
+<div class="font-bold text-on-surface">Auxiliar de Cozinha</div>
+<div class="text-xs text-on-surface-variant">Temporário • Diurno</div>
+</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Finalizada</span>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">05 Out, 2023</td>
+<td class="px-6 py-5 rounded-r-xl">
+<div class="flex -space-x-2">
+<span class="text-xs font-bold text-on-surface-variant">14 Finalistas</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Featured Candidates Sidebar -->
+<div class="flex flex-col gap-6">
+<div class="flex justify-between items-center px-2">
+<h3 class="text-xl font-bold tracking-tight">Candidatos em Destaque</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">more_horiz</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Candidate Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:shadow-xl hover:shadow-on-surface/5 transition-all group">
+<img class="w-14 h-14 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Young professional man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ7I2i503xi9P3uiPo0djq-tMDZvKZhviSv6Jfka-w_XrB_T1HLCgDykUzhIr3B44fjB0BRkoeIomgm6B3Y7FTxGo_595lBjDwGfiMYQAKXLTBrCI749w8PzFXFbqe7FY_RW_5Mrhf-RBVFjaukrn4v_TnvL6cubtY8Lqu4Q5GZhYd8Af1w_t5SqHGuYvue5gcYuH37lNbMohezv8tNj67SIN6yRtPn1bsyMYqr99f2vOb-p77SuewKJ7hYRNJ9QfStsQvdiUtGuo"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-on-surface truncate">Ricardo Alvez</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-black text-on-surface">4.8</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-medium truncate">Vaga: Garçom para Sexta</p>
+<div class="mt-2 flex gap-2">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full">Exp: 3 anos</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full">Disponível</span>
+</div>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:shadow-xl hover:shadow-on-surface/5 transition-all group border-l-4 border-primary">
+<img class="w-14 h-14 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Professional woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9aSougqJEBhAxJb0NVwYnJ6w-PyIgyhrbW5DU1xsi4T4r5pPZGpHl6ma5Hq5Y5QCVpwAyoqTLep2-ozGqN_EbDPEpM3Td0PWQ6471MQFtbEtHONyjtdvY2NSsgHCWO2C18xXdBv5V_mEBH407UcQ0P-FvsbwE9gefn1iQpI68RROFzNR5iQpktgEqIKey-jmp9t0FxGQizsfmTP7MipBSQ5TeDh2jg3dlUBbYtliKzNievh3l2UeS_VoWnfDxPJHHc6urz0XEidQ"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-on-surface truncate">Marina Santos</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-black text-on-surface">4.9</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-medium truncate">Vaga: Chapeiro Master</p>
+<div class="mt-2 flex gap-2">
+<span class="bg-primary-container/20 text-primary text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter italic">Top Perfil</span>
+</div>
+</div>
+</div>
+<!-- Candidate Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:shadow-xl hover:shadow-on-surface/5 transition-all group">
+<img class="w-14 h-14 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Man in casual wear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-lyOCgyNPeHscWxFxwcJg-njSviEResVr9BzkLYQTlU6Vvh3MfL0L8K9FyG8tg3WjjNsHGso8ihbi6tGSvNsKUnoasqKQRO6UVBr5g9sFrGimIR_4yiVXnkrP4h-2_ncsmv1uCBSVb2Uhggzxoc0kN5amhZ0pAg4CoeOO1pYviyHKoqes5KmWbXJE5qM8FEMnE2D2rj_wZRTyrx3uYWtqRUE4l53VYSejVYLNgC3IoORrD4BdN8s4c8eaen4lc5umFLbGOAKlGEg"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-on-surface truncate">João Peixoto</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-black text-on-surface">4.7</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-medium truncate">Vaga: Garçom para Sexta</p>
+<div class="mt-2 flex gap-2 text-primary font-bold text-[10px]">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                Aplicou agora
+                            </div>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-surface-container-high p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-bold text-on-surface mb-2">Dica do Recrutador</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">Perfis com vídeo de apresentação têm 4x mais chances de serem contratados.</p>
+<button class="text-xs font-black text-primary hover:underline">Configurar Filtro de Vídeo</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl text-on-surface opacity-5 transform rotate-12 group-hover:rotate-0 transition-transform duration-700">video_call</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-surface-container-lowest/80 backdrop-blur-xl rounded-full px-6 py-4 flex justify-between items-center shadow-2xl z-50">
+<a class="text-primary flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center" href="#">
+<span class="material-symbols-outlined">work</span>
+</a>
+<div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center -mt-12 shadow-lg shadow-primary/30 border-4 border-surface">
+<span class="material-symbols-outlined text-white">add</span>
+</div>
+<a class="text-on-surface-variant flex flex-col items-center" href="#">
+<span class="material-symbols-outlined">chat</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+</body></html>

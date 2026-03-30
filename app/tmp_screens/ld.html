@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaptVaga - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#4edea3",
+              "on-surface": "#111c2d",
+              "error": "#ba1a1a",
+              "on-secondary-fixed": "#002113",
+              "on-error-container": "#93000a",
+              "outline": "#737686",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#263143",
+              "on-background": "#111c2d",
+              "primary-container": "#2563eb",
+              "on-secondary-fixed-variant": "#005236",
+              "primary-fixed": "#dbe1ff",
+              "surface": "#f9f9ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "inverse-on-surface": "#ecf1ff",
+              "on-tertiary-fixed": "#360f00",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "primary": "#004ac6",
+              "surface-tint": "#0053db",
+              "surface-container-highest": "#d8e3fb",
+              "outline-variant": "#c3c6d7",
+              "secondary-fixed": "#6ffbbe",
+              "inverse-primary": "#b4c5ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "tertiary": "#943700",
+              "surface-container-high": "#dee8ff",
+              "on-tertiary-container": "#ffede6",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-low": "#f0f3ff",
+              "on-primary": "#ffffff",
+              "surface-variant": "#d8e3fb",
+              "secondary-container": "#6cf8bb",
+              "secondary": "#006c49",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-surface-variant": "#434655",
+              "background": "#f9f9ff",
+              "surface-container": "#e7eeff",
+              "on-secondary-container": "#00714d",
+              "tertiary-container": "#bc4800",
+              "on-primary-fixed": "#00174b",
+              "on-tertiary-fixed-variant": "#7d2d00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex items-center justify-center p-6">
+<div class="w-full max-w-[520px]">
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex flex-col items-stretch">
+<!-- Brand Header -->
+<div class="flex flex-col items-center gap-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 primary-gradient rounded-xl flex items-center justify-center text-white">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="font-headline text-2xl font-extrabold tracking-tight text-on-surface">VaptVaga</h1>
+</div>
+<div class="text-center space-y-2">
+<h2 class="font-headline text-3xl font-bold tracking-[-0.02em] text-on-surface">Bem-vindo de volta</h2>
+<p class="text-on-surface-variant text-sm font-medium">Entre na sua conta para gerenciar suas vagas ou freelas.</p>
+</div>
+</div>
+<!-- Social Logins -->
+<!-- Divider -->
+<!-- Form -->
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">E-mail</label>
+<div class="relative">
+<input class="w-full h-14 px-5 rounded-lg bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline/60 text-on-surface" placeholder="nome@exemplo.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant">Senha</label>
+</div>
+<div class="relative">
+<input class="w-full h-14 px-5 rounded-lg bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline/60 text-on-surface" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<a class="text-xs font-bold text-primary hover:underline" href="#">Esqueceu sua senha?</a>
+</div>
+<button class="w-full h-14 primary-gradient text-white font-headline font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                    Entrar
+                </button>
+</form><!-- Divider -->
+<div class="relative my-8 flex items-center justify-center">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant opacity-30"></div>
+</div>
+<span class="relative bg-surface-container-lowest px-4 text-xs font-bold uppercase tracking-widest text-outline">ou continue com</span>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-12 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low transition-colors px-6 text-sm font-semibold text-on-surface">
+<img alt="" class="w-5 h-5" data-alt="Google colorful brand logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVvV5U1YW718NqzaZem-UzxReUimQToyTBvI8oIPPZ3raGgievH5JwpErQDZL871Hlb1ed_pBLgGHYgXQUH-paqFBy2EDqPqoZCxSFA0Ju_5lw0W1CnPe5npdihv5bT07shndDbLlTA06tXgKNdXEQa7ZNlMXNqwdYSQme0bRTOGgnszPr66ygeZZ5xuND08evp2ruF7_6XmK2a_ANPOgCwx45IEZ_sgccsRi2HRti3EnNLkZqAWm6q524hnSsSmItdAm4WWMUp5I"/>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low transition-colors px-6 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="apple">ios</span>
+<span>Apple</span>
+</button>
+</div>
+<!-- Footer -->
+<div class="mt-10 pt-8 border-t border-outline-variant/20 text-center">
+<p class="text-sm font-medium text-on-surface-variant">
+                    Não tem uma conta? 
+                    <a class="text-secondary font-bold hover:underline ml-1" href="#">Cadastre-se agora</a>
+</p>
+</div>
+</div>
+<!-- System Footer -->
+<div class="mt-8 flex justify-center gap-6 text-[10px] font-bold uppercase tracking-widest text-outline">
+<a class="hover:text-on-surface transition-colors" href="#">Privacidade</a>
+<a class="hover:text-on-surface transition-colors" href="#">Termos</a>
+<a class="hover:text-on-surface transition-colors" href="#">Ajuda</a>
+</div>
+</div>
+</body></html>

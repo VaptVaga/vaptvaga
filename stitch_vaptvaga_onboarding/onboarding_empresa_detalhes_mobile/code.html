@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "inverse-primary": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "on-primary-fixed": "#00174b",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              "outline": "#737686",
+              "surface-container-high": "#dee8ff",
+              "error-container": "#ffdad6",
+              "tertiary": "#943700",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tap-highlight-none {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen pb-32">
+<!-- Top Navigation (Onboarding Suppression Logic: Minimal Shell) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl px-6 h-16 flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-start tap-highlight-none active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline text-on-surface font-bold text-sm">Passo 2 de 4</span>
+<div class="flex gap-1 mt-1">
+<div class="h-1 w-4 rounded-full bg-primary"></div>
+<div class="h-1 w-8 rounded-full bg-primary"></div>
+<div class="h-1 w-4 rounded-full bg-outline-variant/30"></div>
+<div class="h-1 w-4 rounded-full bg-outline-variant/30"></div>
+</div>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="pt-24 px-6 max-w-md mx-auto">
+<!-- Header Section -->
+<section class="mb-10">
+<h1 class="font-headline text-headline-md font-bold tracking-tight text-on-surface leading-tight">
+                Detalhes do Negócio
+            </h1>
+<p class="text-on-surface-variant mt-2 leading-relaxed">
+                Conte-nos um pouco mais sobre como sua empresa funciona para encontrarmos os melhores candidatos.
+            </p>
+</section>
+<!-- Form Canvas -->
+<div class="space-y-8">
+<!-- Description Field -->
+<div class="space-y-3">
+<label class="font-headline text-on-surface font-bold text-sm px-1">Breve descrição</label>
+<div class="bg-surface-container-low rounded-xl p-4 transition-all focus-within:bg-surface-container-lowest focus-within:ring-2 focus-within:ring-primary/10">
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-0 text-on-surface placeholder:text-on-surface-variant/50 min-h-[120px] resize-none body-lg" placeholder="Ex: Restaurante focado em culinária artesanal com ambiente familiar..."></textarea>
+</div>
+</div>
+<!-- Establishment Type -->
+<div class="space-y-3">
+<label class="font-headline text-on-surface font-bold text-sm px-1">Tipo de estabelecimento</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border-none rounded-xl h-16 px-4 appearance-none text-on-surface font-medium focus:ring-2 focus:ring-primary/10">
+<option disabled="" selected="" value="">Selecione uma categoria</option>
+<option value="restaurante">Restaurante / Bar</option>
+<option value="varejo">Varejo / Loja</option>
+<option value="logistica">Logística / Entrega</option>
+<option value="servicos">Prestação de Serviços</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Busy Days Chips -->
+<div class="space-y-4">
+<label class="font-headline text-on-surface font-bold text-sm px-1">Dias de maior movimento</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all active:scale-90 tap-highlight-none">Dom</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all active:scale-90 tap-highlight-none">Seg</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all active:scale-90 tap-highlight-none">Ter</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all active:scale-90 tap-highlight-none">Qua</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all active:scale-90 tap-highlight-none">Qui</button>
+<button class="px-5 py-3 rounded-full bg-primary text-on-primary font-bold text-sm shadow-lg shadow-primary/20 transition-all active:scale-90 tap-highlight-none">Sex</button>
+<button class="px-5 py-3 rounded-full bg-primary text-on-primary font-bold text-sm shadow-lg shadow-primary/20 transition-all active:scale-90 tap-highlight-none">Sáb</button>
+</div>
+</div>
+<!-- Peak Hour Bento Card -->
+<div class="space-y-3">
+<label class="font-headline text-on-surface font-bold text-sm px-1">Horário de pico</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/10">
+<span class="text-xs font-bold text-primary uppercase tracking-wider block mb-2">Início</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">schedule</span>
+<input class="border-none p-0 bg-transparent text-lg font-bold text-on-surface focus:ring-0" type="time" value="18:00"/>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/10">
+<span class="text-xs font-bold text-primary uppercase tracking-wider block mb-2">Fim</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">schedule</span>
+<input class="border-none p-0 bg-transparent text-lg font-bold text-on-surface focus:ring-0" type="time" value="22:00"/>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-secondary-container/20 p-4 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary font-bold">lightbulb</span>
+<p class="text-xs text-on-secondary-fixed-variant leading-relaxed">
+                        Saber o horário de pico ajuda nosso algoritmo a sugerir candidatos com disponibilidade compatível.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Floating Logic) -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-gradient-to-t from-surface via-surface to-transparent">
+<div class="max-w-md mx-auto">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-xl font-headline font-bold text-lg shadow-xl shadow-primary/25 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                Próximo passo
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Hidden visual aid for map logic as per instructions -->
+<div class="hidden" data-location="São Paulo, Brasil" style=""></div>
+</body></html>

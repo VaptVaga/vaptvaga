@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaptVaga - Contratação Imediata em Contagem</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary": "#006c49",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container": "#e7eeff",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-background": "#111c2d",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-variant": "#d8e3fb",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737686",
+                        "secondary-container": "#6cf8bb",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-tint": "#0053db",
+                        "on-error": "#ffffff",
+                        "primary": "#004ac6",
+                        "on-surface": "#111c2d",
+                        "tertiary-container": "#bc4800",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#263143",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-high": "#dee8ff",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#943700",
+                        "background": "#f9f9ff",
+                        "surface-dim": "#cfdaf2",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#7d2d00"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; color: #111c2d; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
+        .hero-gradient { background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%); }
+    </style>
+</head>
+<body class="antialiased">
+<!-- 1. Sticky Header -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-sm">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="text-2xl font-black text-on-surface tracking-tight">VaptVaga</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Como Funciona</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Planos</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sou Freelancer</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Entrar</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold hover:opacity-90 hover:scale-[0.98] transition-all">
+                    Publicar Vaga
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- 2. New Hero Section (from SCREEN_2) -->
+<section class="relative pt-16 pb-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<!-- Hero Content -->
+<div class="space-y-10">
+<div class="space-y-6">
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                            Contratação Instantânea
+                        </span>
+<h1 class="text-5xl md:text-[3.5rem] leading-[1.1] font-extrabold tracking-tighter text-on-surface">
+                            O freela perfeito para o seu <span class="text-primary">negócio local.</span> Pra ontem.
+                        </h1>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed font-medium">
+                            Conectamos empresas que precisam de ajuda urgente com os melhores profissionais disponíveis agora. Sem burocracia, apenas agilidade.
+                        </p>
+</div>
+<!-- Search Bar -->
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-[0px_24px_48px_rgba(17,28,45,0.06)] flex items-center gap-2 max-w-xl group focus-within:ring-2 ring-primary/10 transition-all">
+<div class="flex items-center gap-3 px-4 flex-grow">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="w-full border-none focus:ring-0 text-on-surface placeholder:text-outline bg-transparent py-2" placeholder="Ex: Cozinheiro, Limpeza, Garçom..." type="text"/>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] active:scale-95 transition-all">
+                            Buscar
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-4 border-background overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Avatar de um profissional sorridente" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl3XakZGUI6tZrZ4SStdPuTuNt6eM7nMLaRj8w3wtNuH2_-aX_d9nlAoC55OJ5mOtXpzraG7ybc8KBSlZPI5yGOgaA_P6zcQq9QIpsdHU65ZY-NDQSqfqLi8hUYbEi-IYp4pp14iYvrZWXaZQbCdbls5cigNTV19MzP7Bmq1O6qpyfSLqHX98tuvuAPQsRtFMidH2G-yYZeGVpYIawnOoEYfAkZCreFBjQmyj-USRz5ogtS_RZsade8ezmTnmWya1obwwEJkVYLhI"/>
+</div>
+<div class="w-10 h-10 rounded-full border-4 border-background overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Avatar de uma profissional freelancer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtFK93Zx_2eJERsjRE6nhbxoWJ-vzPf0HahGIId4N5JR4afwammagNJ5qnkdSY973Ehoy0tSKgDcx7ca0qDfRCvQw6gMiL3bCoxzazR_VzKqyFe0uUhxZ7SADQEMKKzh8zI-PRsRJJcjF5llw4IDBc8uXI0ULoKR7nDH7LMbBtO6324czqzXgG2-0DN7AWlaV4lPR1lBUo29ZyHYgULhVkBQOigIbaM18FAmVFM_waisG6VuRPEFJMazdwfbG__Wp8PZLAFaixFIE"/>
+</div>
+<div class="w-10 h-10 rounded-full border-4 border-background overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Avatar de um cozinheiro profissional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0SrXdFLI9Rxpdi6MljCjf7lpajN_Yqc9AF0_zI_ODlpRFQrGU8A_wc4mioGhJ6TJqahdjoJH-pEX726hNWOmnEKAxDuc0dd34FEEOimVioQqS5yO-2vdDJ_ujIVoZahcgI7H3Qa9uhA0IQ7UmTIwNLJp-rroV4Di5DZm-74lw0era4sRRVr_aw8K8RuqmT95Wp9yRK_g-bE8ecikMPbhmEpn134WlSVNvSeF-hWhkAGXMuCmbgsyyk3Dkc_0HoOBlH4a3iqZr418"/>
+</div>
+</div>
+<p class="text-sm font-semibold text-on-surface-variant">
+<span class="text-primary font-bold">+2.400</span> profissionais ativos na sua região
+                        </p>
+</div>
+</div>
+<!-- Hero Visual (Bento Grid Style) -->
+<div class="relative grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" data-alt="Cozinheiro profissional preparando prato em cozinha moderna" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXh0Q16vYsMP3L8QdGMw02bUs_A7FRS0TXdMnUVZegKBe065UpxaXbQrLVp0i7152-RPvoqk8ESJa_Hlz-p9eFE-sR8PajUftzCN_aDzRBW7LWKRIFI_p3SbryxdPB550lPbsWRXscz2fBc5TR_1_ZtqOevI7Tb2neGBSqthaL-Xr1O7DO7DJR-kjHoIiRTwGA1x37m139-fQxSzYNKyy7Jjv6gm7Y_DEFyozxzrDczO0H4z968Kejl0vCZiYvB9tL7-qOKJhiLJg"/>
+</div>
+<div class="aspect-square rounded-xl bg-secondary-container p-8 flex flex-col justify-end">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container mb-4" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="text-on-secondary-container font-headline font-bold text-xl leading-tight">Perfis verificados e avaliados</p>
+</div>
+</div>
+<div class="space-y-4 pt-12">
+<div class="aspect-square rounded-xl bg-primary-container p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-primary text-3xl">timer</span>
+<span class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold text-white tracking-widest">REAL TIME</span>
+</div>
+<p class="text-on-primary font-headline font-bold text-xl leading-tight">Combine em menos de 15 minutos</p>
+</div>
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" data-alt="Equipe de limpeza profissional em ambiente corporativo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFKcZreBkdm1PpCanB2-TTdkx2IAE2QPNyOQfGcIAYG05bC4Qu9WYwuZby_nDiVprgHxIFKRHdnRYlsvEQ327bSnISb3WgDcOhXtCBY6feW6oZRhVzKRwMmmEl5engvSoEvDchbrE6f1HGuWnG97S1VUAELWgSTl8vOWVVPGu-8axEKZcTDiNngucv1lKB3M6akCLBl-i8JrwK-9A5VjV1b4QiXBP87d8IH2Q84LzreqxYz_D-HCCeu3WGPFP-pBsKD4ayP6SJnNc"/>
+</div>
+</div>
+<!-- Abstract Tonal Background Element -->
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-surface-container rounded-full blur-[100px] opacity-50"></div>
+</div>
+</div>
+</section>
+<!-- 3. Social Proof Strip -->
+<section class="py-12 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-6">
+<p class="text-center text-outline-variant font-bold text-sm uppercase tracking-widest mb-10">Empresas que já resolvem escalas conosco</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-2 font-black text-2xl text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span> Garage 99 Burger
+                    </div>
+<div class="flex items-center gap-2 font-black text-2xl text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="local_pizza">local_pizza</span> Cantina Nonna Bella
+                    </div>
+<div class="flex items-center gap-2 font-black text-2xl text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="store">store</span> Empório Central
+                    </div>
+</div>
+</div>
+</section>
+<!-- 4. Core Value Prop -->
+<section class="py-24 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl font-extrabold text-on-surface mb-4">Resolva sua escala de trabalho <br/>sem burocracia.</h2>
+<p class="text-on-surface-variant max-w-xl text-lg">Esqueça os grupos de WhatsApp lotados. Tenha controle total da sua operação com segurança.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-10 rounded-xl bg-surface-container-low shadow-sm hover:shadow-xl transition-shadow group">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="schedule">schedule</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Velocidade Vapt</h3>
+<p class="text-on-surface-variant">Publique em 30 segundos e receba as primeiras candidaturas em menos de 10 minutos.</p>
+</div>
+<div class="p-10 rounded-xl bg-surface-container-low shadow-sm hover:shadow-xl transition-shadow group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/30 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Filtro de Confiança</h3>
+<p class="text-on-surface-variant">Freelancers avaliados pela comunidade local. Sem surpresas no dia do evento.</p>
+</div>
+<div class="p-10 rounded-xl bg-surface-container-low shadow-sm hover:shadow-xl transition-shadow group">
+<div class="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="payments">payments</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Pagamento Direto</h3>
+<p class="text-on-surface-variant">Combine valores e pague diretamente ao profissional. Sem taxas ocultas na transação.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Categories Grid -->
+<section class="py-24 px-6 bg-surface-container">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl font-extrabold text-center mb-16">O que você precisa hoje?</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<span class="font-bold">Restaurantes</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<span class="font-bold">Varejo</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="cleaning_services">cleaning_services</span>
+</div>
+<span class="font-bold">Limpeza</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="celebration">celebration</span>
+</div>
+<span class="font-bold">Eventos</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="moped">moped</span>
+</div>
+<span class="font-bold">Entregas</span>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl text-center hover:bg-primary-container hover:text-white transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</div>
+<span class="font-bold">Outros</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Happening Now Live Feed -->
+<section class="py-24 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Left: Urgent Jobs -->
+<div>
+<div class="flex items-center gap-3 mb-10">
+<div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+<h2 class="text-2xl font-bold">Vagas Urgentes (Contagem)</h2>
+</div>
+<div class="space-y-4">
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between group cursor-pointer hover:bg-primary-container/5 transition-colors">
+<div class="flex items-center gap-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Bistro entrance in Contagem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC3_ibz2jvexLEgHXMdC0Jrt2zygXc6eRjPYeeEX9mJDZJl41o_0fwPIHUIJOeKuM3AeBcFmadROySf9lfnUt5PQsKZVWGjKxkT3ywv8Rxp8YguC6N-eQRe2fx7D8U1nhGvpaESEb6GK2bHknHQrlHboDsGRimHStjzxP_pl-u5AiufzmRTwMIjp68nGWsiILVQXDvY4IhS5mXf2gM5elg5qx1jU1fyZFCPg6ajPlkBdJKPrGbimkGy6AH2gkwTeeDCVBaW2DRYvc"/>
+<div>
+<h4 class="font-bold text-lg">Ajudante de Cozinha</h4>
+<p class="text-sm text-on-surface-variant">Bairro Eldorado • Hoje, 18:00</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-primary">R$ 120,00</p>
+<span class="text-xs font-bold text-secondary uppercase">3 Vagas</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between group cursor-pointer hover:bg-primary-container/5 transition-colors">
+<div class="flex items-center gap-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Modern coffee shop counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfJQnJomPCG-p5I4YfDxbv1vIt2cq4mvWUtY6kjCZXANovN4f_5y1SVfSgYkaChBvaT1jzqDhUYRywmAXip_rDSuYrbiGjHZaQNW5kMvrHYkjVi5Ofj3c2rexgkG2jBV0DtritJ2So3w4w5mifnq2zowxJWKr-zE7vXduTaoDRlXKfVHstfYdKOzzIb0qyNkuuBMnI9eCJWXwn5_U1Vu-u--J17aeUU_tpjnrMHA_Vt3LFw7LSh-JZg4rUFlGtwRvlrl4GNnFea4"/>
+<div>
+<h4 class="font-bold text-lg">Barista / Atendimento</h4>
+<p class="text-sm text-on-surface-variant">Bairro Cabral • Amanhã</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-primary">R$ 90,00</p>
+<span class="text-xs font-bold text-on-surface-variant uppercase">Final de Semana</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between group cursor-pointer hover:bg-primary-container/5 transition-colors">
+<div class="flex items-center gap-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Clothing store interior display" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo7rkV8yWzoY4PucksGoKAJrdDunV859ABBf7nXF4kgTB8b_4LDRUvjhn245DFdpizBMtAijaC4nqUYnsjRrX-xUAbAr0419E0-WuXZfa38E1JaOiWhtH_Wi4KkdHWEUB1WwNqTCsQfWRKJFOw0xsRdinF7e0NUpDBHXwd2RWBDaB0gMgQjfD89SwLzTHFvtUnm7lhaK4XdCF8DKlIkXe29HZiz5mv_dRiyrkrvOkI1_SENw1aYqgG-uZfSOsODUGQerV-2iNfiJw"/>
+<div>
+<h4 class="font-bold text-lg">Promotor de Vendas</h4>
+<p class="text-sm text-on-surface-variant">Shopping Itaú • 20/Out</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-primary">R$ 150,00</p>
+<span class="text-xs font-bold text-secondary uppercase">Destaque</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Featured Freelancers -->
+<div>
+<h2 class="text-2xl font-bold mb-10">Freelancers Disponíveis</h2>
+<div class="space-y-4">
+<div class="p-6 bg-surface-container-high rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-6">
+<img class="w-14 h-14 rounded-full object-cover ring-2 ring-primary" data-alt="Portrait of a professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRH3xvDZBH3VFaOZKPGz7OnGeZAGmKGRJOLCRV2XKTCVRUCQrQwu8rLMkR3CNHs_reEAQecJTy4rhvIso3uUb2cPNwTDm9jVVSk3mjclTj5dje2gAhjt37rhb09001RqJzVd-OmCljOnUhJ71q7EVzgr_9QbDSq-RikTgp_4tU6RWH6II3bAa8yzOp_voNArnmGd9R_KZjAfGTMwMATC0YNw_ws5S_fBDvli8XN7aPr1dv12xILQKegGs_HVK0GxQ5R2PxLD7sVRo"/>
+<div>
+<h4 class="font-bold text-lg flex items-center gap-2">Ricardo Silva <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span></h4>
+<p class="text-sm text-on-surface-variant">Garçom • 4.9 ★ (22 trampos)</p>
+</div>
+</div>
+<button class="bg-surface-container-lowest px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">lock</span> WhatsApp
+                            </button>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-6">
+<img class="w-14 h-14 rounded-full object-cover ring-2 ring-primary" data-alt="Portrait of a professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwiWkCastEUOi9tGKWhkep6_rhufLoVANm5r_CaafGKi8ZIroCEhQYr3MMum-IM9KG-S5pE2dtm79dBwOrG0gMwCs10JaG0vShe9E439FKa21630FbZQMYypEz2F1e_1XJ8ObBOBTI98OF4zaVzVFcasCBSD6tip0_fg4BmR-dntyj3BRoX2R5dBwKs35bGzgRqCqKkdN4LKeW4Bgn_Q23PZYihRglkYUdmZQmkEPw8jAgVypI0fK1sig8ctfFZ4xeojUxvXmbheo"/>
+<div>
+<h4 class="font-bold text-lg flex items-center gap-2">Ana Clara <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span></h4>
+<p class="text-sm text-on-surface-variant">Recepcionista • 5.0 ★ (8 trampos)</p>
+</div>
+</div>
+<button class="bg-surface-container-lowest px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">lock</span> WhatsApp
+                            </button>
+</div>
+</div>
+<p class="mt-6 text-center text-sm text-on-surface-variant italic">Assine o Plano Beta para desbloquear contatos diretos.</p>
+</div>
+</div>
+</section>
+<!-- 7. How It Works -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-extrabold text-on-surface mb-4">Como o VaptVaga funciona?</h2>
+<p class="text-on-surface-variant">Transparência total do anúncio ao pagamento.</p>
+</div>
+<div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="hidden md:block absolute top-1/4 left-[30%] right-[30%] h-0.5 border-t-2 border-dashed border-outline-variant"></div>
+<div class="relative z-10">
+<div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-lg shadow-primary/30">1</div>
+<h4 class="text-xl font-bold mb-4">Crie Perfil</h4>
+<p class="text-on-surface-variant px-6">Empresa ou Freela, cadastre-se em segundos com suas necessidades ou habilidades.</p>
+</div>
+<div class="relative z-10">
+<div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-lg shadow-primary/30">2</div>
+<h4 class="text-xl font-bold mb-4">Dê o Match</h4>
+<p class="text-on-surface-variant px-6">O sistema cruza horários e localização. Escolha o melhor perfil para o dia.</p>
+</div>
+<div class="relative z-10">
+<div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-black shadow-lg shadow-primary/30">3</div>
+<h4 class="text-xl font-bold mb-4">Combine e Trampe</h4>
+<p class="text-on-surface-variant px-6">Tire dúvidas no chat, confirme a presença e pronto. Operação garantida.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Subscription Pricing -->
+<section class="py-24 px-6">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-4xl font-extrabold text-center mb-16">Planos para a fase Beta</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Freelancer -->
+<div class="p-12 rounded-xl bg-surface-container-low border border-outline-variant/10 flex flex-col h-full">
+<div class="mb-8">
+<span class="text-primary font-bold uppercase tracking-widest text-xs">Para profissionais</span>
+<h3 class="text-3xl font-black mt-2">Freelancer Free</h3>
+<div class="mt-4 flex items-baseline gap-1">
+<span class="text-4xl font-black">R$ 0</span>
+<span class="text-on-surface-variant">/mês</span>
+</div>
+</div>
+<ul class="space-y-4 mb-12 flex-1">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Perfil verificado gratuito
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Notificações de vagas urgentes
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Recebimento integral (sem taxas)
+                            </li>
+</ul>
+<button class="w-full py-4 rounded-full bg-on-surface text-surface-lowest font-bold hover:scale-[0.98] transition-transform">Cadastrar Currículo</button>
+</div>
+<!-- Empresa -->
+<div class="p-12 rounded-xl bg-primary text-on-primary flex flex-col h-full relative overflow-hidden shadow-2xl shadow-primary/20">
+<div class="absolute top-8 right-8 bg-white/20 px-3 py-1 rounded-full text-xs font-bold">RECOMENDADO</div>
+<div class="mb-8">
+<span class="text-primary-fixed-dim font-bold uppercase tracking-widest text-xs">Para contratantes</span>
+<h3 class="text-3xl font-black mt-2">Empresa Beta</h3>
+<div class="mt-4 flex items-baseline gap-1">
+<span class="text-4xl font-black">R$ 49,90</span>
+<span class="text-primary-fixed-dim">/mês</span>
+</div>
+</div>
+<ul class="space-y-4 mb-12 flex-1">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="check_circle">check_circle</span> Publicações ilimitadas
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="check_circle">check_circle</span> Desbloqueio de WhatsApp dos Freelas
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="check_circle">check_circle</span> Suporte Prioritário em Contagem
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="check_circle">check_circle</span> Dashboard de Escala Mensal
+                            </li>
+</ul>
+<button class="w-full py-4 rounded-full bg-white text-primary font-bold hover:scale-[0.98] transition-transform">Contratar Plano Beta</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. Final CTA -->
+<section class="px-6 py-20">
+<div class="max-w-7xl mx-auto hero-gradient rounded-xl p-12 md:p-24 text-center text-on-primary relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">Chega de dor de cabeça <br/>com falta de staff.</h2>
+<p class="text-xl mb-12 text-on-primary/80 max-w-2xl mx-auto">Junte-se a centenas de empresas e profissionais de Contagem que já usam o VaptVaga para girar a operação.</p>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-white text-primary px-10 py-5 rounded-full font-black text-lg hover:bg-surface-container-lowest transition-colors">Quero Contratar</button>
+<button class="bg-primary-container border-2 border-white/30 text-white px-10 py-5 rounded-full font-black text-lg hover:bg-white/10 transition-colors">Quero Candidatar</button>
+</div>
+</div>
+<!-- Texture Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+</section>
+</main>
+<!-- 10. Footer -->
+<footer class="bg-surface-container-low full-width rounded-t-[3rem] mt-20">
+<div class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-black text-on-surface mb-6">VaptVaga</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">A primeira plataforma de matching imediato focada 100% no mercado de Contagem, MG.</p>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Plataforma</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Como Funciona</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Vagas Disponíveis</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Para Empresas</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Planos</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Suporte</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Suporte</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contato</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Legal</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Termos de Uso</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidade</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sitemap</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-on-surface-variant">© 2024 VaptVaga. Feito em Contagem, MG.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">smart_display</span></a>
+</div>
+</div>
+</footer>
+</body></html>

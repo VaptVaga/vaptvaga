@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revisão Final - VaptVaga</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#6cf8bb",
+              "primary": "#004ac6",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary": "#ffffff",
+              "secondary": "#006c49",
+              "inverse-primary": "#b4c5ff",
+              "surface-tint": "#0053db",
+              "on-surface-variant": "#434655",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#d8e3fb",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "secondary-fixed": "#6ffbbe",
+              "surface": "#f9f9ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "inverse-surface": "#263143",
+              "primary-container": "#2563eb",
+              "on-tertiary-fixed": "#360f00",
+              "on-primary-container": "#eeefff",
+              "on-primary-fixed": "#00174b",
+              "tertiary-container": "#bc4800",
+              "on-error-container": "#93000a",
+              "background": "#f9f9ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              "outline": "#737686",
+              "surface-container-high": "#dee8ff",
+              "error-container": "#ffdad6",
+              "tertiary": "#943700",
+              "surface-container": "#e7eeff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#dbe1ff",
+              "on-surface": "#111c2d",
+              "surface-variant": "#d8e3fb",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-primary": "#ffffff",
+              "on-background": "#111c2d",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-fixed-dim": "#4edea3",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "inverse-on-surface": "#ecf1ff",
+              "surface-container-low": "#f0f3ff",
+              "on-secondary-container": "#00714d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-transition-bg-shift-no-borders {
+        background: rgba(249, 249, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .tap-highlight-none {
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-surface/80 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant tap-highlight-none active:scale-95 duration-200" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline text-headline-md font-bold tracking-tight text-on-surface">Revisão Final</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-md font-bold text-primary px-3 py-1 bg-primary/10 rounded-full">Etapa 3/3</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- Progress Header -->
+<div class="mb-8">
+<h2 class="font-headline text-headline-md font-bold leading-tight mb-2">Tudo pronto!</h2>
+<p class="text-on-surface-variant">Confira os detalhes da sua vaga antes de publicar.</p>
+</div>
+<!-- Bento Review Grid -->
+<div class="space-y-4">
+<!-- Job Main Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_24px_48px_rgba(17,28,45,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container/30 p-3 rounded-xl">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<button class="text-primary font-bold text-label-md uppercase tracking-wider">Editar</button>
+</div>
+<h3 class="font-headline text-xl font-bold mb-1">Garçom Freelancer</h3>
+<p class="text-on-surface-variant text-sm">Restaurante Bellini • São Paulo, SP</p>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="bg-surface-container-low px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+                        8 Horas
+                    </span>
+<span class="bg-surface-container-low px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                        Urgente
+                    </span>
+</div>
+</div>
+<!-- Schedule & Location Asymmetric Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Date Card -->
+<div class="bg-surface-container-low rounded-xl p-5">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="calendar_today">calendar_today</span>
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Data</p>
+<p class="font-bold text-on-surface">Sábado, 24 Ago</p>
+</div>
+<!-- Time Card -->
+<div class="bg-surface-container-low rounded-xl p-5">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="schedule">schedule</span>
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Horário</p>
+<p class="font-bold text-on-surface">18:00 - 02:00</p>
+</div>
+</div>
+<!-- Location Card -->
+<div class="bg-surface-container-low rounded-xl p-5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg bg-white overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Mapa detalhado da localização do restaurante em São Paulo" data-location="Sao Paulo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLue0yCxf9YjWldU2_7-j8Nezjur2i2nkWDDVIwTW-3Yki-elgA4D4xvM0ApCYVG9TEi9DRHVeoLPEv1FEcuDq2ETCcS-DStb1ITP_Cv__91vuwq9gfhuKYaMd2bCH7DnUBJG2ZIWPjCJL-nqEAgpFV1OfA156meNjVUx8D9d4dXxN3E01TmcBqNcMQ-X6eXF3i4IZtfR1fZl1NCtVfnqd1AVq_eItMZFEa_7HqVZR6D-WpQNMrb4r0pHT61_vUl7pft5idchaH04"/>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Localização</p>
+<p class="font-bold text-on-surface truncate max-w-[180px]">Rua Amauri, 244 - Itaim Bibi</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Rate Highlight Card -->
+<div class="bg-primary text-on-primary rounded-xl p-6 flex justify-between items-center relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-primary-fixed/70 mb-1">Valor da Diária</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-medium">R$</span>
+<span class="text-4xl font-black font-headline tracking-tighter">180,00</span>
+</div>
+</div>
+<div class="relative z-10 bg-white/20 backdrop-blur-md p-3 rounded-full">
+<span class="material-symbols-outlined text-2xl" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-4 -bottom-4 w-32 h-32 bg-primary-container rounded-full opacity-50 blur-2xl"></div>
+</div>
+<!-- Requirements Card -->
+<div class="bg-surface-container-low rounded-xl p-5">
+<h4 class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-3">Requisitos e Instruções</h4>
+<ul class="space-y-3">
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span>
+                        Traje: Calça preta social e camisa branca
+                    </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span>
+                        Experiência mínima de 1 ano em buffet
+                    </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span>
+                        Chegar com 15 minutos de antecedência
+                    </li>
+</ul>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 w-full z-50 h-32 flex flex-col items-center justify-center px-6 pb-6 bg-white/80 backdrop-blur-2xl rounded-t-[3rem] shadow-[0px_-8px_24px_rgba(17,28,45,0.04)]">
+<button class="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
+            Publicar Vaga Agora
+        </button>
+<p class="mt-3 text-xs text-on-surface-variant/60 font-medium">Ao publicar, você concorda com nossos termos de uso.</p>
+</div>
+</body></html>

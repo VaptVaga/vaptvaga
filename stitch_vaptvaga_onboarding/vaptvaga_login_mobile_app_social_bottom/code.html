@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VaptVaga - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#4edea3",
+              "on-surface": "#111c2d",
+              "error": "#ba1a1a",
+              "on-secondary-fixed": "#002113",
+              "on-error-container": "#93000a",
+              "outline": "#737686",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#eeefff",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#263143",
+              "on-background": "#111c2d",
+              "primary-container": "#2563eb",
+              "on-secondary-fixed-variant": "#005236",
+              "primary-fixed": "#dbe1ff",
+              "surface": "#f9f9ff",
+              "primary-fixed-dim": "#b4c5ff",
+              "inverse-on-surface": "#ecf1ff",
+              "on-tertiary-fixed": "#360f00",
+              "surface-bright": "#f9f9ff",
+              "surface-dim": "#cfdaf2",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "primary": "#004ac6",
+              "surface-tint": "#0053db",
+              "surface-container-highest": "#d8e3fb",
+              "outline-variant": "#c3c6d7",
+              "secondary-fixed": "#6ffbbe",
+              "inverse-primary": "#b4c5ff",
+              "tertiary-fixed-dim": "#ffb596",
+              "tertiary": "#943700",
+              "surface-container-high": "#dee8ff",
+              "on-tertiary-container": "#ffede6",
+              "tertiary-fixed": "#ffdbcd",
+              "surface-container-low": "#f0f3ff",
+              "on-primary": "#ffffff",
+              "surface-variant": "#d8e3fb",
+              "secondary-container": "#6cf8bb",
+              "secondary": "#006c49",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-surface-variant": "#434655",
+              "background": "#f9f9ff",
+              "surface-container": "#e7eeff",
+              "on-secondary-container": "#00714d",
+              "tertiary-container": "#bc4800",
+              "on-primary-fixed": "#00174b",
+              "on-tertiary-fixed-variant": "#7d2d00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+      }
+      /* Prevent elastic scrolling on iOS */
+      html, body {
+        position: fixed;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+      .scroll-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+      }
+    </style>
+</head>
+<body class="bg-surface-container-lowest font-body text-on-surface antialiased">
+<div class="scroll-container flex flex-col min-h-screen">
+<!-- Native-feel Header -->
+<header class="sticky top-0 z-10 bg-surface-container-lowest/80 backdrop-blur-md px-4 py-4 flex items-center justify-between">
+<button aria-label="Voltar" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back_ios_new</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 primary-gradient rounded-lg flex items-center justify-center text-white">
+<svg class="w-4 h-4" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="font-headline font-extrabold text-lg tracking-tight">VaptVaga</span>
+</div>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="flex-grow px-6 pt-4 pb-12">
+<!-- Welcome Text -->
+<div class="mb-6">
+<h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">Bem-vindo de volta</h1>
+<p class="text-on-surface-variant text-sm font-medium leading-relaxed">Entre na sua conta para gerenciar suas vagas ou freelas.</p>
+</div>
+<!-- Social Logins -->
+<!-- Divider -->
+<!-- Form -->
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">E-mail</label>
+<input class="w-full h-14 px-5 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all placeholder:text-outline/60 text-on-surface" placeholder="nome@exemplo.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Senha</label>
+<div class="relative">
+<input class="w-full h-14 px-5 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all placeholder:text-outline/60 text-on-surface" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-end">
+<a class="text-xs font-bold text-primary hover:underline py-2" href="#">Esqueceu sua senha?</a>
+</div>
+<button class="w-full h-14 primary-gradient text-white font-headline font-bold rounded-full shadow-lg shadow-primary/25 active:scale-[0.97] transition-all mt-4" type="submit">
+                    Entrar
+                </button>
+</form>
+<!-- Bottom Action -->
+<div class="mt-10 text-center">
+<p class="text-sm font-medium text-on-surface-variant">
+                    Não tem uma conta? 
+                    <a class="text-secondary font-bold hover:underline ml-1" href="#">Cadastre-se</a>
+</p>
+</div><!-- Divider -->
+<div class="relative my-8 flex items-center justify-center">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant opacity-30"></div>
+</div>
+<span class="relative bg-surface-container-lowest px-4 text-[10px] font-bold uppercase tracking-widest text-outline">ou entre com</span>
+</div>
+<!-- Social Logins -->
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-center gap-3 h-14 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low active:scale-[0.98] transition-all px-6 text-sm font-semibold text-on-surface">
+<img alt="" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVvV5U1YW718NqzaZem-UzxReUimQToyTBvI8oIPPZ3raGgievH5JwpErQDZL871Hlb1ed_pBLgGHYgXQUH-paqFBy2EDqPqoZCxSFA0Ju_5lw0W1CnPe5npdihv5bT07shndDbLlTA06tXgKNdXEQa7ZNlMXNqwdYSQme0bRTOGgnszPr66ygeZZ5xuND08evp2ruF7_6XmK2a_ANPOgCwx45IEZ_sgccsRi2HRti3EnNLkZqAWm6q524hnSsSmItdAm4WWMUp5I"/>
+<span>Continuar com Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 h-14 rounded-full border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low active:scale-[0.98] transition-all px-6 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[24px]">apple</span>
+<span>Continuar com Apple</span>
+</button>
+</div>
+</main>
+<!-- System Links -->
+<footer class="pb-10 px-6">
+<div class="flex justify-center gap-8 text-[10px] font-bold uppercase tracking-widest text-outline">
+<a class="hover:text-on-surface" href="#">Privacidade</a>
+<a class="hover:text-on-surface" href="#">Termos</a>
+<a class="hover:text-on-surface" href="#">Ajuda</a>
+</div>
+</footer>
+</div>
+</body></html>

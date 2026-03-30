@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c3c6d7",
+              "primary-fixed": "#dbe1ff",
+              "on-secondary-fixed-variant": "#005236",
+              "tertiary-fixed": "#ffdbcd",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-fixed": "#360f00",
+              "primary-fixed-dim": "#b4c5ff",
+              "primary-container": "#2563eb",
+              "secondary-fixed": "#6ffbbe",
+              "surface-container": "#e7eeff",
+              "surface-bright": "#f9f9ff",
+              "surface": "#f9f9ff",
+              "surface-container-high": "#dee8ff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#00174b",
+              "surface-dim": "#cfdaf2",
+              "inverse-surface": "#263143",
+              "inverse-on-surface": "#ecf1ff",
+              "error": "#ba1a1a",
+              "outline": "#737686",
+              "on-primary": "#ffffff",
+              "secondary": "#006c49",
+              "tertiary-fixed-dim": "#ffb596",
+              "on-surface": "#111c2d",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b4c5ff",
+              "on-error": "#ffffff",
+              "tertiary-container": "#bc4800",
+              "surface-tint": "#0053db",
+              "surface-container-low": "#f0f3ff",
+              "surface-container-highest": "#d8e3fb",
+              "background": "#f9f9ff",
+              "tertiary": "#943700",
+              "on-primary-container": "#eeefff",
+              "on-secondary-container": "#00714d",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-tertiary-container": "#ffede6",
+              "on-tertiary": "#ffffff",
+              "on-background": "#111c2d",
+              "on-surface-variant": "#434655",
+              "surface-variant": "#d8e3fb",
+              "primary": "#004ac6",
+              "on-secondary-fixed": "#002113",
+              "secondary-fixed-dim": "#4edea3"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-shift { background-color: #f0f3ff; }
+      .tonal-transition-no-border { background-color: #f0f3ff; transition: background-color 0.3s ease; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-6 h-20 w-full">
+<div class="text-2xl font-black text-primary tracking-tighter font-headline">VaptVaga</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" data-icon="help">help</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Professional user portrait for avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd8FWq1kLkQXo1OFrGqve7TumBwmLpF1F-TLY--mudIFetbLTt7PGF9OfCbI57ZnMmcF1vIedumyi9e5EhbHy4wytq8On-aQnNA3bH_IAy0pwlsndlkfsmnKRE-IaTwo1GGftlbFJG4_VyLyCjtlsks3S1xZ88WOetaSNiloiI9P8zuySNooX4to1Zrlht0NEZXDYnhioORQKyWZ47tbiVv9DGcbEgL9SUOLnbeLQrj__yyQ51glQqF-qDKN7abPnOiruPKXWL9qE"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar from JSON -->
+<aside class="fixed left-0 top-20 bottom-0 flex flex-col p-6 space-y-4 h-full w-80 border-r-0 bg-surface-container-low transition-transform duration-200 ease-in-out">
+<div class="mb-8 px-4">
+<h2 class="font-headline font-bold text-xl text-on-surface">Onboarding</h2>
+<p class="text-sm font-semibold text-on-surface-variant opacity-70">Step 3 of 4</p>
+</div>
+<nav class="space-y-2">
+<!-- Identity - Inactive -->
+<div class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest rounded-full transition-all font-headline text-sm font-semibold cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person_check">person_check</span>
+<span>Identity</span>
+</div>
+<!-- Business Details - Inactive -->
+<div class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest rounded-full transition-all font-headline text-sm font-semibold cursor-pointer">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Business Details</span>
+</div>
+<!-- Payment - Active -->
+<div class="bg-primary text-white rounded-full px-4 py-3 flex items-center gap-3 font-headline text-sm font-semibold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span>Payment</span>
+</div>
+<!-- Documents - Inactive -->
+<div class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-highest rounded-full transition-all font-headline text-sm font-semibold cursor-pointer">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Documents</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-80 pt-32 pb-24 px-12 min-h-screen">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface mb-2">Escolha seu Plano e Pagamento</h1>
+<p class="text-on-surface-variant text-lg">Aproveite o acesso Beta com condições especiais.</p>
+</div>
+<!-- Pricing Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<!-- Free Plan -->
+<div class="bg-surface-container-lowest p-10 rounded-xl flex flex-col h-full ring-1 ring-outline-variant/10">
+<div class="mb-8">
+<span class="text-sm font-bold text-on-surface-variant/60 tracking-widest uppercase">PLANO INICIAL</span>
+<h3 class="font-headline text-2xl font-bold mt-2">Empresa Grátis</h3>
+<div class="flex items-baseline mt-4">
+<span class="text-4xl font-extrabold text-on-surface tracking-tighter">R$ 0</span>
+<span class="text-on-surface-variant ml-2">/mês</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>1 postagem mensal</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Ver 1 candidato por post</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full font-bold bg-surface-container-highest text-on-surface-variant cursor-not-allowed transition-all" disabled="">
+                        Plano Atual
+                    </button>
+</div>
+<!-- Premium Plan -->
+<div class="bg-surface-container-lowest p-10 rounded-xl flex flex-col h-full relative ring-4 ring-primary-container/20">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-1.5 rounded-full text-xs font-black tracking-widest uppercase shadow-xl shadow-primary/30">
+                        Recomendado
+                    </div>
+<div class="mb-8">
+<span class="text-sm font-bold text-primary tracking-widest uppercase">BETA EXCLUSIVE</span>
+<h3 class="font-headline text-2xl font-bold mt-2">Empresa Premium (Beta)</h3>
+<div class="flex items-baseline mt-4">
+<span class="text-4xl font-extrabold text-on-surface tracking-tighter">R$ 49,90</span>
+<span class="text-on-surface-variant ml-2">/mês</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">Postagens ilimitadas</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">WhatsApp liberado para todos</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">Suporte prioritário 24/7</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-full font-bold bg-gradient-to-br from-primary to-primary-container text-white shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                        Selecionar Premium
+                    </button>
+</div>
+</div>
+<!-- Payment Methods Section -->
+<div class="bg-surface-container-low p-12 rounded-xl">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+                    Método de Pagamento
+                </h2>
+<div class="flex gap-4 mb-10">
+<button class="flex-1 py-4 px-6 rounded-xl bg-surface-container-lowest border-2 border-primary flex items-center justify-center gap-3 font-bold text-on-surface">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+                        Cartão de Crédito
+                    </button>
+<button class="flex-1 py-4 px-6 rounded-xl bg-surface-container-lowest border-2 border-transparent hover:border-outline-variant/30 flex items-center justify-center gap-3 font-bold text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="qr_code_2">qr_code_2</span>
+                        PIX
+                    </button>
+</div>
+<!-- Credit Card Form -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="md:col-span-2">
+<label class="block text-sm font-bold text-on-surface-variant mb-2 ml-4">Número do Cartão</label>
+<input class="w-full h-16 px-6 bg-surface-container-lowest rounded-full border-none ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 outline-none transition-all font-medium" placeholder="0000 0000 0000 0000" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-bold text-on-surface-variant mb-2 ml-4">Nome Impresso no Cartão</label>
+<input class="w-full h-16 px-6 bg-surface-container-lowest rounded-full border-none ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 outline-none transition-all font-medium uppercase" placeholder="EX: JOÃO S SILVA" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-on-surface-variant mb-2 ml-4">Validade (MM/AA)</label>
+<input class="w-full h-16 px-6 bg-surface-container-lowest rounded-full border-none ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 outline-none transition-all font-medium text-center" placeholder="MM/AA" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-on-surface-variant mb-2 ml-4">CVV</label>
+<input class="w-full h-16 px-6 bg-surface-container-lowest rounded-full border-none ring-1 ring-outline-variant/20 focus:ring-2 focus:ring-primary/40 outline-none transition-all font-medium text-center" placeholder="123" type="text"/>
+</div>
+</div>
+</div>
+<!-- Footer Action Bar -->
+<div class="mt-16 flex justify-end">
+<button class="px-12 py-5 bg-primary text-white rounded-full font-headline font-extrabold text-lg shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-3">
+                    Continuar para Documentos
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>
