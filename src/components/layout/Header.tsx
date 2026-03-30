@@ -11,9 +11,9 @@ export const Header: React.FC<HeaderProps> = ({ showLoginBtn = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Como Funciona', path: '/' },
+    { label: 'Início', path: '/' },
     { label: 'Planos', path: '#planos', isAnchor: true },
-    { label: 'Sou Freelancer', path: '/onboarding/role?type=freelancer' },
+    { label: 'Para Empresas', path: '/empresas' },
   ];
 
   const handleNavClick = (e: React.MouseEvent, path: string, isAnchor?: boolean) => {

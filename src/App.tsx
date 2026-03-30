@@ -10,7 +10,8 @@ import { ScrollToTop } from './components/common/ScrollToTop';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 
 // Pages
-import { Landing } from './pages/Landing.tsx';
+import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
+import { CompanyLanding } from './pages/CompanyLanding.tsx';
 import { Login } from './pages/Login.tsx';
 import { OnboardingRole } from './pages/OnboardingRole.tsx';
 // import { FreelancerDashboard } from './pages/FreelancerDashboard';
@@ -32,7 +33,7 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  const showLoginBtn = location.pathname === '/';
+  const showLoginBtn = location.pathname === '/' || location.pathname === '/empresas';
 
   return (
     <>
@@ -41,7 +42,8 @@ const AnimatedRoutes = () => {
       <main className="w-full pb-32 lg:pb-0">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageWrapper><Landing /></PageWrapper>} />
+            <Route path="/" element={<PageWrapper><FreelancerLanding /></PageWrapper>} />
+            <Route path="/empresas" element={<PageWrapper><CompanyLanding /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
             

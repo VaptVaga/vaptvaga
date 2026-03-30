@@ -1,10 +1,10 @@
 import React from 'react';
-import { LandingMobile } from './LandingMobile.tsx';
-import { LandingDesktop } from './LandingDesktop.tsx';
+import { CompanyLandingMobile } from './CompanyLandingMobile.tsx';
+import { CompanyLandingDesktop } from './CompanyLandingDesktop.tsx';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const Landing: React.FC = () => {
+export const CompanyLanding: React.FC = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
@@ -26,12 +26,12 @@ export const Landing: React.FC = () => {
     <div className="w-full">
       {/* Mobile View */}
       <div className="block lg:hidden w-full">
-        <LandingMobile />
+        <CompanyLandingMobile />
       </div>
       
       {/* Desktop View */}
       <div className="hidden lg:block w-full">
-        <LandingDesktop />
+        <CompanyLandingDesktop />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Zap, Building2, UserCircle2, ArrowRight } from 'lucide-react';
 
-export const LandingDesktop: React.FC = () => {
+export const CompanyLandingDesktop: React.FC = () => {
   const [role, setRole] = useState<'freelancer' | 'company'>('company');
 
   const plans = {
