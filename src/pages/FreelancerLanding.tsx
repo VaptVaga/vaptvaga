@@ -32,23 +32,23 @@ export const FreelancerLanding: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="relative hidden lg:block">
-            <div className="aspect-square bg-gradient-to-br from-primary to-primary-container rounded-xl rotate-3 absolute inset-0 opacity-10"></div>
+          <div className="relative block mt-12 lg:mt-0">
+            <div className="lg:aspect-square h-64 lg:h-auto bg-gradient-to-br from-primary to-primary-container rounded-xl rotate-3 absolute inset-0 opacity-10"></div>
             <img
               alt="Freelancer sorridente trabalhando"
-              className="rounded-xl shadow-2xl relative z-10 w-full h-full object-cover"
+              className="rounded-xl shadow-2xl relative z-10 w-full h-64 lg:h-full lg:aspect-square object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Ytq4-sq1ClyAmmFUJECuC51BdSpT_wdUksiWs3rwWwyedQfmlZnNnuRpVsybwBJPtxWwh42qvuWxyhs2-Twy_FeR5qfKBx7fpM9SQJUGrNF4YbUT_AO6FJSRplTVWvBFf44AEfqOFtfsNuY68IR_ED5HsA__EX_ePOH001h5pOA_LU1ddyYkCneJd7XPf1qkXWalqg1BlRKWwhFwEslWcWennMnompdvhqVYOxQRc66NhSD0zyG5DvoqwXKZLdUBSrOR1dxTgNA"
             />
             {/* Floating Badge */}
-            <div className="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-lg shadow-2xl z-20 flex items-center gap-4">
-              <div className="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center">
-                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:-left-6 lg:bottom-12 bg-surface-container-lowest p-4 lg:p-6 rounded-lg shadow-2xl z-20 flex sm:flex items-center gap-4 whitespace-nowrap">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-secondary-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="material-symbols-outlined text-secondary text-xl lg:text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                   verified
                 </span>
               </div>
               <div>
-                <p className="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Pagamento</p>
-                <p className="text-lg font-bold text-on-surface">Direto na conta</p>
+                <p className="text-[10px] lg:text-xs text-on-surface-variant font-bold uppercase tracking-widest">Pagamento</p>
+                <p className="text-base lg:text-lg font-bold text-on-surface">Direto na conta</p>
               </div>
             </div>
           </div>
@@ -116,24 +116,32 @@ export const FreelancerLanding: React.FC = () => {
       </section>
 
       {/* NEW COMPANY SECTION */}
-      <section className="py-16 px-6 bg-surface-container-low border-y border-outline-variant/10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider uppercase bg-primary-container text-on-primary-container rounded-full">Para Estabelecimentos</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+      <section className="py-16 lg:py-24 px-6 bg-surface-container-low border-y border-outline-variant/10 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 lg:items-center gap-12 lg:gap-16">
+          <div className="flex flex-col items-start text-left order-2 lg:order-1">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider uppercase bg-primary-container text-on-primary-container rounded-full">Para Estabelecimentos</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
               Precisa de freelancers para sua operação?
             </h2>
-            <p className="text-on-surface-variant text-lg max-w-2xl">
-              Evite dores de cabeça com falta de equipe. Publique suas vagas em minutos e conecte-se com os melhores profissionais da cidade prontos para o turno.
+            <p className="text-on-surface-variant text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+              Evite dores de cabeça com falta de equipe. Publique suas vagas em minutos e conecte-se com profissionais qualificados da cidade, prontos para o turno. Pra ontem.
             </p>
+            <Link
+              to="/empresas"
+              className="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-2 w-full justify-center md:w-auto"
+            >
+              Quero contratar freelas
+              <span className="material-symbols-outlined text-lg">arrow_forward</span>
+            </Link>
           </div>
-          <Link
-            to="/empresas"
-            className="flex-shrink-0 bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-2"
-          >
-            Quero contratar freelas
-            <span className="material-symbols-outlined text-lg">arrow_forward</span>
-          </Link>
+          <div className="relative order-1 lg:order-2">
+            <div className="absolute inset-0 bg-primary/20 transform translate-x-4 translate-y-4 rounded-3xl -z-10 blur-xl"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=60" 
+              alt="Dono de estabelecimento satisfeito" 
+              className="rounded-3xl shadow-2xl w-full h-64 lg:h-[500px] object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -146,26 +154,46 @@ export const FreelancerLanding: React.FC = () => {
               <p className="text-on-surface-variant max-w-md">Explore os setores que mais contratam freelancers qualificados na nossa plataforma hoje.</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-24">
-            <div className="flex flex-col items-center p-8 bg-surface-container-low rounded-xl hover:bg-primary hover:text-white transition-all cursor-pointer group">
-              <span className="material-symbols-outlined text-4xl mb-4 group-hover:scale-110 transition-transform">restaurant</span>
-              <span className="font-bold">Restaurante</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 mb-24">
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60" alt="Restaurante" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
+                <span className="material-symbols-outlined text-3xl">restaurant</span>
+                <span className="font-bold text-xl">Restaurante</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center p-8 bg-surface-container-low rounded-xl hover:bg-primary hover:text-white transition-all cursor-pointer group">
-              <span className="material-symbols-outlined text-4xl mb-4 group-hover:scale-110 transition-transform">shopping_cart</span>
-              <span className="font-bold">Varejo</span>
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md">
+              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=60" alt="Varejo" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
+                <span className="material-symbols-outlined text-3xl">shopping_cart</span>
+                <span className="font-bold text-xl">Varejo</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center p-8 bg-surface-container-low rounded-xl hover:bg-primary hover:text-white transition-all cursor-pointer group">
-              <span className="material-symbols-outlined text-4xl mb-4 group-hover:scale-110 transition-transform">cleaning_services</span>
-              <span className="font-bold">Limpeza</span>
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&auto=format&fit=crop&q=60" alt="Limpeza" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
+                <span className="material-symbols-outlined text-3xl">cleaning_services</span>
+                <span className="font-bold text-xl">Limpeza</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center p-8 bg-surface-container-low rounded-xl hover:bg-primary hover:text-white transition-all cursor-pointer group">
-              <span className="material-symbols-outlined text-4xl mb-4 group-hover:scale-110 transition-transform">local_activity</span>
-              <span className="font-bold">Eventos</span>
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md">
+              <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&auto=format&fit=crop&q=60" alt="Eventos" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
+                <span className="material-symbols-outlined text-3xl">local_activity</span>
+                <span className="font-bold text-xl">Eventos</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center p-8 bg-surface-container-low rounded-xl hover:bg-primary hover:text-white transition-all cursor-pointer group">
-              <span className="material-symbols-outlined text-4xl mb-4 group-hover:scale-110 transition-transform">delivery_dining</span>
-              <span className="font-bold">Entrega</span>
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md col-span-2 md:col-span-1 lg:col-span-1">
+              <img src="https://images.unsplash.com/photo-1617347454431-f49cd826d331?w=500&auto=format&fit=crop&q=60" alt="Entrega" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
+                <span className="material-symbols-outlined text-3xl">delivery_dining</span>
+                <span className="font-bold text-xl">Entrega</span>
+              </div>
             </div>
           </div>
 
