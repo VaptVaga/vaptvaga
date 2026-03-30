@@ -117,9 +117,16 @@ export const LandingDesktop: React.FC = () => {
               <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                 <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" alt="Cozinheiro profissional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXh0Q16vYsMP3L8QdGMw02bUs_A7FRS0TXdMnUVZegKBe065UpxaXbQrLVp0i7152-RPvoqk8ESJa_Hlz-p9eFE-sR8PajUftzCN_aDzRBW7LWKRIFI_p3SbryxdPB550lPbsWRXscz2fBc5TR_1_ZtqOevI7Tb2neGBSqthaL-Xr1O7DO7DJR-kjHoIiRTwGA1x37m139-fQxSzYNKyy7Jjv6gm7Y_DEFyozxzrDczO0H4z968Kejl0vCZiYvB9tL7-qOKJhiLJg"/>
               </div>
-              <div className="aspect-square rounded-xl bg-secondary-container p-8 flex flex-col justify-end">
-                <span className="material-symbols-outlined text-4xl text-on-secondary-container mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                <p className="text-on-secondary-container font-headline font-bold text-xl leading-tight">Perfis verificados e avaliados</p>
+              <div className="aspect-square rounded-xl overflow-hidden relative group">
+                <img 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                  alt="Profissional verificado" 
+                  src="/verified_profiles_card_1774839592699.png"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+                  <span className="material-symbols-outlined text-4xl text-white mb-4" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                  <p className="text-white font-headline font-bold text-xl leading-tight">Perfis verificados e avaliados</p>
+                </div>
               </div>
             </div>
             <div className="space-y-4 pt-12">

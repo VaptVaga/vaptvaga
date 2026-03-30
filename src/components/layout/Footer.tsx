@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-surface-container-low w-full rounded-t-[3rem] mt-20 hidden lg:block">
+    <footer className="bg-surface-container-low w-full rounded-t-[3rem] mt-20">
       <div className="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
           <div className="text-xl font-black text-on-surface mb-6">VaptVaga</div>

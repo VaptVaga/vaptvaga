@@ -95,7 +95,7 @@ export const LandingMobile: React.FC = () => {
           </div>
           <div className="min-w-[280px] bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-4">
             <div className="h-40 w-full rounded-lg bg-surface-container overflow-hidden">
-              <img className="w-full h-full object-cover" alt="Two professionals shaking hands in agreement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxQ4CEQhxdCq4W59Ab1DuXdlPM-veLWVfRwpC9z7Wp27vAr0RhE8QEqhp4LyE6EsTS_JQ6jr3mJd-q6xTQ8QtiF-9pK2LvCQLPbRrySj4IH5EtH7ddixR0aQeXlm0D1Vp0AUqU7AoDyyfvhYvR1I-oqeHwac1aVWCzSFXO_Bpz6-V5nAqx7cCR6qcZsoXn3j5VmOJWpjP37e04V_O8FSjUCED6sRkjnDZMwZrZzUQr3zKj2ql9fEOR7Tc_CbPmO3uwTYd7nH5Fg1g"/>
+              <img className="w-full h-full object-cover" alt="Perfis verificados" src="/verified_profiles_card_1774839592699.png"/>
             </div>
             <div className="flex items-center gap-2 text-secondary font-bold text-sm">
               <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
