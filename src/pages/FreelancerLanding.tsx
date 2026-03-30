@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PricingSection } from '../components/sections/PricingSection';
 
 export const FreelancerLanding: React.FC = () => {
   return (
@@ -279,67 +280,7 @@ export const FreelancerLanding: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-surface-container-low" id="planos">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Escolha o seu plano</h2>
-            <p className="text-on-surface-variant">Comece de graça e turbine seus ganhos conforme cresce.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-surface-container-lowest p-10 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col">
-              <h3 className="text-xl font-bold mb-2">Plano Free</h3>
-              <div className="mb-8">
-                <span className="text-4xl font-black">R$ 0</span>
-              </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-secondary">check_circle</span>
-                  Até 2 candidaturas por mês
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-secondary">check_circle</span>
-                  Perfil Verificado
-                </li>
-                <li className="flex items-center gap-3 text-outline">
-                  <span className="material-symbols-outlined">cancel</span>
-                  Alertas de vagas prioritárias
-                </li>
-              </ul>
-              <Link to="/onboarding/role?type=freelancer" className="w-full text-center py-4 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all">Começar Agora</Link>
-            </div>
-            {/* Pro Plan */}
-            <div className="bg-primary p-10 rounded-xl text-on-primary shadow-2xl shadow-primary/20 flex flex-col relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-secondary text-on-secondary px-4 py-1 rounded-full text-xs font-bold uppercase">Mais Popular</div>
-              <h3 className="text-xl font-bold mb-2">Vapt PRO</h3>
-              <div className="mb-8 flex items-baseline gap-1">
-                <span className="text-4xl font-black">R$ 14,90</span>
-                <span className="text-on-primary/60">/mês</span>
-              </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Candidaturas ilimitadas
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Selo PRO no perfil
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Alertas instantâneos de vagas
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Suporte prioritário
-                </li>
-              </ul>
-              <Link to="/onboarding/role?type=freelancer" className="w-full text-center py-4 bg-surface-container-lowest text-primary rounded-full font-bold hover:opacity-90 transition-all">Assinar Vapt PRO</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PricingSection initialRole="freelancer" />
 
       {/* Final CTA Banner */}
       <section className="py-24 px-6">

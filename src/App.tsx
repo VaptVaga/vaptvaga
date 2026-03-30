@@ -8,6 +8,7 @@ import { BottomNav } from './components/layout/BottomNav';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { useAuth } from './contexts/AuthContext';
 
 // Pages
 import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
@@ -33,13 +34,15 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const { user } = useAuth();
   const showLoginBtn = location.pathname === '/' || location.pathname === '/empresas';
+  const isLandingPage = location.pathname === '/' || location.pathname === '/empresas';
 
   return (
     <>
       <Header showLoginBtn={showLoginBtn} />
       
-      <main className="w-full pb-32 lg:pb-0">
+      <main className={`w-full ${isLandingPage ? 'pb-0' : 'pb-32 lg:pb-0'}`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageWrapper><FreelancerLanding /></PageWrapper>} />
@@ -77,7 +80,7 @@ const AnimatedRoutes = () => {
         </AnimatePresence>
       </main>
 
-      <BottomNav />
+      {user && <BottomNav />}
       <Footer />
     </>
   );
