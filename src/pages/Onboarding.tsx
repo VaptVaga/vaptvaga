@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, Plus, Check, Fingerprint, Building2, CreditCard, FileText, QrCode, HelpCircle, Bell, Upload } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useAuth } from '@/lib/authContext';
 import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
@@ -79,8 +78,8 @@ const Onboarding = () => {
     if (!skillRankings?.length) return defaultSkillOptions;
     const rankMap = new Map(skillRankings.map((r) => [r.skill.toLowerCase(), r.cnt]));
     return [...defaultSkillOptions].sort((a, b) => {
-      const ra = rankMap.get(a.toLowerCase()) ?? 0;
-      const rb = rankMap.get(b.toLowerCase()) ?? 0;
+      const ra: number = rankMap.get(a.toLowerCase()) ?? 0;
+      const rb: number = rankMap.get(b.toLowerCase()) ?? 0;
       return rb - ra;
     });
   }, [skillRankings]);

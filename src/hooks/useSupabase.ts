@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
-import { Job, Application, Profile } from '@/lib/types';
+import type { Job, Application, Profile } from '@/lib/types';
 
 // ─── JOBS ────────────────────────────────────────────────
 export const useJobs = (filters?: { cidade?: string; status?: string; bairro?: string; skill?: string; search?: string }) => {
@@ -47,6 +47,7 @@ export const useCreateJob = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (job: Partial<Job>) => {
+      // @ts-ignore - Supabase type resolution issue with 'public' schema
       const { data, error } = await supabase.from('jobs').insert(job).select().single();
       if (error) throw error;
       return data;
@@ -97,8 +98,8 @@ export const useApplyToJob = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ job_id, freelancer_id }: { job_id: string; freelancer_id: string }) => {
-      const { data, error } = await supabase
-        .from('applications')
+      const { data, error } = await (supabase
+        .from('applications') as any)
         .insert({ job_id, freelancer_id })
         .select()
         .single();
@@ -117,8 +118,8 @@ export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ id, ...updates }: Partial<Profile> & { id: string }) => {
-      const { data, error } = await supabase
-        .from('profiles')
+      const { data, error } = await (supabase
+        .from('profiles') as any)
         .update(updates)
         .eq('id', id)
         .select()

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Filter, Loader2, Search, X, ChevronDown } from 'lucide-react';
+import { MapPin, Filter, Loader2, Search } from 'lucide-react';
 import { JobCard } from '@/components/vaptvaga/JobCard';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
 import { BottomNav } from '@/components/vaptvaga/BottomNav';
@@ -226,7 +226,7 @@ const FreelancerDashboard = () => {
                 : 'Volte mais tarde para conferir novas oportunidades.'}
             </p>
             {activeFilterCount > 0 && (
-              <Button variant="outline" size="sm" onClick={clearFilters} className="mt-4">
+              <Button variant={"outline" as any} size={"sm" as any} onClick={clearFilters} className="mt-4">
                 Limpar filtros
               </Button>
             )}

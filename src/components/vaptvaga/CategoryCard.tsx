@@ -1,4 +1,5 @@
-import { UtensilsCrossed, ShoppingBag, Sparkles, PartyPopper, LucideIcon } from 'lucide-react';
+import { UtensilsCrossed, ShoppingBag, Sparkles, PartyPopper } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const iconMap: Record<string, LucideIcon> = {

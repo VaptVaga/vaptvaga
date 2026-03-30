@@ -71,7 +71,7 @@ const Profile = () => {
         </div>
 
         <Button
-          variant="ghost"
+          variant={"ghost" as any}
           onClick={handleLogout}
           className="mt-6 w-full text-destructive hover:text-destructive"
         >

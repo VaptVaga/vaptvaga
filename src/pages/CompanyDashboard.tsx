@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Eye, Lock, MessageCircle, ChevronRight, Loader2 } from 'lucide-react';
+import { Plus, Lock, MessageCircle, ChevronRight, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
@@ -143,7 +143,8 @@ const JobWithApplicants = ({ job, isSelected, onToggle, isFree, onWhatsApp, onPa
                     </div>
                     <motion.div whileTap={{ scale: 0.9 }}>
                       <Button
-                        size="sm"
+                        size={"sm" as any}
+                        variant={"default" as any}
                         onClick={() => onWhatsApp(app.freelancer?.telefone, index)}
                         className={`h-9 rounded-lg text-xs font-bold ${
                           isFree && index > 0

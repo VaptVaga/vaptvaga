@@ -5,7 +5,7 @@ import FreelancerDashboard from './FreelancerDashboard';
 import CompanyDashboard from './CompanyDashboard';
 
 const Dashboard = () => {
-  const { user, authUser, isAuthenticated, isLoading } = useAuth();
+  const { user, authUser, isLoading } = useAuth();
 
   if (isLoading) {
     return (

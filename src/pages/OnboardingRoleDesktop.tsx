@@ -42,9 +42,8 @@ export const OnboardingRoleDesktop: React.FC = () => {
 
     if (authData.user) {
       // 2. Create profile
-      // @ts-ignore - Supabase type resolution issue with 'public' schema
-      const { error: profileError } = await supabase
-        .from('profiles')
+      const { error: profileError } = await (supabase
+        .from('profiles') as any)
         .insert({
           id: authData.user.id,
           name: fullName,

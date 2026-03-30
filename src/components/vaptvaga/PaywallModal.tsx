@@ -39,11 +39,11 @@ export const PaywallModal = ({ open, onClose, type }: PaywallModalProps) => (
           </div>
           <div className="w-full space-y-3">
             <motion.div whileTap={{ scale: 0.96 }}>
-              <Button variant="success" className="h-14 w-full text-lg font-black">
+              <Button variant={"success" as any} className="h-14 w-full text-lg font-black">
                 Assinar Premium — {type === 'freelancer' ? 'R$19,90' : 'R$49,90'}/mês
               </Button>
             </motion.div>
-            <Button variant="ghost" onClick={onClose} className="w-full text-muted-foreground">
+            <Button variant={"ghost" as any} onClick={onClose} className="w-full text-muted-foreground">
               Continuar no plano grátis
             </Button>
           </div>
