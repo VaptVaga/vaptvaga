@@ -1,42 +1,93 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { AuthProvider } from "@/lib/authContext";
-import Landing from "./pages/Landing";
-import Auth from "./pages/Auth";
-import Onboarding from "./pages/Onboarding";
-import Dashboard from "./pages/Dashboard";
-import PostJob from "./pages/PostJob";
-import Pricing from "./pages/Pricing";
-import Profile from "./pages/Profile";
-import NotFound from "./pages/NotFound";
+import React from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const queryClient = new QueryClient();
+// Layout
+import { Header } from './components/layout/Header';
+import { BottomNav } from './components/layout/BottomNav';
+import { Footer } from './components/layout/Footer';
+import { ScrollToTop } from './components/common/ScrollToTop';
+import { ProtectedRoute } from './components/common/ProtectedRoute';
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/jobs" element={<Dashboard />} />
-            <Route path="/post-job" element={<PostJob />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
+// Pages
+import { Landing } from './pages/Landing.tsx';
+import { Login } from './pages/Login.tsx';
+import { OnboardingRole } from './pages/OnboardingRole.tsx';
+// import { FreelancerDashboard } from './pages/FreelancerDashboard';
+// import { CompanyDashboard } from './pages/CompanyDashboard';
+
+const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="w-full h-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  const showLoginBtn = location.pathname === '/';
+
+  return (
+    <>
+      <Header showLoginBtn={showLoginBtn} />
+      
+      <main className="w-full pb-32 lg:pb-0">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageWrapper><Landing /></PageWrapper>} />
+            <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+            <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
+            
+            <Route 
+              path="/freelancer/dashboard" 
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <PageWrapper><div className="p-6">Freelancer Dashboard</div></PageWrapper>
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/company/dashboard" 
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <PageWrapper><div className="p-6">Company Dashboard</div></PageWrapper>
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/chat" 
+              element={
+                <ProtectedRoute>
+                  <PageWrapper><div className="p-6">Chat Interface</div></PageWrapper>
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
+        </AnimatePresence>
+      </main>
+
+      <BottomNav />
+      <Footer />
+    </>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </BrowserRouter>
+  );
+}
 
 export default App;

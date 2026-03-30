@@ -1,103 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 233 100% 98%;
-    --foreground: 216 47% 12%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 216 47% 12%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 216 47% 12%;
-
-    --primary: 216 100% 39%;
-    --primary-foreground: 0 0% 100%;
-    --primary-container: 225 85% 53%;
-
-    --secondary: 157 100% 21%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-container: 156 90% 70%;
-
-    --tertiary: 20 100% 29%;
-    --tertiary-foreground: 0 0% 100%;
-
-    --muted: 228 100% 94%;
-    --muted-foreground: 233 12% 36%;
-
-    --accent: 228 100% 94%;
-    --accent-foreground: 216 47% 12%;
-
-    --destructive: 0 73% 41%;
-    --destructive-foreground: 0 0% 100%;
-
-    --success: 157 100% 21%;
-    --success-foreground: 0 0% 100%;
-
-    --border: 230 24% 83%;
-    --input: 230 24% 83%;
-    --ring: 216 100% 39%;
-
-    --radius: 1rem;
-
-    /* Surface system */
-    --surface: 233 100% 98%;
-    --surface-container-lowest: 0 0% 100%;
-    --surface-container-low: 228 100% 97%;
-    --surface-container: 224 100% 93%;
-    --surface-container-high: 222 100% 89%;
-    --surface-container-highest: 221 83% 91%;
-    --surface-variant: 221 83% 91%;
-
-    /* On-surface */
-    --on-surface: 216 47% 12%;
-    --on-surface-variant: 233 12% 30%;
-
-    /* Outline */
-    --outline: 233 7% 49%;
-    --outline-variant: 230 24% 81%;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.02em;
-    font-weight: 700;
+    @apply bg-surface font-body text-on-surface antialiased;
+    min-height: max(884px, 100dvh);
   }
 }
 
-@layer utilities {
-  .tabular-nums {
-    font-variant-numeric: tabular-nums;
-  }
-  .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-container)) 100%);
-  }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
 }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
