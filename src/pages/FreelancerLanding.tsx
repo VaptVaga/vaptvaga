@@ -188,7 +188,7 @@ export const FreelancerLanding: React.FC = () => {
               </div>
             </div>
             <div className="relative overflow-hidden rounded-2xl aspect-[4/5] group cursor-pointer shadow-md col-span-2 md:col-span-1 lg:col-span-1">
-              <img src="https://images.unsplash.com/photo-1617347454431-f49cd826d331?w=500&auto=format&fit=crop&q=60" alt="Entrega" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=500&auto=format&fit=crop&q=60" alt="Entrega" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white flex flex-col gap-2">
                 <span className="material-symbols-outlined text-3xl">delivery_dining</span>
