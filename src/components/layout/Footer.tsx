@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Instagram, Youtube } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+  const isCompanyPage = location.pathname === '/empresas';
+
   const handleNavClick = (e: React.MouseEvent, path: string, isAnchor?: boolean) => {
     if (isAnchor) {
       e.preventDefault();
@@ -35,7 +38,14 @@ export const Footer: React.FC = () => {
           <ul className="space-y-4 text-sm">
             <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Como Funciona</Link></li>
             <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Vagas Disponíveis</Link></li>
-            <li><Link to="/empresas" className="text-on-surface-variant hover:text-primary transition-colors">Para Empresas</Link></li>
+            <li>
+              <Link 
+                to={isCompanyPage ? "/" : "/empresas"} 
+                className="text-on-surface-variant hover:text-primary transition-colors"
+              >
+                {isCompanyPage ? "Para Freelancers" : "Para Empresas"}
+              </Link>
+            </li>
             <li>
               <Link 
                 to="/#planos" 

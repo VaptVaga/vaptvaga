@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight } from 'lucide-react';
 
@@ -9,11 +9,16 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ showLoginBtn = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isCompanyPage = location.pathname === '/empresas';
 
   const navLinks = [
     { label: 'Início', path: '/' },
     { label: 'Planos', path: '#planos', isAnchor: true },
-    { label: 'Para Empresas', path: '/empresas' },
+    { 
+      label: isCompanyPage ? 'Para Freelancers' : 'Para Empresas', 
+      path: isCompanyPage ? '/' : '/empresas' 
+    },
   ];
 
   const handleNavClick = (e: React.MouseEvent, path: string, isAnchor?: boolean) => {
