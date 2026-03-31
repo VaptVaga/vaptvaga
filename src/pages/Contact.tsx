@@ -228,7 +228,7 @@ export const Contact: React.FC = () => {
 
                 <div className="flex justify-center my-4 overflow-hidden">
                   <ReCAPTCHA
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6Lf23Z8sAAAAAPAc1Dk9rru0fW0iJFG668elSUMU'}
                     onChange={(token) => {
                       setCaptchaToken(token);
                       if (submitError) setSubmitError(null);
