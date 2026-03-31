@@ -12,10 +12,10 @@ export const FreelancerLanding: React.FC = () => {
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider uppercase bg-secondary-container text-secondary rounded-full">
               Disponível em todo o Brasil
             </span>
-            <h1 className="text-5xl lg:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight mb-6">
               Fature alto no seu tempo livre.
             </h1>
-            <p className="text-lg lg:text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl">
+            <p className="text-base lg:text-xl text-on-surface-variant leading-relaxed mb-10 max-w-xl">
               Encontre turnos em restaurantes, lojas e eventos perto de você. Sem taxas na sua diária. O valor que você vê é o valor que você recebe.
             </p>
             {/* Asymmetrical Search Bar */}
@@ -198,54 +198,88 @@ export const FreelancerLanding: React.FC = () => {
             </div>
           </div>
 
-          {/* Live Feed */}
-          <div className="bg-surface-container-highest/30 rounded-xl p-8 lg:p-12">
-            <div className="flex items-center gap-3 mb-10">
+          {/* Live Feed - Swipeable Carousel */}
+          <div className="bg-surface-container-highest/30 rounded-xl p-6 lg:p-12" id="vagas">
+            <div className="flex items-center gap-3 mb-6">
               <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
-              <h2 className="text-2xl font-bold">Vagas urgentes abertas agora</h2>
+              <h2 className="text-xl lg:text-2xl font-bold">Vagas urgentes abertas agora</h2>
             </div>
-            <div className="space-y-4">
-              <div className="bg-surface-container-lowest p-6 rounded-lg flex flex-wrap items-center justify-between gap-4 border border-outline-variant/10 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 bg-surface-container rounded-full flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary">person</span>
+
+            {/* Desktop: stacked list */}
+            <div className="hidden lg:flex flex-col gap-4">
+              {[
+                { icon: 'person', title: 'Garçom Extra', location: 'São Paulo, Jardins', salary: 'R$ 120' },
+                { icon: 'support_agent', title: 'Auxiliar de Eventos', location: 'Curitiba, Batel', salary: 'R$ 100' },
+                { icon: 'cleaning_services', title: 'Auxiliar de Limpeza', location: 'Belo Horizonte, Centro', salary: 'R$ 90' },
+              ].map((job) => (
+                <div key={job.title} className="bg-surface-container-lowest p-6 rounded-xl flex items-center justify-between gap-4 border border-outline-variant/10 hover:shadow-lg transition-shadow">
+                  <div className="flex items-center gap-6">
+                    <div className="w-14 h-14 bg-surface-container rounded-full flex items-center justify-center">
+                      <span className="material-symbols-outlined text-primary">{job.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold">{job.title}</h4>
+                      <p className="text-on-surface-variant flex items-center gap-2">
+                        <span className="material-symbols-outlined text-sm">location_on</span> {job.location}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold">Garçom Extra</h4>
-                    <p className="text-on-surface-variant flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm">location_on</span> São Paulo, Jardins
-                    </p>
+                  <div className="flex items-center gap-8">
+                    <div className="text-right">
+                      <p className="text-sm text-on-surface-variant font-medium">Diária</p>
+                      <p className="text-2xl font-black text-primary">{job.salary}</p>
+                    </div>
+                    <Link to="/onboarding/role?type=freelancer" className="px-8 py-3 bg-primary text-on-primary rounded-full font-bold">Candidatar</Link>
                   </div>
                 </div>
-                <div className="flex items-center gap-8">
-                  <div className="text-right">
-                    <p className="text-sm text-on-surface-variant font-medium">Diária</p>
-                    <p className="text-2xl font-black text-primary">R$ 120</p>
+              ))}
+            </div>
+
+            {/* Mobile: full-width swipeable carousel */}
+            <div className="lg:hidden">
+              <div
+                className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-2"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {[
+                  { icon: 'person', title: 'Garçom Extra', location: 'São Paulo, Jardins', salary: 'R$ 120', tag: 'Restaurante' },
+                  { icon: 'support_agent', title: 'Auxiliar de Eventos', location: 'Curitiba, Batel', salary: 'R$ 100', tag: 'Eventos' },
+                  { icon: 'cleaning_services', title: 'Auxiliar de Limpeza', location: 'BH, Centro', salary: 'R$ 90', tag: 'Limpeza' },
+                  { icon: 'shopping_cart', title: 'Promotor de Vendas', location: 'Rio de Janeiro, Lapa', salary: 'R$ 110', tag: 'Varejo' },
+                ].map((job) => (
+                  <div
+                    key={job.title}
+                    className="flex-none w-full snap-center bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10"
+                  >
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-14 h-14 bg-surface-container rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="material-symbols-outlined text-primary text-2xl">{job.icon}</span>
+                      </div>
+                      <div>
+                        <span className="text-xs font-black uppercase tracking-wider text-secondary bg-secondary-container px-2 py-0.5 rounded-full">{job.tag}</span>
+                        <h4 className="text-xl font-bold mt-1">{job.title}</h4>
+                        <p className="text-on-surface-variant text-sm flex items-center gap-1">
+                          <span className="material-symbols-outlined text-sm">location_on</span> {job.location}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs text-on-surface-variant font-medium">Diária</p>
+                        <p className="text-3xl font-black text-primary">{job.salary}</p>
+                      </div>
+                      <Link
+                        to="/onboarding/role?type=freelancer"
+                        className="px-6 py-3 bg-primary text-on-primary rounded-full font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all"
+                      >
+                        Candidatar
+                      </Link>
+                    </div>
                   </div>
-                  <Link to="/onboarding/role?type=freelancer" className="px-8 py-3 bg-primary text-on-primary rounded-full font-bold">Candidatar</Link>
-                </div>
+                ))}
               </div>
-              
-              <div className="bg-surface-container-lowest p-6 rounded-lg flex flex-wrap items-center justify-between gap-4 border border-outline-variant/10 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 bg-surface-container rounded-full flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary">support_agent</span>
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold">Auxiliar de Eventos</h4>
-                    <p className="text-on-surface-variant flex items-center gap-2">
-                      <span className="material-symbols-outlined text-sm">location_on</span> Curitiba, Batel
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-8">
-                  <div className="text-right">
-                    <p className="text-sm text-on-surface-variant font-medium">Diária</p>
-                    <p className="text-2xl font-black text-primary">R$ 100</p>
-                  </div>
-                  <Link to="/onboarding/role?type=freelancer" className="px-8 py-3 bg-primary text-on-primary rounded-full font-bold">Candidatar</Link>
-                </div>
-              </div>
+              {/* Scroll hint */}
+              <p className="text-center text-xs text-outline mt-4 font-medium">← Arraste para ver mais vagas →</p>
             </div>
           </div>
         </div>

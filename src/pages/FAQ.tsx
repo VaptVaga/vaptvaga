@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Search, Building2, UserCircle2 } from 'lucide-react';
+import { ChevronDown, Building2, UserCircle2 } from 'lucide-react';
 
 type Role = 'freelancer' | 'company';
 
@@ -118,20 +118,11 @@ const AccordionItem: React.FC<{
 export const FAQ: React.FC = () => {
   const [role, setRole] = useState<Role>('freelancer');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [searchQuery, setSearchQuery] = useState('');
-
   const faqs = role === 'freelancer' ? freelancerFAQs : companyFAQs;
-
-  const filteredFaqs = faqs.filter(
-    (faq) =>
-      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const handleRoleChange = (newRole: Role) => {
     setRole(newRole);
     setOpenIndex(0);
-    setSearchQuery('');
   };
 
   const handleToggle = (index: number) => {
@@ -160,25 +151,6 @@ export const FAQ: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Search */}
-        <div className="relative max-w-xl mx-auto mb-6">
-          <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-outline w-5 h-5" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Buscar uma pergunta..."
-            className="w-full pl-14 pr-6 py-4 rounded-full bg-surface-container-lowest shadow-md border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline font-medium transition"
-          />
-        </div>
-
-        {/* Mobile CTA */}
-        <Link
-          to="/onboarding/role?type=freelancer"
-          className="lg:hidden w-full flex items-center justify-center gap-2 bg-primary text-white py-4 px-8 rounded-full font-black text-base shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 mb-4"
-        >
-          Buscar Vagas
-        </Link>
 
         {/* Role Toggle */}
         <div className="flex justify-center">
@@ -213,30 +185,21 @@ export const FAQ: React.FC = () => {
       <section className="pb-24 px-6 max-w-3xl mx-auto">
         <AnimatePresence mode="wait">
           <motion.div
-            key={role + searchQuery}
+            key={role}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3 }}
             className="space-y-3"
           >
-            {filteredFaqs.length > 0 ? (
-              filteredFaqs.map((faq, i) => (
-                <AccordionItem
-                  key={i}
-                  item={faq}
-                  isOpen={openIndex === i}
-                  onToggle={() => handleToggle(i)}
-                />
-              ))
-            ) : (
-              <div className="text-center py-20">
-                <p className="text-2xl mb-2">🔍</p>
-                <p className="text-on-surface-variant font-semibold">
-                  Nenhuma pergunta encontrada para "{searchQuery}"
-                </p>
-              </div>
-            )}
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                item={faq}
+                isOpen={openIndex === i}
+                onToggle={() => handleToggle(i)}
+              />
+            ))}
           </motion.div>
         </AnimatePresence>
 
@@ -254,7 +217,7 @@ export const FAQ: React.FC = () => {
             Nossa equipe de suporte está pronta para te ajudar com qualquer dúvida.
           </p>
           <Link
-            to="/"
+            to="/contato"
             className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-black shadow-lg hover:opacity-90 transition-all active:scale-95"
           >
             Falar com o Suporte
