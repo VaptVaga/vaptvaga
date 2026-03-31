@@ -16,6 +16,7 @@ import { CompanyLanding } from './pages/CompanyLanding.tsx';
 import { Login } from './pages/Login.tsx';
 import { OnboardingRole } from './pages/OnboardingRole.tsx';
 import { FAQ } from './pages/FAQ.tsx';
+import { Contact } from './pages/Contact.tsx';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -49,6 +50,7 @@ const AnimatedRoutes = () => {
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
+            <Route path="/contato" element={<PageWrapper><Contact /></PageWrapper>} />
             
             <Route 
               path="/freelancer/dashboard" 

@@ -74,9 +74,8 @@ export const Footer: React.FC = () => {
         <div>
           <h5 className="font-bold text-on-surface mb-6">Suporte</h5>
           <ul className="space-y-4 text-sm">
-            <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Suporte</Link></li>
             <li><Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors">FAQ</Link></li>
-            <li><Link to="/" className="text-on-surface-variant hover:text-primary transition-colors">Contato</Link></li>
+            <li><Link to="/contato" className="text-on-surface-variant hover:text-primary transition-colors">Contato</Link></li>
           </ul>
         </div>
         <div>
