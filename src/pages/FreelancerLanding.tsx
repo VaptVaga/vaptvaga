@@ -23,7 +23,7 @@ export const FreelancerLanding: React.FC = () => {
               <div className="flex items-center flex-1 px-4 md:px-6 py-2 md:py-0 gap-3">
                 <span className="material-symbols-outlined text-primary">search</span>
                 <input
-                  className="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline font-medium"
+                  className="w-full min-w-0 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline text-sm sm:text-base font-medium overflow-hidden text-ellipsis"
                   placeholder="Que tipo de freela você busca?"
                   type="text"
                 />
