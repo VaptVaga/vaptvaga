@@ -69,18 +69,19 @@ export const Contact: React.FC = () => {
     setSubmitError(null);
 
     try {
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([{
+      // Chama a Edge Function que vai checar o Captcha no Google primeiro, e depos salvar
+      const { data, error } = await supabase.functions.invoke('contact_captcha', {
+        body: {
           name: form.name,
           email: form.email,
           subject: form.subject,
-          message: form.message
-          // NOTA: Em uma aplicação real, você deve enviar o captchaToken para uma Edge Function validar,
-          // e não inserir diretamente pelo frontend para garantir segurança máxima contra bots.
-        }] as any);
+          message: form.message,
+          captchaToken: captchaToken
+        }
+      });
 
-      if (error) throw error;
+      if (error) throw new Error('Erro na função de validação');
+      if (data?.error) throw new Error(data.error);
 
       setFormSent(true);
       setTimeout(() => setFormSent(false), 4000);
