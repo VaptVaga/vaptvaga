@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, MessageCircle, Instagram, Send, ChevronDown, ChevronUp } from 'lucide-react';
+import { Mail, MessageCircle, Instagram, Send, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const contactChannels = [
   {
@@ -51,12 +52,35 @@ export const Contact: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSent, setFormSent] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSent(true);
-    setTimeout(() => setFormSent(false), 4000);
-    setForm({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([{
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message
+        }] as any);
+
+      if (error) throw error;
+
+      setFormSent(true);
+      setTimeout(() => setFormSent(false), 4000);
+      setForm({ name: '', email: '', subject: '', message: '' });
+    } catch (error: any) {
+      console.error('Erro ao enviar mensagem:', error);
+      setSubmitError('Não foi possível enviar a mensagem. Tente novamente mais tarde.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -136,6 +160,11 @@ export const Contact: React.FC = () => {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {submitError && (
+                  <div className="bg-error/10 text-error p-4 rounded-xl text-sm font-medium mb-4">
+                    {submitError}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-black uppercase tracking-widest text-outline">Nome completo</label>
@@ -189,10 +218,20 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-4 rounded-full font-black text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-white py-4 rounded-full font-black text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none"
                 >
-                  <Send className="w-4 h-4" />
-                  Enviar Mensagem
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Enviar Mensagem
+                    </>
+                  )}
                 </button>
               </form>
             )}
