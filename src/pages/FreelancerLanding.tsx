@@ -19,8 +19,8 @@ export const FreelancerLanding: React.FC = () => {
               Encontre turnos em restaurantes, lojas e eventos perto de você. Sem taxas na sua diária. O valor que você vê é o valor que você recebe.
             </p>
             {/* Asymmetrical Search Bar */}
-            <div className="p-2 bg-surface-container-lowest rounded-full shadow-xl flex flex-col md:flex-row gap-2 max-w-2xl border border-outline-variant/10">
-              <div className="flex items-center flex-1 px-6 gap-3">
+            <div className="p-3 md:p-2 bg-surface-container-lowest rounded-3xl md:rounded-full shadow-xl flex flex-col md:flex-row gap-3 md:gap-2 max-w-2xl border border-outline-variant/10">
+              <div className="flex items-center flex-1 px-4 md:px-6 py-2 md:py-0 gap-3">
                 <span className="material-symbols-outlined text-primary">search</span>
                 <input
                   className="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline font-medium"
@@ -28,7 +28,7 @@ export const FreelancerLanding: React.FC = () => {
                   type="text"
                 />
               </div>
-              <button className="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-primary/20">
+              <button className="w-full md:w-auto bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-primary/20">
                 Buscar Vagas
               </button>
             </div>
