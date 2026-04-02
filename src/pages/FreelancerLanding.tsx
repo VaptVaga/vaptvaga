@@ -199,7 +199,7 @@ export const FreelancerLanding: React.FC = () => {
           </div>
 
           {/* Live Feed - Swipeable Carousel */}
-          <div className="bg-surface-container-highest/30 rounded-xl p-6 lg:p-12" id="vagas">
+          <div className="bg-surface-container-highest/30 rounded-xl p-6 lg:p-12">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
               <h2 className="text-xl lg:text-2xl font-bold">Vagas urgentes abertas agora</h2>
