@@ -8,16 +8,13 @@ export const Footer: React.FC = () => {
 
   const handleAnchorClick = (e: React.MouseEvent, anchorId: string) => {
     e.preventDefault();
-    const elements = document.querySelectorAll(`#${anchorId}`);
-    const visibleElement = Array.from(elements).find(
-      el => (el as HTMLElement).offsetParent !== null
-    ) as HTMLElement | undefined;
+    const element = document.getElementById(anchorId);
 
-    if (visibleElement) {
-      visibleElement.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', `/#${anchorId}`);
+    if (element && (location.pathname === '/' || location.pathname === '/empresas')) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `/#${anchorId}`);
     } else {
-      // Navigate to home with the hash if section isn't on the current page
+      // Navigate to home with the hash if not on landing page
       window.location.href = `/#${anchorId}`;
     }
   };

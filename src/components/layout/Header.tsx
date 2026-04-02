@@ -24,19 +24,16 @@ export const Header: React.FC<HeaderProps> = ({ showLoginBtn = true }) => {
   const handleNavClick = (e: React.MouseEvent, path: string, isAnchor?: boolean) => {
     if (isAnchor) {
       e.preventDefault();
-      // Extract the target ID (e.g. from '/#planos' or '#planos')
       const targetId = path.split('#')[1];
       
       if (targetId) {
-        const elements = document.querySelectorAll(`#${targetId}`);
-        const visibleElement = Array.from(elements).find(el => (el as HTMLElement).offsetParent !== null) as HTMLElement | undefined;
+        const element = document.getElementById(targetId);
 
-        if (visibleElement) {
-          visibleElement.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', path);
+        if (element && (location.pathname === '/' || location.pathname === '/empresas')) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState(null, '', `/#${targetId}`);
         } else {
-          // If element not found, navigate to home with the hash
-          window.location.href = path.startsWith('/') ? path : `/${path}`;
+          window.location.href = `/#${targetId}`;
         }
       }
     }
