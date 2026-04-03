@@ -196,6 +196,8 @@ export type Database = {
       }
       profiles: {
         Row: {
+          aceita_email: boolean
+          aceita_whatsapp: boolean
           avatar_url: string | null
           bairro: string | null
           cidade: string | null
@@ -212,6 +214,8 @@ export type Database = {
           telefone: string | null
         }
         Insert: {
+          aceita_email?: boolean
+          aceita_whatsapp?: boolean
           avatar_url?: string | null
           bairro?: string | null
           cidade?: string | null
@@ -228,6 +232,8 @@ export type Database = {
           telefone?: string | null
         }
         Update: {
+          aceita_email?: boolean
+          aceita_whatsapp?: boolean
           avatar_url?: string | null
           bairro?: string | null
           cidade?: string | null
