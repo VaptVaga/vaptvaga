@@ -133,8 +133,8 @@ export const Header: React.FC<HeaderProps> = ({ showLoginBtn = true }) => {
             )}
           </nav>
           <div className="flex items-center gap-4">
-            <Link to="/onboarding/role?type=company" className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-bold shadow-lg shadow-primary/10 hover:translate-y-[-2px] active:scale-95 transition-all">
-              Publicar Vaga
+            <Link to={isCompanyPage ? "/onboarding/role?type=company" : "/onboarding/role?type=freelancer"} className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-bold shadow-lg shadow-primary/10 hover:translate-y-[-2px] active:scale-95 transition-all">
+              {isCompanyPage ? 'Publicar Vaga' : 'Encontrar Vaga'}
             </Link>
           </div>
         </div>
