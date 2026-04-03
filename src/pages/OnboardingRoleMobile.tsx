@@ -11,6 +11,8 @@ export const OnboardingRoleMobile: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [aceitaEmail, setAceitaEmail] = useState(false);
+  const [aceitaWhatsapp, setAceitaWhatsapp] = useState(false);
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
