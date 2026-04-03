@@ -101,11 +101,11 @@ export const Header: React.FC<HeaderProps> = ({ showLoginBtn = true }) => {
 
               <div className="p-6 border-t border-outline-variant/10 space-y-4">
                 <Link
-                  to="/onboarding/role?type=company"
+                  to={isCompanyPage ? "/onboarding/role?type=company" : "/onboarding/role?type=freelancer"}
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full bg-primary text-on-primary p-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all"
                 >
-                  Publicar Vaga
+                  {isCompanyPage ? 'Publicar Vaga' : 'Encontrar Vaga'}
                 </Link>
               </div>
             </motion.div>
