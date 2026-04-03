@@ -177,7 +177,33 @@ export const OnboardingRoleDesktop: React.FC = () => {
               />
             </div>
           </div>
-          <button 
+
+          {/* Notification Preferences */}
+          <div className="space-y-3 pt-2">
+            <p className="font-body font-bold text-on-surface text-sm ml-1">Notificações</p>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={aceitaEmail}
+                onChange={(e) => setAceitaEmail(e.target.checked)}
+                disabled={loading}
+                className="mt-0.5 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface-container-low"
+              />
+              <span className="text-sm text-on-surface-variant leading-snug">Aceito receber notificações por <strong className="text-on-surface">e-mail</strong></span>
+            </label>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={aceitaWhatsapp}
+                onChange={(e) => setAceitaWhatsapp(e.target.checked)}
+                disabled={loading}
+                className="mt-0.5 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface-container-low"
+              />
+              <span className="text-sm text-on-surface-variant leading-snug">Aceito receber notificações por <strong className="text-on-surface">WhatsApp</strong></span>
+            </label>
+          </div>
+
+          <button
             className="w-full h-14 mt-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50" 
             type="submit"
             disabled={loading}
