@@ -18,6 +18,7 @@ import { OnboardingRole } from './pages/OnboardingRole.tsx';
 import { FAQ } from './pages/FAQ.tsx';
 import { Contact } from './pages/Contact.tsx';
 import { TermsOfService } from './pages/TermsOfService.tsx';
+import { PrivacyPolicy } from './pages/PrivacyPolicy.tsx';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
