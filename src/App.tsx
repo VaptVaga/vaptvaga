@@ -52,6 +52,7 @@ const AnimatedRoutes = () => {
             <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
             <Route path="/contato" element={<PageWrapper><Contact /></PageWrapper>} />
+            <Route path="/termos" element={<PageWrapper><TermsOfService /></PageWrapper>} />
             
             <Route 
               path="/freelancer/dashboard" 
