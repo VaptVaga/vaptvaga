@@ -50,6 +50,8 @@ export const OnboardingRoleDesktop: React.FC = () => {
           id: authData.user.id,
           name: fullName,
           role: role as string,
+          aceita_email: aceitaEmail,
+          aceita_whatsapp: aceitaWhatsapp,
         });
 
       if (profileError) {
