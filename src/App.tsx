@@ -15,6 +15,7 @@ import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
 import { CompanyLanding } from './pages/CompanyLanding.tsx';
 import { Login } from './pages/Login.tsx';
 import { OnboardingRole } from './pages/OnboardingRole.tsx';
+import { FreelancerOnboarding } from './pages/FreelancerOnboarding.tsx';
 import { FAQ } from './pages/FAQ.tsx';
 import { Contact } from './pages/Contact.tsx';
 import { TermsOfService } from './pages/TermsOfService.tsx';
