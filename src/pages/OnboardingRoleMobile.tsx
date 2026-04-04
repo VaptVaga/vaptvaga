@@ -58,7 +58,7 @@ export const OnboardingRoleMobile: React.FC = () => {
         setError('Erro ao criar perfil. Por favor, tente novamente.');
         setLoading(false);
       } else {
-        navigate(role === 'freelancer' ? '/freelancer/dashboard' : '/company/dashboard');
+        navigate(role === 'freelancer' ? '/freelancer/onboarding' : '/company/dashboard');
       }
     }
   };

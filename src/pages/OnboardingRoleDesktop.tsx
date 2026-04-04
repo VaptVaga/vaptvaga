@@ -59,7 +59,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
         setLoading(false);
       } else {
         // Redirect based on role
-        navigate(role === 'freelancer' ? '/freelancer/dashboard' : '/company/dashboard');
+        navigate(role === 'freelancer' ? '/freelancer/onboarding' : '/company/dashboard');
       }
     }
   };
