@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MessageCircle, Instagram, Send, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { supabase } from '../lib/supabase';
 
 const contactChannels = [
@@ -53,15 +53,15 @@ export const Contact: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSent, setFormSent] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!captchaToken) {
-      setSubmitError('Por favor, confirme que você não é um robô antes de enviar.');
+    if (!executeRecaptcha) {
+      setSubmitError('O reCAPTCHA ainda não está pronto. Tente novamente em alguns segundos.');
       return;
     }
 
@@ -69,6 +69,9 @@ export const Contact: React.FC = () => {
     setSubmitError(null);
 
     try {
+      // Gera o token de pontuação (v3)
+      const token = await executeRecaptcha('contact_form');
+      
       // Chama a Edge Function que vai checar o Captcha no Google primeiro, e depos salvar
       const { data, error } = await supabase.functions.invoke('contact_captcha', {
         body: {
@@ -76,7 +79,7 @@ export const Contact: React.FC = () => {
           email: form.email,
           subject: form.subject,
           message: form.message,
-          captchaToken: captchaToken
+          captchaToken: token
         }
       });
 
@@ -224,17 +227,6 @@ export const Contact: React.FC = () => {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Descreva sua dúvida ou solicitação..."
                     className="w-full px-5 py-4 rounded-2xl bg-surface-container-low border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline font-medium transition resize-none"
-                  />
-                </div>
-
-                <div className="flex justify-center my-4 overflow-hidden">
-                  <ReCAPTCHA
-                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6Lf23Z8sAAAAAPAc1Dk9rru0fW0iJFG668elSUMU'}
-                    onChange={(token) => {
-                      setCaptchaToken(token);
-                      if (submitError) setSubmitError(null);
-                    }}
-                    onExpired={() => setCaptchaToken(null)}
                   />
                 </div>
 
