@@ -102,7 +102,7 @@ export const Contact: React.FC = () => {
             captchaToken: token
           }
         }),
-        15000,
+        60000,
         'O servidor do Supabase demorou muito para responder. Tente novamente.'
       );
       console.log('[Contact] Resposta da Edge Function recebida.');
