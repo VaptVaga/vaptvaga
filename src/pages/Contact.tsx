@@ -49,6 +49,16 @@ const faqTeaser = [
 
 const subjects = ['Dúvida geral', 'Problema técnico', 'Sugestão', 'Parceria', 'Outro'];
 
+// Função auxiliar para evitar que chamadas assíncronas travem a tela para sempre
+const withTimeout = (promise: Promise<any>, timeoutMs: number, errorMessage: string) => {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
+    ),
+  ]);
+};
+
 export const Contact: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSent, setFormSent] = useState(false);
@@ -69,30 +79,53 @@ export const Contact: React.FC = () => {
     setSubmitError(null);
 
     try {
-      // Gera o token de pontuação (v3)
-      const token = await executeRecaptcha('contact_form');
+      console.log('[Contact] Iniciando envio do formulário...');
+
+      // 1. Gera o token de pontuação (v3) com timeout de 8 segundos
+      console.log('[Contact] Gerando token reCAPTCHA v3...');
+      const token = await withTimeout(
+        executeRecaptcha('contact_form'),
+        8000,
+        'O Google reCAPTCHA demorou muito para responder. Verifique sua conexão.'
+      );
+      console.log('[Contact] Token gerado com sucesso.');
+
+      // 2. Chama a Edge Function com timeout de 15 segundos
+      console.log('[Contact] Chamando Edge Function de validação e salvamento...');
+      const { data, error } = await withTimeout(
+        supabase.functions.invoke('contact_captcha', {
+          body: {
+            name: form.name,
+            email: form.email,
+            subject: form.subject,
+            message: form.message,
+            captchaToken: token
+          }
+        }),
+        15000,
+        'O servidor do Supabase demorou muito para responder. Tente novamente.'
+      );
+      console.log('[Contact] Resposta da Edge Function recebida.');
+
+      if (error) {
+        console.error('[Contact] Erro Supabase Function:', error);
+        throw new Error('Erro na função de validação: ' + error.message);
+      }
       
-      // Chama a Edge Function que vai checar o Captcha no Google primeiro, e depos salvar
-      const { data, error } = await supabase.functions.invoke('contact_captcha', {
-        body: {
-          name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-          captchaToken: token
-        }
-      });
+      if (data?.error) {
+        console.error('[Contact] Erro retornado pela função:', data.error);
+        throw new Error(data.error);
+      }
 
-      if (error) throw new Error('Erro na função de validação');
-      if (data?.error) throw new Error(data.error);
-
+      console.log('[Contact] Formulário enviado com sucesso!');
       setFormSent(true);
       setTimeout(() => setFormSent(false), 4000);
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (error: any) {
-      console.error('Erro ao enviar mensagem:', error);
+      console.error('[Contact] Erro capturado no catch:', error);
       setSubmitError(error.message || 'Não foi possível enviar a mensagem. Tente novamente mais tarde.');
     } finally {
+      console.log('[Contact] Finalizando processo de envio.');
       setIsSubmitting(false);
     }
   };
