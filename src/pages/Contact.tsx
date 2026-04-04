@@ -91,7 +91,7 @@ export const Contact: React.FC = () => {
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (error: any) {
       console.error('Erro ao enviar mensagem:', error);
-      setSubmitError('Não foi possível enviar a mensagem. Tente novamente mais tarde.');
+      setSubmitError(error.message || 'Não foi possível enviar a mensagem. Tente novamente mais tarde.');
     } finally {
       setIsSubmitting(false);
     }
