@@ -90,27 +90,42 @@ export const Contact: React.FC = () => {
       );
       console.log('[Contact] Token gerado com sucesso.');
 
-      // 2. Chama a Edge Function com timeout de 15 segundos
-      console.log('[Contact] Chamando Edge Function de validação e salvamento...');
-      const { data, error } = await withTimeout(
-        supabase.functions.invoke('contact_captcha', {
-          body: {
+      // 2. Chama a Edge Function com fetch puro (para melhor depuração de rede)
+      console.log('[Contact] Enviando POST para a Edge Function via fetch...');
+      
+      const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact_captcha`;
+      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+      const response = await withTimeout(
+        fetch(functionUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${anonKey}`,
+            'apikey': anonKey
+          },
+          body: JSON.stringify({
             name: form.name,
             email: form.email,
             subject: form.subject,
             message: form.message,
             captchaToken: token
-          }
+          })
         }),
-        60000,
-        'O servidor do Supabase demorou muito para responder. Tente novamente.'
+        30000,
+        'O servidor do Supabase demorou muito para responder (30s). Tente novamente.'
       );
-      console.log('[Contact] Resposta da Edge Function recebida.');
 
-      if (error) {
-        console.error('[Contact] Erro Supabase Function:', error);
-        throw new Error('Erro na função de validação: ' + error.message);
+      console.log('[Contact] Resposta bruta recebida, status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('[Contact] Erro na resposta da função:', errorData);
+        throw new Error(errorData.error || `Erro do servidor (${response.status})`);
       }
+
+      const data = await response.json();
+      console.log('[Contact] Dados da JSON da função:', data);
       
       if (data?.error) {
         console.error('[Contact] Erro retornado pela função:', data.error);
