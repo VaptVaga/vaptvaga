@@ -71,12 +71,12 @@ export const Contact: React.FC = () => {
     try {
       const { error } = await supabase
         .from('contact_messages')
-        .insert({
+        .insert([{
           name: form.name,
           email: form.email,
           subject: form.subject,
           message: form.message,
-        });
+        }]);
 
       if (error) {
         throw new Error(error.message || 'Erro ao enviar mensagem.');
