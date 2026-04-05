@@ -95,23 +95,49 @@ export type Database = {
           longitude?: number | null
         }
         Update: {
-          id?: string
-          company_id?: string | null
-          title?: string | null
-          description?: string | null
-          budget?: string | null
-          required_skills?: string[] | null
-          status?: string | null
-          created_at?: string
-          estado?: string | null
-          cidade?: string | null
-          bairro?: string | null
-          data_do_turno?: string | null
-          valor_da_diaria?: number | null
-          latitude?: number | null
-          longitude?: number | null
-        }
-      }
+          id?: string;
+          company_id?: string | null;
+          title?: string | null;
+          description?: string | null;
+          budget?: string | null;
+          required_skills?: string[] | null;
+          status?: string | null;
+          created_at?: string;
+          estado?: string | null;
+          cidade?: string | null;
+          bairro?: string | null;
+          data_do_turno?: string | null;
+          valor_da_diaria?: number | null;
+          latitude?: number | null;
+          longitude?: number | null;
+        };
+      };
+      contact_messages: {
+        Row: {
+          id: string;
+          name: string | null;
+          email: string | null;
+          subject: string | null;
+          message: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string | null;
+          email: string | null;
+          subject: string | null;
+          message: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string | null;
+          email?: string | null;
+          subject?: string | null;
+          message?: string | null;
+          created_at?: string;
+        };
+      };
       applications: {
         Row: {
           id: string

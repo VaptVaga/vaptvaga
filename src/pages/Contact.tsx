@@ -68,23 +68,34 @@ export const Contact: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
     
+    // Safety timeout to prevent infinite loading
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Tempo limite de conexão excedido. Verifique sua internet.')), 15000)
+    );
+    
     try {
-      const { error } = await (supabase.from('contact_messages') as any).insert([{
-          name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-        }]);
+      console.log('[Contact] Enviando mensagem...');
+      
+      const insertPromise = (supabase.from('contact_messages') as any).insert([{
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+      }]);
+
+      const { error } = await Promise.race([insertPromise, timeoutPromise]) as any;
 
       if (error) {
+        console.error('[Contact] Erro Supabase:', error);
         throw new Error(error.message || 'Erro ao enviar mensagem.');
       }
 
+      console.log('[Contact] Sucesso!');
       setFormState('success');
       setForm({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setFormState('idle'), 6000);
     } catch (err: any) {
-      console.error('[Contact] Error:', err);
+      console.error('[Contact] Erro de submissão:', err);
       setFormState('error');
       setErrorMessage(err.message || 'Não foi possível enviar. Tente pelo WhatsApp.');
     } finally {
