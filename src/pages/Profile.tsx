@@ -3,11 +3,11 @@ import { LogOut, Crown, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { BottomNav } from '@/components/vaptvaga/BottomNav';
-import { useAuth } from '@/lib/authContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { profile: user, signOut } = useAuth();
 
   const handleLogout = async () => {
     await signOut();

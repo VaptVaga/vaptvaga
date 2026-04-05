@@ -4,18 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
 import { BottomNav } from '@/components/vaptvaga/BottomNav';
-import { useAuth } from '@/lib/authContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { useMyJobs, useApplicationsForJob } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { formatBudget } from '@/lib/types';
 
 const CompanyDashboard = () => {
-  const { user } = useAuth();
+  const { profile, user } = useAuth();
   const navigate = useNavigate();
   const [showPaywall, setShowPaywall] = useState(false);
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
-  const isFree = user?.subscriber !== 'premium';
+  const isFree = profile?.subscriber !== 'premium';
 
   const { data: myJobs, isLoading } = useMyJobs(user?.id);
 
@@ -37,7 +37,7 @@ const CompanyDashboard = () => {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-muted-foreground">Olá 👋</p>
-            <h1 className="text-xl font-black text-foreground">{user?.name || 'Minha Empresa'}</h1>
+            <h1 className="text-xl font-black text-foreground">{profile?.name || 'Minha Empresa'}</h1>
           </div>
           {isFree && (
             <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">

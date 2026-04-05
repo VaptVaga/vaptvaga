@@ -4,14 +4,14 @@ import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
-import { useAuth } from '@/lib/authContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { useCreateJob, useMonthlyJobCount } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 
 const PostJob = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const isFree = user?.subscriber !== 'premium';
+  const { profile, user } = useAuth();
+  const isFree = profile?.subscriber !== 'premium';
   const [showPaywall, setShowPaywall] = useState(false);
   const { data: monthlyJobCount = 0 } = useMonthlyJobCount(user?.id);
   const createJob = useCreateJob();
@@ -41,8 +41,8 @@ const PostJob = () => {
         budget: budget ? `R$ ${budget}` : null,
         description,
         status: 'open',
-        cidade: user.cidade,
-        bairro: user.bairro,
+        cidade: profile?.cidade || '',
+        bairro: profile?.bairro || '',
       });
       toast({ title: '🎉 Vaga publicada!', description: 'Freelancers já podem se candidatar.' });
       navigate('/dashboard');

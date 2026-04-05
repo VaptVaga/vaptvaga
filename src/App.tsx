@@ -8,7 +8,7 @@ import { BottomNav } from './components/layout/BottomNav';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
-import { useAuth } from './lib/authContext';
+import { useAuth } from './contexts/AuthContext';
 
 // Pages
 import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
@@ -37,20 +37,20 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 // Redirects logged-in users away from the landing page
 const HomeRedirect: React.FC = () => {
-  const { user, authUser, isLoading } = useAuth();
+  const { profile, user, loading } = useAuth();
 
   // We render the landing page as a fallback even during loading to avoid a blank screen.
   // If the user turns out to be logged in, the useEffect/Navigate will handle the transition.
-  if (isLoading) {
+  if (loading) {
     return <FreelancerLanding />;
   }
 
-  if (authUser) {
+  if (user) {
     // User is logged in — redirect based on profile status
-    if (!user?.role) {
+    if (!profile?.role) {
       return <Navigate to="/onboarding/role" replace />;
     }
-    if (user.role === 'freelancer') {
+    if (profile.role === 'freelancer') {
       return <Navigate to="/freelancer/onboarding" replace />;
     }
     return <Navigate to="/company/dashboard" replace />;
@@ -61,7 +61,7 @@ const HomeRedirect: React.FC = () => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  const { authUser } = useAuth();
+  const { user } = useAuth();
 
   // Hide global header on onboarding pages (they have their own)
   const hideHeader = location.pathname.startsWith('/freelancer/onboarding') ||
@@ -116,7 +116,7 @@ const AnimatedRoutes = () => {
         </AnimatePresence>
       </main>
 
-      {authUser && <BottomNav />}
+      {user && <BottomNav />}
       <Footer />
     </>
   );

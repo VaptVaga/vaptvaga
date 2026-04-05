@@ -4,7 +4,7 @@ import { MapPin, Filter, Loader2, Search } from 'lucide-react';
 import { JobCard } from '@/components/vaptvaga/JobCard';
 import { PaywallModal } from '@/components/vaptvaga/PaywallModal';
 import { BottomNav } from '@/components/vaptvaga/BottomNav';
-import { useAuth } from '@/lib/authContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { useJobs, useApplyToJob, useMonthlyApplicationCount } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ const skillFilterOptions = [
 ];
 
 const FreelancerDashboard = () => {
-  const { user } = useAuth();
+  const { profile, user } = useAuth();
   const [showPaywall, setShowPaywall] = useState(false);
   const [appliedJobs, setAppliedJobs] = useState<Set<string>>(new Set());
   const [showFilters, setShowFilters] = useState(false);
@@ -28,7 +28,7 @@ const FreelancerDashboard = () => {
   const [filterBairro, setFilterBairro] = useState('');
   const [filterSkill, setFilterSkill] = useState('');
 
-  const isFree = user?.subscriber !== 'premium';
+  const isFree = profile?.subscriber !== 'premium';
   const limit = 2;
 
   const activeFilters = {
@@ -86,7 +86,7 @@ const FreelancerDashboard = () => {
       <div className="px-5 pb-2 pt-5">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-muted-foreground">Olá, {user?.name?.split(' ')[0]} 👋</p>
+            <p className="text-sm text-muted-foreground">Olá, {profile?.name?.split(' ')[0]} 👋</p>
             <h1 className="text-xl font-black text-foreground">Vagas na sua região</h1>
           </div>
           {isFree && (

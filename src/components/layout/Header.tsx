@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, User, LogOut, LayoutDashboard, MessageSquare } from 'lucide-react';
-import { useAuth } from '../../lib/authContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { authUser, user, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const isCompanyPage = location.pathname === '/empresas';
-  const isLoggedIn = !!authUser;
+  const isLoggedIn = !!user;
 
   // Public nav links (for non-logged-in users)
   const publicNavLinks = [
@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 
   // Logged-in nav links
   const authNavLinks = [
-    { label: 'Dashboard', path: user?.role === 'company' ? '/company/dashboard' : '/freelancer/dashboard', icon: LayoutDashboard },
+    { label: 'Dashboard', path: profile?.role === 'company' ? '/company/dashboard' : '/freelancer/dashboard', icon: LayoutDashboard },
     { label: 'Mensagens', path: '/chat', icon: MessageSquare },
     { label: 'Perfil', path: '/profile', icon: User },
   ];
@@ -100,18 +100,18 @@ export const Header: React.FC = () => {
               </div>
 
               {/* User info for logged-in users */}
-              {isLoggedIn && user && (
+              {isLoggedIn && profile && (
                 <div className="p-6 border-b border-outline-variant/10 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                    {user.imgUrl ? (
-                      <img src={user.imgUrl} alt="" className="w-full h-full object-cover" />
+                    {profile.avatar_url ? (
+                      <img src={profile.avatar_url} alt="" className="w-full h-full object-cover" />
                     ) : (
                       <User className="w-5 h-5 text-on-surface-variant" />
                     )}
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold">{user.name}</span>
-                    <span className="text-xs text-on-surface-variant capitalize">{user.role}</span>
+                    <span className="text-sm font-bold">{profile.name}</span>
+                    <span className="text-xs text-on-surface-variant capitalize">{profile.role}</span>
                   </div>
                 </div>
               )}
@@ -181,13 +181,13 @@ export const Header: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low">
                   <div className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                    {user?.imgUrl ? (
-                      <img src={user.imgUrl} alt="" className="w-full h-full object-cover" />
+                    {profile?.avatar_url ? (
+                      <img src={profile.avatar_url} alt="" className="w-full h-full object-cover" />
                     ) : (
                       <User className="w-4 h-4 text-on-surface-variant" />
                     )}
                   </div>
-                  <span className="text-sm font-bold text-on-surface">{user?.name?.split(' ')[0]}</span>
+                  <span className="text-sm font-bold text-on-surface">{profile?.name?.split(' ')[0]}</span>
                 </div>
                 <button
                   onClick={handleSignOut}

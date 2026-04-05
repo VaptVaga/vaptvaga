@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, X, Plus, Check, Fingerprint, Building2, CreditCard, FileText, QrCode, HelpCircle, Bell, Upload } from 'lucide-react';
-import { useAuth } from '@/lib/authContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 import { useQuery } from '@tanstack/react-query';
@@ -32,11 +32,11 @@ const labelClass = 'block text-xs font-bold font-headline text-on-surface-varian
 
 const Onboarding = () => {
   const navigate = useNavigate();
-  const { user, authUser, refreshProfile } = useAuth();
+  const { profile: user, user: authUser, refreshProfile } = useAuth();
   const updateProfile = useUpdateProfile();
 
   // Role picker
-  const [role, setRole] = useState<'company' | 'freelancer' | null>(user?.role || null);
+  const [role, setRole] = useState<'company' | 'freelancer' | null>((user?.role as 'company' | 'freelancer') || null);
   const showRolePicker = !user?.role && !role;
 
   // Company step
