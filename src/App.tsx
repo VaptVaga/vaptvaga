@@ -39,7 +39,11 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const HomeRedirect: React.FC = () => {
   const { user, authUser, isLoading } = useAuth();
 
-  if (isLoading) return null;
+  // We render the landing page as a fallback even during loading to avoid a blank screen.
+  // If the user turns out to be logged in, the useEffect/Navigate will handle the transition.
+  if (isLoading) {
+    return <FreelancerLanding />;
+  }
 
   if (authUser) {
     // User is logged in — redirect based on profile status
