@@ -70,7 +70,7 @@ const AnimatedRoutes = () => {
     <>
       {!hideHeader && <Header />}
       
-      <main className={`w-full ${isLandingPage ? 'pb-0' : 'pb-32 lg:pb-0'}`}>
+      <main className={`w-full ${isLandingPage ? 'pt-8 pb-0' : 'pt-[72px] pb-32 lg:pb-0'}`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageWrapper><HomeRedirect /></PageWrapper>} />
