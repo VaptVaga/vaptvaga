@@ -103,8 +103,8 @@ export const Header: React.FC = () => {
               {isLoggedIn && user && (
                 <div className="p-6 border-b border-outline-variant/10 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                    {user.avatar_url ? (
-                      <img src={user.avatar_url} alt="" className="w-full h-full object-cover" />
+                    {user.imgUrl ? (
+                      <img src={user.imgUrl} alt="" className="w-full h-full object-cover" />
                     ) : (
                       <User className="w-5 h-5 text-on-surface-variant" />
                     )}
@@ -181,8 +181,8 @@ export const Header: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low">
                   <div className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
-                    {user?.avatar_url ? (
-                      <img src={user.avatar_url} alt="" className="w-full h-full object-cover" />
+                    {user?.imgUrl ? (
+                      <img src={user.imgUrl} alt="" className="w-full h-full object-cover" />
                     ) : (
                       <User className="w-4 h-4 text-on-surface-variant" />
                     )}
