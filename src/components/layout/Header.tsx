@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
 
       {/* Desktop Header */}
       <header className="hidden lg:block sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-sm border-b border-outline-variant/10">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="text-2xl font-black text-on-surface tracking-tight italic">VaptVaga</Link>
           
           <nav className="flex items-center gap-8">
