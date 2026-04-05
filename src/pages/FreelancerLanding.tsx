@@ -6,7 +6,7 @@ export const FreelancerLanding: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section: The Fluid Architect Philosophy */}
-      <section className="relative px-6 py-20 lg:py-32 max-w-7xl mx-auto">
+      <section className="relative px-6 py-20 lg:py-16 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="z-10">
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider uppercase bg-secondary-container text-secondary rounded-full">
