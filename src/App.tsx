@@ -64,13 +64,16 @@ const AnimatedRoutes = () => {
   const hideHeader = location.pathname.startsWith('/freelancer/onboarding') ||
                      location.pathname.startsWith('/onboarding');
   
-  const isLandingPage = location.pathname === '/' || location.pathname === '/empresas';
 
   return (
     <>
       {!hideHeader && <Header />}
       
-      <main className={`w-full ${isLandingPage ? 'pt-8 pb-0' : 'pt-[72px] pb-32 lg:pb-0'}`}>
+      <main className={`w-full ${
+        location.pathname === '/' ? 'pt-14 pb-0' : 
+        location.pathname === '/empresas' ? 'pt-8 pb-0' : 
+        'pt-[72px] pb-32 lg:pb-0'
+      }`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageWrapper><HomeRedirect /></PageWrapper>} />
