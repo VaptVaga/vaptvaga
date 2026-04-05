@@ -1,287 +1,352 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Mail, MessageCircle, Instagram, Send, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Mail, 
+  MessageCircle, 
+  Instagram, 
+  Send, 
+  ChevronDown, 
+  ChevronUp, 
+  Loader2, 
+  CheckCircle2, 
+  AlertCircle,
+  ArrowRight
+} from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 const contactChannels = [
   {
-    icon: <Mail className="w-7 h-7 text-primary" />,
-    title: 'E-mail',
+    icon: <Mail className="w-6 h-6 text-primary" />,
+    title: 'E-mail oficial',
     value: 'suporte@vaptvaga.com.br',
-    description: 'Para dúvidas gerais e suporte técnico',
+    description: 'Para dúvidas gerais e suporte técnico especializado.',
     action: 'mailto:suporte@vaptvaga.com.br',
     label: 'Enviar e-mail',
   },
   {
-    icon: <MessageCircle className="w-7 h-7 text-primary" />,
-    title: 'WhatsApp',
+    icon: <MessageCircle className="w-6 h-6 text-primary" />,
+    title: 'WhatsApp Business',
     value: '(31) 9 8289-5515',
-    description: 'Atendimento rápido de segunda a sexta',
+    description: 'Atendimento humanizado de segunda a sexta, 09h às 18h.',
     action: 'https://wa.me/5531982895515',
-    label: 'Abrir WhatsApp',
+    label: 'Iniciar conversa',
   },
   {
-    icon: <Instagram className="w-7 h-7 text-primary" />,
-    title: 'Instagram',
+    icon: <Instagram className="w-6 h-6 text-primary" />,
+    title: 'Nossa Comunidade',
     value: '@vaptvaga',
-    description: 'Mensagens diretas e atualizações',
+    description: 'Siga-nos para dicas de carreira e novidades sobre o mercado.',
     action: 'https://instagram.com/vaptvaga',
-    label: 'Ver perfil',
+    label: 'Acompanhar perfil',
   },
 ];
 
-const faqTeaser = [
+const faqs = [
   {
-    question: 'Como me cadastro na plataforma?',
-    answer: 'Clique em "Entrar" e escolha se você quer entrar como Freelancer ou Empresa. O processo é rápido e gratuito.',
+    question: 'Como faço para me cadastrar como freelancer?',
+    answer: 'É muito simples! Clique no botão "Entrar" no topo da página, escolha a opção "Freelancer" e siga os passos para criar seu perfil com portfólio e habilidades.',
   },
   {
-    question: 'O cadastro é gratuito?',
-    answer: 'Sim! O plano gratuito permite que freelancers se candidatem a até 2 vagas por mês e empresas publiquem 1 vaga.',
+    question: 'O VaptVaga cobra para as empresas publicarem vagas?',
+    answer: 'Oferecemos um plano gratuito que permite a publicação de uma vaga por mês. Para maior visibilidade e volume, temos planos premium adaptados à sua necessidade.',
   },
   {
-    question: 'Qual é o prazo de resposta do suporte?',
-    answer: 'Respondemos todas as mensagens em até 24 horas úteis. Para urgências, use o WhatsApp.',
+    question: 'Como funciona o sistema de candidaturas?',
+    answer: 'Após encontrar uma vaga compatível, o freelancer se candidata enviando seu perfil. A empresa recebe a notificação e pode entrar em contato direto para entrevista.',
   },
 ];
 
-const subjects = ['Dúvida geral', 'Problema técnico', 'Sugestão', 'Parceria', 'Outro'];
+const subjects = ['Dúvida geral', 'Problema técnico', 'Sugestão / Feedback', 'Parceria Comercial', 'Outro assunto'];
 
 export const Contact: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [formSent, setFormSent] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [formState, setFormState] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     setIsSubmitting(true);
-    setSubmitError(null);
-
+    setErrorMessage('');
+    
     try {
-      console.log('[Contact] Enviando mensagem direta para o banco...');
-
-      const { error } = await (supabase
-        .from('contact_messages') as any)
-        .insert([{
+      // Direct insertion to Supabase (Bypassing Edge Functions for reliability)
+      const { error } = await (supabase.from('contact_messages') as any).insert([
+        {
           name: form.name,
           email: form.email,
           subject: form.subject,
-          message: form.message
-        }]);
+          message: form.message,
+          created_at: new Date().toISOString()
+        }
+      ]);
 
-      if (error) {
-        console.error('[Contact] Erro Supabase:', error);
-        throw new Error('Não foi possível salvar sua mensagem. Por favor, verifique sua conexão ou tente o WhatsApp.');
-      }
+      if (error) throw error;
 
-      console.log('[Contact] Mensagem salva com sucesso!');
-      setFormSent(true);
-      setTimeout(() => setFormSent(false), 5000);
+      setFormState('success');
       setForm({ name: '', email: '', subject: '', message: '' });
-    } catch (error: any) {
-      console.error('[Contact] Catch error:', error);
-      setSubmitError(error.message || 'Ocorreu um erro ao enviar sua mensagem.');
+      
+      // Auto-revert to idle after 6 seconds
+      setTimeout(() => setFormState('idle'), 6000);
+    } catch (err: any) {
+      console.error('[Contact] Error:', err);
+      setFormState('error');
+      setErrorMessage(err.message || 'Houve um erro técnico. Por favor, tente pelo WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-surface w-full">
-      {/* ─── Hero ─── */}
-      <section className="pt-12 pb-16 px-6 max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-4"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-black tracking-widest uppercase">
-            Resposta em até 24h
-          </span>
-          <h1 className="text-4xl lg:text-6xl font-extrabold text-on-surface tracking-tight leading-tight">
-            Fale{' '}
-            <span className="text-primary italic">Conosco</span>
-          </h1>
-          <p className="text-on-surface-variant text-lg max-w-xl mx-auto leading-relaxed">
-            Estamos aqui para ajudar. Escolha o canal mais conveniente para você
-            ou preencha o formulário abaixo.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ─── Contact Channels ─── */}
-      <section className="pb-16 px-6 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {contactChannels.map((ch, i) => (
-            <motion.a
-              key={ch.title}
-              href={ch.action}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="group flex flex-col items-start p-8 bg-surface-container-lowest rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                {ch.icon}
-              </div>
-              <p className="text-xs font-black uppercase tracking-widest text-outline mb-1">{ch.title}</p>
-              <p className="text-on-surface font-bold text-lg mb-2 leading-snug">{ch.value}</p>
-              <p className="text-on-surface-variant text-sm leading-relaxed flex-1">{ch.description}</p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-primary font-bold text-sm group-hover:gap-2.5 transition-all">
-                {ch.label}
-                <Send className="w-3.5 h-3.5" />
-              </span>
-            </motion.a>
-          ))}
+    <div className="min-h-screen bg-[#FDFCFE] selection:bg-primary/20 selection:text-primary">
+      {/* ─── Hero Section ─── */}
+      <div className="relative overflow-hidden pt-20 pb-16 lg:pt-32 lg:pb-24">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-30">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]" />
         </div>
-      </section>
 
-      {/* ─── Form + FAQ ─── */}
-      <section className="pb-24 px-6 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Form */}
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="lg:col-span-2 bg-surface-container-lowest rounded-3xl p-8 lg:p-10 shadow-sm"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
           >
-            <h2 className="text-2xl lg:text-3xl font-extrabold text-on-surface mb-1">Envie uma mensagem</h2>
-            <p className="text-on-surface-variant text-sm mb-8">Preencha os campos abaixo e retornaremos em breve.</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] uppercase font-black tracking-[0.2em] mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Estamos Online Agora
+            </div>
+            <h1 className="text-5xl lg:text-7xl font-black text-[#1C1B1F] tracking-tight leading-[0.95] mb-8">
+              Vamos criar algo <br />
+              <span className="text-primary italic">incrível juntos?</span>
+            </h1>
+            <p className="text-xl text-[#49454F] font-medium leading-relaxed max-w-2xl">
+              Nossa equipe está pronta para te ajudar a encontrar o talento perfeito ou 
+              conectar você ao seu próximo grande projeto.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
-            {formSent ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="py-12 text-center space-y-3"
-              >
-                <div className="text-5xl">✅</div>
-                <p className="text-xl font-black text-on-surface">Mensagem enviada!</p>
-                <p className="text-on-surface-variant">Entraremos em contato em até 24 horas.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {submitError && (
-                  <div className="bg-error/10 text-error p-4 rounded-xl text-sm font-medium mb-4">
-                    {submitError}
+      <div className="max-w-7xl mx-auto px-6 pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* ─── Left Side: Channels & FAQ ─── */}
+          <div className="lg:col-span-5 space-y-12">
+            
+            {/* Quick Contacts */}
+            <div className="grid grid-cols-1 gap-4">
+              {contactChannels.map((ch, i) => (
+                <motion.a
+                  key={ch.title}
+                  href={ch.action}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group flex items-center gap-6 p-6 bg-white border border-[#E6E1E5] rounded-[2rem] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-500">
+                    {ch.icon}
                   </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#79747E] mb-1">{ch.title}</p>
+                    <p className="text-lg font-bold text-[#1C1B1F] truncate group-hover:text-primary transition-colors">{ch.value}</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-[#CAC4D0] group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Specialized FAQ */}
+            <div className="pt-8">
+              <h3 className="text-2xl font-black text-[#1C1B1F] mb-8">Dúvidas rápidas</h3>
+              <div className="space-y-4">
+                {faqs.map((faq, i) => (
+                  <motion.div 
+                    key={i}
+                    className="border-b border-[#E6E1E5] last:border-0"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full py-5 flex items-center justify-between gap-4 text-left group"
+                    >
+                      <span className="font-bold text-[#49454F] group-hover:text-primary transition-colors">{faq.question}</span>
+                      <div className={`p-2 rounded-full bg-[#F4EFF4] transition-all duration-300 ${openFaq === i ? 'rotate-180 bg-primary/10 text-primary' : 'text-[#79747E]'}`}>
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
+                    </button>
+                    <AnimatePresence>
+                      {openFaq === i && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="pb-6 text-[#79747E] text-sm leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ─── Right Side: Contact Form ─── */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="relative bg-white border border-[#E6E1E5] rounded-[3rem] p-8 lg:p-12 shadow-sm"
+            >
+              {/* Form Status Overlays */}
+              <AnimatePresence mode="wait">
+                {formState === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="absolute inset-0 z-20 bg-white/90 backdrop-blur-md rounded-[3rem] flex flex-col items-center justify-center text-center p-8"
+                  >
+                    <div className="w-24 h-24 rounded-full bg-green-50 flex items-center justify-center mb-6">
+                      <CheckCircle2 className="w-12 h-12 text-primary" />
+                    </div>
+                    <h3 className="text-3xl font-black text-[#1C1B1F] mb-4">Mensagem Enviada!</h3>
+                    <p className="text-[#49454F] max-w-xs mx-auto mb-8 font-medium italic">
+                      "Sua jornada para o sucesso começa agora. Responderemos em breve."
+                    </p>
+                    <button 
+                      onClick={() => setFormState('idle')}
+                      className="px-8 py-3 rounded-full bg-[#F4EFF4] text-[#49454F] font-bold hover:bg-[#E6E1E5] transition-all"
+                    >
+                      Enviar outra mensagem
+                    </button>
+                  </motion.div>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-outline">Nome completo</label>
+              </AnimatePresence>
+
+              <div className="mb-10">
+                <h2 className="text-3xl font-black text-[#1C1B1F] mb-2">Envie seu projeto</h2>
+                <p className="text-[#79747E] font-medium">Preencha os detalhes e nossa equipe entrará em contato.</p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Input */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-black uppercase tracking-widest text-[#79747E] ml-4">Quem está falando?</label>
                     <input
                       required
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Seu nome"
-                      className="w-full px-5 py-3.5 rounded-full bg-surface-container-low border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline font-medium transition"
+                      type="text"
+                      placeholder="Seu nome completo"
+                      className="w-full px-6 py-4 rounded-full bg-[#FDFCFE] border border-[#E6E1E5] focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium text-[#1C1B1F] placeholder:text-[#CAC4D0]"
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-outline">E-mail</label>
+
+                  {/* Email Input */}
+                  <div className="space-y-2">
+                    <label className="text-xs font-black uppercase tracking-widest text-[#79747E] ml-4">Seu melhor e-mail</label>
                     <input
                       required
-                      type="email"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="seu@email.com"
-                      className="w-full px-5 py-3.5 rounded-full bg-surface-container-low border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline font-medium transition"
+                      type="email"
+                      placeholder="contato@empresa.com"
+                      className="w-full px-6 py-4 rounded-full bg-[#FDFCFE] border border-[#E6E1E5] focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium text-[#1C1B1F] placeholder:text-[#CAC4D0]"
                     />
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-outline">Assunto</label>
-                  <select
-                    required
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full px-5 py-3.5 rounded-full bg-surface-container-low border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface font-medium transition appearance-none"
-                  >
-                    <option value="">Selecione um assunto...</option>
-                    {subjects.map((s) => (
-                      <option key={s} value={s}>{s}</option>
-                    ))}
-                  </select>
+                {/* Subject Selection */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-[#79747E] ml-4">Qual a sua necessidade?</label>
+                  <div className="relative">
+                    <select
+                      required
+                      value={form.subject}
+                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      className="w-full px-6 py-4 rounded-full bg-[#FDFCFE] border border-[#E6E1E5] focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium text-[#1C1B1F] appearance-none"
+                    >
+                      <option value="">Selecione o assunto...</option>
+                      {subjects.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 w-4 h-4 text-[#79747E] pointer-events-none" />
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-black uppercase tracking-widest text-outline">Mensagem</label>
+                {/* Message Input */}
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-[#79747E] ml-4">Conte-nos mais</label>
                   <textarea
                     required
-                    rows={5}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Descreva sua dúvida ou solicitação..."
-                    className="w-full px-5 py-4 rounded-2xl bg-surface-container-low border border-outline-variant/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline font-medium transition resize-none"
+                    rows={4}
+                    placeholder="Descreva seu projeto ou dúvida em detalhes..."
+                    className="w-full px-6 py-6 rounded-3xl bg-[#FDFCFE] border border-[#E6E1E5] focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium text-[#1C1B1F] placeholder:text-[#CAC4D0] resize-none"
                   />
                 </div>
 
+                {/* Error Message */}
+                {formState === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-2xl bg-red-50 border border-red-100 flex items-start gap-4"
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-red-600 font-medium leading-relaxed">
+                      {errorMessage}
+                    </p>
+                  </motion.div>
+                )}
+
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-white py-4 rounded-full font-black text-base shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none"
+                  className="group relative w-full overflow-hidden px-8 py-5 rounded-full bg-primary text-white font-black text-lg shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 disabled:opacity-70 disabled:pointer-events-none"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Enviar Mensagem
-                    </>
-                  )}
+                  <div className="relative z-10 flex items-center justify-center gap-3">
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        Validando envio...
+                      </>
+                    ) : (
+                      <>
+                        Enviar Mensagem Agora
+                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+                      </>
+                    )}
+                  </div>
+                  {/* Hover Background Animation */}
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
-              </form>
-            )}
-          </motion.div>
 
-          {/* FAQ Teaser */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-surface-container-lowest rounded-3xl p-8 shadow-sm"
-          >
-            <h3 className="text-xl font-extrabold text-on-surface mb-6">Perguntas Frequentes</h3>
-            <div className="space-y-3">
-              {faqTeaser.map((faq, i) => (
-                <div key={i} className="bg-surface-container-low rounded-2xl overflow-hidden">
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between p-4 text-left gap-3"
-                  >
-                    <span className="font-bold text-sm text-on-surface leading-snug">{faq.question}</span>
-                    {openFaq === i
-                      ? <ChevronUp className="w-4 h-4 text-primary flex-shrink-0" />
-                      : <ChevronDown className="w-4 h-4 text-outline flex-shrink-0" />
-                    }
-                  </button>
-                  {openFaq === i && (
-                    <div className="px-4 pb-4">
-                      <p className="text-sm text-on-surface-variant leading-relaxed">{faq.answer}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <Link
-              to="/faq"
-              className="mt-6 flex items-center gap-1.5 text-primary font-bold text-sm hover:underline"
-            >
-              Ver todas as perguntas →
-            </Link>
-          </motion.div>
+                <p className="text-center text-[11px] text-[#CAC4D0] font-bold uppercase tracking-widest leading-relaxed">
+                  Ao clicar em enviar, você aceita nossos <br /> termos e política de privacidade.
+                </p>
+              </form>
+            </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
