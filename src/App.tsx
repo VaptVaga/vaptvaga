@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Layout
@@ -8,7 +8,7 @@ import { BottomNav } from './components/layout/BottomNav';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from './lib/authContext';
 
 // Pages
 import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
@@ -35,20 +35,44 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
+// Redirects logged-in users away from the landing page
+const HomeRedirect: React.FC = () => {
+  const { user, authUser, isLoading } = useAuth();
+
+  if (isLoading) return null;
+
+  if (authUser) {
+    // User is logged in — redirect based on profile status
+    if (!user?.role) {
+      return <Navigate to="/onboarding/role" replace />;
+    }
+    if (user.role === 'freelancer') {
+      return <Navigate to="/freelancer/onboarding" replace />;
+    }
+    return <Navigate to="/company/dashboard" replace />;
+  }
+
+  return <FreelancerLanding />;
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
-  const { user } = useAuth();
-  const showLoginBtn = location.pathname === '/' || location.pathname === '/empresas';
+  const { authUser } = useAuth();
+
+  // Hide global header on onboarding pages (they have their own)
+  const hideHeader = location.pathname.startsWith('/freelancer/onboarding') ||
+                     location.pathname.startsWith('/onboarding');
+  
   const isLandingPage = location.pathname === '/' || location.pathname === '/empresas';
 
   return (
     <>
-      <Header showLoginBtn={showLoginBtn} />
+      {!hideHeader && <Header />}
       
       <main className={`w-full ${isLandingPage ? 'pb-0' : 'pb-32 lg:pb-0'}`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageWrapper><FreelancerLanding /></PageWrapper>} />
+            <Route path="/" element={<PageWrapper><HomeRedirect /></PageWrapper>} />
             <Route path="/empresas" element={<PageWrapper><CompanyLanding /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
@@ -88,7 +112,7 @@ const AnimatedRoutes = () => {
         </AnimatePresence>
       </main>
 
-      {user && <BottomNav />}
+      {authUser && <BottomNav />}
       <Footer />
     </>
   );
