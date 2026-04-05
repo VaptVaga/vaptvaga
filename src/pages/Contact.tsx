@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MessageCircle, Instagram, Send, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { supabase } from '../lib/supabase';
 
 const contactChannels = [
@@ -49,98 +48,44 @@ const faqTeaser = [
 
 const subjects = ['Dúvida geral', 'Problema técnico', 'Sugestão', 'Parceria', 'Outro'];
 
-// Função auxiliar para evitar que chamadas assíncronas travem a tela para sempre
-const withTimeout = (promise: Promise<any>, timeoutMs: number, errorMessage: string) => {
-  return Promise.race([
-    promise,
-    new Promise((_, reject) =>
-      setTimeout(() => reject(new Error(errorMessage)), timeoutMs)
-    ),
-  ]);
-};
-
 export const Contact: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSent, setFormSent] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!executeRecaptcha) {
-      setSubmitError('O reCAPTCHA ainda não está pronto. Tente novamente em alguns segundos.');
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitError(null);
 
     try {
-      console.log('[Contact] Iniciando envio do formulário...');
+      console.log('[Contact] Enviando mensagem direta para o banco...');
 
-      // 1. Gera o token de pontuação (v3) com timeout de 8 segundos
-      console.log('[Contact] Gerando token reCAPTCHA v3...');
-      const token = await withTimeout(
-        executeRecaptcha('contact_form'),
-        8000,
-        'O Google reCAPTCHA demorou muito para responder. Verifique sua conexão.'
-      );
-      console.log('[Contact] Token gerado com sucesso.');
+      const { error } = await (supabase
+        .from('contact_messages') as any)
+        .insert([{
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message
+        }]);
 
-      // 2. Chama a Edge Function com fetch puro (para melhor depuração de rede)
-      console.log('[Contact] Enviando POST para a Edge Function via fetch...');
-      
-      const functionUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact_captcha`;
-      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-      const response = await withTimeout(
-        fetch(functionUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${anonKey}`,
-            'apikey': anonKey
-          },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            subject: form.subject,
-            message: form.message,
-            captchaToken: token
-          })
-        }),
-        30000,
-        'O servidor do Supabase demorou muito para responder (30s). Tente novamente.'
-      );
-
-      console.log('[Contact] Resposta bruta recebida, status:', response.status);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('[Contact] Erro na resposta da função:', errorData);
-        throw new Error(errorData.error || `Erro do servidor (${response.status})`);
+      if (error) {
+        console.error('[Contact] Erro Supabase:', error);
+        throw new Error('Não foi possível salvar sua mensagem. Por favor, verifique sua conexão ou tente o WhatsApp.');
       }
 
-      const data = await response.json();
-      console.log('[Contact] Dados da JSON da função:', data);
-      
-      if (data?.error) {
-        console.error('[Contact] Erro retornado pela função:', data.error);
-        throw new Error(data.error);
-      }
-
-      console.log('[Contact] Formulário enviado com sucesso!');
+      console.log('[Contact] Mensagem salva com sucesso!');
       setFormSent(true);
-      setTimeout(() => setFormSent(false), 4000);
+      setTimeout(() => setFormSent(false), 5000);
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (error: any) {
-      console.error('[Contact] Erro capturado no catch:', error);
-      setSubmitError(error.message || 'Não foi possível enviar a mensagem. Tente novamente mais tarde.');
+      console.error('[Contact] Catch error:', error);
+      setSubmitError(error.message || 'Ocorreu um erro ao enviar sua mensagem.');
     } finally {
-      console.log('[Contact] Finalizando processo de envio.');
       setIsSubmitting(false);
     }
   };
