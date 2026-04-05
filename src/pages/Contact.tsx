@@ -69,28 +69,42 @@ export const Contact: React.FC = () => {
     setErrorMessage('');
     
     try {
-      // Direct insertion to Supabase (Bypassing Edge Functions for reliability)
-      const { error } = await (supabase.from('contact_messages') as any).insert([
+      console.log('[Contact] Enviando mensagem com timeout de segurança (15s)...');
+
+      // 1. Validação de URLs (Prevenir hangs se os envs não estiverem no Vercel)
+      if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+        throw new Error('Configuração do servidor indisponível. Por favor, use o WhatsApp.');
+      }
+
+      // 2. Inserção com Timeout de 15 segundos
+      const insertPromise = (supabase.from('contact_messages') as any).insert([
         {
           name: form.name,
           email: form.email,
           subject: form.subject,
-          message: form.message,
-          created_at: new Date().toISOString()
+          message: form.message
         }
       ]);
 
-      if (error) throw error;
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('O banco de dados não respondeu a tempo (Timeout). Verifique se a tabela existe.')), 15000)
+      );
 
+      const { error } = await Promise.race([insertPromise, timeoutPromise]) as any;
+
+      if (error) {
+        console.error('[Contact] Erro Supabase:', error);
+        throw new Error(`Erro ao salvar: ${error.message || 'Tabela não encontrada ou sem permissão.'}`);
+      }
+
+      console.log('[Contact] Mensagem salva com sucesso!');
       setFormState('success');
       setForm({ name: '', email: '', subject: '', message: '' });
-      
-      // Auto-revert to idle after 6 seconds
       setTimeout(() => setFormState('idle'), 6000);
     } catch (err: any) {
-      console.error('[Contact] Error:', err);
+      console.error('[Contact] Catch error:', err);
       setFormState('error');
-      setErrorMessage(err.message || 'Houve um erro técnico. Por favor, tente pelo WhatsApp.');
+      setErrorMessage(err.message || 'Não foi possível enviar agora. Tente novamente em instantes.');
     } finally {
       setIsSubmitting(false);
     }
