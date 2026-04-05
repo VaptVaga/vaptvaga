@@ -11,15 +11,15 @@ import { ProtectedRoute } from './components/common/ProtectedRoute';
 import { useAuth } from './contexts/AuthContext';
 
 // Pages
-import { FreelancerLanding } from './pages/FreelancerLanding.tsx';
-import { CompanyLanding } from './pages/CompanyLanding.tsx';
-import { Login } from './pages/Login.tsx';
-import { OnboardingRole } from './pages/OnboardingRole.tsx';
-import { FreelancerOnboarding } from './pages/FreelancerOnboarding.tsx';
-import { FAQ } from './pages/FAQ.tsx';
-import { Contact } from './pages/Contact.tsx';
-import { TermsOfService } from './pages/TermsOfService.tsx';
-import { PrivacyPolicy } from './pages/PrivacyPolicy.tsx';
+import { FreelancerLanding } from './pages/FreelancerLanding';
+import { CompanyLanding } from './pages/CompanyLanding';
+import { Login } from './pages/Login';
+import { OnboardingRole } from './pages/OnboardingRole';
+import { FreelancerOnboarding } from './pages/FreelancerOnboarding';
+import { FAQ } from './pages/FAQ';
+import { Contact } from './pages/Contact';
+import { TermsOfService } from './pages/TermsOfService';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -39,14 +39,11 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const HomeRedirect: React.FC = () => {
   const { profile, user, loading } = useAuth();
 
-  // We render the landing page as a fallback even during loading to avoid a blank screen.
-  // If the user turns out to be logged in, the useEffect/Navigate will handle the transition.
   if (loading) {
     return <FreelancerLanding />;
   }
 
   if (user) {
-    // User is logged in — redirect based on profile status
     if (!profile?.role) {
       return <Navigate to="/onboarding/role" replace />;
     }
