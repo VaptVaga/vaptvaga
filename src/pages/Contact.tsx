@@ -68,54 +68,21 @@ export const Contact: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
     
-    const MAX_RETRIES = 2;
-    let attempt = 0;
-
-    const performSubmission = async (): Promise<void> => {
-      // Safety timeout to prevent infinite loading (increased to 30s)
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Tempo limite de conexão excedido.')), 30000)
-      );
-      
-      try {
-        console.log(`[Contact] Tentativa ${attempt + 1} de envio...`);
-        
-        const insertPromise = (supabase.from('contact_messages') as any).insert([{
-          name: form.name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-        }]);
-
-        const { error } = await Promise.race([insertPromise, timeoutPromise]) as any;
-
-        if (error) {
-          console.error(`[Contact] Erro Supabase (Tentativa ${attempt + 1}):`, error);
-          throw new Error(error.message || 'Erro ao enviar mensagem.');
-        }
-
-        console.log('[Contact] Sucesso!');
-        setFormState('success');
-        setForm({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setFormState('idle'), 6000);
-      } catch (err: any) {
-        if (attempt < MAX_RETRIES) {
-          attempt++;
-          console.warn(`[Contact] Falha na tentativa ${attempt}. Tentando novamente...`);
-          return performSubmission();
-        }
-        throw err;
-      }
-    };
-
     try {
-      await performSubmission();
+      await (supabase.from('contact_messages') as any).insert({
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+      }).throwOnError();
+
+      setFormState('success');
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setFormState('idle'), 6000);
     } catch (err: any) {
-      console.error('[Contact] Erro final de submissão:', err);
+      console.error('[Contact] Erro:', err);
       setFormState('error');
-      setErrorMessage(err.message === 'Tempo limite de conexão excedido.' 
-        ? 'A conexão está lenta. Por favor, tente novamente ou use o WhatsApp.' 
-        : (err.message || 'Não foi possível enviar. Tente pelo WhatsApp.'));
+      setErrorMessage(err.message || 'Não foi possível enviar. Tente pelo WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
