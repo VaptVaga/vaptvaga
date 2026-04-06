@@ -69,12 +69,14 @@ export const Contact: React.FC = () => {
     setErrorMessage('');
     
     try {
-      await (supabase.from('contact_messages') as any).insert({
+      const { error } = await supabase.from('contact_messages').insert({
         name: form.name,
         email: form.email,
         subject: form.subject,
         message: form.message,
-      }).throwOnError();
+      });
+      
+      if (error) throw error;
 
       setFormState('success');
       setForm({ name: '', email: '', subject: '', message: '' });
