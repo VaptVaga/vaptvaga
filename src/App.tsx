@@ -48,7 +48,9 @@ const HomeRedirect: React.FC = () => {
       return <Navigate to="/onboarding/role" replace />;
     }
     if (profile.role === 'freelancer') {
-      return <Navigate to="/freelancer/onboarding" replace />;
+      // Redirect to onboarding if profile is incomplete, otherwise to dashboard
+      const isProfileComplete = profile.skills && profile.skills.length > 0 && profile.cidade;
+      return <Navigate to={isProfileComplete ? '/freelancer/dashboard' : '/freelancer/onboarding'} replace />;
     }
     return <Navigate to="/company/dashboard" replace />;
   }
