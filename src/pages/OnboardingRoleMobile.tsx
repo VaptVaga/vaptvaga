@@ -97,7 +97,7 @@ export const OnboardingRoleMobile: React.FC = () => {
     }
   };
 
-  const handleSocialSignUp = async (provider: 'google' as const) => {
+  const handleSocialSignUp = async (provider: 'google') => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
