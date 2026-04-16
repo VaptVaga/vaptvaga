@@ -7,6 +7,7 @@ import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { ImageCropper } from '@/components/common/ImageCropper';
 
 const defaultSkillOptions = [
   'Garçom', 'Barman', 'Cozinheiro', 'Auxiliar de Cozinha', 'Chapa',
@@ -61,6 +62,19 @@ const Onboarding = () => {
   const [selectedPlan, setSelectedPlan] = useState<'free' | 'premium'>('free');
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'pix'>('card');
 
+  // Images state
+  const [freelancerAvatarFile, setFreelancerAvatarFile] = useState<File | null>(null);
+  const [freelancerAvatarPreview, setFreelancerAvatarPreview] = useState<string | null>(user?.avatar_url || null);
+
+  const [companyLogoFile, setCompanyLogoFile] = useState<File | null>(null);
+  const [companyLogoPreview, setCompanyLogoPreview] = useState<string | null>(user?.avatar_url || null);
+
+  const [companyBannerFile, setCompanyBannerFile] = useState<File | null>(null);
+  const [companyBannerPreview, setCompanyBannerPreview] = useState<string | null>(null);
+
+  const [croppingTarget, setCroppingTarget] = useState<'freelancer' | 'logo' | 'banner' | null>(null);
+  const [croppingImageSrc, setCroppingImageSrc] = useState<string | null>(null);
+
   // Freelancer fields
   const [selectedSkills, setSelectedSkills] = useState<string[]>(user?.skills || []);
   const [customSkill, setCustomSkill] = useState('');
@@ -97,23 +111,88 @@ const Onboarding = () => {
   const toggleDay = (day: string) =>
     setDiasMovimento((prev) => prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]);
 
+  const handleImagePick = (e: React.ChangeEvent<HTMLInputElement>, target: 'freelancer' | 'logo' | 'banner') => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setCroppingImageSrc(URL.createObjectURL(file));
+      setCroppingTarget(target);
+      e.target.value = '';
+    }
+  };
+
+  const handleCropComplete = (croppedFile: File, croppedUrl: string) => {
+    if (croppingTarget === 'freelancer') {
+      setFreelancerAvatarFile(croppedFile);
+      setFreelancerAvatarPreview(croppedUrl);
+    } else if (croppingTarget === 'logo') {
+      setCompanyLogoFile(croppedFile);
+      setCompanyLogoPreview(croppedUrl);
+    } else if (croppingTarget === 'banner') {
+      setCompanyBannerFile(croppedFile);
+      setCompanyBannerPreview(croppedUrl);
+    }
+    setCroppingImageSrc(null);
+    setCroppingTarget(null);
+  };
+
+  const [saving, setSaving] = useState(false);
   const handleSave = async () => {
     if (!authUser) return;
+    setSaving(true);
     try {
+      let finalAvatarUrl = role === 'company' ? companyLogoPreview : freelancerAvatarPreview;
+      let finalBannerUrl = companyBannerPreview;
+
+      // Upload Freelancer Avatar
+      if (role !== 'company' && freelancerAvatarFile) {
+        const ext = freelancerAvatarFile.name.split('.').pop() || 'jpeg';
+        const path = `${authUser.id}/avatar_${Date.now()}.${ext}`;
+        const { error } = await supabase.storage.from('avatars').upload(path, freelancerAvatarFile, { upsert: true });
+        if (!error) {
+          finalAvatarUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+        }
+      }
+
+      // Upload Company Logo
+      if (role === 'company' && companyLogoFile) {
+        const ext = companyLogoFile.name.split('.').pop() || 'jpeg';
+        const path = `${authUser.id}/logo_${Date.now()}.${ext}`;
+        const { error } = await supabase.storage.from('avatars').upload(path, companyLogoFile, { upsert: true });
+        if (!error) {
+          finalAvatarUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+        }
+      }
+
+      // Upload Company Banner
+      if (role === 'company' && companyBannerFile) {
+        const ext = companyBannerFile.name.split('.').pop() || 'jpeg';
+        // Placed in avatars bucket for simplicity, named properly
+        const path = `${authUser.id}/banner_${Date.now()}.${ext}`;
+        const { error } = await supabase.storage.from('avatars').upload(path, companyBannerFile, { upsert: true });
+        if (!error) {
+          finalBannerUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+        }
+      }
+
       await updateProfile.mutateAsync({
         id: authUser.id,
         name,
         cidade,
         telefone,
         role: role || 'freelancer',
+        avatar_url: finalAvatarUrl,
+        banner_url: finalBannerUrl,
         ...(role !== 'company' ? { skills: selectedSkills } : {}),
         ...(estado ? { estado } : {}),
-      });
+      } as any);
+      
       await refreshProfile();
       toast({ title: '✅ Perfil salvo com sucesso!' });
       navigate('/dashboard');
     } catch (err: any) {
       toast({ title: 'Erro ao salvar', description: err.message, variant: 'destructive' });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -162,6 +241,24 @@ const Onboarding = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-lg mx-auto">
           <h2 className="text-2xl font-extrabold font-headline text-on-surface">Complete seu perfil</h2>
           <p className="mt-1 text-on-surface-variant">Informações pessoais</p>
+          
+          <div className="mt-8 flex flex-col items-center gap-2">
+            <div className="relative group cursor-pointer">
+              <div className="h-28 w-28 rounded-full bg-surface-container-low border-4 border-background shadow-md flex items-center justify-center overflow-hidden">
+                {freelancerAvatarPreview ? (
+                  <img src={freelancerAvatarPreview} alt="Avatar" className="h-full w-full object-cover" />
+                ) : (
+                  <Upload size={32} className="text-on-surface-variant/40" />
+                )}
+              </div>
+              <label className="absolute bottom-0 right-0 w-8 h-8 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                <Upload size={14} />
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImagePick(e, 'freelancer')} />
+              </label>
+            </div>
+            <span className="text-xs text-on-surface-variant font-medium">Sua foto de perfil</span>
+          </div>
+
           <div className="mt-8 space-y-5">
             <div>
               <label className={labelClass}>Nome completo</label>
@@ -210,9 +307,9 @@ const Onboarding = () => {
             </div>
           </div>
           <motion.div whileTap={{ scale: 0.96 }} className="mt-8">
-            <button onClick={handleSave} disabled={updateProfile.isPending}
+            <button onClick={handleSave} disabled={saving || updateProfile.isPending}
               className="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60">
-              {updateProfile.isPending ? 'Salvando...' : 'Salvar e continuar'}
+              {saving || updateProfile.isPending ? 'Salvando...' : 'Salvar e continuar'}
               <ArrowRight size={20} />
             </button>
           </motion.div>
@@ -355,16 +452,43 @@ const Onboarding = () => {
                     </div>
                   </div>
 
-                  {/* Logo Upload */}
-                  <div className="mt-8 bg-surface-container-low p-8 rounded-2xl text-center">
-                    <h4 className="font-bold font-headline text-on-surface mb-6">Logotipo da Empresa</h4>
-                    <div className="relative group cursor-pointer inline-block mx-auto">
-                      <div className="w-40 h-40 rounded-2xl bg-surface-container-lowest border-4 border-dashed border-outline/20 flex flex-col items-center justify-center gap-3 group-hover:border-primary/40 transition-colors">
-                        <Upload size={32} className="text-primary-container" />
-                        <span className="text-xs font-bold font-headline text-on-surface-variant">Upload de imagem</span>
+                  {/* Logo and Banner Upload */}
+                  <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-surface-container-low p-6 rounded-2xl text-center flex flex-col items-center">
+                      <h4 className="font-bold font-headline text-on-surface mb-4">Logotipo da Empresa</h4>
+                      <div className="relative group cursor-pointer inline-block">
+                        <div className="w-32 h-32 rounded-full bg-surface-container-lowest border-4 border-dashed border-outline/20 flex flex-col items-center justify-center gap-2 group-hover:border-primary/40 transition-colors overflow-hidden">
+                          {companyLogoPreview ? (
+                            <img src={companyLogoPreview} alt="Logo" className="w-full h-full object-cover" />
+                          ) : (
+                            <>
+                              <Upload size={24} className="text-primary-container" />
+                              <span className="text-[10px] font-bold font-headline text-on-surface-variant">Upload Logo</span>
+                            </>
+                          )}
+                        </div>
+                        <input type="file" accept="image/*" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onChange={(e) => handleImagePick(e, 'logo')} />
                       </div>
+                      <p className="text-[10px] text-on-surface-variant mt-4">Redondo. Máximo 5MB.</p>
                     </div>
-                    <p className="text-xs text-on-surface-variant mt-6">PNG ou JPG. Máximo 5MB.</p>
+
+                    <div className="bg-surface-container-low p-6 rounded-2xl text-center flex flex-col items-center">
+                      <h4 className="font-bold font-headline text-on-surface mb-4">Banner da Empresa</h4>
+                      <div className="relative group cursor-pointer inline-block w-full">
+                        <div className="w-full h-32 rounded-2xl bg-surface-container-lowest border-4 border-dashed border-outline/20 flex flex-col items-center justify-center gap-2 group-hover:border-primary/40 transition-colors overflow-hidden">
+                          {companyBannerPreview ? (
+                            <img src={companyBannerPreview} alt="Banner" className="w-full h-full object-cover" />
+                          ) : (
+                            <>
+                              <Upload size={24} className="text-primary-container" />
+                              <span className="text-[10px] font-bold font-headline text-on-surface-variant">Upload Banner</span>
+                            </>
+                          )}
+                        </div>
+                        <input type="file" accept="image/*" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onChange={(e) => handleImagePick(e, 'banner')} />
+                      </div>
+                      <p className="text-[10px] text-on-surface-variant mt-4">Retangular (16:9). Máximo 5MB.</p>
+                    </div>
                   </div>
 
                   {/* Info card */}
@@ -639,10 +763,10 @@ const Onboarding = () => {
                   </div>
 
                   <div className="mt-10 space-y-4">
-                    <motion.button whileTap={{ scale: 0.97 }} onClick={handleSave} disabled={updateProfile.isPending}
+                    <motion.button whileTap={{ scale: 0.97 }} onClick={handleSave} disabled={saving || updateProfile.isPending}
                       className="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-60">
-                      {updateProfile.isPending ? 'Salvando...' : 'Finalizar Cadastro'}
-                      {!updateProfile.isPending && <Check size={20} />}
+                      {saving || updateProfile.isPending ? 'Salvando...' : 'Finalizar Cadastro'}
+                      {!(saving || updateProfile.isPending) && <Check size={20} />}
                     </motion.button>
                     <button onClick={prevStep} className="flex items-center justify-center gap-2 w-full text-on-surface-variant hover:text-primary transition-colors font-medium text-sm">
                       <ArrowLeft size={16} /> Voltar para Pagamento
@@ -654,6 +778,19 @@ const Onboarding = () => {
           </AnimatePresence>
         </main>
       </div>
+
+      {croppingImageSrc && (
+        <ImageCropper
+          imageSrc={croppingImageSrc}
+          onCropComplete={handleCropComplete}
+          onCancel={() => {
+            setCroppingImageSrc(null);
+            setCroppingTarget(null);
+          }}
+          cropShape={croppingTarget === 'banner' ? 'rect' : 'round'}
+          aspect={croppingTarget === 'banner' ? 16 / 9 : 1}
+        />
+      )}
     </div>
   );
 };

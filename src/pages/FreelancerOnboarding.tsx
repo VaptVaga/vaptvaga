@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { useQuery } from '@tanstack/react-query';
+import { ImageCropper } from '../components/common/ImageCropper';
 
 const SKILL_OPTIONS = [
   'Atendimento ao Cliente', 'Barista', 'Garçom', 'Caixa', 'Auxiliar de Cozinha',
@@ -44,6 +45,7 @@ export const FreelancerOnboarding: React.FC = () => {
   const [cidade, setCidade] = useState('');
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(profile?.avatar_url || null);
+  const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
 
   // Experience
   const [experiences, setExperiences] = useState<Experience[]>([{ empresa: '', cargo: '', inicio: '', fim: '' }]);
@@ -107,9 +109,20 @@ export const FreelancerOnboarding: React.FC = () => {
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setAvatarFile(file);
-      setAvatarPreview(URL.createObjectURL(file));
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImageSrc(imageUrl);
+      e.target.value = '';
     }
+  };
+
+  const handleCropComplete = (croppedFile: File, croppedUrl: string) => {
+    setAvatarFile(croppedFile);
+    setAvatarPreview(croppedUrl);
+    setSelectedImageSrc(null);
+  };
+
+  const handleCropCancel = () => {
+    setSelectedImageSrc(null);
   };
 
   const handleSave = async () => {
@@ -291,7 +304,7 @@ export const FreelancerOnboarding: React.FC = () => {
                             <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Estado</label>
                             <div className="relative">
                               <select
-                                className="w-full appearance-none px-5 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface font-medium cursor-pointer"
+                                className="w-full appearance-none px-5 py-4 bg-surface-container-lowest bg-none border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface font-medium cursor-pointer pr-12"
                                 value={estado}
                                 onChange={e => setEstado(e.target.value)}
                               >
@@ -711,6 +724,15 @@ export const FreelancerOnboarding: React.FC = () => {
           </footer>
         </div>
       </main>
+
+      {/* Image Cropper Modal */}
+      {selectedImageSrc && (
+        <ImageCropper
+          imageSrc={selectedImageSrc}
+          onCropComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+        />
+      )}
     </div>
   );
 };

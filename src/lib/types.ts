@@ -10,6 +10,8 @@ export interface Profile {
   bairro: string | null;
   telefone: string | null;
   imgUrl: string | null;
+  avatar_url?: string | null;
+  banner_url?: string | null;
 }
 
 export interface Job {
