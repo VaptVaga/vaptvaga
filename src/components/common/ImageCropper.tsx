@@ -20,18 +20,19 @@ export const ImageCropper: React.FC<ImageCropperProps> = ({
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [rotation, setRotation] = useState(0)
   const [zoom, setZoom] = useState(1)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
   const [loading, setLoading] = useState(false)
 
   const onCropChange = (crop: any) => setCrop(crop)
   const onRotationChange = (rotation: any) => setRotation(rotation)
   const onZoomChange = (zoom: any) => setZoom(zoom)
 
-  const onCropCompleteEvent = useCallback((croppedArea: any, croppedAreaPx: any) => {
+  const onCropCompleteEvent = useCallback((_croppedArea: any, croppedAreaPx: any) => {
     setCroppedAreaPixels(croppedAreaPx)
   }, [])
 
   const handleConfirm = async () => {
+    if (!croppedAreaPixels) return
     try {
       setLoading(true)
       const croppedImageFile = await getCroppedImg(imageSrc, croppedAreaPixels, rotation)
