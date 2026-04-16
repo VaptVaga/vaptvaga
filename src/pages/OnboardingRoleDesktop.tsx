@@ -100,16 +100,6 @@ export const OnboardingRoleDesktop: React.FC = () => {
     }
   };
 
-  const handleSocialSignUp = async (provider: 'google') => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/`,
-        queryParams: { role: role }
-      },
-    });
-    if (error) setError(error.message);
-  };
 
   return (
     <div className="bg-surface text-on-surface min-h-screen flex items-center justify-center p-6 w-full">
@@ -263,36 +253,6 @@ export const OnboardingRoleDesktop: React.FC = () => {
           </button>
         </form>
 
-        {/* Only show social login for non-OAuth users */}
-        {!isOAuthUser && (
-          <>
-            <div className="relative my-10">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-outline-variant/30"></div>
-              </div>
-              <div className="relative flex justify-center text-xs uppercase tracking-widest font-bold text-outline">
-                <span className="bg-surface-container-lowest px-4">Ou registre-se com</span>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <button 
-                onClick={() => handleSocialSignUp('google')}
-                className="h-12 flex items-center justify-center gap-3 bg-white border border-outline-variant hover:bg-surface-container-low rounded-xl transition-colors font-bold text-on-surface-variant text-sm px-6 shadow-sm group w-full disabled:opacity-50"
-                disabled={loading}
-              >
-                <svg className="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" fill="#EA4335"/>
-                  <path d="M46.74 24.55c0-1.65-.15-3.23-.42-4.75H24v9.03h12.79c-.55 2.96-2.22 5.47-4.73 7.15l7.35 5.7c4.3-3.96 6.78-9.8 6.78-16.13z" fill="#4285F4"/>
-                  <path d="M10.54 28.59c-.48-1.42-.75-2.93-.75-4.5s.27-3.08.75-4.5L2.56 13.22C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.98-6.19z" fill="#FBBC05"/>
-                  <path d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.35-5.7c-2.21 1.5-5.03 2.51-8.54 2.51-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" fill="#34A853"/>
-                  <path d="M0 0h48v48H0z" fill="none"/>
-                </svg>
-                Continuar com Google
-              </button>
-            </div>
-          </>
-        )}
 
         {/* Footer Link */}
         <footer className="mt-12 text-center">
