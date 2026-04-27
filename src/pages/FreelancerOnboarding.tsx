@@ -147,20 +147,28 @@ export const FreelancerOnboarding: React.FC = () => {
       }
 
       // Upsert profile to guarantee it saves even if the row was somehow missing
-      const { error: saveError } = await (supabase.from('profiles') as any).upsert({
-        id: session.user.id,
-        role: profile?.role || 'freelancer',
-        name: nome,
-        avatar_url: avatarUrl,
-        skills: selectedSkills,
-        estado,
-        cidade,
-        portfolio_url: portfolioUrl || linkedin || null,
-        bio: bio,
-        titulo_profissional: tituloProfissional,
-        instagram: instagram,
-        experiencias: experiences,
-      });
+      // Add retry logic for Supabase lock token error
+      let saveError;
+      for (let i = 0; i < 3; i++) {
+        const { error } = await (supabase.from('profiles') as any).upsert({
+          id: session.user.id,
+          role: profile?.role || 'freelancer',
+          name: nome,
+          avatar_url: avatarUrl,
+          skills: selectedSkills,
+          estado,
+          cidade,
+          portfolio_url: portfolioUrl || linkedin || null,
+          bio: bio,
+          titulo_profissional: tituloProfissional,
+          instagram: instagram,
+          experiencias: experiences,
+        });
+        
+        saveError = error;
+        if (!error || !error.message.includes('Lock')) break;
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
 
       if (saveError) {
         console.error('Error in upsert:', saveError);
