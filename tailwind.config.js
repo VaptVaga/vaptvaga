@@ -11,63 +11,74 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#004ac6",
-        "on-surface": "#111c2d",
-        "on-tertiary-container": "#ffede6",
-        "surface-tint": "#0053db",
-        "on-error": "#ffffff",
-        "on-secondary-fixed": "#002113",
-        "error": "#ba1a1a",
-        "on-primary-container": "#eeefff",
-        "secondary-container": "#6cf8bb",
-        "surface-container-lowest": "#ffffff",
-        "outline": "#737686",
-        "surface-variant": "#d8e3fb",
-        "primary-fixed": "#dbe1ff",
-        "on-secondary-fixed-variant": "#005236",
-        "surface-container-highest": "#d8e3fb",
-        "on-error-container": "#93000a",
-        "primary-container": "#2563eb",
-        "on-tertiary-fixed": "#360f00",
-        "on-background": "#111c2d",
-        "surface-container": "#e7eeff",
-        "surface": "#f9f9ff",
-        "outline-variant": "#c3c6d7",
-        "inverse-primary": "#b4c5ff",
-        "secondary": "#006c49",
-        "primary-fixed-dim": "#b4c5ff",
-        "on-tertiary": "#ffffff",
-        "surface-bright": "#f9f9ff",
-        "secondary-fixed": "#6ffbbe",
-        "on-tertiary-fixed-variant": "#7d2d00",
-        "surface-dim": "#cfdaf2",
-        "background": "#f9f9ff",
-        "tertiary": "#943700",
-        "surface-container-high": "#dee8ff",
-        "on-surface-variant": "#434655",
-        "error-container": "#ffdad6",
-        "on-primary-fixed-variant": "#003ea8",
-        "on-primary-fixed": "#00174b",
-        "tertiary-fixed": "#ffdbcd",
-        "surface-container-low": "#f0f3ff",
-        "on-secondary-container": "#00714d",
-        "tertiary-fixed-dim": "#ffb596",
-        "secondary-fixed-dim": "#4edea3",
-        "inverse-on-surface": "#ecf1ff",
-        "on-secondary": "#ffffff",
-        "tertiary-container": "#bc4800",
+        "primary": "#0066FF", // Azul Elétrico
+        "primary-container": "#E6F0FF",
         "on-primary": "#ffffff",
-        "inverse-surface": "#263143"
+        "on-primary-container": "#001B4D",
+        
+        "secondary": "#00C89A", // Mint Green (Sucesso / Confirmado)
+        "secondary-container": "#E6FAF4",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#003A2D",
+        
+        "tertiary": "#FF5A5F", // Vibrant Coral (Urgente / Alerta)
+        "tertiary-container": "#FFEFEB",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-container": "#4D0A0F",
+        
+        "surface": "#ffffff", // Branco
+        "surface-dim": "#F2F4F7",
+        "surface-bright": "#ffffff",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#F8F9FA",
+        "surface-container": "#F2F4F7", // Cinza Claro
+        "surface-container-high": "#E9ECEF",
+        "surface-container-highest": "#DEE2E6",
+        
+        "on-surface": "#0A132B", // Deep Navy
+        "on-surface-variant": "#495057",
+        "inverse-surface": "#0A132B",
+        "inverse-on-surface": "#ffffff",
+        
+        "outline": "#CED4DA",
+        "outline-variant": "#E9ECEF",
+        
+        "background": "#F2F4F7", // Cinza Claro
+        "on-background": "#0A132B", // Deep Navy
+        
+        "error": "#FF5A5F", // Vibrant Coral
+        "on-error": "#ffffff",
+        "error-container": "#FFEFEB",
+        "on-error-container": "#4D0A0F",
+        
+        "primary-fixed": "#E6F0FF",
+        "primary-fixed-dim": "#B3D1FF",
+        "on-primary-fixed": "#001B4D",
+        "on-primary-fixed-variant": "#004BCC",
+        
+        "secondary-fixed": "#E6FAF4",
+        "secondary-fixed-dim": "#99EBD6",
+        "on-secondary-fixed": "#003A2D",
+        "on-secondary-fixed-variant": "#009975",
+        
+        "tertiary-fixed": "#FFEFEB",
+        "tertiary-fixed-dim": "#FFBDBD",
+        "on-tertiary-fixed": "#4D0A0F",
+        "on-tertiary-fixed-variant": "#CC484C",
       },
       fontFamily: {
-        "headline": ["Plus Jakarta Sans", "sans-serif"],
+        "headline": ["Inter", "sans-serif"],
         "body": ["Inter", "sans-serif"],
         "label": ["Inter", "sans-serif"]
       },
       borderRadius: {
-        "DEFAULT": "1rem", 
-        "lg": "2rem", 
-        "xl": "3rem", 
+        "DEFAULT": "8px", 
+        "sm": "4px",
+        "md": "8px",
+        "lg": "8px", 
+        "xl": "8px", 
+        "2xl": "12px",
+        "3xl": "16px",
         "full": "9999px"
       },
     },
