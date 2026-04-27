@@ -39,8 +39,8 @@ export const FreelancerOnboarding: React.FC = () => {
 
   // Identity
   const [nome, setNome] = useState(profile?.name || '');
-  const [tituloProfissional, setTituloProfissional] = useState('');
-  const [bio, setBio] = useState('');
+  const [tituloProfissional, setTituloProfissional] = useState((profile as any)?.titulo_profissional || '');
+  const [bio, setBio] = useState((profile as any)?.bio || '');
   const [estado, setEstado] = useState(profile?.estado || '');
   const [cidade, setCidade] = useState(profile?.cidade || '');
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -48,14 +48,14 @@ export const FreelancerOnboarding: React.FC = () => {
   const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
 
   // Experience
-  const [experiences, setExperiences] = useState<Experience[]>([{ empresa: '', cargo: '', inicio: '', fim: '' }]);
+  const [experiences, setExperiences] = useState<Experience[]>((profile as any)?.experiencias || [{ empresa: '', cargo: '', inicio: '', fim: '' }]);
   const [selectedSkills, setSelectedSkills] = useState<string[]>(profile?.skills || []);
   const [customSkill, setCustomSkill] = useState('');
 
   // Portfolio
   const [portfolioUrl, setPortfolioUrl] = useState(profile?.portfolio_url || '');
-  const [instagram, setInstagram] = useState('');
-  const [linkedin, setLinkedin] = useState('');
+  const [instagram, setInstagram] = useState((profile as any)?.instagram || '');
+  const [linkedin, setLinkedin] = useState(''); // LinkedIn is merged into portfolio_url but we keep state if needed.
 
   const { data: skillRankings } = useQuery({
     queryKey: ['skill_rankings'],
@@ -154,6 +154,10 @@ export const FreelancerOnboarding: React.FC = () => {
         estado,
         cidade,
         portfolio_url: portfolioUrl || linkedin || null,
+        bio: bio,
+        titulo_profissional: tituloProfissional,
+        instagram: instagram,
+        experiencias: experiences,
       }).eq('id', session.user.id);
 
       navigate('/freelancer/dashboard');

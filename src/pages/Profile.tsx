@@ -101,6 +101,9 @@ const Profile = () => {
           </div>
           <div className="flex-1">
             <h2 className="font-bold text-on-surface text-lg leading-tight mb-1">{user?.name || 'Usuário'}</h2>
+            {(user as any)?.titulo_profissional && (
+              <p className="text-sm font-bold text-primary mb-1">{(user as any).titulo_profissional}</p>
+            )}
             <p className="text-sm font-medium text-on-surface-variant">{user?.cidade || 'Localização não informada'}</p>
           </div>
         </div>
@@ -113,6 +116,13 @@ const Profile = () => {
                 {s}
               </span>
             ))}
+          </div>
+        )}
+
+        {user?.role === 'freelancer' && (user as any)?.bio && (
+          <div className="mt-4 bg-surface-container-low rounded-xl p-4 border border-outline-variant/10">
+            <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Sobre Mim</p>
+            <p className="text-sm text-on-surface font-medium leading-relaxed">{(user as any).bio}</p>
           </div>
         )}
 
