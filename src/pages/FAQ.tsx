@@ -208,7 +208,7 @@ export const FAQ: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-br from-primary to-primary-container rounded-3xl p-10 text-center text-white"
+          className="mt-16 bg-primary rounded-3xl p-10 text-center text-white"
         >
           <h2 className="text-2xl lg:text-3xl font-extrabold mb-3">
             Não encontrou sua resposta?

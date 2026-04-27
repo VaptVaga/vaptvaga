@@ -36,7 +36,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
 
     const { error: profileError } = await supabase
       .from('profiles')
-      .insert({
+      .upsert({
         id: user.id,
         name: fullName,
         role: role,
@@ -45,7 +45,8 @@ export const OnboardingRoleDesktop: React.FC = () => {
       });
 
     if (profileError) {
-      setError('Erro ao criar perfil. Por favor, tente novamente.');
+      console.error(profileError);
+      setError(`Erro do BD: ${profileError.message || profileError.details || 'Desconhecido'}`);
       setLoading(false);
     } else {
       await refreshProfile();
@@ -82,7 +83,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
     if (authData.user) {
       const { error: profileError } = await supabase
         .from('profiles')
-        .insert({
+        .upsert({
           id: authData.user.id,
           name: fullName,
           role: role,
@@ -91,7 +92,8 @@ export const OnboardingRoleDesktop: React.FC = () => {
         });
 
       if (profileError) {
-        setError('Erro ao criar perfil. Por favor, tente novamente.');
+        console.error(profileError);
+        setError(`Erro do BD: ${profileError.message || profileError.details || 'Desconhecido'}`);
         setLoading(false);
       } else {
         await refreshProfile();
@@ -238,7 +240,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
           </div>
 
           <button
-            className="w-full h-14 mt-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50" 
+            className="w-full h-14 mt-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50" 
             type="submit"
             disabled={loading}
           >

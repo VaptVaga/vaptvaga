@@ -58,7 +58,7 @@ const Auth = () => {
           <ArrowLeft size={20} className="text-on-surface-variant" />
         </button>
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-gradient-to-br from-primary to-primary-container rounded-lg flex items-center justify-center text-white">
+          <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center text-white">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
               <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor" />
             </svg>
@@ -80,7 +80,7 @@ const Auth = () => {
           <div className="hidden md:flex flex-col items-center gap-6 mb-10">
             {isLogin ? (
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-container rounded-xl flex items-center justify-center text-white">
+                <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor" />
                   </svg>
@@ -226,7 +226,7 @@ const Auth = () => {
                 whileTap={{ scale: 0.97 }}
                 type="submit"
                 disabled={loading}
-                className={`w-full h-14 bg-gradient-to-br from-primary to-primary-container text-white font-headline font-bold shadow-lg shadow-primary/20 hover:opacity-95 transition-all flex items-center justify-center gap-2 text-base disabled:opacity-60 mt-4 ${
+                className={`w-full h-14 bg-primary text-white font-headline font-bold shadow-lg shadow-primary/20 hover:opacity-95 transition-all flex items-center justify-center gap-2 text-base disabled:opacity-60 mt-4 ${
                   isLogin ? 'rounded-full' : 'rounded-xl'
                 }`}
               >

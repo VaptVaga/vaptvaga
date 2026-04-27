@@ -308,7 +308,7 @@ const Onboarding = () => {
           </div>
           <motion.div whileTap={{ scale: 0.96 }} className="mt-8">
             <button onClick={handleSave} disabled={saving || updateProfile.isPending}
-              className="w-full h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60">
+              className="w-full h-14 bg-primary text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60">
               {saving || updateProfile.isPending ? 'Salvando...' : 'Salvar e continuar'}
               <ArrowRight size={20} />
             </button>
@@ -506,7 +506,7 @@ const Onboarding = () => {
 
                   <div className="mt-10">
                     <motion.button whileTap={{ scale: 0.97 }} onClick={nextStep}
-                      className="w-full md:w-auto md:px-12 h-14 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                      className="w-full md:w-auto md:px-12 h-14 bg-primary text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
                       Continuar para Detalhes <ArrowRight size={20} />
                     </motion.button>
                   </div>
@@ -579,7 +579,7 @@ const Onboarding = () => {
 
                   <div className="mt-10 space-y-4">
                     <motion.button whileTap={{ scale: 0.97 }} onClick={nextStep}
-                      className="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                      className="w-full h-16 bg-primary text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
                       Continuar para Pagamento <ArrowRight size={20} />
                     </motion.button>
                     <button onClick={prevStep} className="flex items-center justify-center gap-2 w-full text-on-surface-variant hover:text-primary transition-colors font-medium text-sm">
@@ -650,7 +650,7 @@ const Onboarding = () => {
                         ))}
                       </ul>
                       <div className={`w-full py-3 rounded-full font-bold text-center text-sm ${
-                        selectedPlan === 'premium' ? 'bg-primary text-on-primary' : 'bg-gradient-to-r from-primary to-primary-container text-on-primary'
+                        selectedPlan === 'premium' ? 'bg-primary text-on-primary' : 'bg-primary text-on-primary'
                       }`}>
                         {selectedPlan === 'premium' ? 'Selecionado' : 'Selecionar Premium'}
                       </div>
@@ -764,7 +764,7 @@ const Onboarding = () => {
 
                   <div className="mt-10 space-y-4">
                     <motion.button whileTap={{ scale: 0.97 }} onClick={handleSave} disabled={saving || updateProfile.isPending}
-                      className="w-full h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-60">
+                      className="w-full h-16 bg-primary text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-60">
                       {saving || updateProfile.isPending ? 'Salvando...' : 'Finalizar Cadastro'}
                       {!(saving || updateProfile.isPending) && <Check size={20} />}
                     </motion.button>

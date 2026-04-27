@@ -28,7 +28,7 @@ export const CompanyLandingDesktop: React.FC = () => {
                 <span className="material-symbols-outlined text-outline">search</span>
                 <input className="w-full border-none focus:ring-0 text-on-surface placeholder:text-outline bg-transparent py-2" placeholder="Ex: Cozinheiro, Limpeza, Garçom..." type="text"/>
               </div>
-              <button className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] active:scale-95 transition-all">
+              <button className="bg-primary text-on-primary px-10 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:translate-y-[-2px] active:scale-95 transition-all">
                 Buscar
               </button>
             </div>

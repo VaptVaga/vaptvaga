@@ -692,7 +692,7 @@ export const FreelancerOnboarding: React.FC = () => {
             {step < STEPS.length - 1 ? (
               <button
                 onClick={nextStep}
-                className="px-8 lg:px-12 py-4 lg:py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-extrabold text-base lg:text-lg rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
+                className="px-8 lg:px-12 py-4 lg:py-5 bg-primary text-on-primary font-extrabold text-base lg:text-lg rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2"
               >
                 Próximo Passo
                 <span className="material-symbols-outlined">arrow_forward</span>
@@ -701,7 +701,7 @@ export const FreelancerOnboarding: React.FC = () => {
               <button
                 onClick={handleSave}
                 disabled={loading}
-                className="px-8 lg:px-12 py-4 lg:py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-extrabold text-base lg:text-lg rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50"
+                className="px-8 lg:px-12 py-4 lg:py-5 bg-primary text-on-primary font-extrabold text-base lg:text-lg rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

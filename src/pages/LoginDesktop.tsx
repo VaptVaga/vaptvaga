@@ -37,7 +37,7 @@ export const LoginDesktop: React.FC = () => {
           {/* Brand Header */}
           <div className="flex flex-col items-center gap-6 mb-10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-container rounded-xl flex items-center justify-center text-white">
+              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                   <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
                 </svg>
@@ -91,7 +91,7 @@ export const LoginDesktop: React.FC = () => {
               <a className="text-xs font-bold text-primary hover:underline" href="#">Esqueceu sua senha?</a>
             </div>
             <button 
-              className="w-full h-14 bg-gradient-to-br from-primary to-primary-container text-white font-headline font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2" 
+              className="w-full h-14 bg-primary text-white font-headline font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2" 
               type="submit"
               disabled={loading}
             >

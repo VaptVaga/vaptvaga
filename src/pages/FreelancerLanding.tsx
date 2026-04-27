@@ -318,7 +318,7 @@ export const FreelancerLanding: React.FC = () => {
             <p className="text-on-surface-variant">Crie seu perfil profissional em menos de 2 minutos e valide sua identidade.</p>
           </div>
           {/* Line */}
-          <div className="hidden lg:block h-0.5 bg-gradient-to-r from-primary to-secondary flex-1 -mt-16 opacity-30"></div>
+          <div className="hidden lg:block h-0.5 bg-primary flex-1 -mt-16 opacity-30"></div>
           {/* Step 2 */}
           <div className="flex-1 text-center relative z-10 bg-surface md:bg-transparent">
             <div className="w-24 h-24 bg-secondary text-white rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-8 shadow-2xl shadow-secondary/30">2</div>
@@ -326,7 +326,7 @@ export const FreelancerLanding: React.FC = () => {
             <p className="text-on-surface-variant">Navegue pelo mapa e selecione a vaga que melhor se encaixa na sua rotina.</p>
           </div>
           {/* Line */}
-          <div className="hidden lg:block h-0.5 bg-gradient-to-r from-secondary to-primary flex-1 -mt-16 opacity-30"></div>
+          <div className="hidden lg:block h-0.5 bg-primary flex-1 -mt-16 opacity-30"></div>
           {/* Step 3 */}
           <div className="flex-1 text-center relative z-10 bg-surface md:bg-transparent">
             <div className="w-24 h-24 bg-primary-container text-white rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-8 shadow-2xl shadow-primary-container/30">3</div>
@@ -340,7 +340,7 @@ export const FreelancerLanding: React.FC = () => {
 
       {/* Final CTA Banner */}
       <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto bg-gradient-to-br from-primary to-primary-container rounded-xl p-12 lg:p-24 text-center text-on-primary shadow-2xl relative overflow-hidden">
+        <div className="max-w-7xl mx-auto bg-primary rounded-xl p-12 lg:p-24 text-center text-on-primary shadow-2xl relative overflow-hidden">
           {/* Abstract Pattern Background */}
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
