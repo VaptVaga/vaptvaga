@@ -41,8 +41,8 @@ export const FreelancerOnboarding: React.FC = () => {
   const [nome, setNome] = useState(profile?.name || '');
   const [tituloProfissional, setTituloProfissional] = useState('');
   const [bio, setBio] = useState('');
-  const [estado, setEstado] = useState('');
-  const [cidade, setCidade] = useState('');
+  const [estado, setEstado] = useState(profile?.estado || '');
+  const [cidade, setCidade] = useState(profile?.cidade || '');
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(profile?.avatar_url || null);
   const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
@@ -53,7 +53,7 @@ export const FreelancerOnboarding: React.FC = () => {
   const [customSkill, setCustomSkill] = useState('');
 
   // Portfolio
-  const [portfolioUrl, setPortfolioUrl] = useState('');
+  const [portfolioUrl, setPortfolioUrl] = useState(profile?.portfolio_url || '');
   const [instagram, setInstagram] = useState('');
   const [linkedin, setLinkedin] = useState('');
 
