@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Crown, ChevronRight, Camera } from 'lucide-react';
+import { LogOut, ChevronRight, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
@@ -103,6 +103,7 @@ const Profile = () => {
             <h2 className="font-bold text-on-surface text-lg leading-tight mb-1">{user?.name || 'Usuário'}</h2>
             <p className="text-sm font-medium text-on-surface-variant">{user?.cidade || 'Localização não informada'}</p>
           </div>
+        </div>
 
 
         {user?.role === 'freelancer' && user.skills && (
