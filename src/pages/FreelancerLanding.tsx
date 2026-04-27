@@ -33,25 +33,47 @@ export const FreelancerLanding: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="relative block mt-12 lg:mt-0">
-            <div className="lg:aspect-square h-64 lg:h-auto bg-gradient-to-br from-primary to-primary-container rounded-xl rotate-3 absolute inset-0 opacity-10"></div>
-            <img
-              alt="Freelancer sorridente trabalhando"
-              className="rounded-xl shadow-2xl relative z-10 w-full h-64 lg:h-full lg:aspect-square object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Ytq4-sq1ClyAmmFUJECuC51BdSpT_wdUksiWs3rwWwyedQfmlZnNnuRpVsybwBJPtxWwh42qvuWxyhs2-Twy_FeR5qfKBx7fpM9SQJUGrNF4YbUT_AO6FJSRplTVWvBFf44AEfqOFtfsNuY68IR_ED5HsA__EX_ePOH001h5pOA_LU1ddyYkCneJd7XPf1qkXWalqg1BlRKWwhFwEslWcWennMnompdvhqVYOxQRc66NhSD0zyG5DvoqwXKZLdUBSrOR1dxTgNA"
-            />
-            {/* Floating Badge */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:-left-6 lg:bottom-12 bg-surface-container-lowest p-4 lg:p-6 rounded-lg shadow-2xl z-20 flex sm:flex items-center gap-4 whitespace-nowrap">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-secondary-container rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="material-symbols-outlined text-secondary text-xl lg:text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  verified
-                </span>
+          {/* Hero Visual (Bento Grid Style) */}
+          <div className="relative grid grid-cols-2 gap-4 mt-12 lg:mt-0">
+            <div className="space-y-4">
+              <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" 
+                  alt="Freelancer trabalhando" 
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_Ytq4-sq1ClyAmmFUJECuC51BdSpT_wdUksiWs3rwWwyedQfmlZnNnuRpVsybwBJPtxWwh42qvuWxyhs2-Twy_FeR5qfKBx7fpM9SQJUGrNF4YbUT_AO6FJSRplTVWvBFf44AEfqOFtfsNuY68IR_ED5HsA__EX_ePOH001h5pOA_LU1ddyYkCneJd7XPf1qkXWalqg1BlRKWwhFwEslWcWennMnompdvhqVYOxQRc66NhSD0zyG5DvoqwXKZLdUBSrOR1dxTgNA"
+                />
               </div>
-              <div>
-                <p className="text-[10px] lg:text-xs text-on-surface-variant font-bold uppercase tracking-widest">Pagamento</p>
-                <p className="text-base lg:text-lg font-bold text-on-surface">Direto na conta</p>
+              <div className="aspect-square rounded-xl bg-secondary-container p-6 lg:p-8 flex flex-col justify-between shadow-xl relative group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex justify-between items-start relative z-10">
+                  <span className="material-symbols-outlined text-on-secondary-container text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
+                  <span className="bg-white/40 px-3 py-1 rounded-full text-[10px] font-bold text-on-secondary-container tracking-widest">PIX</span>
+                </div>
+                <div className="relative z-10">
+                  <p className="text-[10px] text-on-secondary-container font-bold uppercase tracking-widest opacity-80 mb-1">Pagamento</p>
+                  <p className="text-on-secondary-container font-headline font-bold text-lg lg:text-xl leading-tight">Direto na sua conta</p>
+                </div>
               </div>
             </div>
+            <div className="space-y-4 pt-8 md:pt-12">
+              <div className="aspect-square rounded-xl bg-primary-container p-6 lg:p-8 flex flex-col justify-between shadow-xl relative group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex justify-between items-start relative z-10">
+                  <span className="material-symbols-outlined text-on-primary text-3xl">map</span>
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold text-white tracking-widest">LOCAL</span>
+                </div>
+                <p className="text-on-primary font-headline font-bold text-lg lg:text-xl leading-tight relative z-10">Turnos perto de você</p>
+              </div>
+              <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" 
+                  alt="Trabalho flexível" 
+                  src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&auto=format&fit=crop&q=60"
+                />
+              </div>
+            </div>
+            {/* Abstract Tonal Background Element */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-container rounded-full blur-[100px] opacity-40"></div>
           </div>
         </div>
       </section>
