@@ -33,7 +33,7 @@ interface Experience {
 
 export const FreelancerOnboarding: React.FC = () => {
   const navigate = useNavigate();
-  const { profile, session } = useAuth();
+  const { profile, session, refreshProfile } = useAuth();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -160,6 +160,7 @@ export const FreelancerOnboarding: React.FC = () => {
         experiencias: experiences,
       }).eq('id', session.user.id);
 
+      await refreshProfile();
       navigate('/freelancer/dashboard');
     } catch (err) {
       console.error('Error saving profile:', err);
