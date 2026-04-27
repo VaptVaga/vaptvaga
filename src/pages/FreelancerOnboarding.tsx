@@ -146,8 +146,10 @@ export const FreelancerOnboarding: React.FC = () => {
         }
       }
 
-      // Update profile
-      await (supabase.from('profiles') as any).update({
+      // Upsert profile to guarantee it saves even if the row was somehow missing
+      const { error: saveError } = await (supabase.from('profiles') as any).upsert({
+        id: session.user.id,
+        role: profile?.role || 'freelancer',
         name: nome,
         avatar_url: avatarUrl,
         skills: selectedSkills,
@@ -158,7 +160,14 @@ export const FreelancerOnboarding: React.FC = () => {
         titulo_profissional: tituloProfissional,
         instagram: instagram,
         experiencias: experiences,
-      }).eq('id', session.user.id);
+      });
+
+      if (saveError) {
+        console.error('Error in upsert:', saveError);
+        alert(`Erro ao salvar no banco: ${saveError.message}`);
+        setLoading(false);
+        return;
+      }
 
       await refreshProfile();
       navigate('/freelancer/dashboard');
