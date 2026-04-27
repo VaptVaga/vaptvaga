@@ -243,16 +243,9 @@ export const FreelancerOnboarding: React.FC = () => {
 
         <div className="max-w-4xl mx-auto px-6 lg:px-12 py-8 lg:py-12">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-            >
               {/* Step 0: Identity */}
               {step === 0 && (
-                <div>
+                <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
                   <header className="mb-10">
                     <div className="flex items-center gap-2 text-primary font-bold mb-3">
                       <span className="text-sm tracking-widest uppercase">Etapa 01</span>
@@ -367,12 +360,12 @@ export const FreelancerOnboarding: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Step 1: Experience & Skills */}
               {step === 1 && (
-                <div>
+                <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
                   <header className="mb-10">
                     <div className="flex items-center gap-2 text-primary font-bold mb-3">
                       <span className="text-sm tracking-widest uppercase">Etapa 02</span>
@@ -504,12 +497,12 @@ export const FreelancerOnboarding: React.FC = () => {
                       </div>
                     </section>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Step 2: Portfolio */}
               {step === 2 && (
-                <div>
+                <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
                   <header className="mb-10">
                     <div className="flex items-center gap-2 text-primary font-bold mb-3">
                       <span className="text-sm tracking-widest uppercase">Etapa 03</span>
@@ -582,12 +575,12 @@ export const FreelancerOnboarding: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Step 3: Review */}
               {step === 3 && (
-                <div>
+                <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.25 }}>
                   <header className="mb-10">
                     <div className="flex items-center gap-2 text-primary font-bold mb-3">
                       <span className="text-sm tracking-widest uppercase">Etapa 04</span>
@@ -678,9 +671,8 @@ export const FreelancerOnboarding: React.FC = () => {
                       )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
-            </motion.div>
           </AnimatePresence>
 
           {/* Footer Navigation */}
