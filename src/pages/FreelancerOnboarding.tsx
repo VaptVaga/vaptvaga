@@ -126,7 +126,11 @@ export const FreelancerOnboarding: React.FC = () => {
   };
 
   const handleSave = async () => {
-    if (!session?.user?.id) return;
+    if (!session?.user?.id) {
+      alert('Você precisa estar logado para salvar seu perfil. Redirecionando para o login...');
+      navigate('/login');
+      return;
+    }
     setLoading(true);
 
     try {
