@@ -107,7 +107,7 @@ export const LoginDesktop: React.FC = () => {
           <div className="mt-10 pt-8 border-t border-outline-variant/20 text-center">
             <p className="text-sm font-medium text-on-surface-variant">
               Não tem uma conta? 
-              <Link to="/onboarding/role" className="text-secondary font-bold hover:underline ml-1">Cadastre-se agora</Link>
+              <Link to="/cadastro" className="text-secondary font-bold hover:underline ml-1">Cadastre-se agora</Link>
             </p>
           </div>
         </div>

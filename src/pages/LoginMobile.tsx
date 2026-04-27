@@ -111,7 +111,7 @@ export const LoginMobile: React.FC = () => {
           <div className="mt-10 text-center">
             <p className="text-sm font-medium text-on-surface-variant">
               Não tem uma conta? 
-              <Link to="/onboarding/role" className="text-secondary font-bold hover:underline ml-1">Cadastre-se</Link>
+              <Link to="/cadastro" className="text-secondary font-bold hover:underline ml-1">Cadastre-se</Link>
             </p>
           </div>
 

@@ -237,8 +237,8 @@ export const CompanyLandingMobile: React.FC = () => {
         <div className="bg-primary p-10 rounded-xl text-center text-white flex flex-col gap-8 shadow-[0px_24px_48px_rgba(0,74,198,0.2)]">
           <h2 className="font-headline font-extrabold text-3xl leading-tight">Pronto para começar agora?</h2>
           <div className="flex flex-col gap-3">
-            <Link to="/onboarding/role?type=company" className="bg-white text-primary flex items-center justify-center font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Contratar</Link>
-            <Link to="/onboarding/role?type=freelancer" className="bg-primary/20 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Candidatar</Link>
+            <Link to="/cadastro?type=company" className="bg-white text-primary flex items-center justify-center font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Contratar</Link>
+            <Link to="/cadastro?type=freelancer" className="bg-primary/20 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center font-bold py-4 rounded-full text-lg active:scale-95 transition-transform">Quero Candidatar</Link>
           </div>
         </div>
       </section>

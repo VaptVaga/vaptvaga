@@ -251,7 +251,7 @@ export const FreelancerLanding: React.FC = () => {
                       <p className="text-sm text-on-surface-variant font-medium">Diária</p>
                       <p className="text-2xl font-black text-primary">{job.salary}</p>
                     </div>
-                    <Link to="/onboarding/role?type=freelancer" className="px-8 py-3 bg-primary text-on-primary rounded-full font-bold">Candidatar</Link>
+                    <Link to="/cadastro?type=freelancer" className="px-8 py-3 bg-primary text-on-primary rounded-full font-bold">Candidatar</Link>
                   </div>
                 </div>
               ))}
@@ -291,7 +291,7 @@ export const FreelancerLanding: React.FC = () => {
                         <p className="text-3xl font-black text-primary">{job.salary}</p>
                       </div>
                       <Link
-                        to="/onboarding/role?type=freelancer"
+                        to="/cadastro?type=freelancer"
                         className="px-6 py-3 bg-primary text-on-primary rounded-full font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all"
                       >
                         Candidatar
@@ -350,7 +350,7 @@ export const FreelancerLanding: React.FC = () => {
           </div>
           <h2 className="text-4xl lg:text-6xl font-extrabold mb-8 relative z-10">Pronto para o próximo turno?</h2>
           <p className="text-xl lg:text-2xl text-on-primary/80 mb-12 max-w-2xl mx-auto relative z-10">Junte-se a milhares de freelancers que estão transformando seu tempo livre em dinheiro real.</p>
-          <Link to="/onboarding/role?type=freelancer" className="inline-block px-12 py-6 bg-surface-container-lowest text-primary rounded-full font-black text-xl shadow-xl hover:scale-105 transition-transform active:scale-95 relative z-10">
+          <Link to="/cadastro?type=freelancer" className="inline-block px-12 py-6 bg-surface-container-lowest text-primary rounded-full font-black text-xl shadow-xl hover:scale-105 transition-transform active:scale-95 relative z-10">
             Quero me cadastrar agora
           </Link>
         </div>

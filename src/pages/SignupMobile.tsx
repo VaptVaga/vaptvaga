@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../integrations/supabase/client';
 import { useAuth } from '../contexts/AuthContext';
 
-export const OnboardingRoleMobile: React.FC = () => {
+export const SignupMobile: React.FC = () => {
   const navigate = useNavigate();
-  const { user, refreshProfile } = useAuth();
+  const { refreshProfile } = useAuth();
   const [role, setRole] = useState<'freelancer' | 'company'>('freelancer');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,41 +16,6 @@ export const OnboardingRoleMobile: React.FC = () => {
   const [aceitaEmail, setAceitaEmail] = useState(false);
   const [aceitaWhatsapp, setAceitaWhatsapp] = useState(false);
 
-  const isOAuthUser = !!user;
-
-  useEffect(() => {
-    if (user) {
-      const meta = user.user_metadata;
-      setFullName(meta?.full_name || meta?.name || '');
-      setEmail(user.email || '');
-    }
-  }, [user]);
-
-  const handleCompleteProfile = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) return;
-    setLoading(true);
-    setError(null);
-
-    const { error: profileError } = await supabase
-      .from('profiles')
-      .upsert({
-        id: user.id,
-        name: fullName,
-        role: role,
-        aceita_email: aceitaEmail,
-        aceita_whatsapp: aceitaWhatsapp,
-      });
-
-    if (profileError) {
-      console.error(profileError);
-      setError(`Erro do BD: ${profileError.message || profileError.details || 'Desconhecido'}`);
-      setLoading(false);
-    } else {
-      await refreshProfile();
-      navigate(role === 'freelancer' ? '/freelancer/onboarding' : '/company/dashboard');
-    }
-  };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,10 +84,10 @@ export const OnboardingRoleMobile: React.FC = () => {
           {/* Title Section */}
           <div className="mb-8">
             <h1 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">
-              {isOAuthUser ? 'Complete seu perfil' : 'Crie sua conta'}
+              Crie sua conta
             </h1>
             <p className="text-on-surface-variant text-sm">
-              {isOAuthUser ? 'Escolha seu perfil para continuar.' : 'Escolha seu perfil e comece agora.'}
+              Escolha seu perfil e comece agora.
             </p>
           </div>
 
@@ -158,7 +123,7 @@ export const OnboardingRoleMobile: React.FC = () => {
           </div>
 
           {/* Registration Form */}
-          <form className="space-y-6" onSubmit={isOAuthUser ? handleCompleteProfile : handleSignUp}>
+          <form className="space-y-6" onSubmit={handleSignUp}>
             {error && (
               <div className="bg-error-container text-on-error-container p-4 rounded-xl text-sm font-medium">
                 {error}
@@ -178,9 +143,7 @@ export const OnboardingRoleMobile: React.FC = () => {
               />
             </div>
 
-            {!isOAuthUser && (
-              <>
-                <div className="space-y-2">
+            <div className="space-y-2">
                   <label className="font-body font-bold text-on-surface text-sm ml-1" htmlFor="email">E-mail</label>
                   <input 
                     className="w-full h-14 px-5 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-on-surface placeholder:text-outline/50 text-base" 
@@ -221,8 +184,6 @@ export const OnboardingRoleMobile: React.FC = () => {
                     />
                   </div>
                 </div>
-              </>
-            )}
 
             {/* Notification Preferences */}
             <div className="space-y-3 pt-2">
@@ -258,7 +219,7 @@ export const OnboardingRoleMobile: React.FC = () => {
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
               ) : (
                 <>
-                  {isOAuthUser ? 'Continuar' : 'Criar Minha Conta'}
+                  Criar Minha Conta
                   <span className="material-symbols-outlined text-lg">arrow_forward</span>
                 </>
               )}

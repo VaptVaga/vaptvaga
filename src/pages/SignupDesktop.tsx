@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../integrations/supabase/client';
 import { useAuth } from '../contexts/AuthContext';
 
-export const OnboardingRoleDesktop: React.FC = () => {
+export const SignupDesktop: React.FC = () => {
   const navigate = useNavigate();
-  const { user, refreshProfile } = useAuth();
+  const { refreshProfile } = useAuth();
   const [role, setRole] = useState<'freelancer' | 'company'>('freelancer');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,45 +16,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
   const [aceitaEmail, setAceitaEmail] = useState(false);
   const [aceitaWhatsapp, setAceitaWhatsapp] = useState(false);
 
-  // If user is already authenticated (e.g. via Google), pre-fill name from metadata
-  const isOAuthUser = !!user;
 
-  useEffect(() => {
-    if (user) {
-      const meta = user.user_metadata;
-      setFullName(meta?.full_name || meta?.name || '');
-      setEmail(user.email || '');
-    }
-  }, [user]);
-
-  // Handle profile creation for already-authenticated OAuth users
-  const handleCompleteProfile = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!user) return;
-    setLoading(true);
-    setError(null);
-
-    const { error: profileError } = await supabase
-      .from('profiles')
-      .upsert({
-        id: user.id,
-        name: fullName,
-        role: role,
-        aceita_email: aceitaEmail,
-        aceita_whatsapp: aceitaWhatsapp,
-      });
-
-    if (profileError) {
-      console.error(profileError);
-      setError(`Erro do BD: ${profileError.message || profileError.details || 'Desconhecido'}`);
-      setLoading(false);
-    } else {
-      await refreshProfile();
-      navigate(role === 'freelancer' ? '/freelancer/onboarding' : '/company/dashboard');
-    }
-  };
-
-  // Handle new email/password signup
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -112,10 +74,10 @@ export const OnboardingRoleDesktop: React.FC = () => {
             <span className="font-headline text-3xl font-black text-primary tracking-tighter">VaptVaga</span>
           </div>
           <h1 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">
-            {isOAuthUser ? 'Complete seu perfil' : 'Crie sua conta'}
+            Crie sua conta
           </h1>
           <p className="text-on-surface-variant text-sm">
-            {isOAuthUser ? 'Escolha seu perfil para continuar.' : 'Escolha seu perfil e comece agora.'}
+            Escolha seu perfil e comece agora.
           </p>
         </header>
 
@@ -147,7 +109,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
         </div>
 
         {/* Registration Form */}
-        <form className="space-y-5" onSubmit={isOAuthUser ? handleCompleteProfile : handleSignUp}>
+        <form className="space-y-5" onSubmit={handleSignUp}>
           {error && (
             <div className="bg-error-container text-on-error-container p-4 rounded-lg text-sm font-medium">
               {error}
@@ -167,10 +129,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
             />
           </div>
 
-          {/* Only show email/password fields for non-OAuth users */}
-          {!isOAuthUser && (
-            <>
-              <div className="space-y-1.5">
+          <div className="space-y-1.5">
                 <label className="font-body font-bold text-on-surface ml-1 text-sm" htmlFor="email">E-mail</label>
                 <input 
                   className="w-full h-14 px-5 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-on-surface placeholder:text-outline/50" 
@@ -211,8 +170,6 @@ export const OnboardingRoleDesktop: React.FC = () => {
                   />
                 </div>
               </div>
-            </>
-          )}
 
           {/* Notification Preferences */}
           <div className="space-y-3 pt-2">
@@ -248,7 +205,7 @@ export const OnboardingRoleDesktop: React.FC = () => {
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
             ) : (
               <>
-                {isOAuthUser ? 'Continuar' : 'Criar Minha Conta'}
+                Criar Minha Conta
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </>
             )}

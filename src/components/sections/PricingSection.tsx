@@ -185,7 +185,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ initialRole = 'f
                   </ul>
 
                   <Link
-                    to={role === 'company' ? '/onboarding/role?type=company' : '/onboarding/role?type=freelancer'}
+                    to={role === 'company' ? '/cadastro?type=company' : '/cadastro?type=freelancer'}
                     className={`w-full py-5 rounded-full font-black text-lg flex items-center justify-center gap-2 transition-all active:scale-95 group/btn ${
                       plan.highlighted
                         ? 'bg-white text-primary hover:bg-surface-bright shadow-lg'

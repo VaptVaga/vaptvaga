@@ -307,8 +307,8 @@ export const CompanyLandingDesktop: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Chega de dor de cabeça <br/>com falta de staff.</h2>
             <p className="text-xl mb-12 text-on-primary/80 max-w-2xl mx-auto">Junte-se a centenas de empresas e profissionais em todo o Brasil que já usam o VaptVaga para girar a operação.</p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <Link to="/onboarding/role?type=company" className="bg-white text-primary px-10 py-5 rounded-full flex justify-center items-center font-black text-lg hover:bg-surface-container-lowest transition-colors">Quero Contratar</Link>
-              <Link to="/onboarding/role?type=freelancer" className="bg-primary-container border-2 border-white/30 flex justify-center items-center text-white px-10 py-5 rounded-full font-black text-lg hover:bg-white/10 transition-colors">Quero Candidatar</Link>
+              <Link to="/cadastro?type=company" className="bg-white text-primary px-10 py-5 rounded-full flex justify-center items-center font-black text-lg hover:bg-surface-container-lowest transition-colors">Quero Contratar</Link>
+              <Link to="/cadastro?type=freelancer" className="bg-primary-container border-2 border-white/30 flex justify-center items-center text-white px-10 py-5 rounded-full font-black text-lg hover:bg-white/10 transition-colors">Quero Candidatar</Link>
             </div>
           </div>
           {/* Texture Overlay */}

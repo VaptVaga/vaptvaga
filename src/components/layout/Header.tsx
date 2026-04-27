@@ -144,7 +144,7 @@ export const Header: React.FC = () => {
                   </button>
                 ) : (
                   <Link
-                    to={isCompanyPage ? "/onboarding/role?type=company" : "/onboarding/role?type=freelancer"}
+                    to={isCompanyPage ? "/cadastro?type=company" : "/cadastro?type=freelancer"}
                     onClick={() => setIsMenuOpen(false)}
                     className="w-full bg-primary text-on-primary p-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all"
                   >
@@ -200,7 +200,7 @@ export const Header: React.FC = () => {
             ) : (
               <>
                 <Link to="/login" className="text-primary font-bold hover:opacity-80 transition-all active:scale-95">Entrar</Link>
-                <Link to={isCompanyPage ? "/onboarding/role?type=company" : "/onboarding/role?type=freelancer"} className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-bold shadow-lg shadow-primary/10 hover:translate-y-[-2px] active:scale-95 transition-all">
+                <Link to={isCompanyPage ? "/cadastro?type=company" : "/cadastro?type=freelancer"} className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-bold shadow-lg shadow-primary/10 hover:translate-y-[-2px] active:scale-95 transition-all">
                   {isCompanyPage ? 'Publicar Vaga' : 'Encontrar Vaga'}
                 </Link>
               </>

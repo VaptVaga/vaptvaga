@@ -14,7 +14,7 @@ import { useAuth } from './contexts/AuthContext';
 import { FreelancerLanding } from './pages/FreelancerLanding';
 import { CompanyLanding } from './pages/CompanyLanding';
 import { Login } from './pages/Login';
-import { OnboardingRole } from './pages/OnboardingRole';
+import { Signup } from './pages/Signup';
 import { FreelancerOnboarding } from './pages/FreelancerOnboarding';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
@@ -44,15 +44,12 @@ const HomeRedirect: React.FC = () => {
   }
 
   if (user) {
-    if (!profile?.role) {
-      return <Navigate to="/onboarding/role" replace />;
+    if (profile?.role === 'company') {
+      return <Navigate to="/company/dashboard" replace />;
     }
-    if (profile.role === 'freelancer') {
-      // Redirect to onboarding if profile is incomplete, otherwise to dashboard
-      const isProfileComplete = profile.skills && profile.skills.length > 0 && profile.cidade;
-      return <Navigate to={isProfileComplete ? '/freelancer/dashboard' : '/freelancer/onboarding'} replace />;
-    }
-    return <Navigate to="/company/dashboard" replace />;
+    // Default to freelancer flow
+    const isProfileComplete = profile?.skills && profile.skills.length > 0 && profile.cidade;
+    return <Navigate to={isProfileComplete ? '/freelancer/dashboard' : '/freelancer/onboarding'} replace />;
   }
 
   return <FreelancerLanding />;
@@ -62,9 +59,10 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   const { user } = useAuth();
 
-  // Hide global header on onboarding pages (they have their own)
+  // Hide global header on onboarding/signup pages (they have their own)
   const hideHeader = location.pathname.startsWith('/freelancer/onboarding') ||
-                     location.pathname.startsWith('/onboarding');
+                     location.pathname.startsWith('/onboarding') ||
+                     location.pathname.startsWith('/cadastro');
   
 
   return (
@@ -81,7 +79,7 @@ const AnimatedRoutes = () => {
             <Route path="/" element={<PageWrapper><HomeRedirect /></PageWrapper>} />
             <Route path="/empresas" element={<PageWrapper><CompanyLanding /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
-            <Route path="/onboarding/role" element={<PageWrapper><OnboardingRole /></PageWrapper>} />
+            <Route path="/cadastro" element={<PageWrapper><Signup /></PageWrapper>} />
             <Route path="/freelancer/onboarding" element={<PageWrapper><FreelancerOnboarding /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
             <Route path="/contato" element={<PageWrapper><Contact /></PageWrapper>} />
