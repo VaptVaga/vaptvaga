@@ -183,8 +183,9 @@ export const FreelancerOnboarding: React.FC = () => {
 
       await refreshProfile();
       navigate('/freelancer/dashboard');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error saving profile:', err);
+      alert(`Erro ao salvar perfil: ${err?.message || err}`);
     } finally {
       setLoading(false);
     }
