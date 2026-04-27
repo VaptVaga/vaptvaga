@@ -20,6 +20,7 @@ import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { TermsOfService } from './pages/TermsOfService';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import Profile from './pages/Profile';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -112,12 +113,21 @@ const AnimatedRoutes = () => {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <PageWrapper><Profile /></PageWrapper>
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </AnimatePresence>
       </main>
 
       {user && <BottomNav />}
-      <Footer />
+      {!user && <Footer />}
     </>
   );
 };

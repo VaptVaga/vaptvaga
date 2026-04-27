@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useAuth } from '../../contexts/AuthContext';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -10,9 +11,12 @@ function cn(...inputs: ClassValue[]) {
 export const BottomNav: React.FC = () => {
   const location = useLocation();
   const path = location.pathname;
+  const { profile } = useAuth();
+  
+  const dashboardPath = profile?.role === 'company' ? '/company/dashboard' : '/freelancer/dashboard';
 
   const navItems = [
-    { icon: 'home', path: '/freelancer/dashboard', label: 'Início', activeIcon: true },
+    { icon: 'home', path: dashboardPath, label: 'Início', activeIcon: true },
     { icon: 'search', path: '/search', label: 'Buscar' },
     { icon: 'work', path: '/applications', label: 'Vagas' },
     { icon: 'chat', path: '/chat', label: 'Chat' },

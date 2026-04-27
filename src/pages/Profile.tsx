@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { LogOut, Crown, ChevronRight, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { BottomNav } from '@/components/vaptvaga/BottomNav';
 import { useAuth } from '@/contexts/AuthContext';
 import { useState } from 'react';
 import { ImageCropper } from '@/components/common/ImageCropper';
@@ -65,19 +64,21 @@ const Profile = () => {
   };
 
   const menuItems = [
-    { label: 'Editar perfil', path: '/onboarding' },
-    { label: 'Planos e assinatura', path: '/pricing' },
-    { label: 'Suporte', path: '#' },
+    { label: 'Editar perfil', path: user?.role === 'company' ? '/company/dashboard' : '/freelancer/onboarding', icon: 'edit' },
+    { label: 'Dúvidas Frequentes', path: '/faq', icon: 'help' },
+    { label: 'Termos de Serviço', path: '/termos', icon: 'description' },
+    { label: 'Política de Privacidade', path: '/privacidade', icon: 'shield' },
+    { label: 'Contato / Suporte', path: '/contato', icon: 'support_agent' },
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <div className="px-5 pt-5">
-        <h1 className="text-xl font-black text-foreground">Meu Perfil</h1>
+    <div className="min-h-screen bg-surface-container-lowest pb-24 font-body">
+      <div className="px-6 pt-6">
+        <h1 className="font-headline text-3xl font-bold tracking-tight text-on-surface">Meu Perfil</h1>
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-5">
-        <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm">
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="mt-6 px-6">
+        <div className="flex items-center gap-4 rounded-2xl bg-surface-container-low p-5 shadow-[0px_8px_16px_rgba(17,28,45,0.04)]">
           <div className="relative group cursor-pointer shrink-0">
             <div className={`flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-primary/20 bg-primary/10 text-xl font-black text-primary ${isUploading ? 'opacity-50' : ''}`}>
               {avatarPreview ? (
@@ -99,40 +100,34 @@ const Profile = () => {
             )}
           </div>
           <div className="flex-1">
-            <h2 className="font-bold text-foreground">{user?.name || 'Usuário'}</h2>
-            <p className="text-sm text-muted-foreground">{user?.cidade}</p>
+            <h2 className="font-bold text-on-surface text-lg leading-tight mb-1">{user?.name || 'Usuário'}</h2>
+            <p className="text-sm font-medium text-on-surface-variant">{user?.cidade || 'Localização não informada'}</p>
           </div>
-          <span className={`rounded-full px-3 py-1 text-xs font-bold ${
-            user?.subscriber === 'premium'
-              ? 'bg-success/10 text-success'
-              : 'bg-secondary text-muted-foreground'
-          }`}>
-            {user?.subscriber === 'premium' ? (
-              <span className="flex items-center gap-1"><Crown size={12} /> Premium</span>
-            ) : 'Free'}
-          </span>
-        </div>
+
 
         {user?.role === 'freelancer' && user.skills && (
           <div className="mt-4 flex flex-wrap gap-2">
             {user.skills.map((s) => (
-              <span key={s} className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground">
+              <span key={s} className="rounded-full bg-surface-container-low border border-outline-variant/30 px-3 py-1.5 text-xs font-bold text-on-surface">
                 {s}
               </span>
             ))}
           </div>
         )}
 
-        <div className="mt-6 space-y-1">
+        <div className="mt-8 space-y-2">
           {menuItems.map((item) => (
             <motion.button
               key={item.label}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate(item.path)}
-              className="flex w-full items-center justify-between rounded-xl bg-card px-4 py-3.5 text-left"
+              className="flex w-full items-center justify-between rounded-xl bg-surface-container-low px-5 py-4 text-left transition-colors active:bg-primary/5 group"
             >
-              <span className="font-medium text-foreground">{item.label}</span>
-              <ChevronRight size={18} className="text-muted-foreground" />
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-on-surface-variant group-active:text-primary transition-colors">{item.icon}</span>
+                <span className="font-bold text-on-surface text-sm">{item.label}</span>
+              </div>
+              <ChevronRight size={18} className="text-on-surface-variant group-active:text-primary transition-colors" />
             </motion.button>
           ))}
         </div>
@@ -140,9 +135,9 @@ const Profile = () => {
         <Button
           variant={"ghost" as any}
           onClick={handleLogout}
-          className="mt-6 w-full text-destructive hover:text-destructive"
+          className="mt-8 w-full text-error hover:text-error hover:bg-error/10 h-14 rounded-xl font-bold"
         >
-          <LogOut size={18} />
+          <LogOut size={18} className="mr-2" />
           Sair da conta
         </Button>
       </motion.div>
@@ -156,8 +151,6 @@ const Profile = () => {
           aspect={1}
         />
       )}
-
-      <BottomNav />
     </div>
   );
 };
