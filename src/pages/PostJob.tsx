@@ -35,7 +35,7 @@ const PostJob = () => {
     }
     try {
       await createJob.mutateAsync({
-        employer_id: user.id,
+        company_id: user.id,
         title,
         classificacao,
         budget: budget ? `R$ ${budget}` : null,

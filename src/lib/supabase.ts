@@ -1,15 +1,2 @@
-import { createClient } from '@supabase/supabase-js';
-import type { Database } from '../types/database';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('CRITICAL: Supabase URL/Anon Key missing. Check Vercel Environment Variables.');
-}
-
-export const supabase = createClient<Database>(supabaseUrl || 'https://placeholder.supabase.co', supabaseAnonKey || 'placeholder', {
-  db: {
-    schema: 'public'
-  }
-});
+// Re-export the single Supabase instance to prevent multiple clients from fighting over auth locks
+export { supabase } from '../integrations/supabase/client';

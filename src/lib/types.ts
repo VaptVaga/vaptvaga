@@ -16,9 +16,9 @@ export interface Profile {
 
 export interface Job {
   id: string;
-  employer_id: string;
+  company_id: string;
   title: string;
-  classificacao: string | null;
+  classificacao?: string | null;
   description: string | null;
   budget: string | null;
   required_skills: string[] | null;
@@ -26,8 +26,11 @@ export interface Job {
   created_at: string;
   cidade: string | null;
   bairro: string | null;
+  estado?: string | null;
   longitude: number | null;
   latitude: number | null;
+  data_do_turno?: string | null;
+  valor_da_diaria?: number | null;
   // Joined data
   employer?: Profile;
 }

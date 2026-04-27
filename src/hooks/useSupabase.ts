@@ -34,7 +34,7 @@ export const useMyJobs = (employerId: string | undefined) => {
       const { data, error } = await supabase
         .from('jobs')
         .select('*')
-        .eq('employer_id', employerId)
+        .eq('company_id', employerId)
         .order('created_at', { ascending: false });
       if (error) throw error;
       return data as Job[];
@@ -67,11 +67,11 @@ export const useApplicationsForJob = (jobId: string | undefined) => {
       if (!jobId) return [];
       const { data, error } = await supabase
         .from('applications')
-        .select('*, freelancer:profiles!freelancer_id(id, name, skills, cidade, telefone, imgUrl)')
+        .select('*, freelancer:profiles!freelancer_id(id, name, skills, cidade, telefone, avatar_url)')
         .eq('job_id', jobId)
         .order('created_at', { ascending: false });
       if (error) throw error;
-      return data as (Application & { freelancer: Profile })[];
+      return data as unknown as (Application & { freelancer: Profile })[];
     },
     enabled: !!jobId,
   });
@@ -88,7 +88,7 @@ export const useMyApplications = (freelancerId: string | undefined) => {
         .eq('freelancer_id', freelancerId)
         .order('created_at', { ascending: false });
       if (error) throw error;
-      return data as (Application & { job: Job })[];
+      return data as unknown as (Application & { job: Job })[];
     },
     enabled: !!freelancerId,
   });
@@ -167,7 +167,7 @@ export const useMonthlyJobCount = (employerId: string | undefined) => {
       const { count, error } = await supabase
         .from('jobs')
         .select('*', { count: 'exact', head: true })
-        .eq('employer_id', employerId)
+        .eq('company_id', employerId)
         .gte('created_at', startOfMonth.toISOString());
       if (error) throw error;
       return count || 0;
