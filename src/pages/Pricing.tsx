@@ -1,9 +1,39 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Zap, Building2, UserCircle2, ArrowRight } from 'lucide-react';
+import {
+  Check,
+  Zap,
+  Building2,
+  UserCircle2,
+  ArrowRight,
+  CreditCard,
+  QrCode,
+  ShieldCheck,
+  X,
+  ExternalLink,
+} from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { toast } from '@/hooks/use-toast';
+import {
+  getStripeEnvStatus,
+  getPlanStripeCatalog,
+  type StripePlanCatalogEntry,
+} from '@/lib/stripeConnect';
 
 const Pricing = () => {
-  const [role, setRole] = useState<'freelancer' | 'company'>('company');
+  const navigate = useNavigate();
+  const { user, profile } = useAuth();
+  const [role, setRole] = useState<'freelancer' | 'company'>(
+    profile?.role === 'freelancer' ? 'freelancer' : 'company'
+  );
+  const [checkoutPlan, setCheckoutPlan] = useState<{
+    name: string;
+    price: string;
+    catalog: StripePlanCatalogEntry;
+  } | null>(null);
+  const [checkoutMethod, setCheckoutMethod] = useState<'card' | 'pix'>('card');
+  const stripeEnv = getStripeEnvStatus();
 
   const plans = {
     freelancer: [
@@ -192,10 +222,29 @@ const Pricing = () => {
                 </ul>
 
                 <button
+                  type="button"
+                  onClick={() => {
+                    if (!user) {
+                      navigate(`/cadastro?type=${role}`);
+                      return;
+                    }
+                    if (!plan.highlighted) {
+                      toast({
+                        title: 'Plano Grátis Ativo',
+                        description: 'Você já está utilizando os recursos gratuitos.',
+                      });
+                      return;
+                    }
+                    setCheckoutPlan({
+                      name: plan.name,
+                      price: plan.price,
+                      catalog: getPlanStripeCatalog(role),
+                    });
+                  }}
                   className={`w-full py-5 rounded-full font-black text-lg flex items-center justify-center gap-2 transition-all active:scale-95 group/btn ${
                     plan.highlighted
                       ? 'bg-white text-primary hover:bg-surface-bright'
-                      : 'bg-on-surface text-surface-lowest hover:bg-on-surface/90'
+                      : 'bg-on-surface text-white hover:bg-on-surface/90'
                   }`}
                 >
                   {plan.cta}
@@ -225,6 +274,121 @@ const Pricing = () => {
             </div>
         </motion.div>
       </div>
+
+      {/* Modal: Stripe Checkout Assinatura */}
+      <AnimatePresence>
+        {checkoutPlan && (
+          <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setCheckoutPlan(null)}
+              className="fixed inset-0 bg-on-surface/45 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 14 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 14 }}
+              className="relative z-[96] w-full max-w-md bg-surface-container-lowest rounded-3xl border border-outline-variant shadow-2xl overflow-hidden"
+            >
+              <div className="px-6 py-4 border-b border-outline-variant/60 flex items-center justify-between bg-[#635BFF]/5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#635BFF] text-white flex items-center justify-center">
+                    <CreditCard size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#635BFF]">
+                      Stripe Checkout Seguro
+                    </p>
+                    <h3 className="font-headline font-extrabold text-base text-on-surface">
+                      Assinar {checkoutPlan.name}
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setCheckoutPlan(null)}
+                  className="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              <div className="p-6 space-y-5">
+                <div className="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-on-surface-variant font-medium">Assinatura Mensal</p>
+                    <p className="font-headline font-extrabold text-base text-on-surface">
+                      {checkoutPlan.name}
+                    </p>
+                  </div>
+                  <span className="font-headline font-black text-2xl text-primary">
+                    R$ {checkoutPlan.price}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setCheckoutMethod('card')}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border transition-colors ${
+                      checkoutMethod === 'card'
+                        ? 'bg-[#635BFF] text-white border-[#635BFF]'
+                        : 'bg-surface-container-low text-on-surface border-outline-variant/50'
+                    }`}
+                  >
+                    <CreditCard size={14} /> Cartão Stripe
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCheckoutMethod('pix')}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border transition-colors ${
+                      checkoutMethod === 'pix'
+                        ? 'bg-[#635BFF] text-white border-[#635BFF]'
+                        : 'bg-surface-container-low text-on-surface border-outline-variant/50'
+                    }`}
+                  >
+                    <QrCode size={14} /> PIX via Stripe
+                  </button>
+                </div>
+
+                <div className="p-3 rounded-xl bg-secondary-container/50 text-on-secondary-container text-xs flex items-start gap-2">
+                  <ShieldCheck size={16} className="shrink-0 mt-0.5 text-secondary" />
+                  <div className="space-y-1">
+                    <p>
+                      Conectado à conta Stripe <strong>{stripeEnv.platformAccountName}</strong> (
+                      <code className="font-mono text-[11px]">{stripeEnv.platformAccountId}</code>
+                      {stripeEnv.livemode ? ' • Live' : ' • Sandbox BRL'}).
+                    </p>
+                    <p className="text-[11px] opacity-80 font-mono">
+                      Produto: {checkoutPlan.catalog.productId} • Preço: {checkoutPlan.catalog.priceId}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.open(checkoutPlan.catalog.paymentLinkUrl, '_blank', 'noopener,noreferrer');
+                    toast({
+                      title: `🚀 Checkout Stripe (${checkoutPlan.name}) aberto!`,
+                      description: `Assinatura vinculada ao preço ${checkoutPlan.catalog.priceId} (${
+                        checkoutMethod === 'card' ? 'Cartão Stripe' : 'PIX via Stripe'
+                      }).`,
+                    });
+                    setCheckoutPlan(null);
+                  }}
+                  className="w-full py-3.5 rounded-xl bg-[#635BFF] hover:brightness-110 text-white font-headline font-bold text-sm shadow-md shadow-[#635BFF]/25 flex items-center justify-center gap-2"
+                >
+                  <span>Abrir Stripe Checkout • R$ {checkoutPlan.price}</span>
+                  <ExternalLink size={15} />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

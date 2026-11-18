@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#93000a", "on-secondary": "#ffffff", "inverse-on-surface": "#ecf1ff", "on-primary-fixed": "#00174b", "primary-fixed-dim": "#b4c5ff", "tertiary-container": "#bc4800", "surface-container-highest": "#d8e3fb", "background": "#f9f9ff", "on-primary-container": "#eeefff", "error-container": "#ffdad6", "surface-variant": "#d8e3fb", "primary": "#004ac6", "on-primary": "#ffffff", "surface-bright": "#f9f9ff", "outline-variant": "#c3c6d7", "secondary-container": "#6cf8bb", "surface-dim": "#cfdaf2", "primary-container": "#2563eb", "on-tertiary": "#ffffff", "primary-fixed": "#dbe1ff", "tertiary": "#943700", "error": "#ba1a1a", "surface": "#f9f9ff", "surface-container": "#e7eeff", "on-secondary-fixed-variant": "#005236", "tertiary-fixed": "#ffdbcd", "surface-container-high": "#dee8ff", "tertiary-fixed-dim": "#ffb596", "on-tertiary-fixed-variant": "#7d2d00", "on-background": "#111c2d", "on-surface": "#111c2d", "inverse-primary": "#b4c5ff", "secondary-fixed": "#6ffbbe", "surface-container-lowest": "#ffffff", "on-secondary-container": "#00714d", "surface-container-low": "#f0f3ff", "secondary-fixed-dim": "#4edea3", "on-surface-variant": "#434655", "on-tertiary-container": "#ffede6", "outline": "#737686", "secondary": "#006c49", "inverse-surface": "#263143", "on-primary-fixed-variant": "#003ea8", "on-error": "#ffffff", "on-tertiary-fixed": "#360f00", "surface-tint": "#0053db", "on-secondary-fixed": "#002113" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": {}, "fontFamily": { "headline": ["Plus Jakarta Sans"], "display": ["Plus Jakarta Sans"], "body": ["Inter"], "label": ["Inter"] }, "fontSize": {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-5 flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">bolt</span></div><span class="font-headline font-extrabold text-xl tracking-tight text-on-surface">Vapt<span class="text-primary-container">Vaga</span></span></div><div class="flex items-center gap-2"><button class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Greeting & Context Ribbon -->
+<section class="px-5 pt-3 pb-2 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h1 class="font-headline font-extrabold text-xl tracking-tight text-on-surface">Gabriel Lima</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-label font-bold bg-primary-container/15 text-primary-container">
+<span class="material-symbols-outlined text-[14px]">verified</span> Pro
+          </span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant mt-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-xs font-body font-medium tracking-tight">Lourdes, Belo Horizonte - MG</span>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-low text-on-surface text-xs font-headline font-semibold shadow-sm hover:bg-surface-container active:scale-95 transition-all" id="btn-alert">
+<span class="material-symbols-outlined text-[17px] text-primary">add_alert</span>
+<span>Alerta</span>
+</button>
+</div>
+<!-- Quick Stat Banner & Weekly Goal Bento Card -->
+<div class="w-full bg-gradient-to-br from-surface-container-lowest via-surface-container-lowest to-surface-container-low rounded-xl p-4 shadow-sm flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary/5 rounded-full pointer-events-none blur-xl"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</div>
+<span class="text-xs font-headline font-bold text-on-surface">Diárias Ativas Hoje</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/40">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 142 vagas
+        </span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline font-extrabold text-2xl text-on-surface tracking-tight">R$ 48.200</span>
+<span class="text-xs text-on-surface-variant font-body">média R$ 195/turno</span>
+</div>
+<!-- Weekly Progress Pill -->
+<div class="w-full bg-surface-container-high/60 rounded-xl p-2.5 flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-xs font-label">
+<span class="text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">flag</span> Meta semanal
+          </span>
+<span class="font-bold text-on-surface">R$ 780 <span class="text-on-surface-variant font-normal">/ R$ 1.250</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary to-primary-container" style="width: 62.4%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Search & Region Anchor -->
+<section class="px-5 pt-2 pb-1 flex flex-col gap-2.5">
+<div class="flex items-center gap-2">
+<div class="flex-1 flex items-center gap-2.5 px-4 h-12 bg-surface-container-lowest rounded-full shadow-sm text-on-surface-variant focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-[20px] text-primary">search</span>
+<input class="w-full bg-transparent border-0 outline-none text-xs font-body placeholder:text-outline text-on-surface" placeholder="Buscar cargo, função ou empresa..." type="text"/>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm relative active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container"></span>
+</button>
+</div>
+<!-- Region selector pill -->
+<div class="flex items-center justify-between px-1">
+<button class="inline-flex items-center gap-1.5 text-xs font-label font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">near_me</span>
+<span>Região: BH &amp; Contagem (15 km)</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<span class="text-[11px] font-body text-on-surface-variant font-medium">Atualizado há 2 min</span>
+</div>
+</section>
+<!-- Horizontal Categories Carousel -->
+<section class="pt-2 pb-1 overflow-x-auto scrollbar-none px-5 flex items-center gap-2">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary text-xs font-headline font-semibold shadow-sm shrink-0 whitespace-nowrap active:scale-95 transition-transform flex items-center gap-1.5">
+<span>Todas</span>
+<span class="px-1.5 py-0.2 rounded-full bg-on-primary/20 text-[10px]">142</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-headline font-semibold shadow-sm shrink-0 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-transform flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">restaurant</span>
+<span>Gastronomia &amp; Salão</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-headline font-semibold shadow-sm shrink-0 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-transform flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">celebration</span>
+<span>Eventos &amp; Festas</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-headline font-semibold shadow-sm shrink-0 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-transform flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">local_shipping</span>
+<span>Logística &amp; Entregas</span>
+</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-lowest text-on-surface text-xs font-headline font-semibold shadow-sm shrink-0 whitespace-nowrap hover:bg-surface-container active:scale-95 transition-transform flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">inventory_2</span>
+<span>Varejo &amp; Estoque</span>
+</button>
+</section>
+<!-- Quick Filter Tags -->
+<section class="pt-2 pb-2 overflow-x-auto scrollbar-none px-5 flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded-full bg-secondary-container/40 text-on-secondary-container text-[11px] font-label font-bold shrink-0 whitespace-nowrap flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>PIX ao término</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-[11px] font-label font-semibold shrink-0 whitespace-nowrap flex items-center gap-1 hover:text-on-surface">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>Diária &gt; R$ 200</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-[11px] font-label font-semibold shrink-0 whitespace-nowrap flex items-center gap-1 hover:text-on-surface">
+<span class="material-symbols-outlined text-[14px]">dark_mode</span>
+<span>Turnos Noturnos</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-[11px] font-label font-semibold shrink-0 whitespace-nowrap flex items-center gap-1 hover:text-on-surface">
+<span class="material-symbols-outlined text-[14px]">lunch_dining</span>
+<span>Refeição Inclusa</span>
+</button>
+</section>
+<!-- Feed Title Section -->
+<div class="px-5 pt-3 pb-1 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline font-bold text-base text-on-surface">Oportunidades em Destaque</h2>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</div>
+<button class="text-xs font-label font-semibold text-primary flex items-center">
+<span>Relevância</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+</div>
+<!-- Job Cards Feed Container -->
+<section class="px-5 py-2 flex flex-col gap-4">
+<!-- Card 1: Gastronomia / Garçom (URGENTE) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
+<!-- Media Header -->
+<div class="relative h-44 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Modern upscale Italian restaurant dining room with warm atmospheric mood lighting, amber candlelight on rustic wooden tables, wine glasses glistening, and a stylish interior bar in Lourdes Belo Horizonte, photorealistic architectural photography, ultra-high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6zAjnEaQxX3yACJEljZteevumWhBdnq68LV_qMJeCegTzP8A9SEBCp2MUAfZowzQp5X65EYoCBsg5icBCR24R1HXMARwSNAcNnju-6ds-lsn6y-MogCecEicd-3bgOnPGvqDRIZeY883Ev8yyhu_cPXNVNFvLBP6x1UI6It1k2P4753SxUAiTKfav0wdlhSUhhe7RPokC0DFJwtOPtJhMOpRWdgaoXDKPMzijckFlOAH8xY473HHJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-black/20"></div>
+<!-- Urgency Badge -->
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-label font-extrabold bg-tertiary-container text-on-tertiary-container shadow-md backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> URGENTE HOJE • 6H TURNO
+          </span>
+</div>
+<!-- Quick Save Button -->
+<button class="favorite-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+<!-- Company Anchor on Image Bottom -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary font-headline font-extrabold text-xs shadow-sm">
+              NB
+            </div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-xs tracking-tight text-white drop-shadow">Cantina Nonna Bella</span>
+<div class="flex items-center gap-1 text-[11px] text-white/90">
+<span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.9</span>
+<span>(42 turnos pagos)</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-label font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Gastronomia</span>
+</div>
+</div>
+<!-- Card Body -->
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h3 class="font-headline font-bold text-base text-on-surface tracking-tight leading-snug">
+            Garçom / Atendente de Salão Noturno
+          </h3>
+<p class="text-xs text-on-surface-variant font-body line-clamp-1 mt-0.5">
+            Atendimento a mesas, apresentação da carta de vinhos artesanais e fechamento rápido de contas.
+          </p>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-2 text-xs font-body">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-medium">Hoje, 18:30 às 00:30</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span class="truncate">Lourdes, BH (2.4 km)</span>
+</div>
+</div>
+<!-- Benefits Pills -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Uniforme Fornecido
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">restaurant</span> Jantar no Local
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">local_taxi</span> Uber Volta Pago
+          </span>
+</div>
+<!-- Action / Payout Footer -->
+<div class="pt-2 flex items-center justify-between border-t border-transparent bg-surface-container-low/50 -mx-4 -mb-4 p-4 mt-1 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-headline font-extrabold text-lg text-primary leading-none">R$ 190</span>
+<div class="flex items-center gap-1 mt-1 text-[11px] font-label font-semibold text-secondary">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>PIX até 01:00h</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2.5 rounded-full text-xs font-headline font-semibold text-on-surface-variant hover:text-on-surface transition-colors">
+              Detalhes
+            </button>
+<button class="apply-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-headline font-bold shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Chapeiro Burger Smash (CONTRATAÇÃO RÁPIDA) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
+<div class="relative h-44 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Gourmet artisanal burger kitchen station with flames on flat grill, sizzling smash burgers, stainless steel clean surfaces, neon ambient sign reflections, culinary photography with vibrant warm colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_4ijPxVBlC06JM_-_wM-MuP0RXVMeLKoMZuAJM9ZxCglKJiWK_MivBrSBODO1AF63dxuv9Ox7fn1V80HXjaPmcrRLE6qeT6XL7fPzOB3etPDFETJNrdG3heFZhh-8Q9k19NaQNGV9Ks6gmJ-RKvfPnlGlVoa5IQQ84fDIYu8pY_dOn5sXZpBBwGtPDEPQuoc3AJ_hNeC3rlwC4mBP_XpyzivFRvkIe6I-PrfO6st_zqMtZWebsfLy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-black/20"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-label font-extrabold bg-primary-container text-on-primary shadow-md">
+<span class="material-symbols-outlined text-[14px]">flash_on</span> CONTRATAÇÃO RÁPIDA • 7H
+          </span>
+</div>
+<button class="favorite-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary font-headline font-extrabold text-xs shadow-sm">
+              BG
+            </div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-xs tracking-tight text-white drop-shadow">Burger Garage 99</span>
+<div class="flex items-center gap-1 text-[11px] text-white/90">
+<span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">5.0</span>
+<span>(88 turnos)</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-label font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Cozinha</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h3 class="font-headline font-bold text-base text-on-surface tracking-tight leading-snug">
+            Chapeiro Especialista &amp; Montador Smash
+          </h3>
+<p class="text-xs text-on-surface-variant font-body line-clamp-1 mt-0.5">
+            Prensagem smash rápida, controle térmico de chapa comercial e padrão impecável de montagem.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-body">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-medium">Hoje, 17:00 às 00:00</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span class="truncate">Savassi, BH (3.1 km)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Burger Liberado
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">directions_bus</span> Auxílio VT R$ 15
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">timer</span> Sem atraso no PIX
+          </span>
+</div>
+<div class="pt-2 flex items-center justify-between border-t border-transparent bg-surface-container-low/50 -mx-4 -mb-4 p-4 mt-1 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-headline font-extrabold text-lg text-primary leading-none">R$ 220 <span class="text-xs font-normal text-on-surface-variant">+ Benefícios</span></span>
+<div class="flex items-center gap-1 mt-1 text-[11px] font-label font-semibold text-secondary">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>PIX no Encerramento</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2.5 rounded-full text-xs font-headline font-semibold text-on-surface-variant hover:text-on-surface transition-colors">
+              Detalhes
+            </button>
+<button class="apply-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-headline font-bold shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Logística Hub (12 VAGAS ABERTAS) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
+<div class="relative h-44 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Modern high-tech distribution center warehouse interior with robotic conveyor belts, bright LED industrial lighting, organized inventory racks, logistics workers in high-visibility vests, commercial documentary style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjlM1b56_76tgZccb7Q7EVtwNdnmqtY0TfQ-AOxNnLYnf19e3NhqLvLhBgbq0Waef_gXk3fqjDk6xFJ_zq_3Gj8ymUO-Slavr0SbfSxuLZS1l-W0VEKgVyesB24J9JP_EWp4MMUkmJfZujf0Itv0bqlj6_bfWG6A60cL79Zn6ShkHXNwp6pYe46siHo5QMv2to0WCNegQughPKL3Q7i7MrUwmIgEHMDvaUpY1vOq6ZmyRLETXopWi0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-black/20"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-label font-extrabold bg-secondary text-on-secondary shadow-md">
+<span class="material-symbols-outlined text-[14px]">group</span> 12 VAGAS ABERTAS
+          </span>
+</div>
+<button class="favorite-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary font-headline font-extrabold text-xs shadow-sm">
+              EL
+            </div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-xs tracking-tight text-white drop-shadow">Express Logística Hub</span>
+<div class="flex items-center gap-1 text-[11px] text-white/90">
+<span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.8</span>
+<span>(310 turnos)</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-label font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Logística</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h3 class="font-headline font-bold text-base text-on-surface tracking-tight leading-snug">
+            Auxiliar de Separação &amp; Conferência (Picking)
+          </h3>
+<p class="text-xs text-on-surface-variant font-body line-clamp-1 mt-0.5">
+            Bipagem coletor de dados, etiquetagem e roteirização de mercadorias leves de e-commerce.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-body">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-medium">Hoje, 21:00 às 05:00</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span class="truncate">Contagem / Ceasa (8.5 km)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">safety_check</span> EPI Completo
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">restaurant</span> Refeitório Central
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">airport_shuttle</span> Van da Estação Eldorado
+          </span>
+</div>
+<div class="pt-2 flex items-center justify-between border-t border-transparent bg-surface-container-low/50 -mx-4 -mb-4 p-4 mt-1 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-headline font-extrabold text-lg text-primary leading-none">R$ 175 <span class="text-xs font-normal text-on-surface-variant">/diária</span></span>
+<div class="flex items-center gap-1 mt-1 text-[11px] font-label font-semibold text-secondary">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>PIX até 07:00h</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2.5 rounded-full text-xs font-headline font-semibold text-on-surface-variant hover:text-on-surface transition-colors">
+              Detalhes
+            </button>
+<button class="apply-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-headline font-bold shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Bartender VIP Fest (VIP FEST) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
+<div class="relative h-44 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Luxury night lounge cocktail bar with glowing neon accents, mixologist pouring vibrant signature cocktail with smoke effect, crystal cocktail glassware, vibrant upscale party atmosphere, deep slate and electric blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0XYp7k_CnTcfAargy40tA4kGaoL6Rb0L1KSO76eLmzUWEQ15V5hOyqApzN7Fa0H5hNdRi2bhutaeoCHYgdz3jqThpS7xMB6u2U1OkaAqpeDXlVRenTovIrOotU6gHekc9yT1aPA6NN0CZc0ugQbmQ12vVijfP3G1hNAvnAd84C0gW3L4l2tfBHG94f4kUjmYpONRLaOf-A9RO4VBCEczUfCHqD0lx7qVWY7lRvmh59SuknR90yyJz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-black/20"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-label font-extrabold bg-primary text-on-primary shadow-md">
+<span class="material-symbols-outlined text-[14px]">stars</span> VIP FEST • ALTA DEMANDA
+          </span>
+</div>
+<button class="favorite-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary font-headline font-extrabold text-xs shadow-sm">
+              AP
+            </div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-xs tracking-tight text-white drop-shadow">Arena Eventos Prime</span>
+<div class="flex items-center gap-1 text-[11px] text-white/90">
+<span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.9</span>
+<span>(19 turnos)</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-label font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Eventos</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h3 class="font-headline font-bold text-base text-on-surface tracking-tight leading-snug">
+            Bartender &amp; Mixologista para Área VIP
+          </h3>
+<p class="text-xs text-on-surface-variant font-body line-clamp-1 mt-0.5">
+            Preparo de coquetéis autorais (Gin Tônica, Moscow Mule, Negroni) com agilidade e simpatia.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-body">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-medium">Hoje, 20:00 às 03:30</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span class="truncate">Olhos D'Água, BH (6.2 km)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Gorjetas Compartilhadas
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">local_taxi</span> Retorno Garantido
+          </span>
+</div>
+<div class="pt-2 flex items-center justify-between border-t border-transparent bg-surface-container-low/50 -mx-4 -mb-4 p-4 mt-1 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-headline font-extrabold text-lg text-primary leading-none">R$ 290 <span class="text-xs font-normal text-on-surface-variant">/noite</span></span>
+<div class="flex items-center gap-1 mt-1 text-[11px] font-label font-semibold text-secondary">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>PIX Imediato ao Fechar</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2.5 rounded-full text-xs font-headline font-semibold text-on-surface-variant hover:text-on-surface transition-colors">
+              Detalhes
+            </button>
+<button class="apply-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-headline font-bold shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5: Café do Ponto Gourmet (TURNO MATUTINO) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
+<div class="relative h-44 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cozy artisan coffee shop with espresso machine pouring rich crema, latte art on counter, sunny morning natural light pouring through large window, minimalist Scandinavian decor, professional lifestyle photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPiF1ynwqaDVO2B73SGWT6tmY6HQbz6PZXY3BhsxznSwnkZ4irJ4eSfcViWswzeRy96Une5A4Wsvorsz8KDlRa1QoJ7mHdPQsHIuen-jkGHOvCTB7vzEr4qRlen8WHLbamJEPUs_bqQDjNDHqZbUdMGLFGvJK0vPkNPUnFDiwsboNaOyTYjpNJ-oMM-ulXW5LMLp9RyueLUE84Sg7ocIcchVkUKPnjtbAsEyQiFeqEkgSdd1keq43Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-black/20"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-label font-extrabold bg-surface-container-lowest text-on-surface shadow-md">
+<span class="material-symbols-outlined text-[14px] text-amber-500">wb_sunny</span> TURNO MATUTINO • AMANHÃ
+          </span>
+</div>
+<button class="favorite-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary font-headline font-extrabold text-xs shadow-sm">
+              CP
+            </div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-xs tracking-tight text-white drop-shadow">Café do Ponto Gourmet</span>
+<div class="flex items-center gap-1 text-[11px] text-white/90">
+<span class="material-symbols-outlined text-[13px] text-amber-300" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.8</span>
+<span>(56 turnos)</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] font-label font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Cafeteria</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h3 class="font-headline font-bold text-base text-on-surface tracking-tight leading-snug">
+            Barista &amp; Operador de Caixa Matutino
+          </h3>
+<p class="text-xs text-on-surface-variant font-body line-clamp-1 mt-0.5">
+            Extração de cafés especiais, vaporização de leite e fechamento ágil de pedidos no balcão.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-body">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-medium">Amanhã, 06:30 às 13:30</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+<span class="truncate">Funcionários, BH (1.8 km)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Café da Manhã Incluso
+          </span>
+<span class="px-2.5 py-1 rounded-full text-[10px] font-label font-medium bg-surface-container-low text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">payments</span> Ajuda Transporte R$ 20
+          </span>
+</div>
+<div class="pt-2 flex items-center justify-between border-t border-transparent bg-surface-container-low/50 -mx-4 -mb-4 p-4 mt-1 rounded-b-xl">
+<div class="flex flex-col">
+<span class="font-headline font-extrabold text-lg text-primary leading-none">R$ 160 <span class="text-xs font-normal text-on-surface-variant">/turno</span></span>
+<div class="flex items-center gap-1 mt-1 text-[11px] font-label font-semibold text-secondary">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>PIX às 14:00h</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2.5 rounded-full text-xs font-headline font-semibold text-on-surface-variant hover:text-on-surface transition-colors">
+              Detalhes
+            </button>
+<button class="apply-btn px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-headline font-bold shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Load More / Bottom Counter Section -->
+<section class="px-5 pt-3 pb-8 flex flex-col items-center gap-2.5">
+<button class="w-full h-12 rounded-full bg-surface-container-lowest text-primary font-headline font-bold text-xs flex items-center justify-center gap-2 shadow-sm hover:bg-surface-container transition-all active:scale-[0.98]" id="load-more-btn">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+<span>Carregar mais oportunidades</span>
+</button>
+<div class="flex items-center gap-1 text-[11px] font-body text-on-surface-variant">
+<span>Exibindo <strong>5</strong> de <strong>142 turnos</strong> disponíveis nas últimas 24h</span>
+</div>
+</section>
+<!-- Notification Toast for Delight (Hidden by default) -->
+<div class="fixed bottom-20 left-5 right-5 z-40 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast">
+<div class="bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-xl flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span class="text-xs font-body font-medium" id="toast-message">Candidatura enviada com sucesso!</span>
+</div>
+<span class="text-[10px] font-headline font-bold text-secondary uppercase tracking-wider">VaptVaga</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Micro-interactions: Favorite Button toggles
+    const favoriteButtons = document.querySelectorAll('.favorite-btn');
+    favoriteButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon.innerText === 'bookmark_border') {
+          icon.innerText = 'bookmark';
+          icon.style.fontVariationSettings = "'FILL' 1";
+          icon.classList.add('text-primary');
+          showToast('Vaga salva nos favoritos!');
+        } else {
+          icon.innerText = 'bookmark_border';
+          icon.style.fontVariationSettings = "'FILL' 0";
+          icon.classList.remove('text-primary');
+          showToast('Vaga removida dos favoritos.');
+        }
+      });
+    });
+
+    // Apply Button micro-interaction
+    const applyButtons = document.querySelectorAll('.apply-btn');
+    applyButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!btn.classList.contains('bg-secondary')) {
+          btn.innerHTML = `<span>Inscrito</span><span class="material-symbols-outlined text-[16px]">check</span>`;
+          btn.classList.remove('from-primary', 'to-primary-container', 'bg-gradient-to-r');
+          btn.classList.add('bg-secondary', 'text-on-secondary');
+          showToast('Candidatura confirmada! Estabelecimento notificado.');
+        }
+      });
+    });
+
+    // Alert button
+    const btnAlert = document.getElementById('btn-alert');
+    if (btnAlert) {
+      btnAlert.addEventListener('click', () => {
+        showToast('Alerta de vagas em BH & Contagem ativado!');
+      });
+    }
+
+    // Load More feedback
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        loadMoreBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Buscando turnos...</span>`;
+        setTimeout(() => {
+          loadMoreBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">autorenew</span><span>Carregar mais oportunidades</span>`;
+          showToast('Mais 5 novas vagas carregadas com sucesso!');
+        }, 900);
+      });
+    }
+
+    // Toast helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2800);
+      }
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(17,28,45,0.05)]" data-active-classes="text-primary-container font-semibold"><div class="h-16 px-4 flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="inicio" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="text-[11px] font-label font-medium tracking-tight">Início</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 transition-colors text-primary-container font-semibold" data-path="vagas" href="#"><span class="material-symbols-outlined text-[22px]">work</span><span class="text-[11px] font-label font-medium tracking-tight">Vagas</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="ganhos" href="#"><span class="material-symbols-outlined text-[22px]">account_balance_wallet</span><span class="text-[11px] font-label font-medium tracking-tight">Ganhos</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="perfil" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="text-[11px] font-label font-medium tracking-tight">Perfil</span></a></div></nav></body></html>

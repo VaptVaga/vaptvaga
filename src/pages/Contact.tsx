@@ -11,6 +11,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { supabase } from '../integrations/supabase/client';
+import { rateLimiter } from '../lib/rateLimit';
 
 const contactChannels = [
   {
@@ -68,6 +69,15 @@ export const Contact: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
     
+    // Rate Limiting: 2 mensagens por 15 minutos para evitar spam
+    const limit = rateLimiter.checkAndRecord('contact', 2, 15 * 60 * 1000);
+    if (!limit.allowed) {
+      setFormState('error');
+      setErrorMessage(`Você enviou muitas mensagens. Tente novamente em ${rateLimiter.formatRemainingTime(limit.remainingMs)}.`);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const { error } = await supabase.from('contact_messages').insert({
         name: form.name,

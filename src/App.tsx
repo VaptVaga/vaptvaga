@@ -4,31 +4,48 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // Layout
 import { Header } from './components/layout/Header';
-import { BottomNav } from './components/layout/BottomNav';
 import { Footer } from './components/layout/Footer';
+import { AppShell } from './components/layout/AppShell';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 import { useAuth } from './contexts/AuthContext';
+import { getCachedProfile } from './lib/profileCache';
 
-// Pages
+// Public Pages
 import { FreelancerLanding } from './pages/FreelancerLanding';
 import { CompanyLanding } from './pages/CompanyLanding';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
-import { FreelancerOnboarding } from './pages/FreelancerOnboarding';
+import Pricing from './pages/Pricing';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { TermsOfService } from './pages/TermsOfService';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import NotFound from './pages/NotFound';
+
+// Onboarding Pages
+import { FreelancerOnboarding } from './pages/FreelancerOnboarding';
+import Onboarding from './pages/Onboarding';
+
+// Internal App Pages
 import Profile from './pages/Profile';
+import FreelancerInicio from './pages/FreelancerInicio';
+import FreelancerFeed from './pages/FreelancerFeed';
+import FreelancerApplications from './pages/FreelancerApplications';
+import Financial from './pages/Financial';
+import CompanyDashboard from './pages/CompanyDashboard';
+import PostJob from './pages/PostJob';
+import Chat from './pages/Chat';
+import Schedule from './pages/Schedule';
+import { Toaster } from '@/components/ui/toaster';
 
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
       className="w-full h-full"
     >
       {children}
@@ -41,93 +58,293 @@ const HomeRedirect: React.FC = () => {
   const { profile, user, loading } = useAuth();
 
   if (loading) {
-    return <FreelancerLanding />;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-surface">
+        <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+      </div>
+    );
   }
 
   if (user) {
-    if (profile?.role === 'company') {
+    const effectiveProfile = profile || getCachedProfile(user.id);
+    if (effectiveProfile?.role === 'company') {
       return <Navigate to="/company/dashboard" replace />;
     }
-    // Default to freelancer flow
-    const isProfileComplete = profile?.skills && profile.skills.length > 0 && profile.cidade;
-    return <Navigate to={isProfileComplete ? '/freelancer/dashboard' : '/freelancer/onboarding'} replace />;
+    const isProfileComplete = Boolean(
+      (effectiveProfile?.skills && effectiveProfile.skills.length > 0) ||
+        effectiveProfile?.cidade
+    );
+    return (
+      <Navigate
+        to={isProfileComplete ? '/freelancer/inicio' : '/freelancer/onboarding'}
+        replace
+      />
+    );
   }
 
   return <FreelancerLanding />;
 };
 
+const DashboardRedirect: React.FC = () => {
+  const { profile, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-surface">
+        <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (profile?.role === 'company') {
+    return <Navigate to="/company/dashboard" replace />;
+  }
+  return <Navigate to="/freelancer/inicio" replace />;
+};
+
+const PUBLIC_ROUTES = [
+  '/',
+  '/empresas',
+  '/planos',
+  '/faq',
+  '/contato',
+  '/termos',
+  '/privacidade',
+  '/login',
+];
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   const { user } = useAuth();
 
-  // Hide global header on onboarding/signup pages (they have their own)
-  const hideHeader = location.pathname.startsWith('/freelancer/onboarding') ||
-                     location.pathname.startsWith('/onboarding') ||
-                     location.pathname.startsWith('/cadastro');
-  
+  const isPublicRoute = PUBLIC_ROUTES.includes(location.pathname);
+
+  const publicMainPadding =
+    location.pathname === '/'
+      ? 'pt-14 pb-0'
+      : location.pathname === '/empresas'
+        ? 'pt-8 pb-0'
+        : isPublicRoute
+          ? 'pt-[72px] pb-10 lg:pb-0'
+          : '';
 
   return (
     <>
-      {!hideHeader && <Header />}
-      
-      <main className={`w-full ${
-        location.pathname === '/' ? 'pt-14 pb-0' : 
-        location.pathname === '/empresas' ? 'pt-8 pb-0' : 
-        'pt-[72px] pb-32 lg:pb-0'
-      }`}>
+      {isPublicRoute && <Header />}
+
+      <main className={`w-full ${publicMainPadding}`}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
+            {/* Public Routes */}
             <Route path="/" element={<PageWrapper><HomeRedirect /></PageWrapper>} />
             <Route path="/empresas" element={<PageWrapper><CompanyLanding /></PageWrapper>} />
+            <Route path="/planos" element={<PageWrapper><Pricing /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/cadastro" element={<PageWrapper><Signup /></PageWrapper>} />
-            <Route path="/freelancer/onboarding" element={<PageWrapper><FreelancerOnboarding /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
             <Route path="/contato" element={<PageWrapper><Contact /></PageWrapper>} />
             <Route path="/termos" element={<PageWrapper><TermsOfService /></PageWrapper>} />
             <Route path="/privacidade" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
-            
-            <Route 
-              path="/freelancer/dashboard" 
+
+            {/* Onboarding Flows */}
+            <Route path="/freelancer/onboarding" element={<PageWrapper><FreelancerOnboarding /></PageWrapper>} />
+            <Route path="/onboarding" element={<PageWrapper><Onboarding /></PageWrapper>} />
+
+            {/* Freelancer Internal App Routes */}
+            <Route
+              path="/freelancer/inicio"
               element={
                 <ProtectedRoute allowedRole="freelancer">
-                  <PageWrapper><div className="p-6">Freelancer Dashboard</div></PageWrapper>
+                  <AppShell>
+                    <PageWrapper><FreelancerInicio /></PageWrapper>
+                  </AppShell>
                 </ProtectedRoute>
-              } 
+              }
             />
-            
-            <Route 
-              path="/company/dashboard" 
+            <Route
+              path="/freelancer/vagas"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><FreelancerFeed /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/freelancer/candidaturas"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><FreelancerApplications /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/freelancer/dashboard"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><Financial /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/freelancer/ganhos"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><Financial /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/freelancer/financeiro"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><Financial /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/freelancer/agenda"
+              element={
+                <ProtectedRoute allowedRole="freelancer">
+                  <AppShell>
+                    <PageWrapper><Schedule /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Company Internal App Routes */}
+            <Route
+              path="/company/dashboard"
               element={
                 <ProtectedRoute allowedRole="company">
-                  <PageWrapper><div className="p-6">Company Dashboard</div></PageWrapper>
+                  <AppShell>
+                    <PageWrapper><CompanyDashboard /></PageWrapper>
+                  </AppShell>
                 </ProtectedRoute>
-              } 
+              }
             />
-            
-            <Route 
-              path="/chat" 
+            <Route
+              path="/company/vagas"
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <AppShell>
+                    <PageWrapper><CompanyDashboard /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/company/candidatos"
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <AppShell>
+                    <PageWrapper><CompanyDashboard /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/company/agenda"
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <AppShell>
+                    <PageWrapper><Schedule /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/company/financeiro"
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <AppShell>
+                    <PageWrapper><Financial /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/post-job"
+              element={
+                <ProtectedRoute allowedRole="company">
+                  <AppShell>
+                    <PageWrapper><PostJob /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Shared Internal App Routes */}
+            <Route
+              path="/financeiro"
               element={
                 <ProtectedRoute>
-                  <PageWrapper><div className="p-6">Chat Interface</div></PageWrapper>
+                  <AppShell>
+                    <PageWrapper><Financial /></PageWrapper>
+                  </AppShell>
                 </ProtectedRoute>
-              } 
+              }
             />
-            
-            <Route 
-              path="/profile" 
+            <Route
+              path="/agenda"
               element={
                 <ProtectedRoute>
-                  <PageWrapper><Profile /></PageWrapper>
+                  <AppShell>
+                    <PageWrapper><Schedule /></PageWrapper>
+                  </AppShell>
                 </ProtectedRoute>
-              } 
+              }
             />
+            <Route
+              path="/chat"
+              element={
+                <ProtectedRoute>
+                  <AppShell>
+                    <PageWrapper><Chat /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <AppShell>
+                    <PageWrapper><Profile /></PageWrapper>
+                  </AppShell>
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Route Aliases */}
+            <Route path="/vagas" element={<Navigate to="/freelancer/vagas" replace />} />
+            <Route path="/jobs" element={<Navigate to="/freelancer/vagas" replace />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardRedirect />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Fallback */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
       </main>
 
-      {user && <BottomNav />}
-      {!user && <Footer />}
+      {isPublicRoute && !user && <Footer />}
     </>
   );
 };
@@ -137,6 +354,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <AnimatedRoutes />
+      <Toaster />
     </BrowserRouter>
   );
 }

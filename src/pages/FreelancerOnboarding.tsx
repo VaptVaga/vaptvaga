@@ -1,10 +1,18 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { useQuery } from '@tanstack/react-query';
 import { ImageCropper } from '../components/common/ImageCropper';
+import { LocationMap } from '@/components/vaptvaga/LocationMap';
+import { upsertProfileResilient } from '@/hooks/useSupabase';
+import { toast } from '@/hooks/use-toast';
+import {
+  detectUserLocation,
+  resolveCoordinates,
+  isValidCoordinate,
+} from '@/lib/geolocation';
 
 const SKILL_OPTIONS = [
   'Atendimento ao Cliente', 'Barista', 'Garçom', 'Caixa', 'Auxiliar de Cozinha',
@@ -33,29 +41,69 @@ interface Experience {
 
 export const FreelancerOnboarding: React.FC = () => {
   const navigate = useNavigate();
-  const { profile, session, refreshProfile } = useAuth();
+  const { user: authUser, profile, session, refreshProfile, updateLocalProfile } = useAuth();
+  const userId = authUser?.id || session?.user?.id || profile?.id;
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
 
   // Identity
   const [nome, setNome] = useState(profile?.name || '');
-  const [tituloProfissional, setTituloProfissional] = useState((profile as any)?.titulo_profissional || '');
-  const [bio, setBio] = useState((profile as any)?.bio || '');
+  const [tituloProfissional, setTituloProfissional] = useState(profile?.titulo_profissional || '');
+  const [bio, setBio] = useState(profile?.bio || '');
   const [estado, setEstado] = useState(profile?.estado || '');
   const [cidade, setCidade] = useState(profile?.cidade || '');
+  const [bairro, setBairro] = useState(profile?.bairro || '');
+  const [latitude, setLatitude] = useState<number | null>(
+    isValidCoordinate(profile?.latitude) ? profile.latitude : null
+  );
+  const [longitude, setLongitude] = useState<number | null>(
+    isValidCoordinate(profile?.longitude) ? profile.longitude : null
+  );
+  const [isLocatingGps, setIsLocatingGps] = useState(false);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(profile?.avatar_url || null);
   const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
 
   // Experience
-  const [experiences, setExperiences] = useState<Experience[]>((profile as any)?.experiencias || [{ empresa: '', cargo: '', inicio: '', fim: '' }]);
+  const [experiences, setExperiences] = useState<Experience[]>(
+    (profile?.experiencias as Experience[] | undefined) || [
+      { empresa: '', cargo: '', inicio: '', fim: '' },
+    ]
+  );
   const [selectedSkills, setSelectedSkills] = useState<string[]>(profile?.skills || []);
   const [customSkill, setCustomSkill] = useState('');
 
   // Portfolio
   const [portfolioUrl, setPortfolioUrl] = useState(profile?.portfolio_url || '');
-  const [instagram, setInstagram] = useState((profile as any)?.instagram || '');
+  const [instagram, setInstagram] = useState(profile?.instagram || '');
   const [linkedin, setLinkedin] = useState(''); // LinkedIn is merged into portfolio_url but we keep state if needed.
+
+  const hydratedProfileIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!profile?.id || hydratedProfileIdRef.current === profile.id) return;
+    hydratedProfileIdRef.current = profile.id;
+    setNome((prev) => prev || profile.name || '');
+    setTituloProfissional((prev) => prev || profile.titulo_profissional || '');
+    setBio((prev) => prev || profile.bio || '');
+    setEstado((prev) => prev || profile.estado || '');
+    setCidade((prev) => prev || profile.cidade || '');
+    setBairro((prev) => prev || profile.bairro || '');
+    setLatitude((prev) =>
+      prev !== null ? prev : isValidCoordinate(profile.latitude) ? profile.latitude : null
+    );
+    setLongitude((prev) =>
+      prev !== null ? prev : isValidCoordinate(profile.longitude) ? profile.longitude : null
+    );
+    setAvatarPreview((prev) => prev || profile.avatar_url || null);
+    setExperiences((prev) =>
+      prev.some((e) => e.empresa || e.cargo)
+        ? prev
+        : (profile.experiencias as Experience[] | undefined) || prev
+    );
+    setSelectedSkills((prev) => (prev.length > 0 ? prev : profile.skills || []));
+    setPortfolioUrl((prev) => prev || profile.portfolio_url || '');
+    setInstagram((prev) => prev || profile.instagram || '');
+  }, [profile]);
 
   const { data: skillRankings } = useQuery({
     queryKey: ['skill_rankings'],
@@ -66,7 +114,7 @@ export const FreelancerOnboarding: React.FC = () => {
   });
 
   const rankedSkillOptions = useMemo(() => {
-    const rankedNames = (skillRankings || []).map((s: any) => s.skill);
+    const rankedNames = (skillRankings || []).map((s: { skill: string }) => s.skill);
     const sorted = [...SKILL_OPTIONS].sort((a, b) => {
       const ai = rankedNames.indexOf(a);
       const bi = rankedNames.indexOf(b);
@@ -125,67 +173,102 @@ export const FreelancerOnboarding: React.FC = () => {
     setSelectedImageSrc(null);
   };
 
+  const handleDetectGps = async () => {
+    setIsLocatingGps(true);
+    try {
+      const detected = await detectUserLocation();
+      setLatitude(detected.latitude);
+      setLongitude(detected.longitude);
+      if (detected.cidade) setCidade(detected.cidade);
+      if (detected.bairro) setBairro(detected.bairro);
+      if (detected.estado) setEstado(detected.estado);
+      toast({
+        title: '📍 GPS conectado!',
+        description:
+          [detected.bairro, detected.cidade, detected.estado].filter(Boolean).join(', ') ||
+          'Localização preenchida automaticamente.',
+      });
+    } catch (err: unknown) {
+      toast({
+        title: 'Erro ao obter GPS',
+        description: err instanceof Error ? err.message : 'Verifique as permissões do navegador.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLocatingGps(false);
+    }
+  };
+
   const handleSave = async () => {
-    if (!session?.user?.id) {
-      alert('Você precisa estar logado para salvar seu perfil. Redirecionando para o login...');
+    if (!userId) {
+      toast({
+        title: 'Sessão expirada',
+        description: 'Você precisa estar logado para salvar seu perfil.',
+        variant: 'destructive',
+      });
       navigate('/login');
       return;
     }
     setLoading(true);
 
     try {
-      let avatarUrl = avatarPreview;
+      let avatarUrl = avatarPreview && !avatarPreview.startsWith('blob:') ? avatarPreview : profile?.avatar_url || null;
 
-      // Upload avatar if changed
       if (avatarFile) {
-        const ext = avatarFile.name.split('.').pop();
-        const path = `${session.user.id}/avatar.${ext}`;
-        const { error: uploadErr } = await supabase.storage
-          .from('avatars')
-          .upload(path, avatarFile, { upsert: true });
+        const ext = avatarFile.name.split('.').pop() || 'jpeg';
+        const path = `${userId}/avatar_${Date.now()}.${ext}`;
 
-        if (!uploadErr) {
-          const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(path);
-          avatarUrl = urlData.publicUrl;
+        try {
+          const uploadPromise = supabase.storage.from('avatars').upload(path, avatarFile, { upsert: true });
+          const uploadTimeout = new Promise<{ error: Error }>((_, reject) =>
+            setTimeout(() => reject(new Error('TIMEOUT_AVATAR')), 6000)
+          );
+          const { error: uploadErr } = await Promise.race([uploadPromise, uploadTimeout]);
+          if (!uploadErr) {
+            const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(path);
+            avatarUrl = urlData.publicUrl;
+          }
+        } catch {
+          console.warn('Falha no upload do avatar; salvando os demais dados do perfil.');
         }
       }
 
-      // Upsert profile to guarantee it saves even if the row was somehow missing
-      // Add retry logic for Supabase lock token error
-      let saveError;
-      for (let i = 0; i < 3; i++) {
-        const { error } = await (supabase.from('profiles') as any).upsert({
-          id: session.user.id,
-          role: profile?.role || 'freelancer',
-          name: nome,
-          avatar_url: avatarUrl,
-          skills: selectedSkills,
-          estado,
-          cidade,
-          portfolio_url: portfolioUrl || linkedin || null,
-          bio: bio,
-          titulo_profissional: tituloProfissional,
-          instagram: instagram,
-          experiencias: experiences,
-        });
-        
-        saveError = error;
-        if (!error || !error.message.includes('Lock')) break;
-        await new Promise(resolve => setTimeout(resolve, 500));
-      }
+      const resolvedCoords = resolveCoordinates({
+        latitude,
+        longitude,
+        bairro: bairro.trim() || null,
+        cidade: cidade.trim() || null,
+      });
 
-      if (saveError) {
-        console.error('Error in upsert:', saveError);
-        alert(`Erro ao salvar no banco: ${saveError.message}`);
-        setLoading(false);
-        return;
-      }
+      const saved = await upsertProfileResilient({
+        id: userId,
+        role: profile?.role || 'freelancer',
+        name: nome.trim() || profile?.name || 'Freelancer',
+        avatar_url: avatarUrl,
+        skills: selectedSkills,
+        estado: estado || null,
+        cidade: cidade.trim() || null,
+        bairro: bairro.trim() || null,
+        latitude: cidade.trim() || bairro.trim() || latitude ? resolvedCoords.latitude : null,
+        longitude: cidade.trim() || bairro.trim() || longitude ? resolvedCoords.longitude : null,
+        portfolio_url: portfolioUrl.trim() || linkedin.trim() || null,
+        bio: bio.trim() || null,
+        titulo_profissional: tituloProfissional.trim() || null,
+        instagram: instagram.trim() || null,
+        experiencias: experiences,
+      });
 
+      updateLocalProfile(saved);
       await refreshProfile();
-      navigate('/freelancer/dashboard');
-    } catch (err: any) {
+      toast({ title: '✅ Perfil publicado com sucesso!' });
+      navigate('/freelancer/inicio', { replace: true });
+    } catch (err: unknown) {
       console.error('Error saving profile:', err);
-      alert(`Erro ao salvar perfil: ${err?.message || err}`);
+      toast({
+        title: 'Erro ao salvar perfil',
+        description: err instanceof Error ? err.message : 'Tente novamente.',
+        variant: 'destructive',
+      });
     } finally {
       setLoading(false);
     }
@@ -319,30 +402,79 @@ export const FreelancerOnboarding: React.FC = () => {
                             placeholder="Conte um pouco sobre sua experiência..."
                           />
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div className="flex flex-col gap-2">
-                            <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Estado</label>
-                            <div className="relative">
-                              <select
-                                className="w-full appearance-none px-5 py-4 bg-surface-container-lowest bg-none border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface font-medium cursor-pointer pr-12"
-                                value={estado}
-                                onChange={e => setEstado(e.target.value)}
-                              >
-                                <option value="">Selecione</option>
-                                {ESTADOS_BR.map(uf => <option key={uf} value={uf}>{uf}</option>)}
-                              </select>
-                              <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+                        <div className="space-y-4">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="text-sm font-bold font-headline ml-1 text-on-surface-variant">
+                              Sua Localização para Turnos
+                            </span>
+                            <button
+                              type="button"
+                              onClick={handleDetectGps}
+                              disabled={isLocatingGps}
+                              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-container text-primary text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-60"
+                            >
+                              <span className="material-symbols-outlined text-sm">
+                                {isLocatingGps ? 'sync' : 'my_location'}
+                              </span>
+                              <span>{isLocatingGps ? 'Localizando...' : 'Usar meu GPS'}</span>
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                            <div className="flex flex-col gap-2">
+                              <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Estado</label>
+                              <div className="relative">
+                                <select
+                                  className="w-full appearance-none px-5 py-4 bg-surface-container-lowest bg-none border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface font-medium cursor-pointer pr-12"
+                                  value={estado}
+                                  onChange={e => setEstado(e.target.value)}
+                                >
+                                  <option value="">Selecione</option>
+                                  {ESTADOS_BR.map(uf => <option key={uf} value={uf}>{uf}</option>)}
+                                </select>
+                                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+                              </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                              <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Cidade</label>
+                              <input
+                                className="w-full px-5 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline/50 font-medium"
+                                value={cidade}
+                                onChange={e => {
+                                  setLatitude(null);
+                                  setLongitude(null);
+                                  setCidade(e.target.value);
+                                }}
+                                placeholder="Ex: Belo Horizonte"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                              <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Bairro</label>
+                              <input
+                                className="w-full px-5 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline/50 font-medium"
+                                value={bairro}
+                                onChange={e => {
+                                  setLatitude(null);
+                                  setLongitude(null);
+                                  setBairro(e.target.value);
+                                }}
+                                placeholder="Ex: Savassi"
+                              />
                             </div>
                           </div>
-                          <div className="flex flex-col gap-2">
-                            <label className="text-sm font-bold font-headline ml-1 text-on-surface-variant">Cidade</label>
-                            <input
-                              className="w-full px-5 py-4 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline/50 font-medium"
-                              value={cidade}
-                              onChange={e => setCidade(e.target.value)}
-                              placeholder="Ex: São Paulo"
+
+                          {(cidade || bairro || latitude) && (
+                            <LocationMap
+                              compact
+                              addressLabel={[bairro, cidade, estado].filter(Boolean).join(', ') || 'Sua região'}
+                              latitude={latitude}
+                              longitude={longitude}
+                              bairro={bairro}
+                              cidade={cidade}
+                              heightClassName="h-40"
+                              showRouteButtons={false}
                             />
-                          </div>
+                          )}
                         </div>
                       </div>
                     </div>

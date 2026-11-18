@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#dee8ff","secondary-fixed":"#6ffbbe","on-surface-variant":"#434655","primary-fixed":"#dbe1ff","surface-dim":"#cfdaf2","tertiary-fixed":"#ffdbcd","on-primary":"#ffffff","outline":"#737686","on-secondary-fixed-variant":"#005236","tertiary":"#943700","on-error":"#ffffff","tertiary-container":"#bc4800","tertiary-fixed-dim":"#ffb596","on-primary-fixed":"#00174b","on-tertiary":"#ffffff","on-error-container":"#93000a","secondary-container":"#6cf8bb","on-secondary":"#ffffff","inverse-surface":"#263143","surface-tint":"#0053db","surface":"#f9f9ff","on-tertiary-container":"#ffede6","error":"#ba1a1a","surface-container-highest":"#d8e3fb","on-primary-fixed-variant":"#003ea8","outline-variant":"#c3c6d7","on-tertiary-fixed-variant":"#7d2d00","on-secondary-fixed":"#002113","secondary-fixed-dim":"#4edea3","inverse-on-surface":"#ecf1ff","primary-fixed-dim":"#b4c5ff","surface-container-low":"#f0f3ff","on-primary-container":"#eeefff","background":"#f9f9ff","on-surface":"#111c2d","on-background":"#111c2d","error-container":"#ffdad6","primary":"#004ac6","on-tertiary-fixed":"#360f00","primary-container":"#2563eb","secondary":"#006c49","surface-bright":"#f9f9ff","surface-variant":"#d8e3fb","surface-container":"#e7eeff","inverse-primary":"#b4c5ff","surface-container-lowest":"#ffffff","on-secondary-container":"#00714d"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},spacing:{},fontFamily:{headline:["Plus Jakarta Sans"],display:["Plus Jakarta Sans"],body:["Inter"],label:["Inter"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between p-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-8"><div class="flex items-center gap-3 px-2"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-on-primary font-headline font-extrabold text-xl shadow-[0_8px_20px_rgba(0,74,198,0.25)]">V</div><div class="flex flex-col"><span class="font-headline font-extrabold text-lg tracking-tight text-on-surface leading-tight">VaptVaga</span><span class="text-[11px] font-medium tracking-wide uppercase text-on-surface-variant">Work Platform</span></div></div><nav class="flex flex-col gap-1.5" data-active-classes="bg-surface-container-lowest text-primary font-bold shadow-[0_8px_24px_rgba(17,28,45,0.05)]"><a class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="vagas-disponiveis" href="#"><span class="material-symbols-outlined text-[22px]">work</span><span class="text-sm font-medium">Vagas Disponíveis</span></a><a class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="minhas-candidaturas" href="#"><span class="material-symbols-outlined text-[22px]">assignment_turned_in</span><span class="text-sm font-medium">Minhas Candidaturas</span></a><a class="flex items-center justify-between px-4 py-3.5 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="mensagens" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[22px]">chat_bubble</span><span class="text-sm font-medium">Mensagens</span></div><span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">Novo</span></a><a class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="ganhos" href="#"><span class="material-symbols-outlined text-[22px]">payments</span><span class="text-sm font-medium">Ganhos</span></a><a class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="perfil" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="text-sm font-medium">Perfil</span></a></nav></div><div class="flex flex-col gap-4"><div class="p-4 rounded-xl bg-surface-container flex flex-col gap-2"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="text-xs font-semibold text-on-surface">Disponibilidade Ativa</span></div><p class="text-[12px] leading-relaxed text-on-surface-variant">Seu status está visível para recrutadores e empresas parceiras.</p></div><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="text-xs font-semibold">Configurações</span></a></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 px-8 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4 flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full h-11 pl-11 pr-4 rounded-full bg-surface-container-low text-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Buscar oportunidades, categorias ou cidades..." type="text"/></div></div><div class="flex items-center gap-4"><button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors relative"><span class="material-symbols-outlined text-on-surface text-[20px]">notifications</span><span class="w-2 h-2 rounded-full bg-primary absolute top-2.5 right-2.5"></span></button><button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-on-surface text-[20px]">help</span></button><div class="w-px h-6 bg-surface-container-highest"></div><div class="flex items-center gap-3 pl-2"><div class="flex flex-col text-right hidden sm:flex"><span class="text-sm font-semibold font-headline text-on-surface leading-tight">Gabriel Lima</span><span class="text-[11px] font-medium text-on-surface-variant">Freelancer Pro</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 w-full px-8 bg-surface"><div class="flex flex-col w-full pb-16">
+<!-- Top Stat Bar & Page Context Header -->
+<section class="flex flex-col gap-6 mb-8">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2.5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            Tempo Real
+          </span>
+<span class="text-xs font-medium text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+            Sua localização: Lourdes, Belo Horizonte - MG
+          </span>
+</div>
+<h1 class="text-3xl lg:text-4xl font-extrabold font-headline tracking-tight text-on-surface">
+          Oportunidades em Aberto
+        </h1>
+<p class="text-sm md:text-base text-on-surface-variant font-normal">
+          Encontre turnos imediatos, diárias com PIX garantido e vagas freelancer no Brasil.
+        </p>
+</div>
+<!-- Action & Pulse Stats -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="h-12 px-5 rounded-full bg-surface-container-low hover:bg-surface-container text-primary font-semibold text-sm flex items-center gap-2 transition-all shadow-sm active:scale-95" id="btn-alerta" onclick="toggleAlertStatus(this)">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+<span>Criar Alerta de Vagas</span>
+</button>
+<div class="flex items-center gap-3 bg-surface-container-lowest px-5 py-2.5 rounded-2xl shadow-[0_4px_20px_rgba(17,28,45,0.04)]">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant font-medium">Diárias Ativas Hoje</span>
+<span class="text-base font-headline font-bold text-on-surface">R$ 48.200 <span class="text-xs text-secondary font-semibold font-body">• 142 vagas</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Search & Filters Dock -->
+<div class="bg-surface-container-lowest p-5 rounded-3xl shadow-[0_12px_36px_rgba(17,28,45,0.04)] flex flex-col gap-4">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+<!-- Text Search -->
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[22px]">search</span>
+<input class="w-full h-13 pl-12 pr-4 rounded-2xl bg-surface-container-low text-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(0,74,198,0.2)] transition-all" id="job-search-input" placeholder="Cargo, função, habilidade ou nome da empresa..." type="text"/>
+</div>
+<!-- Location Dropdown Pill -->
+<div class="md:col-span-4 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">near_me</span>
+<select class="w-full h-13 pl-11 pr-8 rounded-2xl bg-surface-container-low text-sm text-on-surface appearance-none focus:outline-none focus:bg-surface-container-lowest transition-all font-medium cursor-pointer">
+<option value="all">Todas as Regiões Metropolitas</option>
+<option selected="" value="bh">Belo Horizonte &amp; Contagem - MG</option>
+<option value="sp">São Paulo e Grande SP</option>
+<option value="rj">Rio de Janeiro &amp; Niterói</option>
+<option value="curitiba">Curitiba &amp; Região</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Quick Filter Trigger / Toggle -->
+<div class="md:col-span-2 flex items-center justify-end">
+<button class="w-full h-13 rounded-2xl bg-primary text-on-primary font-semibold text-sm flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(0,74,198,0.25)] hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span>Filtrar</span>
+</button>
+</div>
+</div>
+<!-- Categories Pills Scrollable Bar -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar">
+<button class="filter-chip active-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-primary text-on-primary shadow-sm transition-all" onclick="selectChip(this)">
+          Todas as Categorias
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px] text-tertiary">restaurant</span>
+          Gastronomia &amp; Salão
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px] text-primary">celebration</span>
+          Eventos &amp; Festas
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_shipping</span>
+          Logística &amp; Entregas
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+          Varejo &amp; Estoque
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px]">coffee</span>
+          Cafeterias &amp; Baristas
+        </button>
+<button class="filter-chip px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all flex items-center gap-1.5" onclick="selectChip(this)">
+<span class="material-symbols-outlined text-[16px]">cleaning_services</span>
+          Limpeza &amp; Conservação
+        </button>
+</div>
+<!-- Quick Benefit Filter Pills -->
+<div class="flex flex-wrap items-center gap-2 pt-2 border-t-0">
+<span class="text-xs font-semibold text-outline tracking-wider uppercase pr-1">Destaques:</span>
+<button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-secondary-container hover:text-on-secondary-container transition-colors flex items-center gap-1" onclick="toggleQuickFilter(this)">
+<span class="material-symbols-outlined text-[14px]">qr_code_2</span> PIX ao término do turno
+        </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-secondary-container hover:text-on-secondary-container transition-colors flex items-center gap-1" onclick="toggleQuickFilter(this)">
+<span class="material-symbols-outlined text-[14px]">payments</span> Diária acima de R$ 200
+        </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-secondary-container hover:text-on-secondary-container transition-colors flex items-center gap-1" onclick="toggleQuickFilter(this)">
+<span class="material-symbols-outlined text-[14px]">nightlight</span> Turnos Noturnos
+        </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-secondary-container hover:text-on-secondary-container transition-colors flex items-center gap-1" onclick="toggleQuickFilter(this)">
+<span class="material-symbols-outlined text-[14px]">fastfood</span> Refeição Inclusa
+        </button>
+</div>
+</div>
+</section>
+<!-- Main Content Layout (Grid + Editorial Sidebar) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Job Cards Grid (8 cols on XL) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Card 1: Gastronomia / Cantina Nonna Bella (URGENTE) -->
+<div class="group bg-surface-container-lowest rounded-3xl p-5 shadow-[0_10px_30px_rgba(17,28,45,0.03)] hover:shadow-[0_20px_40px_rgba(17,28,45,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+<!-- Visual Cover -->
+<div class="w-full md:w-56 h-48 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm atmospheric interior of an authentic Italian trattoria restaurant with soft Edison amber lighting, rustic wooden tables neatly arranged, polished wine glasses, and a bustling kitchen background in deep warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLIbGLkYKfOi2oFaXI0gnDUxLie0UXxoU04sUaPOmFWdfriZcA-fLEExJoohB49T1Sl-hmCh9fy4Y4YKWPdf2OOZReuIcD2mpBXbuy225ii6x1Xp-H6bZ6v2MKLT6ISjppoO69uccjLQs-459uAj9b0UnvWktE0SYf9917a_iCjU8I3bJB9xscOiUAoTIsu5l4s3ZROgaQFka6-fschrHmxI6-fmuKC-dOjCBw1E5Byw14EQCexSwZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-black/20"></div>
+<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide bg-tertiary text-on-tertiary shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Urgente Hoje
+          </span>
+<div class="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 6 horas de turno
+          </div>
+</div>
+<!-- Body Details -->
+<div class="flex flex-col justify-between flex-1 gap-4">
+<div class="flex flex-col gap-2">
+<!-- Company & Distance Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-tertiary font-bold text-xs flex items-center justify-center">
+                  NB
+                </div>
+<span class="text-xs font-semibold text-on-surface">Cantina Nonna Bella</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-secondary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> 4.9 (42 turnos)
+                </span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+<!-- Job Title -->
+<h2 class="text-xl font-bold font-headline text-on-surface group-hover:text-primary transition-colors">
+              Garçom / Atendente de Salão Noturno
+            </h2>
+<!-- Logistics Badges -->
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span> Hoje, 18:30 às 00:30
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span> Lourdes, BH (2.4 km)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">checkroom</span> Uniforme fornecido
+              </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Experiência c/ bandeja</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Refeição no Local</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-secondary-fixed/50 text-on-secondary-fixed-variant">Taxa de serviço inclusa</span>
+</div>
+</div>
+<!-- Financial Value & CTA Action -->
+<div class="flex items-center justify-between pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-3.5 rounded-b-3xl">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold font-headline text-primary">R$ 190</span>
+<span class="text-xs font-semibold text-on-surface-variant">/turno</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">flash_on</span> PIX até 01:00h
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+                Detalhes
+              </button>
+<button class="h-10 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-bold hover:shadow-[0_6px_16px_rgba(0,74,198,0.3)] active:scale-95 transition-all flex items-center gap-1.5" onclick="handleApplication(this, 'Garçom / Cantina Nonna Bella')">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Hamburgueria / Burger Garage 99 -->
+<div class="group bg-surface-container-lowest rounded-3xl p-5 shadow-[0_10px_30px_rgba(17,28,45,0.03)] hover:shadow-[0_20px_40px_rgba(17,28,45,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+<!-- Visual Cover -->
+<div class="w-full md:w-56 h-48 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High energy modern artisan burger kitchen with stainless steel flat top griddle sizzle, warm industrial neon lighting, focused grill chef assembling smashed patties with melted cheddar and brioche buns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFEw9wL6B2hCe7ibYRvsB-BmNAfeaQnK56eA0yhPxYcQIO83oU2DWGZKOtZignzlH8n0fKlp-dj7EeDfvS5oQcBbWDAeOxWNYy_cfVar65r7diR_3NzRMCiqXPfiMXJn8pYwnJ33nbLN76Gy5taZHew0x_kJL_wNKp5rUCl9JwhQma1aHgsdQGJcGqdmFFMGqUJF7ybJDzvLhmTCJ1EvyJGsu7k40dehuPa7MZOYAaMTsJOfhHvMGe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-black/20"></div>
+<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide bg-secondary text-on-secondary shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">electric_bolt</span> Contratação Rápida
+          </span>
+<div class="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 7 horas de turno
+          </div>
+</div>
+<!-- Body Details -->
+<div class="flex flex-col justify-between flex-1 gap-4">
+<div class="flex flex-col gap-2">
+<!-- Company & Distance Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-primary font-bold text-xs flex items-center justify-center">
+                  BG
+                </div>
+<span class="text-xs font-semibold text-on-surface">Burger Garage 99</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-secondary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">star</span> 5.0 (88 turnos)
+                </span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+<!-- Job Title -->
+<h2 class="text-xl font-bold font-headline text-on-surface group-hover:text-primary transition-colors">
+              Chapeiro Especialista &amp; Montador Smash
+            </h2>
+<!-- Logistics Badges -->
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span> Hoje, 17:00 às 00:00
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span> Savassi, BH (3.8 km)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">fastfood</span> Jantar do Cardápio
+              </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Ponto da Carne</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Chapa Quente</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-primary-fixed/60 text-on-primary-fixed-variant">Ajuda Transporte R$ 20</span>
+</div>
+</div>
+<!-- Financial Value & CTA Action -->
+<div class="flex items-center justify-between pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-3.5 rounded-b-3xl">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold font-headline text-primary">R$ 220</span>
+<span class="text-xs font-semibold text-on-surface-variant">+ Benefícios</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified</span> PIX no encerramento do caixa
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+                Detalhes
+              </button>
+<button class="h-10 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-bold hover:shadow-[0_6px_16px_rgba(0,74,198,0.3)] active:scale-95 transition-all flex items-center gap-1.5" onclick="handleApplication(this, 'Chapeiro / Burger Garage')">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Logística / Express Logística Hub -->
+<div class="group bg-surface-container-lowest rounded-3xl p-5 shadow-[0_10px_30px_rgba(17,28,45,0.03)] hover:shadow-[0_20px_40px_rgba(17,28,45,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+<!-- Visual Cover -->
+<div class="w-full md:w-56 h-48 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High tech clean logistics distribution center warehouse with modern conveyor belts, barcodes, neatly organized high racks with blue industrial tones and daylight skylights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcOpd5pWq3Olf1W-lKDaegety8A2ASbMJiHQAmiU9FW51QaZJqRtUdeqU3RhYXeVBr8a1ny-U6UNcubohuONgcIlUmuCcbSLXi6auDgQt8K1fPAFmUlOAWW2W3SNdFmqZvIcYaZRxptnAlimAPhgeWXmuHJCcKOkEJDCBc8hLnqOaAfIEFVLk1RXbGe4UuUgc0iGMA2smQ6DdpGRLWZjJuDFOI3Oivg_EP0m_foEwDsbtQ4pMDiHq2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-black/20"></div>
+<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide bg-surface-container-highest text-on-surface shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">inventory</span> 12 Vagas Abertas
+          </span>
+<div class="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 8 horas diurnas
+          </div>
+</div>
+<!-- Body Details -->
+<div class="flex flex-col justify-between flex-1 gap-4">
+<div class="flex flex-col gap-2">
+<!-- Company & Distance Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs flex items-center justify-center">
+                  EL
+                </div>
+<span class="text-xs font-semibold text-on-surface">Express Logística Hub</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-on-surface-variant font-medium">Contrato Diário VaptVaga</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+<!-- Job Title -->
+<h2 class="text-xl font-bold font-headline text-on-surface group-hover:text-primary transition-colors">
+              Auxiliar de Separação &amp; Conferência (Picking)
+            </h2>
+<!-- Logistics Badges -->
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span> Amanhã, 07:00 às 16:00
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span> Eldorado, Contagem (8.1 km)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">security</span> EPI Completo no Local
+              </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Leitor Óptico</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Não exige exp. prévia</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-secondary-fixed/40 text-on-secondary-fixed-variant">Almoço no Restaurante da Empresa</span>
+</div>
+</div>
+<!-- Financial Value & CTA Action -->
+<div class="flex items-center justify-between pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-3.5 rounded-b-3xl">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold font-headline text-primary">R$ 175</span>
+<span class="text-xs font-semibold text-on-surface-variant">/diária limpa</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">payments</span> PIX no encerramento
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+                Detalhes
+              </button>
+<button class="h-10 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-bold hover:shadow-[0_6px_16px_rgba(0,74,198,0.3)] active:scale-95 transition-all flex items-center gap-1.5" onclick="handleApplication(this, 'Auxiliar Logístico / Express Hub')">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Eventos / Arena Prime -->
+<div class="group bg-surface-container-lowest rounded-3xl p-5 shadow-[0_10px_30px_rgba(17,28,45,0.03)] hover:shadow-[0_20px_40px_rgba(17,28,45,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+<!-- Visual Cover -->
+<div class="w-full md:w-56 h-48 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sophisticated convention center VIP gala setup, premium stage audio visual lighting, illuminated lounge bars, elegant floral arrangements with crisp blue stage spotlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAejTf3YNSmLugRg0_mZOdZkSGjpHMJvGCfm2X0KPoDeH_KdnRjGU1jH9V241FhABQ7IAtr_WcfLhe4Wyi5dYJxyFyj12YURAFwHHXKZWY-B2qXFH-PHgCFNAiajwTdn4CmTofbc3vyDWqdHuPmGye7fw7V65z-K8XMG4cYednCTVhlbTtvfmu-FuRxovCEiXgxn5Ok07tI-Wn6DxsgL_JH5SNMknRNycWtZsQ6yrwCrTmPUl8cnUFC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-black/20"></div>
+<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wide bg-primary text-on-primary shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">workspace_premium</span> VIP Fest
+          </span>
+<div class="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 8 horas de evento
+          </div>
+</div>
+<!-- Body Details -->
+<div class="flex flex-col justify-between flex-1 gap-4">
+<div class="flex flex-col gap-2">
+<!-- Company & Distance Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface font-bold text-xs flex items-center justify-center">
+                  AP
+                </div>
+<span class="text-xs font-semibold text-on-surface">Arena Eventos Prime</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-secondary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> 4.9 (130 turnos)
+                </span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+<!-- Job Title -->
+<h2 class="text-xl font-bold font-headline text-on-surface group-hover:text-primary transition-colors">
+              Bartender &amp; Mixologista para Área VIP
+            </h2>
+<!-- Logistics Badges -->
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span> Sábado, 19:00 às 03:00
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span> Estoril, BH (5.2 km)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">local_taxi</span> Uber Volta Pago
+              </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Drinks Clássicos &amp; Gin</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Traje Total Black</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-secondary-fixed/50 text-on-secondary-fixed-variant">Bônus Pontualidade +R$ 30</span>
+</div>
+</div>
+<!-- Financial Value & CTA Action -->
+<div class="flex items-center justify-between pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-3.5 rounded-b-3xl">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold font-headline text-primary">R$ 290</span>
+<span class="text-xs font-semibold text-on-surface-variant">/noite</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">bolt</span> PIX Instantâneo às 03:15
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+                Detalhes
+              </button>
+<button class="h-10 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-bold hover:shadow-[0_6px_16px_rgba(0,74,198,0.3)] active:scale-95 transition-all flex items-center gap-1.5" onclick="handleApplication(this, 'Bartender / Arena Prime')">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5: Café & Bistrô / Café do Ponto Gourmet -->
+<div class="group bg-surface-container-lowest rounded-3xl p-5 shadow-[0_10px_30px_rgba(17,28,45,0.03)] hover:shadow-[0_20px_40px_rgba(17,28,45,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+<!-- Visual Cover -->
+<div class="w-full md:w-56 h-48 md:h-auto rounded-2xl overflow-hidden relative flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Charming Scandinavian specialty coffee shop with a professional espresso machine pulling a rich crema shot, latte art pouring, sunlit wooden countertop and minimalist clean aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqznbsCNMbpINrffvJ4OG0q49x3EkSAhiqPOduig9oQ4ql-OsixkH-Afpx_EhD96febfTa6_82xKhzy1hugeP9e9TRqOo6mRVJC3osx-0H-c_D8ah90wR24gvQiJU29WQESrRPTW2tUuO4622dbKMlKz-KahMYfuaUXqCtG4DeDF5WOWfHvrJVhYgDgrEbmWl8ASMyx4CtV_9ex2eehrZ0Gb34t3347QBecUikFiaee394DFHXbfc0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-black/20"></div>
+<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wide bg-surface-container-highest text-on-surface shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">coffee</span> Turno Matutino
+          </span>
+<div class="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1 drop-shadow">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 6 horas (Turno Curto)
+          </div>
+</div>
+<!-- Body Details -->
+<div class="flex flex-col justify-between flex-1 gap-4">
+<div class="flex flex-col gap-2">
+<!-- Company & Distance Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed font-bold text-xs flex items-center justify-center">
+                  CP
+                </div>
+<span class="text-xs font-semibold text-on-surface">Café do Ponto Gourmet</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-secondary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span> 4.8
+                </span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+</div>
+<!-- Job Title -->
+<h2 class="text-xl font-bold font-headline text-on-surface group-hover:text-primary transition-colors">
+              Barista &amp; Operador de Caixa Matutino
+            </h2>
+<!-- Logistics Badges -->
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span> Amanhã, 06:45 às 12:45
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span> Funcionários, BH (1.8 km)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">bakery_dining</span> Café da manhã livre
+              </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Máquina Automática/Manual</span>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-surface-container text-on-surface">Atendimento Balcão</span>
+</div>
+</div>
+<!-- Financial Value & CTA Action -->
+<div class="flex items-center justify-between pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-3.5 rounded-b-3xl">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-extrabold font-headline text-primary">R$ 160</span>
+<span class="text-xs font-semibold text-on-surface-variant">/turno 6h</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">qr_code_2</span> PIX às 13:30h
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+                Detalhes
+              </button>
+<button class="h-10 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-xs font-bold hover:shadow-[0_6px_16px_rgba(0,74,198,0.3)] active:scale-95 transition-all flex items-center gap-1.5" onclick="handleApplication(this, 'Barista / Café do Ponto')">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Infinite Scroll Trigger / Load More -->
+<div class="flex flex-col items-center justify-center pt-4 pb-2 gap-3">
+<button class="px-8 py-3.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-semibold text-sm flex items-center gap-2 transition-all shadow-sm active:scale-95" id="btn-load-more" onclick="loadMoreJobs(this)">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+<span>Carregar mais 18 oportunidades</span>
+</button>
+<span class="text-xs text-on-surface-variant">Exibindo 5 de 142 turnos disponíveis nas últimas 24h</span>
+</div>
+</div>
+<!-- Right Column: Editorial Sidekick & Insights (4 cols on XL) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- Profile Completion Gamified Card -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_12px_36px_rgba(17,28,45,0.04)] flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<span class="text-xs font-bold font-headline uppercase tracking-wider text-primary">Acelere Suas Contratações</span>
+</div>
+<span class="text-xs font-bold text-on-surface bg-surface-container px-2.5 py-1 rounded-full">85% Completo</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-lg font-bold font-headline text-on-surface leading-tight">
+            Perfis verificados têm 3x mais aprovação instantânea
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Falta apenas anexar seu comprovante de residência e chave PIX para desbloquear o selo <strong class="text-on-surface">Freelancer Verificado</strong>.
+          </p>
+</div>
+<!-- Progress SVG Ring / Bar -->
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full transition-all duration-700" style="width: 85%"></div>
+</div>
+<button class="w-full py-3 rounded-2xl bg-surface-container-low hover:bg-surface-container text-primary font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors">
+<span>Completar cadastro agora (+15%)</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Quick Earnings Calculator Visual Widget -->
+<div class="bg-gradient-to-br from-primary to-primary-container text-on-primary p-6 rounded-3xl shadow-[0_16px_40px_rgba(0,74,198,0.22)] flex flex-col gap-5 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold tracking-wider uppercase opacity-90 text-on-primary">Meta Semanal Estimada</span>
+<span class="px-2.5 py-1 rounded-full bg-white/20 text-[11px] font-bold">R$ 1.250 / sem</span>
+</div>
+<div class="flex flex-col">
+<span class="text-3xl font-extrabold font-headline tracking-tight">R$ 780,00</span>
+<span class="text-xs opacity-80 mt-0.5">Realizados em 4 turnos nesta semana</span>
+</div>
+<!-- Inline SVG Sparkline -->
+<div class="w-full h-16 pt-2">
+<svg class="w-full h-full text-white/40 overflow-visible" fill="none" viewbox="0 0 200 40">
+<path d="M 0 32 Q 25 35 50 20 T 100 15 T 150 8 T 200 2" fill="none" stroke="white" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="50" cy="20" fill="#6cf8bb" r="3"></circle>
+<circle cx="100" cy="15" fill="#6cf8bb" r="3"></circle>
+<circle cx="150" cy="8" fill="#6cf8bb" r="3"></circle>
+<circle class="animate-ping" cx="200" cy="2" fill="#6cf8bb" r="4.5"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
+<span class="opacity-80">Mais 2 turnos para atingir meta</span>
+<a class="font-bold underline underline-offset-2 hover:opacity-100 transition-opacity" href="#">Ver extrato</a>
+</div>
+</div>
+<!-- High Demand Radar / VIP Jobs Section -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_12px_36px_rgba(17,28,45,0.04)] flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-base font-bold font-headline text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_fire_department</span>
+            Setores Mais Contratando
+          </h3>
+<span class="text-[11px] font-semibold text-outline">Agora</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-[18px]">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Cozinhas &amp; Bares</span>
+<span class="text-[11px] text-on-surface-variant">Pico sexta à noite</span>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">+54 vagas</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Logística CD</span>
+<span class="text-[11px] text-on-surface-variant">Pico matutino</span>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">+38 vagas</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-primary-fixed text-primary flex items-center justify-center font-bold text-xs">
+<span class="material-symbols-outlined text-[18px]">nightlife</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Shows &amp; Festas</span>
+<span class="text-[11px] text-on-surface-variant">Pico fim de semana</span>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">+27 vagas</span>
+</div>
+</div>
+<!-- Safety Guarantee Micro-card -->
+<div class="p-3.5 rounded-2xl bg-surface-container-low flex items-start gap-2.5 mt-1">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">verified_user</span>
+<p class="text-[11px] leading-relaxed text-on-surface-variant">
+<strong class="text-on-surface font-semibold">Garantia VaptVaga:</strong> O valor do turno é retido previamente pela plataforma e liberado via PIX imediato após confirmação do check-out.
+          </p>
+</div>
+</div>
+<!-- Quick Interactive Helper Banner -->
+<div class="bg-surface-container p-5 rounded-3xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Dúvidas sobre o turno?</span>
+<span class="text-[11px] text-on-surface-variant">Suporte operacional via WhatsApp 24h para freelancers em turno.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Feedback Component (Hidden by default) -->
+<div class="fixed bottom-6 right-8 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-container">
+<div class="bg-inverse-surface text-inverse-on-surface px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">check_circle</span>
+<span class="text-xs font-medium" id="toast-message">Candidatura enviada com sucesso!</span>
+</div>
+</div>
+</div>
+<script>
+  // Filter chips active toggle
+  function selectChip(element) {
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.classList.remove('bg-primary', 'text-on-primary');
+      chip.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+    });
+    element.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    element.classList.add('bg-primary', 'text-on-primary');
+  }
+
+  // Quick benefit filter pill toggle
+  function toggleQuickFilter(btn) {
+    const isSelected = btn.classList.contains('bg-secondary-container');
+    if (isSelected) {
+      btn.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
+      btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+    } else {
+      btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-semibold');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    }
+  }
+
+  // Bookmark toggle
+  function toggleBookmark(btn) {
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (icon.innerText === 'bookmark_border') {
+      icon.innerText = 'bookmark';
+      btn.classList.add('text-primary');
+      showToast('Vaga salva nos seus favoritos!');
+    } else {
+      icon.innerText = 'bookmark_border';
+      btn.classList.remove('text-primary');
+      showToast('Vaga removida dos favoritos.');
+    }
+  }
+
+  // Application handler
+  function handleApplication(btn, jobName) {
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">progress_activity</span> Aguarde...';
+    
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Candidatado';
+      btn.classList.remove('from-primary', 'to-primary-container');
+      btn.classList.add('bg-secondary', 'text-on-secondary');
+      showToast('Candidatura para ' + jobName + ' confirmada!');
+    }, 700);
+  }
+
+  // Alert toggle
+  function toggleAlertStatus(btn) {
+    const isSubscribed = btn.classList.contains('bg-primary');
+    if (!isSubscribed) {
+      btn.classList.remove('bg-surface-container-low', 'text-primary');
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">notifications_check</span> Alerta Ativado';
+      showToast('Alerta de novas vagas ativado para seu perfil!');
+    } else {
+      btn.classList.add('bg-surface-container-low', 'text-primary');
+      btn.classList.remove('bg-primary', 'text-on-primary');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">notifications_active</span> Criar Alerta de Vagas';
+      showToast('Alerta de vagas desativado.');
+    }
+  }
+
+  // Load more interaction
+  function loadMoreJobs(btn) {
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Buscando vagas em tempo real...';
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done_all</span> Todas as vagas de hoje carregadas';
+      btn.classList.add('opacity-75', 'cursor-not-allowed');
+      btn.disabled = true;
+      showToast('Todas as 142 vagas foram carregadas!');
+    }, 1000);
+  }
+
+  // Toast feedback utility
+  function showToast(msg) {
+    const container = document.getElementById('toast-container');
+    const msgEl = document.getElementById('toast-message');
+    msgEl.innerText = msg;
+    container.classList.remove('translate-y-24', 'opacity-0');
+    container.classList.add('translate-y-0', 'opacity-100');
+    
+    setTimeout(() => {
+      container.classList.remove('translate-y-0', 'opacity-100');
+      container.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+</script></main></div></body></html>

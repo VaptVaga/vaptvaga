@@ -1,13 +1,19 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, X, Plus, Check, Fingerprint, Building2, CreditCard, FileText, QrCode, HelpCircle, Bell, Upload } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, Plus, Check, Fingerprint, Building2, CreditCard, FileText, QrCode, HelpCircle, Bell, Upload, LocateFixed, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useUpdateProfile } from '@/hooks/useSupabase';
 import { toast } from '@/hooks/use-toast';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { ImageCropper } from '@/components/common/ImageCropper';
+import { LocationMap } from '@/components/vaptvaga/LocationMap';
+import {
+  detectUserLocation,
+  resolveCoordinates,
+  isValidCoordinate,
+} from '@/lib/geolocation';
 
 const defaultSkillOptions = [
   'Garçom', 'Barman', 'Cozinheiro', 'Auxiliar de Cozinha', 'Chapa',
@@ -33,8 +39,9 @@ const labelClass = 'block text-xs font-bold font-headline text-on-surface-varian
 
 const Onboarding = () => {
   const navigate = useNavigate();
-  const { profile: user, user: authUser, refreshProfile } = useAuth();
+  const { profile: user, user: authUser, refreshProfile, updateLocalProfile } = useAuth();
   const updateProfile = useUpdateProfile();
+  const userId = authUser?.id || user?.id;
 
   // Role picker
   const [role, setRole] = useState<'company' | 'freelancer' | null>((user?.role as 'company' | 'freelancer') || null);
@@ -48,7 +55,15 @@ const Onboarding = () => {
   const [cnpj, setCnpj] = useState('');
   const [segmento, setSegmento] = useState('');
   const [cidade, setCidade] = useState(user?.cidade || '');
-  const [estado, setEstado] = useState('');
+  const [bairro, setBairro] = useState(user?.bairro || '');
+  const [estado, setEstado] = useState(user?.estado || '');
+  const [latitude, setLatitude] = useState<number | null>(
+    isValidCoordinate(user?.latitude) ? user.latitude : null
+  );
+  const [longitude, setLongitude] = useState<number | null>(
+    isValidCoordinate(user?.longitude) ? user.longitude : null
+  );
+  const [isLocatingGps, setIsLocatingGps] = useState(false);
   const [telefone, setTelefone] = useState(user?.telefone || '');
 
   // Step 2: Business Details
@@ -78,6 +93,27 @@ const Onboarding = () => {
   // Freelancer fields
   const [selectedSkills, setSelectedSkills] = useState<string[]>(user?.skills || []);
   const [customSkill, setCustomSkill] = useState('');
+
+  const hydratedProfileIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!user?.id || hydratedProfileIdRef.current === user.id) return;
+    hydratedProfileIdRef.current = user.id;
+    setRole((prev) => prev || (user.role as 'company' | 'freelancer') || null);
+    setName((prev) => prev || user.name || '');
+    setCidade((prev) => prev || user.cidade || '');
+    setBairro((prev) => prev || user.bairro || '');
+    setEstado((prev) => prev || user.estado || '');
+    setLatitude((prev) =>
+      prev !== null ? prev : isValidCoordinate(user.latitude) ? user.latitude : null
+    );
+    setLongitude((prev) =>
+      prev !== null ? prev : isValidCoordinate(user.longitude) ? user.longitude : null
+    );
+    setTelefone((prev) => prev || user.telefone || '');
+    setFreelancerAvatarPreview((prev) => prev || user.avatar_url || null);
+    setCompanyLogoPreview((prev) => prev || user.avatar_url || null);
+    setSelectedSkills((prev) => (prev.length > 0 ? prev : user.skills || []));
+  }, [user]);
 
   const { data: skillRankings } = useQuery({
     queryKey: ['skill-rankings'],
@@ -135,18 +171,50 @@ const Onboarding = () => {
     setCroppingTarget(null);
   };
 
+  const handleDetectGps = async () => {
+    setIsLocatingGps(true);
+    try {
+      const detected = await detectUserLocation();
+      setLatitude(detected.latitude);
+      setLongitude(detected.longitude);
+      if (detected.cidade) setCidade(detected.cidade);
+      if (detected.bairro) setBairro(detected.bairro);
+      if (detected.estado) setEstado(detected.estado);
+      toast({
+        title: '📍 GPS conectado!',
+        description:
+          [detected.bairro, detected.cidade, detected.estado].filter(Boolean).join(', ') ||
+          'Localização atualizada no mapa.',
+      });
+    } catch (err: unknown) {
+      toast({
+        title: 'Não foi possível detectar via GPS',
+        description: err instanceof Error ? err.message : 'Verifique as permissões de localização.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLocatingGps(false);
+    }
+  };
+
   const [saving, setSaving] = useState(false);
   const handleSave = async () => {
-    if (!authUser) return;
+    if (!userId) return;
     setSaving(true);
     try {
       let finalAvatarUrl = role === 'company' ? companyLogoPreview : freelancerAvatarPreview;
+      if (finalAvatarUrl && finalAvatarUrl.startsWith('blob:')) {
+        finalAvatarUrl = user?.avatar_url || null;
+      }
       let finalBannerUrl = companyBannerPreview;
+      if (finalBannerUrl && finalBannerUrl.startsWith('blob:')) {
+        finalBannerUrl = user?.banner_url || null;
+      }
 
       // Upload Freelancer Avatar
       if (role !== 'company' && freelancerAvatarFile) {
         const ext = freelancerAvatarFile.name.split('.').pop() || 'jpeg';
-        const path = `${authUser.id}/avatar_${Date.now()}.${ext}`;
+        const path = `${userId}/avatar_${Date.now()}.${ext}`;
         const { error } = await supabase.storage.from('avatars').upload(path, freelancerAvatarFile, { upsert: true });
         if (!error) {
           finalAvatarUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
@@ -156,7 +224,7 @@ const Onboarding = () => {
       // Upload Company Logo
       if (role === 'company' && companyLogoFile) {
         const ext = companyLogoFile.name.split('.').pop() || 'jpeg';
-        const path = `${authUser.id}/logo_${Date.now()}.${ext}`;
+        const path = `${userId}/logo_${Date.now()}.${ext}`;
         const { error } = await supabase.storage.from('avatars').upload(path, companyLogoFile, { upsert: true });
         if (!error) {
           finalAvatarUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
@@ -166,31 +234,47 @@ const Onboarding = () => {
       // Upload Company Banner
       if (role === 'company' && companyBannerFile) {
         const ext = companyBannerFile.name.split('.').pop() || 'jpeg';
-        // Placed in avatars bucket for simplicity, named properly
-        const path = `${authUser.id}/banner_${Date.now()}.${ext}`;
+        const path = `${userId}/banner_${Date.now()}.${ext}`;
         const { error } = await supabase.storage.from('avatars').upload(path, companyBannerFile, { upsert: true });
         if (!error) {
           finalBannerUrl = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl;
         }
       }
 
-      await updateProfile.mutateAsync({
-        id: authUser.id,
-        name,
-        cidade,
-        telefone,
-        role: role || 'freelancer',
+      const resolvedRole = role || (user?.role as 'company' | 'freelancer') || 'freelancer';
+      const resolvedCoords = resolveCoordinates({
+        latitude,
+        longitude,
+        bairro: bairro.trim() || null,
+        cidade: cidade.trim() || null,
+      });
+      const saved = await updateProfile.mutateAsync({
+        id: userId,
+        name: name.trim() || user?.name || 'Usuário',
+        cidade: cidade.trim() || null,
+        bairro: bairro.trim() || null,
+        latitude: cidade.trim() || bairro.trim() || latitude ? resolvedCoords.latitude : null,
+        longitude: cidade.trim() || bairro.trim() || longitude ? resolvedCoords.longitude : null,
+        telefone: telefone.trim() || null,
+        role: resolvedRole,
         avatar_url: finalAvatarUrl,
         banner_url: finalBannerUrl,
-        ...(role !== 'company' ? { skills: selectedSkills } : {}),
+        ...(resolvedRole !== 'company' ? { skills: selectedSkills } : {}),
         ...(estado ? { estado } : {}),
-      } as any);
-      
+      } as Parameters<typeof updateProfile.mutateAsync>[0]);
+
+      updateLocalProfile(saved);
       await refreshProfile();
       toast({ title: '✅ Perfil salvo com sucesso!' });
-      navigate('/dashboard');
-    } catch (err: any) {
-      toast({ title: 'Erro ao salvar', description: err.message, variant: 'destructive' });
+      navigate(resolvedRole === 'company' ? '/company/dashboard' : '/freelancer/inicio', {
+        replace: true,
+      });
+    } catch (err: unknown) {
+      toast({
+        title: 'Erro ao salvar',
+        description: err instanceof Error ? err.message : 'Tente novamente.',
+        variant: 'destructive',
+      });
     } finally {
       setSaving(false);
     }
@@ -264,9 +348,57 @@ const Onboarding = () => {
               <label className={labelClass}>Nome completo</label>
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Seu nome" className={inputClass} />
             </div>
-            <div>
-              <label className={labelClass}>Cidade</label>
-              <input value={cidade} onChange={(e) => setCidade(e.target.value)} placeholder="Ex: São Paulo" className={inputClass} />
+            <div className="space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <label className={labelClass}>Cidade & Localização</label>
+                <button
+                  type="button"
+                  onClick={handleDetectGps}
+                  disabled={isLocatingGps}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-60"
+                >
+                  {isLocatingGps ? (
+                    <Loader2 size={12} className="animate-spin" />
+                  ) : (
+                    <LocateFixed size={12} />
+                  )}
+                  <span>{isLocatingGps ? 'Localizando...' : 'Usar meu GPS'}</span>
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  value={cidade}
+                  onChange={(e) => {
+                    setLatitude(null);
+                    setLongitude(null);
+                    setCidade(e.target.value);
+                  }}
+                  placeholder="Ex: Belo Horizonte"
+                  className={inputClass}
+                />
+                <input
+                  value={bairro}
+                  onChange={(e) => {
+                    setLatitude(null);
+                    setLongitude(null);
+                    setBairro(e.target.value);
+                  }}
+                  placeholder="Bairro (Ex: Savassi)"
+                  className={inputClass}
+                />
+              </div>
+              {(cidade || bairro || latitude) && (
+                <LocationMap
+                  compact
+                  addressLabel={[bairro, cidade].filter(Boolean).join(', ') || 'Sua localização'}
+                  latitude={latitude}
+                  longitude={longitude}
+                  bairro={bairro}
+                  cidade={cidade}
+                  heightClassName="h-36"
+                  showRouteButtons={false}
+                />
+              )}
             </div>
             <div>
               <label className={labelClass}>WhatsApp</label>
@@ -432,19 +564,71 @@ const Onboarding = () => {
                         {SEGMENTS.map((s) => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className={labelClass}>Cidade</label>
-                        <input value={cidade} onChange={(e) => setCidade(e.target.value)} placeholder="Sua cidade" className={inputClass} />
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={labelClass}>Endereço / Localização da Empresa</span>
+                        <button
+                          type="button"
+                          onClick={handleDetectGps}
+                          disabled={isLocatingGps}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-60"
+                        >
+                          {isLocatingGps ? (
+                            <Loader2 size={12} className="animate-spin" />
+                          ) : (
+                            <LocateFixed size={12} />
+                          )}
+                          <span>{isLocatingGps ? 'Localizando...' : 'Detectar via GPS'}</span>
+                        </button>
                       </div>
-                      <div>
-                        <label className={labelClass}>Estado</label>
-                        <select value={estado} onChange={(e) => setEstado(e.target.value)}
-                          className={`${inputClass} appearance-none cursor-pointer`}>
-                          <option value="">UF</option>
-                          {ESTADOS.map((uf) => <option key={uf} value={uf}>{uf}</option>)}
-                        </select>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <label className={labelClass}>Cidade</label>
+                          <input
+                            value={cidade}
+                            onChange={(e) => {
+                              setLatitude(null);
+                              setLongitude(null);
+                              setCidade(e.target.value);
+                            }}
+                            placeholder="Sua cidade"
+                            className={inputClass}
+                          />
+                        </div>
+                        <div>
+                          <label className={labelClass}>Bairro</label>
+                          <input
+                            value={bairro}
+                            onChange={(e) => {
+                              setLatitude(null);
+                              setLongitude(null);
+                              setBairro(e.target.value);
+                            }}
+                            placeholder="Seu bairro"
+                            className={inputClass}
+                          />
+                        </div>
+                        <div>
+                          <label className={labelClass}>Estado</label>
+                          <select value={estado} onChange={(e) => setEstado(e.target.value)}
+                            className={`${inputClass} appearance-none cursor-pointer`}>
+                            <option value="">UF</option>
+                            {ESTADOS.map((uf) => <option key={uf} value={uf}>{uf}</option>)}
+                          </select>
+                        </div>
                       </div>
+                      {(cidade || bairro || latitude) && (
+                        <LocationMap
+                          compact
+                          addressLabel={[bairro, cidade, estado].filter(Boolean).join(', ') || 'Endereço da empresa'}
+                          latitude={latitude}
+                          longitude={longitude}
+                          bairro={bairro}
+                          cidade={cidade}
+                          heightClassName="h-40"
+                          showRouteButtons={false}
+                        />
+                      )}
                     </div>
                     <div>
                       <label className={labelClass}>WhatsApp</label>
@@ -643,7 +827,7 @@ const Onboarding = () => {
                         <span className="text-on-surface-variant ml-2 text-sm">/mês</span>
                       </div>
                       <ul className="space-y-3 mt-6 mb-6 flex-grow">
-                        {['Postagens ilimitadas', 'WhatsApp liberado para todos', 'Suporte prioritário 24/7'].map((f) => (
+                        {['Postagens ilimitadas', 'Chat oficial no app liberado para todos', 'Suporte prioritário 24/7'].map((f) => (
                           <li key={f} className="flex items-center gap-3 text-on-surface text-sm">
                             <Check size={16} className="text-secondary shrink-0" /> <span className="font-medium">{f}</span>
                           </li>

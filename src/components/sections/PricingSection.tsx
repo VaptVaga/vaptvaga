@@ -72,7 +72,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ initialRole = 'f
   };
 
   return (
-    <section id="planos" className="py-24 px-6 bg-surface-container-low transition-colors duration-500">
+    <section id="planos" className="pt-24 pb-12 px-6 bg-surface-container-low transition-colors duration-500 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <motion.div
@@ -150,13 +150,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ initialRole = 'f
                   )}
 
                   <div className="mb-8">
-                    <h3 className={`text-xl font-bold uppercase tracking-widest ${
+                    <h3 className={`text-xl font-bold uppercase tracking-widest pr-28 ${
                       plan.highlighted ? 'text-primary-fixed-dim' : 'text-primary'
                     }`}>
                       {plan.name}
                     </h3>
                     <div className="mt-4 flex items-baseline gap-2">
-                      <span className="text-5xl font-black italic">R$ {plan.price}</span>
+                      <span className="text-4xl md:text-5xl font-black italic whitespace-nowrap">R$ {plan.price}</span>
                       <span className={`text-sm font-bold ${
                         plan.highlighted ? 'text-primary-fixed-dim' : 'text-on-surface-variant'
                       }`}>
@@ -201,11 +201,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ initialRole = 'f
           </AnimatePresence>
         </div>
         
-        {/* Subtle helper text for mobile */}
-        <p className="mt-12 text-center text-sm font-bold text-on-surface-variant flex items-center justify-center gap-2 md:hidden">
-          <span className="material-symbols-outlined text-sm">swipe</span>
-          Deslize para ver os detalhes
-        </p>
+
       </div>
     </section>
   );

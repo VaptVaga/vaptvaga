@@ -1,7 +1,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
-import FreelancerDashboard from './FreelancerDashboard';
+import FreelancerInicio from './FreelancerInicio';
 import CompanyDashboard from './CompanyDashboard';
 
 const Dashboard = () => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
   if (!user) return <Navigate to="/" replace />;
   if (!profile?.role) return <Navigate to="/onboarding" replace />;
 
-  return profile.role === 'company' ? <CompanyDashboard /> : <FreelancerDashboard />;
+  return profile.role === 'company' ? <CompanyDashboard /> : <FreelancerInicio />;
 };
 
 export default Dashboard;

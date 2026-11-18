@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { rateLimiter } from '../lib/rateLimit';
 
 export const LoginMobile: React.FC = () => {
   const navigate = useNavigate();
@@ -9,22 +10,35 @@ export const LoginMobile: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const doLogin = async (loginEmail: string, loginPass: string) => {
     setLoading(true);
     setError(null);
 
+    // Bloqueia tentativas abusivas (máx 5 tentativas a cada 15 min por email)
+    const limit = rateLimiter.checkAndRecord('login', 5, 15 * 60 * 1000, loginEmail);
+    if (!limit.allowed) {
+      setError(`Muitas tentativas. Tente novamente em ${rateLimiter.formatRemainingTime(limit.remainingMs)}.`);
+      setLoading(false);
+      return;
+    }
+
     const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+      email: loginEmail,
+      password: loginPass,
     });
 
     if (authError) {
       setError(authError.message === 'Invalid login credentials' ? 'E-mail ou senha incorretos.' : authError.message);
       setLoading(false);
     } else {
+      rateLimiter.reset('login', loginEmail);
       navigate('/');
     }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await doLogin(email, password);
   };
 
   return (
@@ -105,6 +119,27 @@ export const LoginMobile: React.FC = () => {
                 'Entrar'
               )}
             </button>
+
+            {(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && (
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => doLogin('gabrielrodcarvalho2008@gmail.com', '1962008')}
+                  disabled={loading}
+                  className="flex-1 h-12 bg-secondary/10 text-secondary text-sm font-bold rounded-xl border border-secondary/20 hover:bg-secondary/20 transition-all disabled:opacity-50 flex items-center justify-center"
+                >
+                  Dev: Empresa
+                </button>
+                <button
+                  type="button"
+                  onClick={() => doLogin('gabrielrodcarvalho2008@gmail.com', '1962008')}
+                  disabled={loading}
+                  className="flex-1 h-12 bg-primary/10 text-primary text-sm font-bold rounded-xl border border-primary/20 hover:bg-primary/20 transition-all disabled:opacity-50 flex items-center justify-center"
+                >
+                  Dev: Gabriel
+                </button>
+              </div>
+            )}
           </form>
 
           {/* Bottom Action */}

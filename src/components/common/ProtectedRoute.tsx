@@ -24,7 +24,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
   }
 
   if (allowedRole && profile && profile.role !== allowedRole) {
-    const homeRedirect = profile.role === 'company' ? '/company/dashboard' : '/freelancer/dashboard';
+    const homeRedirect = profile.role === 'company' ? '/company/dashboard' : '/freelancer/inicio';
     return <Navigate to={homeRedirect} replace />;
   }
 

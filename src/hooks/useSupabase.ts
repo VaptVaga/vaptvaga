@@ -1,6 +1,101 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
 import type { Job, Application, Profile } from '@/lib/types';
+import { getCachedProfile, setCachedProfile } from '@/lib/profileCache';
+
+const BASE_PROFILE_COLUMNS = new Set([
+  'id',
+  'role',
+  'name',
+  'skills',
+  'portfolio_url',
+  'telefone',
+  'estado',
+  'cidade',
+  'bairro',
+  'idade',
+  'avatar_url',
+  'latitude',
+  'longitude',
+  'aceita_email',
+  'aceita_whatsapp',
+]);
+
+export const upsertProfileResilient = async (
+  payload: Record<string, unknown> & { id: string }
+): Promise<Record<string, unknown>> => {
+  const cached = (getCachedProfile(payload.id) || {}) as Record<string, unknown>;
+  const resolvedRole = (payload.role as string) || (cached.role as string) || 'freelancer';
+  const resolvedName = (payload.name as string) ?? (cached.name as string) ?? 'Usuário';
+
+  const fullPayload: Record<string, unknown> = {
+    ...payload,
+    id: payload.id,
+    role: resolvedRole,
+    name: resolvedName,
+  };
+
+  // Persist locally first so extended fields and edits survive any schema mismatch
+  setCachedProfile(payload.id, fullPayload);
+
+  const profilesTable = supabase.from('profiles') as unknown as {
+    upsert: (
+      values: Record<string, unknown>,
+      options?: { onConflict?: string }
+    ) => {
+      select: () => {
+        maybeSingle: () => Promise<{
+          data: Record<string, unknown> | null;
+          error: { message?: string; code?: string } | null;
+        }>;
+      };
+    };
+  };
+
+  const { data, error } = await profilesTable
+    .upsert(fullPayload, { onConflict: 'id' })
+    .select()
+    .maybeSingle();
+
+  if (!error) {
+    const merged = { ...fullPayload, ...(data || {}) };
+    setCachedProfile(payload.id, merged);
+    return merged;
+  }
+
+  // Check if error is caused by missing extended columns in PostgREST schema cache
+  const errMsg = (error.message || '').toLowerCase();
+  const isColumnError =
+    error.code === 'PGRST204' ||
+    error.code === '42703' ||
+    errMsg.includes('column') ||
+    errMsg.includes('schema cache');
+
+  if (!isColumnError) {
+    throw new Error(error.message || 'Erro ao salvar perfil');
+  }
+
+  // Fallback: upsert only guaranteed native columns
+  const basePayload: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(fullPayload)) {
+    if (BASE_PROFILE_COLUMNS.has(k) && v !== undefined) {
+      basePayload[k] = v;
+    }
+  }
+
+  const { data: fallbackData, error: fallbackError } = await profilesTable
+    .upsert(basePayload, { onConflict: 'id' })
+    .select()
+    .maybeSingle();
+
+  if (fallbackError) {
+    throw new Error(fallbackError.message || 'Erro ao salvar perfil');
+  }
+
+  const merged = { ...(fallbackData || {}), ...fullPayload };
+  setCachedProfile(payload.id, merged);
+  return merged;
+};
 
 // ─── JOBS ────────────────────────────────────────────────
 export const useJobs = (filters?: { cidade?: string; status?: string; bairro?: string; skill?: string; search?: string }) => {
@@ -47,7 +142,7 @@ export const useCreateJob = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (job: Partial<Job>) => {
-      // @ts-ignore - Supabase type resolution issue with 'public' schema
+      // @ts-expect-error - Supabase type resolution issue with 'public' schema
       const { data, error } = await supabase.from('jobs').insert(job).select().single();
       if (error) throw error;
       return data;
@@ -98,8 +193,8 @@ export const useApplyToJob = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async ({ job_id, freelancer_id }: { job_id: string; freelancer_id: string }) => {
-      const { data, error } = await (supabase
-        .from('applications') as any)
+      const { data, error } = await supabase
+        .from('applications')
         .insert({ job_id, freelancer_id })
         .select()
         .single();
@@ -117,15 +212,11 @@ export const useApplyToJob = () => {
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async ({ id, ...updates }: Partial<Profile> & { id: string }) => {
-      const { data, error } = await (supabase
-        .from('profiles') as any)
-        .update(updates)
-        .eq('id', id)
-        .select()
-        .single();
-      if (error) throw error;
-      return data;
+    mutationFn: async ({
+      id,
+      ...updates
+    }: Partial<Profile> & { id: string } & Record<string, unknown>) => {
+      return upsertProfileResilient({ id, ...updates });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['profile'] });

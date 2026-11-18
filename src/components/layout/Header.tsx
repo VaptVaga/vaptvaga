@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, User, LogOut, LayoutDashboard, MessageSquare } from 'lucide-react';
+import { Menu, X, ChevronRight, User, LogOut, LayoutDashboard, MessageSquare, Home, Briefcase } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 export const Header: React.FC = () => {
@@ -16,18 +16,27 @@ export const Header: React.FC = () => {
   const publicNavLinks = [
     { label: 'Início', path: '/' },
     { label: 'Planos', path: '#planos', isAnchor: true },
-    { 
-      label: isCompanyPage ? 'Para Freelancers' : 'Para Empresas', 
-      path: isCompanyPage ? '/' : '/empresas' 
+    {
+      label: isCompanyPage ? 'Para Freelancers' : 'Para Empresas',
+      path: isCompanyPage ? '/' : '/empresas'
     },
   ];
 
   // Logged-in nav links
-  const authNavLinks = [
-    { label: 'Dashboard', path: profile?.role === 'company' ? '/company/dashboard' : '/freelancer/dashboard', icon: LayoutDashboard },
-    { label: 'Mensagens', path: '/chat', icon: MessageSquare },
-    { label: 'Perfil', path: '/profile', icon: User },
-  ];
+  const authNavLinks = profile?.role === 'company'
+    ? [
+      { label: 'Painel', path: '/company/dashboard', icon: LayoutDashboard },
+      { label: 'Vagas', path: '/company/vagas', icon: Briefcase },
+      { label: 'Mensagens', path: '/chat', icon: MessageSquare },
+      { label: 'Perfil', path: '/profile', icon: User },
+    ]
+    : [
+      { label: 'Início', path: '/freelancer/inicio', icon: Home },
+      { label: 'Vagas', path: '/freelancer/vagas', icon: Briefcase },
+      { label: 'Ganhos & PIX', path: '/freelancer/dashboard', icon: LayoutDashboard },
+      { label: 'Mensagens', path: '/chat', icon: MessageSquare },
+      { label: 'Perfil', path: '/profile', icon: User },
+    ];
 
   const navLinks = isLoggedIn ? authNavLinks : publicNavLinks;
 
@@ -41,7 +50,7 @@ export const Header: React.FC = () => {
           element.scrollIntoView({ behavior: 'smooth' });
           window.history.replaceState(null, '', `/#${targetId}`);
         } else {
-          window.location.href = `/#${targetId}`;
+          navigate(`/#${targetId}`);
         }
       }
     }
@@ -51,7 +60,7 @@ export const Header: React.FC = () => {
   const handleSignOut = async () => {
     await signOut();
     setIsMenuOpen(false);
-    navigate('/');
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -65,7 +74,7 @@ export const Header: React.FC = () => {
               Entrar
             </Link>
           )}
-          <button 
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors active:scale-90"
           >
@@ -161,12 +170,12 @@ export const Header: React.FC = () => {
       <header className="hidden lg:block sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-sm border-b border-outline-variant/10">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="text-2xl font-black text-on-surface tracking-tight italic">VaptVaga</Link>
-          
+
           <nav className="flex items-center gap-8">
             {navLinks.map(link => (
-              <Link 
-                key={link.path} 
-                to={'isAnchor' in link && link.isAnchor ? `/${link.path}` : link.path} 
+              <Link
+                key={link.path}
+                to={'isAnchor' in link && link.isAnchor ? `/${link.path}` : link.path}
                 onClick={(e) => handleNavClick(e, link.path, 'isAnchor' in link ? link.isAnchor : false)}
                 className="text-on-surface-variant font-bold hover:text-primary transition-all active:scale-95 flex items-center gap-2"
               >

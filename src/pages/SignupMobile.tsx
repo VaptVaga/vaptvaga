@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../integrations/supabase/client';
 import { useAuth } from '../contexts/AuthContext';
+import { rateLimiter } from '../lib/rateLimit';
 
 export const SignupMobile: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +22,14 @@ export const SignupMobile: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    // Rate Limiting para cadastro: máx 3 tentativas a cada 30 min
+    const limit = rateLimiter.checkAndRecord('signup', 3, 30 * 60 * 1000, email);
+    if (!limit.allowed) {
+      setError(`Limite atingido. Tente novamente em ${rateLimiter.formatRemainingTime(limit.remainingMs)}.`);
+      setLoading(false);
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError('As senhas não coincidem.');

@@ -59,10 +59,10 @@ export const FreelancerLanding: React.FC = () => {
               <div className="aspect-square rounded-xl bg-primary-container p-6 lg:p-8 flex flex-col justify-between shadow-xl relative group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="flex justify-between items-start relative z-10">
-                  <span className="material-symbols-outlined text-on-primary text-3xl">map</span>
-                  <span className="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold text-white tracking-widest">LOCAL</span>
+                  <span className="material-symbols-outlined text-on-primary-container text-3xl">map</span>
+                  <span className="bg-black/10 px-3 py-1 rounded-full text-[10px] font-bold text-on-primary-container tracking-widest">LOCAL</span>
                 </div>
-                <p className="text-on-primary font-headline font-bold text-lg lg:text-xl leading-tight relative z-10">Turnos perto de você</p>
+                <p className="text-on-primary-container font-headline font-bold text-lg lg:text-xl leading-tight relative z-10">Turnos perto de você</p>
               </div>
               <div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
                 <img 
@@ -109,7 +109,7 @@ export const FreelancerLanding: React.FC = () => {
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-10 bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all border border-outline-variant/10 group">
-            <div className="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
               <span className="material-symbols-outlined text-primary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
             </div>
             <h3 className="text-2xl font-bold mb-4">Dinheiro na Mão</h3>
@@ -329,7 +329,7 @@ export const FreelancerLanding: React.FC = () => {
           <div className="hidden lg:block h-0.5 bg-primary flex-1 -mt-16 opacity-30"></div>
           {/* Step 3 */}
           <div className="flex-1 text-center relative z-10 bg-surface md:bg-transparent">
-            <div className="w-24 h-24 bg-primary-container text-white rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-8 shadow-2xl shadow-primary-container/30">3</div>
+            <div className="w-24 h-24 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-8 shadow-2xl shadow-primary-container/30">3</div>
             <h3 className="text-2xl font-bold mb-4">Trampe e Receba</h3>
             <p className="text-on-surface-variant">Faça o seu melhor no turno e receba o pagamento direto no app logo após a conclusão.</p>
           </div>

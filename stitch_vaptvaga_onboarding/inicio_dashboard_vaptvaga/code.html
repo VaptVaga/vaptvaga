@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-tint": "#0053db",
+          "secondary-fixed-dim": "#4edea3",
+          "on-error-container": "#93000a",
+          "surface-container-high": "#dee8ff",
+          "surface-dim": "#cfdaf2",
+          "on-primary-container": "#eeefff",
+          "on-error": "#ffffff",
+          "on-tertiary": "#ffffff",
+          "primary": "#004ac6",
+          "surface-variant": "#d8e3fb",
+          "surface": "#f9f9ff",
+          "background": "#f9f9ff",
+          "on-secondary": "#ffffff",
+          "on-secondary-fixed": "#002113",
+          "on-background": "#111c2d",
+          "error": "#ba1a1a",
+          "on-primary": "#ffffff",
+          "outline-variant": "#c3c6d7",
+          "secondary": "#006c49",
+          "tertiary-fixed": "#ffdbcd",
+          "surface-container-low": "#f0f3ff",
+          "tertiary-container": "#bc4800",
+          "secondary-container": "#6cf8bb",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#b4c5ff",
+          "on-tertiary-container": "#ffede6",
+          "on-surface": "#111c2d",
+          "on-tertiary-fixed-variant": "#7d2d00",
+          "secondary-fixed": "#6ffbbe",
+          "tertiary-fixed-dim": "#ffb596",
+          "primary-fixed": "#dbe1ff",
+          "inverse-on-surface": "#ecf1ff",
+          "on-surface-variant": "#434655",
+          "inverse-primary": "#b4c5ff",
+          "on-tertiary-fixed": "#360f00",
+          "on-secondary-container": "#00714d",
+          "surface-container-lowest": "#ffffff",
+          "surface-bright": "#f9f9ff",
+          "tertiary": "#943700",
+          "inverse-surface": "#263143",
+          "surface-container-highest": "#d8e3fb",
+          "surface-container": "#e7eeff",
+          "on-primary-fixed": "#00174b",
+          "on-secondary-fixed-variant": "#005236",
+          "outline": "#737686",
+          "on-primary-fixed-variant": "#003ea8",
+          "primary-container": "#2563eb"
+        },
+        "borderRadius": {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+          "headline": [
+            "Plus Jakarta Sans"
+          ],
+          "display": [
+            "Plus Jakarta Sans"
+          ],
+          "body": [
+            "Inter"
+          ],
+          "label": [
+            "Inter"
+          ]
+        },
+        "fontSize": {}
+      },
+    },
+  }</script></head><body class="bg-surface font-body text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-6 px-4 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-6"><div class="px-4 flex items-center justify-between"><a class="flex items-center gap-3" data-path="inicio-visao-geral" href="#"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary font-headline font-extrabold text-xl shadow-[0_10px_20px_rgba(37,99,235,0.25)]">V</div><div class="flex flex-col"><span class="font-headline font-extrabold text-xl tracking-tight text-on-surface">Vapt<span class="text-primary-container">Vaga</span></span><span class="text-[10px] font-label font-semibold uppercase tracking-wider text-secondary">Turnos &amp; Jobs</span></div></a></div><nav class="flex flex-col gap-1.5" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-md"><a class="flex items-center gap-3.5 px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="inicio-visao-geral" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span>Início / Visão Geral</span></a><a class="flex items-center gap-3.5 px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="vagas-disponiveis" href="#"><span class="material-symbols-outlined text-[22px]">work_outline</span><span>Vagas Disponíveis</span></a><a class="flex items-center gap-3.5 px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="minhas-candidaturas" href="#"><span class="material-symbols-outlined text-[22px]">assignment_turned_in</span><span>Minhas Candidaturas</span></a><a class="flex items-center justify-between px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="mensagens-chat" href="#"><div class="flex items-center gap-3.5"><span class="material-symbols-outlined text-[22px]">chat_bubble_outline</span><span>Mensagens &amp; Chat</span></div><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold font-label">Novo</span></a><a class="flex items-center gap-3.5 px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="ganhos-pix" href="#"><span class="material-symbols-outlined text-[22px]">payments</span><span>Ganhos &amp; PIX</span></a><a class="flex items-center gap-3.5 px-4 py-3 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="meu-perfil" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span>Meu Perfil</span></a></nav></div><div class="flex flex-col gap-4"><div class="p-4 rounded-xl bg-surface-container-lowest shadow-[0_4px_16px_rgba(17,28,45,0.04)] flex flex-col gap-2"><div class="flex items-center justify-between"><span class="text-xs font-label text-on-surface-variant font-medium">Plano Atual</span><span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-bold text-[10px]">PRO</span></div><p class="text-xs font-headline font-bold text-on-surface">Freelancer Verificado</p><p class="text-[11px] text-on-surface-variant leading-tight">Acesso prioritário a turnos rápidos em SP e RJ.</p></div><nav class="flex flex-col gap-1"><a class="flex items-center gap-3 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Configurações</span></a><a class="flex items-center gap-3 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all" data-path="central-de-suporte" href="#"><span class="material-symbols-outlined text-[20px]">help_outline</span><span>Central de Suporte</span></a><a class="flex items-center gap-3 px-4 py-2 rounded-full text-sm font-medium text-error hover:bg-error-container hover:text-on-error-container transition-all" data-path="sair" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Sair</span></a></nav></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center flex-1 max-w-xl"><div class="w-full flex items-center gap-3 px-4 py-2.5 rounded-full bg-surface-container-low transition-all focus-within:bg-surface-container-lowest focus-within:shadow-[0_4px_16px_rgba(37,99,235,0.08)]"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="w-full bg-transparent border-0 outline-none text-sm text-on-surface placeholder:text-outline" placeholder="Buscar oportunidades, empresas ou turnos..." type="text"/></div></div><div class="flex items-center gap-3.5"><div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.04)]"><span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span><span class="text-xs font-semibold font-label text-on-surface">Disponível para turnos</span></div><a class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-semibold text-xs tracking-tight shadow-[0_8px_16px_rgba(37,99,235,0.2)] hover:opacity-95 transition-opacity" data-path="publicar-vaga" href="#"><span class="material-symbols-outlined text-[18px]">add</span><span>Publicar Vaga</span></a><button class="relative w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-highest text-on-surface-variant transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span></button><a class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-highest text-on-surface-variant transition-colors" data-path="central-de-suporte" href="#"><span class="material-symbols-outlined text-[20px]">help</span></a><div class="flex items-center gap-3 pl-2 py-1 pr-3 rounded-full bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.04)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="text-xs font-headline font-bold text-on-surface leading-tight">Gabriel Lima</span><span class="text-[10px] font-label text-on-surface-variant leading-none">Freelancer Pro</span></div><span class="material-symbols-outlined text-outline text-[18px]">unfold_more</span></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive State / Notifications Script -->
+<script>
+    function triggerPixModal() {
+      const toast = document.getElementById('pix-toast');
+      if (toast) {
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 4000);
+      }
+    }
+  </script>
+<!-- Notification Toast -->
+<div class="fixed bottom-6 right-8 z-50 flex items-center gap-3.5 px-5 py-4 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-[0_20px_40px_rgba(17,28,45,0.18)] translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="pix-toast">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<p class="text-xs font-headline font-bold">Solicitação de Saque PIX iniciada!</p>
+<p class="text-[11px] text-surface-variant font-normal">Valor de R$ 410,00 agendado para sua chave cadastrada.</p>
+</div>
+</div>
+<div class="px-8 py-8 flex flex-col gap-8 max-w-[1560px] mx-auto w-full">
+<!-- Top Welcome Greeting & Live Status Banner -->
+<section class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary-container via-primary to-[#00369a] p-8 lg:p-10 text-on-primary shadow-[0_20px_40px_rgba(37,99,235,0.16)]">
+<!-- Ambient Lighting Blobs -->
+<div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-secondary-fixed/20 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/3 -bottom-20 w-80 h-80 rounded-full bg-primary-fixed-dim/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+<div class="flex flex-col gap-2.5 max-w-2xl">
+<div class="inline-flex items-center gap-2.5 self-start px-3.5 py-1.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-md">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary-fixed"></span>
+</span>
+<span class="text-xs font-headline font-semibold text-secondary-fixed tracking-wide uppercase">Disponibilidade Ativa • Recebendo propostas expressas</span>
+</div>
+<h1 class="text-2xl sm:text-3xl lg:text-4xl font-headline font-extrabold tracking-tight text-on-primary">
+            Olá, Gabriel! Bem-vindo de volta 👋
+          </h1>
+<p class="text-sm lg:text-base text-primary-fixed leading-relaxed">
+            Você tem <span class="font-semibold text-on-primary underline decoration-secondary-fixed decoration-2 underline-offset-4">2 turnos confirmados</span> para este fim de semana e <span class="font-semibold text-on-primary">142 novas vagas imediatas</span> abertas na Região Metropolitana de BH.
+          </p>
+</div>
+<!-- Quick Action Hub -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-secondary-fixed text-on-secondary-fixed font-headline font-bold text-xs sm:text-sm shadow-[0_8px_20px_rgba(111,251,190,0.3)] hover:scale-[1.02] active:scale-95 transition-all" onclick="triggerPixModal()">
+<span class="material-symbols-outlined text-[19px]">bolt</span>
+<span>Sacar via PIX (R$ 410)</span>
+</button>
+<a class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface-container-lowest/20 hover:bg-surface-container-lowest/30 backdrop-blur-md text-on-primary font-headline font-semibold text-xs sm:text-sm transition-all" data-path="vagas-disponiveis" href="#">
+<span class="material-symbols-outlined text-[19px]">explore</span>
+<span>Ver Vagas de Hoje</span>
+</a>
+<button class="w-11 h-11 rounded-full bg-surface-container-lowest/20 hover:bg-surface-container-lowest/30 backdrop-blur-md text-on-primary flex items-center justify-center transition-all" title="Ajustar Raio e Categorias de Turno">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Key KPI Metrics Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+<!-- Card 1: Saldo Disponível -->
+<div class="flex flex-col justify-between p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.04)] hover:shadow-[0_8px_32px_rgba(17,28,45,0.08)] transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xs font-label uppercase tracking-wider text-on-surface-variant font-semibold">Saldo Disponível</span>
+<span class="text-[10px] font-medium text-secondary">Transferência Instantânea</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold font-label">Liberado Hoje</span>
+</div>
+<div class="my-4 flex items-baseline gap-1.5">
+<span class="text-sm font-headline font-bold text-on-surface-variant">R$</span>
+<span class="text-3xl font-headline font-black text-on-surface tracking-tight">410,00</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<button class="inline-flex items-center gap-1.5 text-xs font-headline font-bold text-primary hover:text-primary-container transition-colors" onclick="triggerPixModal()">
+<span>Transferir via PIX</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<span class="text-[11px] font-label text-outline">Chave CPF ativa</span>
+</div>
+</div>
+<!-- Card 2: Ganhos na Semana -->
+<div class="flex flex-col justify-between p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.04)] hover:shadow-[0_8px_32px_rgba(17,28,45,0.08)] transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xs font-label uppercase tracking-wider text-on-surface-variant font-semibold">Ganhos na Semana</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Meta: R$ 1.250,00</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-bold text-[11px]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+18%</span>
+</div>
+</div>
+<div class="my-4">
+<div class="flex items-baseline gap-1.5 mb-2">
+<span class="text-sm font-headline font-bold text-on-surface-variant">R$</span>
+<span class="text-3xl font-headline font-black text-on-surface tracking-tight">780,00</span>
+<span class="text-xs text-on-surface-variant font-medium ml-1">/ 4 turnos</span>
+</div>
+<!-- Progress bar -->
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary to-primary-container" style="width: 62.4%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-label text-on-surface-variant">
+<span>62.4% da meta</span>
+<span class="font-semibold text-on-surface">Faltam R$ 470,00</span>
+</div>
+</div>
+<!-- Card 3: Performance Operacional -->
+<div class="flex flex-col justify-between p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.04)] hover:shadow-[0_8px_32px_rgba(17,28,45,0.08)] transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex flex-col">
+<span class="text-xs font-label uppercase tracking-wider text-on-surface-variant font-semibold">Turnos no Mês</span>
+<span class="text-[10px] font-medium text-secondary">100% de pontualidade</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-bold text-[11px]">
+<span class="material-symbols-outlined text-[13px] text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+<div class="my-4 flex items-baseline gap-2">
+<span class="text-3xl font-headline font-black text-on-surface tracking-tight">14</span>
+<span class="text-xs font-semibold text-on-surface-variant">turnos concluídos</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-[11px] font-label text-on-surface-variant">Média por turno:</span>
+<span class="text-xs font-headline font-bold text-on-surface">R$ 195,00</span>
+</div>
+</div>
+<!-- Card 4: Perfil Verificado Pro -->
+<div class="flex flex-col justify-between p-6 rounded-xl bg-surface-container-low shadow-[0_4px_24px_rgba(17,28,45,0.02)]">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-headline font-bold text-on-surface">Freelancer Pro</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-bold text-[10px] uppercase">Nível Ouro</span>
+</div>
+<div class="my-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-headline font-extrabold text-on-surface">3x Mais Convites</span>
+<span class="text-[11px] text-on-surface-variant">Filtro prioritário de bares e restaurantes</span>
+</div>
+<!-- Compact SVG Ring -->
+<div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+<svg class="w-12 h-12 -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="90, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute text-[10px] font-headline font-black text-on-surface">90%</span>
+</div>
+</div>
+<button class="w-full py-2 px-3 rounded-full bg-surface-container-lowest text-primary hover:bg-surface text-center font-headline font-semibold text-[11px] transition-all">
+          Completar Perfil (+10%)
+        </button>
+</div>
+</section>
+<!-- Main Content Layout (70% Left Operation / 30% Right Insights) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN (8 cols): Scheduled Jobs & Smart Match Feed -->
+<section class="lg:col-span-8 flex flex-col gap-8">
+<!-- Urgent Next Confirmed Shift Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-6 sm:p-7 shadow-[0_12px_36px_rgba(17,28,45,0.06)]">
+<!-- Top badge ribbon -->
+<div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-container/10 text-tertiary-container font-headline font-bold text-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+<span>PRÓXIMO TURNO CONFIRMADO (HOJE)</span>
+</div>
+<div class="inline-flex items-center gap-1.5 text-xs font-label text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>Inicia em <strong class="text-on-surface font-semibold">4h 15m</strong></span>
+</div>
+</div>
+<!-- Shift Main Meta -->
+<div class="flex flex-col sm:flex-row items-start justify-between gap-5 pb-6">
+<div class="flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high text-primary flex items-center justify-center font-headline font-black text-xl shrink-0">
+                NB
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="text-lg sm:text-xl font-headline font-extrabold text-on-surface">Garçom de Salão Noturno</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant text-[11px] font-medium">Cantina Nonna Bella</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1 flex items-center gap-2 flex-wrap">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline">location_on</span>
+                    Lourdes, Belo Horizonte (2.4 km)
+                  </span>
+<span>•</span>
+<span>Turno: 18:30 às 00:30 (6 horas)</span>
+</p>
+</div>
+</div>
+<!-- Value badge -->
+<div class="sm:text-right shrink-0">
+<span class="text-xs font-label text-on-surface-variant block">Valor a receber:</span>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-headline font-black text-secondary">R$ 190,00</span>
+<span class="text-[11px] font-semibold text-on-surface-variant">/turno</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label font-bold text-secondary">
+<span class="material-symbols-outlined text-[13px]">payments</span>
+                PIX até 01:00h
+              </span>
+</div>
+</div>
+<!-- Perks / Operational Briefing Chips -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-wrap items-center justify-between gap-3 text-xs text-on-surface-variant mb-6">
+<div class="flex flex-wrap items-center gap-3">
+<span class="inline-flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">checkroom</span>
+                Traje Social Preto
+              </span>
+<span>•</span>
+<span class="inline-flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">restaurant</span>
+                Jantar Incluso
+              </span>
+<span>•</span>
+<span class="inline-flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_taxi</span>
+                Ajuda Uber Noturno (R$ 20)
+              </span>
+</div>
+<span class="text-[11px] font-label text-outline">Gerente: Marcelo Santos</span>
+</div>
+<!-- Interactive Actions -->
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-on-primary font-headline font-semibold text-xs hover:bg-primary-container transition-all shadow-[0_4px_12px_rgba(0,74,198,0.2)]" href="#">
+<span class="material-symbols-outlined text-[18px]">navigation</span>
+<span>Ver Rota no Waze / Maps</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-headline font-semibold text-xs transition-all" data-path="mensagens-chat" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>Falar com Gerente</span>
+</a>
+</div>
+<button class="inline-flex items-center gap-1.5 text-xs font-label text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span>Reportar imprevisto</span>
+</button>
+</div>
+</div>
+<!-- Section Heading: High Match Shifts -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-headline font-extrabold text-on-surface">Oportunidades em Alta</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-primary font-headline font-bold text-xs">98% Match de Perfil</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">Turnos selecionados com pagamento via PIX imediato pós-fechamento</p>
+</div>
+<a class="inline-flex items-center gap-1 text-xs font-headline font-bold text-primary hover:text-primary-container" data-path="vagas-disponiveis" href="#">
+<span>Ver todas as 142 vagas</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Recommended Shifts Cards Feed -->
+<div class="flex flex-col gap-4">
+<!-- Job Card 1: Gastronomia Smash Burger -->
+<article class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_20px_rgba(17,28,45,0.03)] hover:shadow-[0_8px_30px_rgba(17,28,45,0.07)] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-high shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Modern artisanal hamburger station inside an urban bistro, stainless steel grill, warm neon lighting, appetizing atmosphere, professional photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUJJUcfuPnjbuiQF1w2OkF23_TZkkPPyBzYoCQKfr8PmgurZoGvw9uxIefPdfsizG8wyxbzQp1BDcnuV0U7gOXM5b7ah7t8oOP6H3Fx_HoYV47XMP2k7fuyTT6o5u_vGiQnXunoxFbM-RlWN5OANdiHvTrgG-DWHJ0Sy6zxNF11bJDLA4z7l0XKhEL6f2VhDcCN5vWC6cKik1lo2I9BMli-awBcwv0DhrbIw9eu52Boj7GXy1IW7dT"/>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-inverse-surface/80 text-[9px] font-bold text-inverse-on-surface font-label">BG99</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<h4 class="text-base font-headline font-extrabold text-on-surface">Chapeiro Especialista &amp; Montador Smash</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">PIX no Fim do Turno</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium flex-wrap">
+<span class="font-semibold text-on-surface">Burger Garage 99</span>
+<span>•</span>
+<span>Savassi, BH (3.1 km)</span>
+<span>•</span>
+<span class="text-primary font-semibold">Hoje, 17:00 às 00:00</span>
+</div>
+<div class="flex items-center gap-3 mt-3">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">Jantar smash burger incluso</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">Ajuda transporte R$ 20</span>
+</div>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-3 shrink-0 pt-4 md:pt-0">
+<div class="flex flex-col md:text-right">
+<span class="text-xs font-label text-on-surface-variant">Diária líquida</span>
+<span class="text-xl font-headline font-black text-on-surface">R$ 220,00</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-on-primary font-headline font-bold text-xs transition-all shadow-sm">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</button>
+</div>
+</article>
+<!-- Job Card 2: Bartender VIP Mixologia -->
+<article class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_20px_rgba(17,28,45,0.03)] hover:shadow-[0_8px_30px_rgba(17,28,45,0.07)] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-high shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="High-end cocktail bar lounge with sophisticated glassware, moody ambient blue and warm amber lighting, mixologist shaker, premium editorial photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKZ63zrFxXKGkgHvJHllWaGs3D8GnsIo1WxsrK41L7pbGJNSxaSjA4iECQyUaoRR9PPSj0ZvqW-YXT81a9jxVhni7ddl5CeCcw_sj0aNRBpprHBsxMj0KJEecLFvm4KUiQAneCMk70iwF_yeGR00r_nCTb-ge2NRcveHKr_7UKB8u2xo_YZJJTyAoSw15SXNDB35BE3faTMSe4XQu-j8b0n9bXGucvbZZczmaE_KiUf2OLtHI7fkD"/>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-inverse-surface/80 text-[9px] font-bold text-inverse-on-surface font-label">VIP</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<h4 class="text-base font-headline font-extrabold text-on-surface">Bartender VIP Mixologia &amp; Drinks Autorais</h4>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold text-[10px]">Alta Demanda</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium flex-wrap">
+<span class="font-semibold text-on-surface">Arena Eventos Prime</span>
+<span>•</span>
+<span>Olhos D'Água, BH (7.2 km)</span>
+<span>•</span>
+<span class="text-primary font-semibold">Sábado, 20:00 às 04:30</span>
+</div>
+<div class="flex items-center gap-3 mt-3">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">Equipe de apoio</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">Van fretada pós-evento</span>
+</div>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-3 shrink-0 pt-4 md:pt-0">
+<div class="flex flex-col md:text-right">
+<span class="text-xs font-label text-on-surface-variant">Valor do turno</span>
+<span class="text-xl font-headline font-black text-on-surface">R$ 290,00</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-on-primary font-headline font-bold text-xs transition-all shadow-sm">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</button>
+</div>
+</article>
+<!-- Job Card 3: Auxiliar de Conferência e Picking -->
+<article class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_20px_rgba(17,28,45,0.03)] hover:shadow-[0_8px_30px_rgba(17,28,45,0.07)] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-high shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Clean and high-tech e-commerce logistics fulfillment warehouse center with barcode optical scanners and automated conveyors, bright clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFqV8IHlRC1jDTskcg39yz9mIv9QjZb5UahPokz2HL169llliK32rN1bM79jMjgcE7DaK7RsAU1N7DiwXcnR7nwZLvhUlTZjTMRkpry-5-JUMaf_qaT2pr0-5wxARspO7ArlhVdkhkbj-qq_s_x9E3WUxglxm5F7f6egVgBslNSQwtnbFXeTUWxkK5c86HKAqxMwRbYn1WvfggrKoJbCbX7AXAuaXAH4Rywh2q-1JWclyKCx1P715A"/>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-inverse-surface/80 text-[9px] font-bold text-inverse-on-surface font-label">LOG</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<h4 class="text-base font-headline font-extrabold text-on-surface">Auxiliar de Conferência &amp; Picking Express</h4>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface text-[10px] font-bold">12 vagas disponíveis</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium flex-wrap">
+<span class="font-semibold text-on-surface">Express Logística Hub</span>
+<span>•</span>
+<span>Contagem / Ceasa (8.5 km)</span>
+<span>•</span>
+<span class="text-primary font-semibold">Amanhã, 07:00 às 16:00</span>
+</div>
+<div class="flex items-center gap-3 mt-3">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">Refeitório completo</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-[11px] font-label text-on-surface-variant font-medium">EPI fornecido no local</span>
+</div>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-3 shrink-0 pt-4 md:pt-0">
+<div class="flex flex-col md:text-right">
+<span class="text-xs font-label text-on-surface-variant">Diária + Almoço</span>
+<span class="text-xl font-headline font-black text-on-surface">R$ 175,00</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-primary-container hover:bg-primary text-on-primary font-headline font-bold text-xs transition-all shadow-sm">
+<span>Candidatar</span>
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Banner for Instant Availability -->
+<div class="p-6 rounded-xl bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">notifications_active</span>
+</div>
+<div class="flex flex-col">
+<h5 class="text-sm font-headline font-bold text-on-surface">Ative o Alerta de Vagas Relâmpago</h5>
+<p class="text-xs text-on-surface-variant">Receba no WhatsApp turnos desmarcados de última hora com remuneração até 30% maior.</p>
+</div>
+</div>
+<button class="px-5 py-2.5 rounded-full bg-inverse-surface hover:bg-black text-inverse-on-surface font-headline font-bold text-xs whitespace-nowrap transition-all shadow-sm">
+            Ativar Alertas VIP
+          </button>
+</div>
+</section>
+<!-- RIGHT COLUMN (4 cols): Insights, Applications & Fast Support -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Widget 1: Minhas Candidaturas Recentes -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.03)] flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h4 class="text-sm font-headline font-extrabold text-on-surface">Minhas Candidaturas</h4>
+<a class="text-xs font-headline font-bold text-primary hover:underline" data-path="minhas-candidaturas" href="#">Ver Histórico</a>
+</div>
+<div class="flex flex-col gap-3.5">
+<!-- Item 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-bold text-on-surface">Cantina Nonna Bella</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">Aprovado</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Garçom Noturno • Hoje, 18:30h</p>
+<div class="flex items-center justify-between pt-1 text-[11px]">
+<span class="text-secondary font-bold">R$ 190,00</span>
+<span class="text-outline">Check-in às 18:15</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-bold text-on-surface">Bistrô &amp; Parrilla 1920</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface text-[10px] font-bold">Em Análise</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Auxiliar de Cozinha • Domingo, 11h</p>
+<div class="flex items-center justify-between pt-1 text-[11px]">
+<span class="text-on-surface font-semibold">R$ 210,00</span>
+<span class="text-outline">Resposta em 2h</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-bold text-on-surface">Choperia Krug Savassi</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-bold text-[10px]">PIX Pago</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Cumim / Apoio de Bar • Ontem</p>
+<div class="flex items-center justify-between pt-1 text-[11px]">
+<span class="text-secondary font-bold">R$ 180,00 (Recebido)</span>
+<span class="text-secondary">★★★★★</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Widget 2: Radar de Demanda Local (Ao Vivo) -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.03)] flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<h4 class="text-sm font-headline font-extrabold text-on-surface">Demanda em Tempo Real</h4>
+</div>
+<span class="text-[10px] font-label uppercase font-bold text-outline">Belo Horizonte</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Sector 1 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-medium text-on-surface">Gastronomia &amp; Restaurantes</span>
+<span class="font-bold text-primary">54 vagas (Pico Hoje)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 85%"></div>
+</div>
+</div>
+<!-- Sector 2 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-medium text-on-surface">Logística, CD &amp; Fretes</span>
+<span class="font-bold text-secondary">38 vagas</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-secondary" style="width: 60%"></div>
+</div>
+</div>
+<!-- Sector 3 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-medium text-on-surface">Eventos, Shows &amp; Festas</span>
+<span class="font-bold text-tertiary-container">27 vagas</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-container" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant bg-surface-container-low p-3 rounded-lg leading-relaxed mt-1">
+<strong>Dica Pro:</strong> Turnos de sexta-feira à noite têm taxa de contratação 40% mais rápida. Mantenha seu telefone por perto!
+          </p>
+</div>
+<!-- Widget 3: Plantão de Atendimento 24h & Suporte Operacional -->
+<div class="p-6 rounded-xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(17,28,45,0.03)] flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div class="flex flex-col">
+<h4 class="text-sm font-headline font-extrabold text-on-surface">Plantão VaptVaga 24h</h4>
+<span class="text-[11px] text-secondary font-semibold">Tempo médio de resposta: 2 min</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Dúvida sobre a rota, atrasos, vestimenta ou liberação do PIX no turno? Nossa equipe operacional acompanha você ao vivo.
+          </p>
+<a class="w-full py-2.5 px-4 rounded-full bg-secondary text-on-secondary hover:bg-secondary/90 text-center font-headline font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>Chamar Suporte no WhatsApp</span>
+</a>
+</div>
+</aside>
+</div>
+</div>
+</div></main></div></body></html>
